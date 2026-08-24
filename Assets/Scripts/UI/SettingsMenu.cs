@@ -20,8 +20,8 @@ public class SettingsMenu : MonoBehaviour
     private void OnEnable()
     {
         _audioSection.Button.onClick.AddListener(_audioSection.OnClick);
-       // _displaySection.Button.onClick.AddListener(_displaySection.OnClick);
+        _displaySection.Button.onClick.AddListener(_displaySection.OnClick);
         //_gameplaySection.Button.onClick.AddListener(_gameplaySection.OnClick);
-        //_controlsSection.Button.onClick.AddListener(_controlsSection.OnClick);
+        _controlsSection.Button.onClick.AddListener(_controlsSection.OnClick);
     }
 }
