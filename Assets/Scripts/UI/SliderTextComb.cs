@@ -5,6 +5,7 @@ using UnityEngine.UI;
 public class SliderTextComb : MonoBehaviour
 {
     [SerializeField] TextMeshProUGUI _text;
+    [SerializeField] float _multiplier = 100;
     Slider _slider;
 
     private void Awake()
@@ -18,6 +19,10 @@ public class SliderTextComb : MonoBehaviour
 
     void OnValChanged(float val)
     {
-        _text.text = $"{Mathf.RoundToInt(val * 100)}/100";
+        if (_multiplier >= 100)
+            _text.text = $"{Mathf.RoundToInt(val * _multiplier)}/{_multiplier}";
+        else
+            _text.text = $"{val * _multiplier:F2}/{_multiplier}";
+
     }
 }

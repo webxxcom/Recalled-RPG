@@ -1,36 +1,34 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 [RequireComponent(typeof(Canvas))]
 public abstract class UIScreen : MonoBehaviour
 {
-    [SerializeField] protected VoidGameEvent OnScreenGameEvent;
-
     Canvas _canvas;
 
     public bool IsActive
     {
         get => _canvas.enabled;
-        private set
+        set
         {
+            if (value == IsActive)
+                return;
+
             if (value) Open();
             else Close();
 
+            OnStateChange?.Invoke(this, value);
             _canvas.enabled = value;
         }
     }
 
+    public event Action<UIScreen, bool> OnStateChange;
+
     protected virtual void Awake()
     {
         _canvas = GetComponent<Canvas>();
-        //TODO  _canvas.enabled = false;
     }
 
-    void ToggleScreen() => IsActive = !IsActive;
-    protected virtual void OnEnable()
-        => OnScreenGameEvent.OnEventRaised += ToggleScreen;
-    protected virtual void OnDisable()
-        => OnScreenGameEvent.OnEventRaised -= ToggleScreen;
-
-    public abstract void Open();
-    public abstract void Close();
+    public virtual void Open() { }
+    public virtual void Close() { }
 }
