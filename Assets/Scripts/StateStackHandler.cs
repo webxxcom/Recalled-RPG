@@ -1,5 +1,5 @@
-using NUnit.Framework;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -10,26 +10,46 @@ public class StateStackHandler : MonoBehaviour
 
     readonly Stack<GameState> _states = new();
 
-    private void Awake() => Add(_baseState);
+    void Awake() => UncheckedAdd(_baseState);
 
-    void StateChanged()
+    void UpdateState()
     {
         GameState current = _states.Peek();
 
-        _playerInput.SwitchCurrentActionMap(current.ActionMap);
+        foreach (var am in current.ActionMaps)
+            _playerInput.actions.FindActionMap(am, throwIfNotFound: true).Enable();
         Time.timeScale = current.FreezeTime ? 0f : 1f;
         Cursor.lockState = current.CursorMode;
     }
 
-    public void Add(GameState state)
+    void UncheckedAdd(GameState state)
     {
         _states.Push(state);
-        StateChanged();
+
+        UpdateState();
     }
 
-    public void Remove()
+    public bool Add(GameState state)
     {
+        if (_states.Peek().BlockedStates.Contains(state))
+            return false;
+
+        UncheckedAdd(state);
+        return true;
+    }
+
+    public bool Remove(GameState state)
+    {
+        if (_states.Count == 1)
+        {
+            Debug.LogError($"Cannot pop last element from {nameof(StateStackHandler)}.");
+            return false;
+        }
+        if (_states.Peek() != state)
+            return false;
+
         _states.Pop();
-        StateChanged();
+        UpdateState();
+        return true;
     }
 }

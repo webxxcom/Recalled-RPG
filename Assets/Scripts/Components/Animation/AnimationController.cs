@@ -21,7 +21,7 @@ public class AnimationController : MonoBehaviour
     {
         _animator.SetFloat(AnimatorParameters.MoveXHash, direction.x);
         _animator.SetFloat(AnimatorParameters.MoveYHash, direction.y);
-        _animator.SetFloat(AnimatorParameters.SpeedHash, Mathf.Abs(speed) > float.Epsilon ? speed : 0f);
+        _animator.SetFloat(AnimatorParameters.SpeedHash, !Mathf.Approximately(speed, 0) ? speed : 0f);
 
         if (_isXFlippable)
         {

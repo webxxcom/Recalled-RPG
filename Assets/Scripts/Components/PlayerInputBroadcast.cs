@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 [DisallowMultipleComponent]
 public class PlayerInputBroadcast : MonoBehaviour
@@ -9,6 +10,6 @@ public class PlayerInputBroadcast : MonoBehaviour
 
     void OnPause()
         => OnPauseMenu.Invoke();
-    void OnToggleInventory()
+    void OnToggleInventory(InputValue _)
         => OnInventory.Invoke();
 }

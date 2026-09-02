@@ -1,6 +1,6 @@
 ﻿using System;
-using TMPro;
 using UnityEngine;
+using UnityEngine.Audio;
 
 [RequireComponent(typeof(SpriteRenderer))]
 [RequireComponent(typeof(AudioSource))]
@@ -8,6 +8,7 @@ public abstract class InteractableObject : MonoBehaviour, IInteractable
 {
     [SerializeField] AudioClip _firstStateAudio;
     [SerializeField] AudioClip _secondStateAudio;
+    [SerializeField] AudioMixerGroup _audioGroup;
 
     public bool IsInteracted
     {
@@ -35,7 +36,16 @@ public abstract class InteractableObject : MonoBehaviour, IInteractable
     protected virtual void Awake()
     {
         _audioSource = GetComponent<AudioSource>();
+
+        if (_audioGroup == null)
+            throw new MissingReferenceException($"Missing audio group on {GetType().Name}");
     }
+
+    protected virtual void Start()
+    {
+        _audioSource.outputAudioMixerGroup = _audioGroup;
+    }
+
 
     // Method used in the trigger to decide if at the current moment player can interact with the object
     // whether it's an availability of a key in player's inventory to open a chest or a specific looking into the picture

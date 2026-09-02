@@ -5,33 +5,36 @@ public class StateHandler : MonoBehaviour
     [SerializeField] StateStackHandler _stateManager;
     [SerializeField] GameState _definition;
     [SerializeField] VoidGameEvent OnGameEventRaised;
+    [SerializeField] UIScreen _uIScreen;
 
-    bool _isActive;
     public bool IsActive
     {
-        get => _isActive;
+        get => _uIScreen.IsActive;
         set
         {
+            if (value == IsActive)
+                return;
+
             if (value) Show();
             else Hide();
-
-            _isActive = value;
         }
     }
 
-    private void OnEnable()
+    void OnEnable()
         => OnGameEventRaised.OnEventRaised += Toggle;
-    private void OnDisable()
+    void OnDisable()
         => OnGameEventRaised.OnEventRaised -= Toggle;
-    void Toggle() => IsActive = !IsActive;
+    void Toggle() 
+        => IsActive = !IsActive;
 
     void Show()
     {
-        _stateManager.Add(_definition);
+        if (_stateManager.Add(_definition))
+            _uIScreen.IsActive = true;
     }
-
     void Hide()
     {
-        _stateManager.Remove();
+        if (_stateManager.Remove(_definition))
+            _uIScreen.IsActive = false;
     }
 }

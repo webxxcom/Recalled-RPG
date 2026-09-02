@@ -6,11 +6,8 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/OutsideScene.unity
-    guid: 8c9cfa26abfee488c85f1582747f6a02
-  - enabled: 1
-    path: Assets/Scenes/DungeonScene.unity
-    guid: 45b7b71d0eaf4684685c3c1d63bbe3a4
+    path: Assets/Scenes/TestScene.unity
+    guid: e85b56c82d430d346921570b3ee46736
   m_configObjects:
     com.unity.dt.app-ui: {fileID: 11400000, guid: 1b1c20d82303e4b5781c3ef50ac1449f, type: 2}
     com.unity.input.settings: {fileID: 11400000, guid: 18d75b9e5042a92439dcc7f57a811413, type: 2}

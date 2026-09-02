@@ -3806,9 +3806,7 @@ TextureImporter:
   spriteGenerateFallbackPhysicsShape: 0
   alphaUsage: 1
   alphaIsTransparency: 1
-  spriteTessellationMethod: 0
   spriteTessellationDetail: -1
-  spriteGeometrySubdivision: -1
   textureType: 8
   textureShape: 1
   singleChannelComponent: 0
@@ -4089,12 +4087,12 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 512
-        y: 752
+        y: 753
         width: 16
-        height: 16
+        height: 15
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
+      border: {x: 3, y: 4, z: 3, w: 3}
       customData: 
       outline: []
       physicsShape: []
@@ -4270,7 +4268,7 @@ TextureImporter:
         height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
+      border: {x: 4, y: 6, z: 4, w: 4}
       customData: 
       outline: []
       physicsShape: []
@@ -8554,10 +8552,10 @@ TextureImporter:
       name: Mediavel_220
       rect:
         serializedVersion: 2
-        x: 320
-        y: 640
-        width: 92
-        height: 29
+        x: 321
+        y: 641
+        width: 90
+        height: 27
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -8576,10 +8574,10 @@ TextureImporter:
       name: Mediavel_221
       rect:
         serializedVersion: 2
-        x: 417
-        y: 640
-        width: 92
-        height: 28
+        x: 418
+        y: 641
+        width: 90
+        height: 26
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -12762,7 +12760,7 @@ TextureImporter:
         height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
+      border: {x: 5, y: 5, z: 5, w: 5}
       customData: 
       outline: []
       physicsShape: []
@@ -12850,7 +12848,7 @@ TextureImporter:
         height: 18
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
+      border: {x: 7, y: 6, z: 6, w: 3}
       customData: 
       outline: []
       physicsShape: []
@@ -14890,10 +14888,10 @@ TextureImporter:
       name: Mediavel_510
       rect:
         serializedVersion: 2
-        x: 610
-        y: 387
-        width: 11
-        height: 9
+        x: 608
+        y: 385
+        width: 14
+        height: 14
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -15594,10 +15592,10 @@ TextureImporter:
       name: Mediavel_542
       rect:
         serializedVersion: 2
-        x: 545
-        y: 370
-        width: 12
-        height: 11
+        x: 543
+        y: 368
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -15617,9 +15615,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 560
-        y: 369
-        width: 15
-        height: 14
+        y: 368
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -15638,10 +15636,10 @@ TextureImporter:
       name: Mediavel_544
       rect:
         serializedVersion: 2
-        x: 578
-        y: 370
-        width: 10
-        height: 11
+        x: 575
+        y: 368
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -15660,10 +15658,10 @@ TextureImporter:
       name: Mediavel_545
       rect:
         serializedVersion: 2
-        x: 593
-        y: 370
-        width: 11
-        height: 12
+        x: 591
+        y: 369
+        width: 14
+        height: 14
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -15682,10 +15680,10 @@ TextureImporter:
       name: Mediavel_546
       rect:
         serializedVersion: 2
-        x: 609
-        y: 370
-        width: 12
-        height: 11
+        x: 608
+        y: 369
+        width: 14
+        height: 14
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -15705,9 +15703,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 624
-        y: 369
-        width: 15
-        height: 14
+        y: 368
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -15726,10 +15724,10 @@ TextureImporter:
       name: Mediavel_548
       rect:
         serializedVersion: 2
-        x: 642
-        y: 370
-        width: 10
-        height: 11
+        x: 640
+        y: 369
+        width: 14
+        height: 14
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -16650,10 +16648,10 @@ TextureImporter:
       name: Mediavel_590
       rect:
         serializedVersion: 2
-        x: 644
-        y: 354
-        width: 8
-        height: 12
+        x: 641
+        y: 353
+        width: 14
+        height: 14
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -19142,7 +19140,7 @@ TextureImporter:
         height: 12
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
+      border: {x: 4, y: 4, z: 4, w: 4}
       customData: 
       outline: []
       physicsShape: []
@@ -20550,7 +20548,7 @@ TextureImporter:
         height: 12
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
+      border: {x: 4, y: 4, z: 4, w: 4}
       customData: 
       outline: []
       physicsShape: []
@@ -20566,13 +20564,13 @@ TextureImporter:
       name: Mediavel_768
       rect:
         serializedVersion: 2
-        x: 402
-        y: 290
-        width: 12
-        height: 12
+        x: 403
+        y: 291
+        width: 10
+        height: 10
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
+      border: {x: 3, y: 3, z: 3, w: 3}
       customData: 
       outline: []
       physicsShape: []
@@ -20594,7 +20592,7 @@ TextureImporter:
         height: 12
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
+      border: {x: 4, y: 4, z: 4, w: 4}
       customData: 
       outline: []
       physicsShape: []
@@ -27062,7 +27060,7 @@ TextureImporter:
         height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
+      border: {x: 3, y: 3, z: 3, w: 3}
       customData: 
       outline: []
       physicsShape: []
@@ -27898,7 +27896,7 @@ TextureImporter:
         height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
+      border: {x: 3, y: 3, z: 3, w: 3}
       customData: 
       outline: []
       physicsShape: []

@@ -4,22 +4,18 @@ using UnityEngine;
 [RequireComponent(typeof(CanvasGroup))]
 public class CanvasHider : MonoBehaviour
 {
-    [field: SerializeField] public float Offset { get; private set; }
-    [field: SerializeField] public float Speed { get; private set; }
+    [SerializeField] float _offset;
+    [SerializeField] float _speed = 1.5f;
 
     CanvasGroup _canvasGroup;
 
     private void Awake()
     {
-        _canvasGroup = Utils.FindOrThrow(GetComponent<CanvasGroup>);
-    }
-
-    private void Start()
-    {
+        _canvasGroup = GetComponent<CanvasGroup>();
         _canvasGroup.alpha = 0;
     }
 
-    Coroutine hideCoroutine;
+    Coroutine _hideCoroutine;
     IEnumerator WaitAndHideCanvas()
     {
         while (_canvasGroup.alpha < 0.95f)
@@ -30,11 +26,11 @@ public class CanvasHider : MonoBehaviour
         }
         _canvasGroup.alpha = 1;
 
-        yield return new WaitForSeconds(Offset);
+        yield return new WaitForSeconds(_offset);
 
         while (_canvasGroup.alpha > 0.1f)
         {
-            _canvasGroup.alpha = Mathf.Lerp(_canvasGroup.alpha, 0, Time.deltaTime * Speed);
+            _canvasGroup.alpha = Mathf.Lerp(_canvasGroup.alpha, 0, Time.deltaTime * _speed);
 
             yield return null;
         }
@@ -43,9 +39,9 @@ public class CanvasHider : MonoBehaviour
 
     public void ShowCanvas()
     {
-        if (hideCoroutine != null)
-            StopCoroutine(hideCoroutine);
+        if (_hideCoroutine != null)
+            StopCoroutine(_hideCoroutine);
 
-        hideCoroutine = StartCoroutine(WaitAndHideCanvas());
+        _hideCoroutine = StartCoroutine(WaitAndHideCanvas());
     }
 }

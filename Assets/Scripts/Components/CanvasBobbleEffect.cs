@@ -1,32 +1,37 @@
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 [RequireComponent(typeof(Transform))]
+[RequireComponent(typeof(UIBehaviour))]
 public class CanvasBobbleEffect : MonoBehaviour
 {
-    [field: SerializeField] public float Frequency { get; private set; } = 5.5f;
-    [field: SerializeField] public float Amplitude { get; private set; } = 0.07f;
-    [field: SerializeField] public DirectionEnum Direction { get; private set; }
+    [SerializeField] float _frequency = 5.5f;
+    [SerializeField] float _amplitude = 0.07f;
+    [SerializeField] DirectionEnum _direction;
 
-    public enum DirectionEnum { Vertical, Horizontal }
+    enum DirectionEnum { Vertical, Horizontal }
 
-    Vector2 basePosition;
-    new Transform transform;
+    Vector2 _basePosition;
+    Transform _transform;
+    UIBehaviour _uiElement;
 
     private void Awake()
     {
-        transform = GetComponent<Transform>();
+        _transform = GetComponent<Transform>();
+        _uiElement = GetComponent<UIBehaviour>();
+
+        _basePosition = _transform.position;
     }
 
     void Update()
     {
-        if (basePosition == Vector2.zero)
-            basePosition = transform.position;
+        if (!_uiElement.enabled)
+            return;
 
-        float offset = Mathf.Sin(Time.time * Frequency) * Amplitude;
-
-        if (Direction == DirectionEnum.Vertical)
-            transform.position = new(basePosition.x, basePosition.y + offset, 0);
-        else if (Direction == DirectionEnum.Horizontal)
-            transform.position = new(basePosition.x + offset, basePosition.y, 0);
+        float offset = Mathf.Sin(Time.time * _frequency) * _amplitude;
+        if (_direction == DirectionEnum.Vertical)
+            _transform.position = new(_basePosition.x, _basePosition.y + offset);
+        else if (_direction == DirectionEnum.Horizontal)
+            _transform.position = new(_basePosition.x + offset, _basePosition.y);
     }
 }

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Chest : InteractableObject
+public class Chest : SingleTimeInteractableObject
 {
     [SerializeField] ItemDefinition _requiredKey;
     [SerializeField] LootTable _lootTable;
@@ -15,12 +15,14 @@ public class Chest : InteractableObject
     void Open()
     {
         IsInteracted = true;
+
         _inventory.Remove(_requiredKey);
         _inventory.Add(_lootTable.GetItem());
+        enabled = false;
     }
 
     public override bool PlayerCanInteract()
     {
-        return (_requiredKey == null || _inventory.Contains(_requiredKey)) && !IsInteracted;
+        return !IsInteracted && (_requiredKey == null || _inventory.Contains(_requiredKey));
     }
 }

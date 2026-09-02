@@ -16,7 +16,6 @@ public class InventoryManager : UIScreen
     [SerializeField] Highlighter _highlighter;
 
     [Header("Listens to")]
-    [SerializeField] VoidGameEvent OnInventory;
     [SerializeField] GameobjectGameEvent OnUIElementSelected;
     [SerializeField] VoidGameEvent OnUIElementDeselected;
 
@@ -28,21 +27,19 @@ public class InventoryManager : UIScreen
 
     protected override void Awake()
     {
+        base.Awake();
+
         _descriptionManager = Utils.FindOrThrow(FindAnyObjectByType<DescriptionManager>);
     }
 
-    protected override void OnEnable()
+    void OnEnable()
     {
-        base.OnEnable();
-
         OnUIElementSelected.OnEventRaised += ItemSelected;
         OnUIElementDeselected.OnEventRaised += ItemDeselected;
     }
 
-    protected override void OnDisable()
+    void OnDisable()
     {
-        base.OnDisable();
-
         OnUIElementSelected.OnEventRaised -= ItemSelected;
         OnUIElementDeselected.OnEventRaised -= ItemDeselected;
     }

@@ -9,7 +9,7 @@ public class Boots : ItemInstance, IEquippable
         {
             return $"{Definition.Name}\n" +
                 $"{Definition.Description}\n\n" +
-                $"Speed Multiplier: {Definition.SpeedMultiplier}\n" +
+                $"_speed Multiplier: {Definition.SpeedMultiplier}\n" +
                 $"Protection: {Definition.Protection}";
         }
     }

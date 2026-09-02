@@ -1,37 +1,37 @@
 using UnityEngine;
 
 [RequireComponent(typeof(Collider2D))]
-[RequireComponent(typeof(Animator))]
 [RequireComponent(typeof(AudioSource))]
 public class Collectible : MonoBehaviour
 {
-    private static readonly int CollectedHash = Animator.StringToHash("Collected");
-
-    [field: SerializeField] public ItemDefinition InventoryItemDefinition { get; private set; }
-    [field: SerializeField] public int Quantity { get; private set; }
-    [field: SerializeField] public AudioClip PickUpSound { get; private set; }
+    [SerializeField] ItemDefinition _inventoryItemDefinition;
+    [SerializeField] int _quantity;
+    [SerializeField] AudioClip _pickUpSound;
     [SerializeField] InventorySO _inventory;
 
-    public bool IsCollected { get; private set; }
+    bool _isCollected;
     Animator animator;
+    AudioSource _audioSource;
 
     private void Awake()
     {
+        _audioSource = GetComponent<AudioSource>();
+
         TryGetComponent(out animator);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (IsCollected)
+        if (_isCollected)
             return;
 
         if (collision.CompareTag("Player"))
         {
-            _inventory.Add(InventoryItemDefinition, Quantity);
+            _inventory.Add(_inventoryItemDefinition, _quantity);
 
-            IsCollected = true;
-            if (animator)
-                animator.SetTrigger(CollectedHash);
+            _isCollected = true;
+            if (animator) animator.SetTrigger(AnimatorParameters.CollectedHash);
+            _audioSource.PlayOneShot(_pickUpSound);
         }
     }
 
@@ -39,8 +39,8 @@ public class Collectible : MonoBehaviour
     {
         return new()
         {
-            InventoryItemDefinition = inventoryItem,
-            Quantity = quantity
+            _inventoryItemDefinition = inventoryItem,
+            _quantity = quantity
         };
     }
 }

@@ -15,13 +15,13 @@ public class BossStageScript : MonoBehaviour
         => _stageScript = GetComponent<StageScript>();
     private void OnEnable()
     {
-        _stageScript.OnStageStarted.OnEventRaised += BossStart;
-        _stageScript.OnStageCleared.OnEventRaised += BossDefeat;
+        _stageScript.OnStageStarted.AddListener(BossStart);
+        _stageScript.OnStageCleared.AddListener(BossDefeat);
     }
     private void OnDisable()
     {
-        _stageScript.OnStageStarted.OnEventRaised -= BossStart;
-        _stageScript.OnStageCleared.OnEventRaised -= BossDefeat;
+        _stageScript.OnStageStarted.RemoveListener(BossStart);
+        _stageScript.OnStageCleared.RemoveListener(BossDefeat);
     }
 
     void BossStart()

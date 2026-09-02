@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -6,7 +5,15 @@ using UnityEngine.UI;
 public class SettingsSection : UIScreen
 {
     [SerializeField] Button _button;
+    [SerializeField] ISettingsConfigField<Selectable>[] _fields;
 
+    protected override void Awake()
+    {
+        base.Awake();
+
+        _fields = GetComponentsInChildren<ISettingsConfigField<Selectable>>();
+    }
+        
     protected virtual void OnEnable()
         => _button.onClick.AddListener(OnClick);
     protected virtual void OnDisable()

@@ -12,6 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b3a2fd079008c645881ad6a93011fcc, type: 3}
   m_Name: Pause
   m_EditorClassIdentifier: Assembly-CSharp::GameState
-  <ActionMap>k__BackingField: UI
-  <CursorMode>k__BackingField: 2
+  <ActionMaps>k__BackingField:
+  - UI
+  <CursorMode>k__BackingField: 0
   <FreezeTime>k__BackingField: 1
+  <BlockedStates>k__BackingField:
+  - {fileID: 11400000, guid: 81a46fab77fef8143b854e5e4fc19fba, type: 2}

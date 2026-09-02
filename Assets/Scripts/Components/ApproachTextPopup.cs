@@ -4,7 +4,7 @@ using UnityEngine;
 public class ApproachTextPopup : MonoBehaviour
 {
     [SerializeField] string _displayText;
-    [SerializeField] protected TextMeshProUGUI _textMeshPro;
+    [SerializeField] protected TextMeshPro _textMeshPro;
 
     private void Start()
     {
@@ -26,7 +26,7 @@ public class ApproachTextPopup : MonoBehaviour
     private void OnValidate()
     {
         if (_textMeshPro == null)
-            _textMeshPro = GetComponentInChildren<TextMeshProUGUI>();
+            _textMeshPro = GetComponentInChildren<TextMeshPro>();
     }
 #endif
 

@@ -12,6 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b3a2fd079008c645881ad6a93011fcc, type: 3}
   m_Name: Inventory
   m_EditorClassIdentifier: Assembly-CSharp::GameState
-  <ActionMap>k__BackingField: Inventory
-  <CursorMode>k__BackingField: 2
+  <ActionMaps>k__BackingField:
+  - System
+  - UI
+  <CursorMode>k__BackingField: 0
   <FreezeTime>k__BackingField: 1
+  <BlockedStates>k__BackingField: []
