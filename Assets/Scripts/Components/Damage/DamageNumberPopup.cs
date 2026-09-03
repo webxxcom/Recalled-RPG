@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class DamageNumberPopup : HealthReactor
 {
-    [SerializeField] PopupDamageText _damagePopup;
+    [SerializeField] PopupWorldText _damagePopup;
 
     protected override void OnHpChange(DamageInfo di)
     {

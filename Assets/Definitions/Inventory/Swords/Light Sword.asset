@@ -15,7 +15,7 @@ MonoBehaviour:
   <Name>k__BackingField: Light Sword
   <Icon>k__BackingField: {fileID: 5270938977104889713, guid: 1a65b3f4372800f40a20f414fbed9cc7, type: 3}
   <Description>k__BackingField: How about we go rogue with these so-light sword.
-  <IsStockable>k__BackingField: 0
+  <MaxStockSize>k__BackingField: 1
   <Damage>k__BackingField: 6
   <KnockbackPower>k__BackingField: 0.6
   <Weight>k__BackingField: 0.95

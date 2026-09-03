@@ -15,8 +15,7 @@ public class DescriptionManager : MonoBehaviour
         set => gameObject.SetActive(value);
     }
 
-    private void Start()
-        => IsActive = false;
+    private void Start() => IsActive = false;
 
     void ShowButtons(InventorySlot inventorySlot)
     {

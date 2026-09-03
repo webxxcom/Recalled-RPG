@@ -2,12 +2,12 @@
 {
     ItemInstance Equip(InventorySO inventory)
     {
-        ItemInstance toSet = this as ItemInstance;
+        ItemInstance equipped = this as ItemInstance;
         ItemInstance replaced = GetInTheInventory(inventory);
 
-        inventory.Add(replaced);
-        SetInTheInventory(inventory, toSet);
-        inventory.Remove(toSet);
+        if (replaced != null) inventory.UncheckedAdd(replaced);
+        SetInTheInventory(inventory, equipped);
+        inventory.Remove(equipped);
 
         return replaced;
     }
@@ -15,7 +15,7 @@
     {
         ItemInstance cpy = GetInTheInventory(inventory);
 
-        inventory.Add(cpy);
+        inventory.UncheckedAdd(cpy);
         SetInTheInventory(inventory, null);
         return cpy;
     }

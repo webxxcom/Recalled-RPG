@@ -15,6 +15,6 @@ MonoBehaviour:
   <Name>k__BackingField: Basic Armor
   <Icon>k__BackingField: {fileID: 5815037290812883072, guid: 1a65b3f4372800f40a20f414fbed9cc7, type: 3}
   <Description>k__BackingField: Basic armor is the most basic thing you can get here..\nObtained at the beginning of the game.\nBe careful not to lose it - you won't get it back.
-  <IsStockable>k__BackingField: 0
+  <MaxStockSize>k__BackingField: 1
   <Protection>k__BackingField: 1
   <Weight>k__BackingField: 1

@@ -3,7 +3,7 @@ using TMPro;
 using UnityEngine;
 
 [RequireComponent(typeof(TextMeshPro))]
-public class PopupDamageText : MonoBehaviour
+public class PopupWorldText : MonoBehaviour
 {
     [SerializeField] float _duration;
     [SerializeField] Vector2 _direction;
