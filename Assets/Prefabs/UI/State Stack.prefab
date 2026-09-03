@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 695939961357264620}
   - component: {fileID: 5319758281398683007}
   m_Layer: 0
-  m_Name: StateStack
+  m_Name: State Stack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -63,6 +63,7 @@ MonoBehaviour:
   _stateManager: {fileID: 1508437999940044323}
   _definition: {fileID: 11400000, guid: 81a46fab77fef8143b854e5e4fc19fba, type: 2}
   OnGameEventRaised: {fileID: 11400000, guid: 4604c42548b19bf498c44dc741a3dda2, type: 2}
+  _uIScreen: {fileID: 0}
 --- !u!114 &5319758281398683007
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -70,7 +71,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 915922488040434515}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2f5f482b3893bbe4ba7cbabef7d3808f, type: 3}
   m_Name: 
@@ -78,3 +79,4 @@ MonoBehaviour:
   _stateManager: {fileID: 1508437999940044323}
   _definition: {fileID: 11400000, guid: 3029483e43a1c5a4e94100700962da7f, type: 2}
   OnGameEventRaised: {fileID: 11400000, guid: 1488ef76c18cdfe4d9ab67f05904969f, type: 2}
+  _uIScreen: {fileID: 0}

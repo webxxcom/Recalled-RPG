@@ -16,6 +16,7 @@ public class StateStackHandler : MonoBehaviour
     {
         GameState current = _states.Peek();
 
+        _playerInput.actions.Disable();
         foreach (var am in current.ActionMaps)
             _playerInput.actions.FindActionMap(am, throwIfNotFound: true).Enable();
         Time.timeScale = current.FreezeTime ? 0f : 1f;
