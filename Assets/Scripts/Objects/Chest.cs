@@ -1,10 +1,13 @@
 using UnityEngine;
 
-public class Chest : SingleTimeInteractableObject
+public class Chest : SingleTimeInteractableObject, ILootable
 {
     [SerializeField] ItemDefinition _requiredKey;
     [SerializeField] LootTable _lootTable;
     [SerializeField] InventorySO _inventory;
+
+    public Transform Transform => transform;
+    public LootTable LootTable => _lootTable;
 
     public override void Interact()
     {
@@ -17,7 +20,7 @@ public class Chest : SingleTimeInteractableObject
         IsInteracted = true;
 
         _inventory.Remove(_requiredKey);
-        _inventory.Add(_lootTable.GetItem());
+        _inventory.Add(this);
         enabled = false;
     }
 

@@ -15,6 +15,6 @@ MonoBehaviour:
   <Name>k__BackingField: Basic Boots
   <Icon>k__BackingField: {fileID: -1593239230203818902, guid: 0daa3ba3dddbbca448bb810d864562d8, type: 3}
   <Description>k__BackingField: Nothing to say here.\nTry not to run too fast.
-  <IsStockable>k__BackingField: 0
+  <MaxStockSize>k__BackingField: 1
   <SpeedMultiplier>k__BackingField: 1
   <Protection>k__BackingField: 1

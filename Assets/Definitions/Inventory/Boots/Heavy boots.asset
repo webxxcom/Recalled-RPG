@@ -15,6 +15,6 @@ MonoBehaviour:
   <Name>k__BackingField: Boots
   <Icon>k__BackingField: {fileID: 2604400189081485577, guid: 0daa3ba3dddbbca448bb810d864562d8, type: 3}
   <Description>k__BackingField: With Heavy Armor equipped I don't even know what can happend to you theory.\nAre you immortal?
-  <IsStockable>k__BackingField: 0
+  <MaxStockSize>k__BackingField: 1
   <SpeedMultiplier>k__BackingField: 0.75
   <Protection>k__BackingField: 2

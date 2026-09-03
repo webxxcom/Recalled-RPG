@@ -15,7 +15,7 @@ MonoBehaviour:
   <Name>k__BackingField: Heavy Sword
   <Icon>k__BackingField: {fileID: -3552689575471052349, guid: 1a65b3f4372800f40a20f414fbed9cc7, type: 3}
   <Description>k__BackingField: Heavy but not light..\nAllows you to deal more damage but for the cost of its weight
-  <IsStockable>k__BackingField: 0
+  <MaxStockSize>k__BackingField: 1
   <Damage>k__BackingField: 15
   <KnockbackPower>k__BackingField: 1.4
   <Weight>k__BackingField: 1.3

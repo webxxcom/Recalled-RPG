@@ -15,4 +15,4 @@ MonoBehaviour:
   <Name>k__BackingField: Coin
   <Icon>k__BackingField: {fileID: 4379456339908971260, guid: 0daa3ba3dddbbca448bb810d864562d8, type: 3}
   <Description>k__BackingField: Coins.........
-  <IsStockable>k__BackingField: 1
+  <MaxStockSize>k__BackingField: 999

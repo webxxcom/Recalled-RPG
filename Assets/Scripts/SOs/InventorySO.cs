@@ -6,35 +6,68 @@ using UnityEngine;
 public class InventorySO : ScriptableObject
 {
     [field: SerializeField] public List<ItemInstance> Items { get; private set; }
+    [SerializeField] int _maxItemsCount;
+    [SerializeField] PopupWorldText _rejectItemText;
 
     public Sword Sword { get; set; }
     public Armor Armor { get; set; }
     public Boots Boots { get; set; }
 
-    public void Add(ItemInstance itemInstance, int count = 1)
+    public void UncheckedAdd(ItemInstance ii)
     {
-        if (count <= 0 || itemInstance == null)
-            return;
-
-        // If we can stack item then try to find it
-        if (itemInstance.Definition.IsStockable)
-        {
-            foreach (var ii in Items)
-            {
-                // The item definitions match then add count
-                if (ii.Definition == itemInstance.Definition)
-                {
-                    ii.Count += count;
-                    return;
-                }
-            }
-        }
-
-        // Even if item already exists it's not stackable so add it
-        Items.Add(itemInstance);
+        Items.Add(ii);
     }
 
-    public void Add(ItemDefinition item, int count = 1) => Add(item.CreateInstance(), count);
+    bool TryAddStocked(ItemDefinition itemDefinition, int count)
+    {
+        if (itemDefinition.MaxStockSize <= 1)
+            return false;
+
+        foreach (var iitem in Items)
+        {
+            if (iitem.Definition == itemDefinition)
+            {
+                iitem.Count += count;
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public bool Add(ItemDefinition itemDefinition, int count = 1)
+    {
+        if (itemDefinition == null || count <= 0)
+            return false;
+
+        if (TryAddStocked(itemDefinition, count))
+            return true;
+
+        Items.Add(itemDefinition.CreateInstance(count));
+        return true;
+    }
+
+    public bool Add(ILootable lootable)
+    {
+        if (lootable == null)
+            return false;
+
+        ItemDefinition itemDefinition = lootable.LootTable.GetItem();
+        const int count = 1; // Feature for future if loot table will be able to provide more than one item
+
+        if (TryAddStocked(itemDefinition, count))
+            return true;
+
+        // Item can't be stocked than check it we can add it
+        if (count + Items.Count > _maxItemsCount)
+        {
+            PopupWorldText pwt = Instantiate(_rejectItemText, lootable.Transform.position, Quaternion.identity);
+            pwt.Init($"'{itemDefinition.Name}'\nrejected..");
+            return false;
+        }
+
+        Items.Add(itemDefinition.CreateInstance(count));
+        return true;
+    }
 
     public bool Contains(ItemDefinition item) => Items.Any(ii => ii.Definition == item);
 

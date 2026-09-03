@@ -6,5 +6,5 @@ public class BootsDefinition : ItemDefinition
     [field: SerializeField] public float SpeedMultiplier { get; private set; }
     [field: SerializeField] public float Protection { get; private set; }
 
-    public override ItemInstance CreateInstance() => new Boots(this);
+    public override ItemInstance CreateInstance(int count = 1) => new Boots(this);
 }

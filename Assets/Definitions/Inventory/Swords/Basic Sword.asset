@@ -15,7 +15,7 @@ MonoBehaviour:
   <Name>k__BackingField: Basic Sword
   <Icon>k__BackingField: {fileID: 1144251756838540918, guid: 1a65b3f4372800f40a20f414fbed9cc7, type: 3}
   <Description>k__BackingField: Base of the base, huh.\nDon't you think it's bad, it's just new.
-  <IsStockable>k__BackingField: 0
+  <MaxStockSize>k__BackingField: 1
   <Damage>k__BackingField: 10
   <KnockbackPower>k__BackingField: 1
   <Weight>k__BackingField: 1

@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Advanced Key
   m_EditorClassIdentifier: Assembly-CSharp::InventoryItem
   <Name>k__BackingField: Advanced Key
-  <Icon>k__BackingField: {fileID: 0}
+  <Icon>k__BackingField: {fileID: 795631668127821453, guid: 1a65b3f4372800f40a20f414fbed9cc7, type: 3}
   <Description>k__BackingField: 
-  <IsStockable>k__BackingField: 0
+  <MaxStockSize>k__BackingField: 999

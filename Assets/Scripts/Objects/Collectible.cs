@@ -27,7 +27,8 @@ public class Collectible : MonoBehaviour
 
         if (collision.CompareTag("Player"))
         {
-            _inventory.Add(_inventoryItemDefinition, _quantity);
+            if (!_inventory.Add(_inventoryItemDefinition, _quantity))
+                return;
 
             _isCollected = true;
             if (animator) animator.SetTrigger(AnimatorParameters.CollectedHash);

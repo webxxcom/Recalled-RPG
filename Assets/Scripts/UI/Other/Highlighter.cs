@@ -11,11 +11,8 @@ public class Highlighter : MonoBehaviour
 
     public void Show(GameObject gameObject)
     {
-        if (gameObject.TryGetComponent<InventorySlot>(out var inventorySlot) && inventorySlot.Item != null)
-        {
-            _image.enabled = true;
-            transform.position = gameObject.transform.position;
-        }
+        _image.enabled = true;
+        transform.position = gameObject.transform.position;
     }
 
     public void Hide()
