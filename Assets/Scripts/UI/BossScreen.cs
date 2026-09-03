@@ -1,11 +1,10 @@
 using TMPro;
 using UnityEngine;
 
-public class BossHpUiManager : MonoBehaviour
+public class BossHpUiManager : UIScreen
 {
     [SerializeField] TextMeshProUGUI _bossText;
     [SerializeField] BarScriptUI _fillHpBar;
-    [SerializeField] Canvas _canvas;
 
     [Header("Listens to")]
     [SerializeField] BossStartDataGameEvent OnBossStarted;
@@ -24,7 +23,7 @@ public class BossHpUiManager : MonoBehaviour
 
     void StartBoss(BossData bossStartData)
     {
-        _canvas.enabled = true;
+        IsActive = true;
 
         _fillHpBar.Init(bossStartData.Health, bossStartData.Health.Value);
         _bossText.text = bossStartData.Name;
@@ -32,6 +31,6 @@ public class BossHpUiManager : MonoBehaviour
 
     void EndBoss(BossData bossStartData)
     {
-        _canvas.enabled = false;
+        IsActive = false;
     }
 }

@@ -8,7 +8,7 @@ using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 [RequireComponent(typeof(AudioSource))]
-public class DialogueManager : MonoBehaviour
+public class DialogueManager : UIScreen
 {
     [SerializeField] Object _playerDialogueButtonPrefab;
     [SerializeField] GameObject _buttonGrid;
@@ -17,7 +17,6 @@ public class DialogueManager : MonoBehaviour
     PlayerInput _playerInput;
     LeftEntityDialogController _leftEntity;
     PlayerDialogueController _player;
-    Canvas _canvas;
     DialogueData _dialogueData;
     AudioSource _audioSource;
     readonly List<Button> _playerButtons = new();
@@ -34,10 +33,11 @@ public class DialogueManager : MonoBehaviour
         _enterPressed.Value = false;
     }
 
-    private void Awake()
+    protected override void Awake()
     {
+        base.Awake();
+
         _audioSource = GetComponent<AudioSource>();
-        _canvas = GetComponentInChildren<Canvas>();
 
         _leftEntity = FindAnyObjectByType<LeftEntityDialogController>();
         _player = FindAnyObjectByType<PlayerDialogueController>();
@@ -46,9 +46,10 @@ public class DialogueManager : MonoBehaviour
         _continueButton.onClick.AddListener(() => _enterPressed.Value = true);
     }
 
-    private void Start()
+    protected override void Start()
     {
-        _canvas.enabled = false;
+        base.Start();
+
         ResetFields();
     }
 
@@ -65,8 +66,8 @@ public class DialogueManager : MonoBehaviour
     public void BeginDialogue(DialogueSource dialogueData)
     {
         _dialogueData = JsonUtility.FromJson<DialogueData>(dialogueData.TextFile.text);
-        _canvas.enabled = true;
-        _playerInput.SwitchCurrentActionMap("UI");
+        IsActive = true;
+        //TODO not finished
         _enterPressed.Value = false;
         _buttonPressedData.Value = null;
         
@@ -174,7 +175,7 @@ public class DialogueManager : MonoBehaviour
 
     void EndTalking()
     {
-        _canvas.enabled = false;
+        IsActive = false;
         _playerInput.SwitchCurrentActionMap("Player");
         ResetFields();
     }

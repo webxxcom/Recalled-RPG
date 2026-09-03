@@ -9,7 +9,6 @@ public class MeleeAttackSO : AttackSO
     [field: SerializeField] public float ImpactTime { get; private set; } = 0.3f;
     [field: SerializeField] public float RecoveryTime { get; private set; } = 0.8f;
     [field: SerializeField] public AttackCurvesSO Curves { get; private set; }
-    [field: SerializeField] public List<EffectDefinition> Effects { get; private set; }
     [SerializeField] PlayerCombatData _combatData;
 
     public void ApplyAttack(EntityController source, Collider2D hurtbox)
@@ -17,8 +16,8 @@ public class MeleeAttackSO : AttackSO
         if (hurtbox.TryGetComponent(out HealthResource target))
         {
             DamageInfo di = _combatData != null 
-                ? new(_combatData.DealtDamage, _combatData.KnockbackPower, source, hurtbox, Effects)
-                : new(DealtDamage, KnockbackPower, source, hurtbox, Effects);
+                ? new(_combatData.DealtDamage, _combatData.KnockbackPower, source, hurtbox)
+                : new(DealtDamage, KnockbackPower, source, hurtbox);
 
             target.ApplyDamage(di);
         }

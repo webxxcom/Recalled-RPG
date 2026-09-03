@@ -7,7 +7,6 @@ public class HealthResource : ValueResource
 {
     [SerializeField] PlayerCombatData _combatData;
     public Collider2D Hurtbox { get; private set; }
-    public EffectMachineSO EffectMachine { get; private set; }
     public bool IsInvincible => _invincibilityTimer > 0f;
     float _invincibilityTimer;
 
@@ -20,7 +19,6 @@ public class HealthResource : ValueResource
     {
         base.Awake();
 
-        EffectMachine = ScriptableObject.CreateInstance<EffectMachineSO>();
         Hurtbox = GetComponent<Collider2D>();
     }
 
