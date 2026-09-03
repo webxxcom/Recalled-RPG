@@ -8,17 +8,18 @@ public abstract class UIScreen : MonoBehaviour
 
     public bool IsActive
     {
-        get => _canvas.enabled;
+        get => gameObject.activeInHierarchy;
         set
         {
             if (value == IsActive)
                 return;
 
+            gameObject.SetActive(value);
+
             if (value) Open();
             else Close();
 
             OnStateChange?.Invoke(this, value);
-            _canvas.enabled = value;
         }
     }
 
@@ -28,6 +29,14 @@ public abstract class UIScreen : MonoBehaviour
     {
         _canvas = GetComponent<Canvas>();
     }
+
+    protected virtual void Start()
+    {
+        _canvas.enabled = true;
+        IsActive = false;
+    }
+
+    protected void Toggle() => IsActive = !IsActive;
 
     public virtual void Open() { }
     public virtual void Close() { }

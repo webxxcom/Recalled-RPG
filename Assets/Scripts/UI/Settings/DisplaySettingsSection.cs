@@ -12,8 +12,10 @@ public sealed class DisplaySettingsSection : SettingsSection
 
     List<Resolution> _resolutions;
 
-    private void Start()
+    protected override void Start()
     {
+        base.Start();
+
         _fullscreen.isOn = Screen.fullScreen;
 
         _resolutions = Screen.resolutions.ToList();
@@ -24,18 +26,14 @@ public sealed class DisplaySettingsSection : SettingsSection
         _vsync.isOn = QualitySettings.vSyncCount > 0;
     }
 
-    protected override void OnEnable()
+    void OnEnable()
     {
-        base.OnEnable();
-
         _fullscreen.onValueChanged.AddListener(OnFullScreen);
         _resolutionsDropDown.onValueChanged.AddListener(OnResolution);
         _vsync.onValueChanged.AddListener(OnVSync);
     }
-    protected override void OnDisable()
+    void OnDisable()
     {
-        base.OnDisable();
-
         _fullscreen.onValueChanged.RemoveListener(OnFullScreen);
         _resolutionsDropDown.onValueChanged.RemoveListener(OnResolution);
         _vsync.onValueChanged.RemoveListener(OnVSync);

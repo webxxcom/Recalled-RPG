@@ -13,11 +13,11 @@ public class SettingsSection : UIScreen
 
         _fields = GetComponentsInChildren<ISettingsConfigField<Selectable>>();
     }
-        
-    protected virtual void OnEnable()
-        => _button.onClick.AddListener(OnClick);
-    protected virtual void OnDisable()
-        => _button.onClick.RemoveListener(OnClick);
-    void OnClick()
-        => IsActive = !IsActive;
+
+    protected override void Start()
+    {
+        base.Start();
+
+        _button.onClick.AddListener(Toggle);
+    }
 }

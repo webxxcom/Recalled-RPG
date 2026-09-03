@@ -23,22 +23,22 @@ public class ControlsSettingsMenu : SettingsSection
         _currentInput.LoadBindingOverridesFromJson(File.ReadAllText(controlsSaveFile));
     }
 
-    protected override void OnEnable()
+    void OnEnable()
     {
-        base.OnEnable();
-
         _saveButton.onClick.AddListener(OnSaveButtonClick);
     }
 
-    protected override void OnDisable()
+     void OnDisable()
     {
-        base.OnDisable();
-
         _saveButton.onClick.RemoveListener(OnSaveButtonClick);
     }
 
-    private void Start()
-        => InitControls();
+    protected override void Start()
+    {
+        base.Start();
+
+        InitControls();
+    }
 
     void InitControls()
     {
