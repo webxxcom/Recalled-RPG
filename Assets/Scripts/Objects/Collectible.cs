@@ -30,7 +30,7 @@ public class Collectible : MonoBehaviour
 
         if (collision.CompareTag("Player"))
         {
-            if (!_lootable.LootItem())
+            if (!_inventory.AddItem(_inventoryItemDefinition.CreateInstance(_quantity)))
                 return;
 
             _isCollected = true;
