@@ -3806,7 +3806,9 @@ TextureImporter:
   spriteGenerateFallbackPhysicsShape: 0
   alphaUsage: 1
   alphaIsTransparency: 1
+  spriteTessellationMethod: 0
   spriteTessellationDetail: -1
+  spriteGeometrySubdivision: -1
   textureType: 8
   textureShape: 1
   singleChannelComponent: 0
@@ -12908,13 +12910,13 @@ TextureImporter:
       name: Mediavel_420
       rect:
         serializedVersion: 2
-        x: 399
-        y: 479
-        width: 50
-        height: 18
+        x: 400
+        y: 480
+        width: 48
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
+      border: {x: 7, y: 7, z: 7, w: 3}
       customData: 
       outline: []
       physicsShape: []
@@ -12930,13 +12932,13 @@ TextureImporter:
       name: Mediavel_421
       rect:
         serializedVersion: 2
-        x: 455
-        y: 480
-        width: 34
-        height: 18
+        x: 456
+        y: 481
+        width: 32
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
+      border: {x: 7, y: 6, z: 7, w: 4}
       customData: 
       outline: []
       physicsShape: []

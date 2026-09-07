@@ -30,19 +30,21 @@ public sealed class InventoryManager : UIScreen
     {
         base.Awake();
 
-        _descriptionManager = Utils.FindOrThrow(FindAnyObjectByType<DescriptionManager>);
+        _descriptionManager = GetComponentInChildren<DescriptionManager>();
     }
 
     void OnEnable()
     {
         OnUIElementSelected.OnEventRaised += ItemSelected;
         OnUIElementDeselected.OnEventRaised += ItemDeselected;
+        _inventory.OnItemsChanged += Open;
     }
 
     void OnDisable()
     {
         OnUIElementSelected.OnEventRaised -= ItemSelected;
         OnUIElementDeselected.OnEventRaised -= ItemDeselected;
+        _inventory.OnItemsChanged -= Open;
     }
 
     void CreateGeneralItemSlot(ItemInstance itemInstance)
@@ -52,6 +54,7 @@ public sealed class InventoryManager : UIScreen
         inventoryItem.Initialize(itemInstance);
         _createdInventorySlots.Add(inventoryItem);
     }
+
     void RefreshGeneralSlots()
     {
         DeleteGeneralSlots();
@@ -80,12 +83,13 @@ public sealed class InventoryManager : UIScreen
     {
         RefreshGeneralSlots();
         RefreshEquipSlots();
+        ItemDeselected();
     }
 
     public override void Close()
     {
         DeleteGeneralSlots();
-        _highlighter.Hide();
+        ItemDeselected();
     }
 
     public void ItemSelected(GameObject gameObject)
@@ -97,15 +101,14 @@ public sealed class InventoryManager : UIScreen
             if (inventorySlot.Item == null)
                 return;
 
-            if (gameObject.TryGetComponent(out InventorySlot _))
-                _highlighter.Show(gameObject);
+            _highlighter.Show(gameObject);
             _descriptionManager.Show(inventorySlot);
         }
     }
 
     public void ItemDeselected()
     {
-        _selectedInventorySlot = _createdInventorySlots.FirstOrDefault();
+        _selectedInventorySlot = null;
 
         _highlighter.Hide();
         _descriptionManager.Hide();
@@ -117,10 +120,8 @@ public sealed class InventoryManager : UIScreen
 
     void RemoveItem(InventorySlot inventorySlot)
     {
-        _inventory.Remove(inventorySlot.Item);
-        _createdInventorySlots.Remove(inventorySlot);
         Destroy(inventorySlot.gameObject);
-        ItemDeselected();
+        _inventory.Remove(inventorySlot.Item);
     }
 
     void UnequipItem(InventorySlot inventorySlot)
@@ -129,9 +130,6 @@ public sealed class InventoryManager : UIScreen
         {
             ItemInstance unequipped = equippable.Unequip(_inventory);
 
-            CreateGeneralItemSlot(unequipped);
-            ItemDeselected();
-            RefreshEquipSlots();
             OnEquippedItems?.Invoke();
         }
     }
@@ -142,13 +140,6 @@ public sealed class InventoryManager : UIScreen
         {
             ItemInstance replaced = equippable.Equip(_inventory);
 
-            if (replaced == null)
-                RemoveItem(inventorySlot);
-
-            RefreshEquipSlots();
-            RefreshGeneralSlots();
-            _descriptionManager.Hide();
-            _highlighter.Hide();
             OnEquippedItems?.Invoke();
         }
     }

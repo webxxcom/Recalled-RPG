@@ -12,10 +12,14 @@ public class DescriptionManager : MonoBehaviour
     public bool IsActive
     {
         get => gameObject.activeInHierarchy;
-        set => gameObject.SetActive(value);
-    }
+        set
+        {
+            if (value == IsActive)
+                return;
 
-    private void Start() => IsActive = false;
+            gameObject.SetActive(value);
+        }
+    }
 
     void ShowButtons(InventorySlot inventorySlot)
     {
