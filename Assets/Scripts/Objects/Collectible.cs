@@ -5,8 +5,6 @@ using UnityEngine;
 [RequireComponent(typeof(Lootable))]
 public class Collectible : MonoBehaviour
 {
-    [SerializeField] ItemDefinition _inventoryItemDefinition;
-    [SerializeField] int _quantity;
     [SerializeField] AudioClip _pickUpSound;
     [SerializeField] InventorySO _inventory;
 
@@ -30,21 +28,12 @@ public class Collectible : MonoBehaviour
 
         if (collision.CompareTag("Player"))
         {
-            if (!_inventory.AddItem(_inventoryItemDefinition.CreateInstance(_quantity)))
+            if (!_lootable.LootItem())
                 return;
 
             _isCollected = true;
             if (animator) animator.SetTrigger(AnimatorParameters.CollectedHash);
             _audioSource.PlayOneShot(_pickUpSound);
         }
-    }
-
-    static public Collectible Instantiate(ItemDefinition inventoryItem, int quantity)
-    {
-        return new()
-        {
-            _inventoryItemDefinition = inventoryItem,
-            _quantity = quantity
-        };
     }
 }
