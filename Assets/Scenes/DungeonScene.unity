@@ -27781,7 +27781,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e1a5c12b133d6548bcb6b09067c7725, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
---- !u!114 &520935260
+--- !u!114 &512300412
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -27846,6 +27846,7 @@ GameObject:
   - component: {fileID: 615158526}
   - component: {fileID: 615158525}
   - component: {fileID: 615158524}
+  - component: {fileID: 615158531}
   m_Layer: 11
   m_Name: Hidden Chest
   m_TagString: Untagged
@@ -27896,12 +27897,7 @@ MonoBehaviour:
   _interactAudio: {fileID: 0}
   _audioGroup: {fileID: 2485437016345203308, guid: 690e8d8c0ae056542bcef00037ba2c5a, type: 2}
   _requiredKey: {fileID: 0}
-  _lootTable:
-    _loots:
-    - _item: {fileID: 11400000, guid: b3777d1dc5c60ea4f91fc14a3964a784, type: 2}
-      _weight: 100
   _inventory: {fileID: 11400000, guid: c1a2f0f5e6e68d343a75a6474e974407, type: 2}
-  _rejectItemText: {fileID: 0}
 --- !u!95 &615158526
 Animator:
   serializedVersion: 7
@@ -28154,19 +28150,24 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &629684329
+--- !u!114 &615158531
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 615158522}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b31892992fe58d84984d3831904b384a, type: 3}
+  m_Script: {fileID: 11500000, guid: 1ec5ce20bdf26d345b4ae81aef904296, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::IntVariable
-  _value: 1
+  m_EditorClassIdentifier: Assembly-CSharp::Lootable
+  _inventory: {fileID: 11400000, guid: c1a2f0f5e6e68d343a75a6474e974407, type: 2}
+  _lootTable:
+    _loots:
+    - _item: {fileID: 11400000, guid: 751922f4b8ee5c540bda5357669b2e25, type: 2}
+      _weight: 0
+  _rejectItemText: {fileID: 7535224943969880707, guid: 60b7ea13c618dc14a93a5a3939157a8f, type: 3}
 --- !u!114 &667045188
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -29478,6 +29479,7 @@ GameObject:
   - component: {fileID: 1002331522}
   - component: {fileID: 1002331521}
   - component: {fileID: 1002331520}
+  - component: {fileID: 1002331526}
   m_Layer: 11
   m_Name: Spawn Chest
   m_TagString: Untagged
@@ -29528,12 +29530,7 @@ MonoBehaviour:
   _interactAudio: {fileID: 8300000, guid: 883d1dbeb0f103f4d999608a711cd58f, type: 3}
   _audioGroup: {fileID: 2485437016345203308, guid: 690e8d8c0ae056542bcef00037ba2c5a, type: 2}
   _requiredKey: {fileID: 0}
-  _lootTable:
-    _loots:
-    - _item: {fileID: 11400000, guid: e9eb1697ef0bf4846b5420bd6ab75501, type: 2}
-      _weight: 100
   _inventory: {fileID: 11400000, guid: c1a2f0f5e6e68d343a75a6474e974407, type: 2}
-  _rejectItemText: {fileID: 7535224943969880707, guid: 60b7ea13c618dc14a93a5a3939157a8f, type: 3}
 --- !u!95 &1002331522
 Animator:
   serializedVersion: 7
@@ -29759,6 +29756,37 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1002331526
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1002331518}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ec5ce20bdf26d345b4ae81aef904296, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Lootable
+  _inventory: {fileID: 11400000, guid: c1a2f0f5e6e68d343a75a6474e974407, type: 2}
+  _lootTable:
+    _loots:
+    - _item: {fileID: 11400000, guid: 5c02a86e175a6ef47b5b688e53c34ba8, type: 2}
+      _weight: 0
+  _rejectItemText: {fileID: 7535224943969880707, guid: 60b7ea13c618dc14a93a5a3939157a8f, type: 3}
+--- !u!114 &1104518645
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b31892992fe58d84984d3831904b384a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::IntVariable
+  _value: 1
 --- !u!114 &1119311667
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -30865,19 +30893,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Unity.InputSystem::UnityEngine.InputSystem.InputActionReference
   m_Asset: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_ActionId: 24908448-c609-4bc3-a128-ea258674378a
---- !u!114 &1312063931
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b31892992fe58d84984d3831904b384a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::IntVariable
-  _value: 1
 --- !u!114 &1416314035 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4486504741362455994, guid: 62137a2ce0efea14bb0f7d6bcfffc9d3, type: 3}
@@ -31046,6 +31061,7 @@ GameObject:
   - component: {fileID: 1445859259}
   - component: {fileID: 1445859258}
   - component: {fileID: 1445859257}
+  - component: {fileID: 1445859263}
   m_Layer: 0
   m_Name: Key
   m_TagString: Untagged
@@ -31299,6 +31315,24 @@ Transform:
   m_Children: []
   m_Father: {fileID: 335438119}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1445859263
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1445859256}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ec5ce20bdf26d345b4ae81aef904296, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Lootable
+  _inventory: {fileID: 11400000, guid: c1a2f0f5e6e68d343a75a6474e974407, type: 2}
+  _lootTable:
+    _loots:
+    - _item: {fileID: 11400000, guid: eaf1831fb346c5a47aeae7be05e9301e, type: 2}
+      _weight: 0
+  _rejectItemText: {fileID: 7535224943969880707, guid: 60b7ea13c618dc14a93a5a3939157a8f, type: 3}
 --- !u!4 &1469449007 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6133840983594500735, guid: 3fcf37dd0e06cc042b060fb5038a5360, type: 3}
@@ -33730,6 +33764,19 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!114 &1797107287
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b31892992fe58d84984d3831904b384a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::IntVariable
+  _value: 1
 --- !u!114 &1806714798
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -44520,6 +44567,26 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 335438119}
     m_Modifications:
+    - target: {fileID: 587332507673138501, guid: 500a443843846f94098eeab5c4647204, type: 3}
+      propertyPath: _inventory
+      value: 
+      objectReference: {fileID: 11400000, guid: c1a2f0f5e6e68d343a75a6474e974407, type: 2}
+    - target: {fileID: 587332507673138501, guid: 500a443843846f94098eeab5c4647204, type: 3}
+      propertyPath: _rejectItemText
+      value: 
+      objectReference: {fileID: 7535224943969880707, guid: 60b7ea13c618dc14a93a5a3939157a8f, type: 3}
+    - target: {fileID: 587332507673138501, guid: 500a443843846f94098eeab5c4647204, type: 3}
+      propertyPath: _lootTable._loots.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 587332507673138501, guid: 500a443843846f94098eeab5c4647204, type: 3}
+      propertyPath: _lootTable._loots.Array.data[0]._item
+      value: 
+      objectReference: {fileID: 11400000, guid: 211146c508d51374a8b53deb7ae48c54, type: 2}
+    - target: {fileID: 587332507673138501, guid: 500a443843846f94098eeab5c4647204, type: 3}
+      propertyPath: _lootTable._loots.Array.data[0]._weight
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 698538284780925714, guid: 500a443843846f94098eeab5c4647204, type: 3}
       propertyPath: m_LocalPosition.x
       value: -3.48
