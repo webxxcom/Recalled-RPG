@@ -27,6 +27,8 @@ public class InventorySlot : MonoBehaviour
 
     public void Absent()
     {
+        Item = null;
+
         _button.enabled = false;
         IsRemovable = false;
         IsEquipped = true;
