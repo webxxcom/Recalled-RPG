@@ -1,13 +1,10 @@
 using UnityEngine;
 
-public class Chest : SingleTimeInteractableObject, ILootable
+[RequireComponent(typeof(Lootable))]
+public class Chest : SingleTimeInteractableObject
 {
     [SerializeField] ItemDefinition _requiredKey;
-    [SerializeField] LootTable _lootTable;
     [SerializeField] InventorySO _inventory;
-
-    public Transform Transform => transform;
-    public LootTable LootTable => _lootTable;
 
     public override void Interact()
     {
@@ -19,13 +16,25 @@ public class Chest : SingleTimeInteractableObject, ILootable
     {
         IsInteracted = true;
 
-        _inventory.Remove(_requiredKey);
-        _inventory.Add(this);
-        enabled = false;
+            LootItem(_inventory, _lootTable.GetItem().CreateInstance());
+            enabled = false;
+        }
     }
 
     public override bool PlayerCanInteract()
     {
-        return !IsInteracted && (_requiredKey == null || _inventory.Contains(_requiredKey));
+        return enabled && (_requiredKey == null || _inventory.Contains(_requiredKey));
+    }
+
+    public void LootItem(InventorySO inventory, ItemInstance item)
+    {
+        if (inventory.AddItem(item)) inventory.Remove(_requiredKey);
+        else RejectItem(item);
+    }
+
+    void RejectItem(ItemInstance item)
+    {
+        PopupWorldText pwt = Instantiate(_rejectItemText, transform.position, Quaternion.identity);
+        pwt.Init($"'{item.Definition.Name}'\nrejected..");
     }
 }
