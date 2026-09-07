@@ -16,5 +16,5 @@
     public Sword(ItemDefinition itemDefinition) : base(itemDefinition) { }
 
     ItemInstance IEquippable.GetInTheInventory(InventorySO pi) => pi.Sword;
-    void IEquippable.SetInTheInventory(InventorySO pi, ItemInstance val) =>  pi.Sword = val as Sword;
+    void IEquippable.SetInTheInventory(InventorySO inv, ItemInstance val) =>  inv.Sword = val as Sword;
 }

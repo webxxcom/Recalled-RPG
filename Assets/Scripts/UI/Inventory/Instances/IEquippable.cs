@@ -1,12 +1,13 @@
-﻿internal interface IEquippable
+﻿
+internal interface IEquippable
 {
     ItemInstance Equip(InventorySO inventory)
     {
         ItemInstance equipped = this as ItemInstance;
         ItemInstance replaced = GetInTheInventory(inventory);
 
-        if (replaced != null) inventory.UncheckedAdd(replaced);
         SetInTheInventory(inventory, equipped);
+        if (replaced != null) inventory.AddItem(replaced);
         inventory.Remove(equipped);
 
         return replaced;
@@ -15,8 +16,9 @@
     {
         ItemInstance cpy = GetInTheInventory(inventory);
 
-        inventory.UncheckedAdd(cpy);
         SetInTheInventory(inventory, null);
+        inventory.AddItem(cpy);
+
         return cpy;
     }
 

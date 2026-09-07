@@ -2,6 +2,5 @@
 
 public interface ILootable
 {
-    public Transform Transform { get; }
-    public LootTable LootTable { get; }
+    void LootItem(InventorySO inventory, ItemInstance item);
 }
