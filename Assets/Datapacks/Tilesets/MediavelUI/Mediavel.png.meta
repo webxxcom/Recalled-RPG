@@ -13108,7 +13108,7 @@ TextureImporter:
       name: Mediavel_429
       rect:
         serializedVersion: 2
-        x: 271
+        x: 270
         y: 447
         width: 50
         height: 18
@@ -16213,7 +16213,7 @@ TextureImporter:
         x: 112
         y: 352
         width: 16
-        height: 15
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -16345,7 +16345,7 @@ TextureImporter:
         x: 208
         y: 352
         width: 16
-        height: 15
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -16674,7 +16674,7 @@ TextureImporter:
         serializedVersion: 2
         x: 659
         y: 353
-        width: 27
+        width: 8
         height: 14
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -16873,7 +16873,7 @@ TextureImporter:
         x: 80
         y: 336
         width: 16
-        height: 15
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -17665,7 +17665,7 @@ TextureImporter:
         x: 80
         y: 320
         width: 16
-        height: 15
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -17709,7 +17709,7 @@ TextureImporter:
         x: 112
         y: 320
         width: 16
-        height: 15
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -18677,7 +18677,7 @@ TextureImporter:
         x: 80
         y: 304
         width: 16
-        height: 15
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -18721,7 +18721,7 @@ TextureImporter:
         x: 112
         y: 304
         width: 16
-        height: 15
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -28170,6 +28170,28 @@ TextureImporter:
       bones: []
       spriteID: 5a4fca667cd80394da80aa1e8014061b
       internalID: -3341611114169296558
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mediavel_10
+      rect:
+        serializedVersion: 2
+        x: 670
+        y: 353
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0a95160c03d5f124ea888e526f47a160
+      internalID: -5216735785913309417
       vertices: []
       indices: 
       edges: []
