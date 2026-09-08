@@ -1,28 +1,31 @@
+using System;
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "Settings/Config")]
 public class SettingsConfig : ScriptableObject
 {
     SettingsDataService _settings;
-    SettingsDataService _copy;
 
     public SettingsDataService SettingsData => _settings;
+
+    public event Action OnSettingsLoaded;
 
     private void OnEnable()
     {
         _settings = new();
-        _copy = _settings;
     }
 
     public void Load()
     {
         _settings.Load();
 
-        _copy = _settings;
+        OnSettingsLoaded?.Invoke();
     }
 
     public void Save()
     {
         _settings.Save();
     }
+
+    public void Revert() => Load();
 }

@@ -23,6 +23,5 @@ public class SliderTextComb : MonoBehaviour
             _text.text = $"{Mathf.RoundToInt(val * _multiplier)}/{_multiplier}";
         else
             _text.text = $"{val * _multiplier:F2}/{_multiplier}";
-
     }
 }

@@ -20,8 +20,7 @@ public class SettingsDataService
     static readonly string PATH = Path.Combine(DIRECTORY, FILENAME);
     static public string[] Fields => typeof(Data).GetFields().Select(f => f.Name).ToArray();
 
-    Data _persistentData;
-
+    Data _data;
 
     public void SetField(string key, object data)
     {
@@ -31,11 +30,10 @@ public class SettingsDataService
             throw new ArgumentException($"Settings field '{field}:{field.GetType()}' " +
                 $"is not equivalent to provided argument '{data}:{data.GetType()}'");
 
-        field.SetValue(_persistentData, data);
+        field.SetValue(_data, data);
     }
 
-    public object GetFieldValue(string key) => FindField(key).GetValue(_persistentData);
-
+    public object GetFieldValue(string key) => FindField(key).GetValue(_data);
 
     public static FieldInfo FindField(string key)
     {
@@ -50,21 +48,20 @@ public class SettingsDataService
         if (!Directory.Exists(DIRECTORY))
             Directory.CreateDirectory(DIRECTORY);
 
-        File.WriteAllText(PATH, JsonUtility.ToJson(_persistentData));
-        Debug.Log($"Loaded {_persistentData}");
+        File.WriteAllText(PATH, JsonUtility.ToJson(_data));
+        Debug.Log($"Loaded {_data}");
     }
 
     public void Load()
     {
         try
         {
-            _persistentData = JsonUtility.FromJson<Data>(File.ReadAllText(PATH));
+            _data = JsonUtility.FromJson<Data>(File.ReadAllText(PATH));
         }
         catch (FileNotFoundException)
         {
-            _persistentData = new();
+            _data = new();
         }
-
-        Debug.Log($"Read {_persistentData}");
+        Debug.Log($"Read {_data}");
     }
 }

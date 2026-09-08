@@ -10,17 +10,21 @@ public abstract class SettingsConfigField<T> : MonoBehaviour
     protected abstract T Value { get; set; }
     protected abstract UnityEvent<T> Event { get; }
 
-    private void Start()
+    void OnEnable()
     {
-        Value = (T)_settingsConfig.SettingsData.GetFieldValue(_fieldName);
+        Event.AddListener(OnUiValueChanged);
+        _settingsConfig.OnSettingsLoaded += OnSettingsChanged;
+    }
+    void OnDisable()
+    {
+        Event.RemoveListener(OnUiValueChanged);
+        _settingsConfig.OnSettingsLoaded -= OnSettingsChanged;
     }
 
-    void OnEnable()
-        => Event.AddListener(OnValueChanged);
-    void OnDisable()
-        => Event.RemoveListener(OnValueChanged);
-    void OnValueChanged(T val)
+    void OnUiValueChanged(T val)
         => _settingsConfig.SettingsData.SetField(_fieldName, val);
+    void OnSettingsChanged()
+        => Value = (T)_settingsConfig.SettingsData.GetFieldValue(_fieldName);
 
 #if UNITY_EDITOR
     private void OnValidate()

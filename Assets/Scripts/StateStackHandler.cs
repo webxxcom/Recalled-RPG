@@ -14,7 +14,10 @@ public class StateStackHandler : MonoBehaviour
     void Awake()
     {
         UncheckedAdd(_baseState);
+    }
 
+    void Start()
+    {
         _settings.Load();
     }
 
