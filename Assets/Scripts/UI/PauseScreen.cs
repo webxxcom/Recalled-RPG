@@ -6,6 +6,7 @@ public class PauseScreen : UIScreen
 {
     [SerializeField] Button _resumeButton;
     [SerializeField] Button _quitButton;
+    [SerializeField] SettingsConfig _settings;
     [SerializeField] VoidGameEvent OnPauseGameEvent;
 
     void OnEnable()
@@ -17,6 +18,11 @@ public class PauseScreen : UIScreen
     {
         _resumeButton.onClick.RemoveListener(OnResume);
         _quitButton.onClick.RemoveListener(OnQuit);
+    }
+
+    public override void Close()
+    {
+        _settings.Revert();
     }
 
     void OnResume() => OnPauseGameEvent.Invoke();

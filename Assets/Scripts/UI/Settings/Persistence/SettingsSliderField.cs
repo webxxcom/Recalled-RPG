@@ -1,14 +1,18 @@
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
-public class SettingsSliderField : SettingsConfigField<float>
+namespace Assets.Scripts.UI.Settings.Persistence
 {
-    [SerializeField] Slider _slider;
-
-    protected override float Value
+    public class SettingsSliderField : SettingsConfigField<float>
     {
-        get => _slider.normalizedValue;
-        set => _slider.normalizedValue = value;
+        [SerializeField] Slider _slider;
+
+        protected override float Value
+        {
+            get => _slider.normalizedValue;
+            set => _slider.normalizedValue = value;
+        }
+        protected override UnityEvent<float> Event => _slider.onValueChanged;
     }
-    protected override UnityEngine.Events.UnityEvent<float> Event => _slider.onValueChanged;
 }

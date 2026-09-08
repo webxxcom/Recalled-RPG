@@ -1048,8 +1048,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d449da01801937e4a91336c9da272024, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  <Offset>k__BackingField: 0
-  <Speed>k__BackingField: 1.58
+  _offset: 0
+  _speed: 1.5
 --- !u!1 &3947751842682473356
 GameObject:
   m_ObjectHideFlags: 0
@@ -1200,6 +1200,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::DamageNumberPopup
   _health: {fileID: 5848999282206741749}
   _damagePopup: {fileID: 7535224943969880707, guid: 385f75b1c0c81584c85f5375d9fc8db4, type: 3}
+  _settings: {fileID: 11400000, guid: 43fb6679744b4a746b6728a93098e51e, type: 2}
 --- !u!114 &4738697937426192600
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1697,7 +1698,6 @@ MonoBehaviour:
   _walkingSpeed: 1.8
   _externalVelocity: {fileID: 1313544978890093267}
   _animationController: {fileID: 5572567905483850560}
-  _rigidbody2D: {fileID: 181632092390176455}
   _movementAIConfig: {fileID: 11400000, guid: 72187b7b600538c4188fb4aa064706ac, type: 2}
 --- !u!114 &1313544978890093267
 MonoBehaviour:

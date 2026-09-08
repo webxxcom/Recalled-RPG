@@ -1300,6 +1300,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::DamageNumberPopup
   _health: {fileID: 3686550405581697464}
   _damagePopup: {fileID: 7535224943969880707, guid: 385f75b1c0c81584c85f5375d9fc8db4, type: 3}
+  _settings: {fileID: 11400000, guid: 43fb6679744b4a746b6728a93098e51e, type: 2}
 --- !u!114 &2339780574607546230
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1327,7 +1328,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   _health: {fileID: 3686550405581697464}
-  _animator: {fileID: 0}
+  _animator: {fileID: 3120718460063332462}
 --- !u!1 &4117085876247267688
 GameObject:
   m_ObjectHideFlags: 0

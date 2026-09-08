@@ -21,6 +21,7 @@ public class ControlsSettingsMenu : SettingsSection
 
         _bindMap = _currentInput.FindActionMap("Player");
         _currentInput.LoadBindingOverridesFromJson(File.ReadAllText(controlsSaveFile));
+        InitControls();
     }
 
     void OnEnable()
@@ -31,13 +32,6 @@ public class ControlsSettingsMenu : SettingsSection
      void OnDisable()
     {
         _saveButton.onClick.RemoveListener(OnSaveButtonClick);
-    }
-
-    protected override void Start()
-    {
-        base.Start();
-
-        InitControls();
     }
 
     void InitControls()

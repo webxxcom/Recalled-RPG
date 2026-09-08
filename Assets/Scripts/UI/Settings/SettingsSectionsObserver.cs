@@ -16,15 +16,18 @@ public class SettingsSectionsObserver : MonoBehaviour
     UIScreen _activeSection;
     void VerifySingleActiveSection(UIScreen ss, bool isActive)
     {
-        if (!isActive)
+        if (isActive)
         {
-            _activeSection = null;
-            return;
+            if (_activeSection)
+                _activeSection.IsActive = false;
+
+            _activeSection = ss;
         }
+        else EnforceSingleActiveSection();
+    }
 
-        if (_activeSection)
-            _activeSection.IsActive = false;
-
-        _activeSection = ss;
+    void EnforceSingleActiveSection()
+    {
+        _activeSection = null;
     }
 }

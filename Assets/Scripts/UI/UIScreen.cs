@@ -1,24 +1,23 @@
 ﻿using System;
 using UnityEngine;
+using UnityEngine.UI;
+using static UnityEngine.Rendering.DebugUI;
 
 [RequireComponent(typeof(Canvas))]
 public abstract class UIScreen : MonoBehaviour
 {
+    Selectable[] _selectables;
     Canvas _canvas;
 
     public bool IsActive
     {
-        get => gameObject.activeInHierarchy;
+        get => _canvas.enabled;
         set
         {
             if (value == IsActive)
                 return;
 
-            gameObject.SetActive(value);
-
-            if (value) Open();
-            else Close();
-
+            SetIsActiveWithoutNotify(value);
             OnStateChange?.Invoke(this, value);
         }
     }
@@ -32,11 +31,31 @@ public abstract class UIScreen : MonoBehaviour
 
     protected virtual void Start()
     {
-        _canvas.enabled = true;
-        IsActive = false;
+        _selectables = GetComponentsInChildren<Selectable>();
+        SetIsActiveWithoutNotify(false);
     }
 
     protected void Toggle() => IsActive = !IsActive;
+
+    void ToggleNavigation(bool isNavigable)
+    {
+        foreach (var selectable in _selectables)
+        {
+            selectable.navigation = new Navigation()
+            {
+                mode = isNavigable ? Navigation.Mode.Automatic : Navigation.Mode.None
+            };
+        }
+    }
+
+    void SetIsActiveWithoutNotify(bool val)
+    {
+        _canvas.enabled = val;
+        ToggleNavigation(val);
+
+        if (val) Open();
+        else Close();
+    }
 
     public virtual void Open() { }
     public virtual void Close() { }

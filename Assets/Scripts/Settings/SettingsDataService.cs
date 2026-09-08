@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class SettingsDataService
 {
-    class Data
+    public class Data
     {
         public float masterVolume;
         public float musicVolume;
@@ -20,7 +20,7 @@ public class SettingsDataService
     static readonly string PATH = Path.Combine(DIRECTORY, FILENAME);
     static public string[] Fields => typeof(Data).GetFields().Select(f => f.Name).ToArray();
 
-    Data _data;
+    public Data _data;
 
     public void SetField(string key, object data)
     {
@@ -49,7 +49,6 @@ public class SettingsDataService
             Directory.CreateDirectory(DIRECTORY);
 
         File.WriteAllText(PATH, JsonUtility.ToJson(_data));
-        Debug.Log($"Loaded {_data}");
     }
 
     public void Load()
@@ -62,6 +61,5 @@ public class SettingsDataService
         {
             _data = new();
         }
-        Debug.Log($"Read {_data}");
     }
 }

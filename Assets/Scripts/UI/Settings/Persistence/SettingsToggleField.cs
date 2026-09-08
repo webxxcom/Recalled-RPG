@@ -1,14 +1,18 @@
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
-public class SettingsToggleField : SettingsConfigField<bool>
+namespace Assets.Scripts.UI.Settings.Persistence
 {
-    [SerializeField] Toggle _toggle;
-
-    protected override bool Value
+    public class SettingsToggleField : SettingsConfigField<bool>
     {
-        get => _toggle.isOn;
-        set => _toggle.isOn = value;
+        [SerializeField] Toggle _toggle;
+
+        protected override bool Value
+        {
+            get => _toggle.isOn;
+            set => _toggle.isOn = value;
+        }
+        protected override UnityEvent<bool> Event => _toggle.onValueChanged;
     }
-    protected override UnityEngine.Events.UnityEvent<bool> Event => _toggle.onValueChanged;
 }

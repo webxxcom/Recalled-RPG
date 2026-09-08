@@ -8,6 +8,8 @@ public class SettingsConfig : ScriptableObject
 
     public SettingsDataService SettingsData => _settings;
 
+    public bool IsLoaded { get; set; }
+
     public event Action OnSettingsLoaded;
 
     private void OnEnable()
@@ -18,6 +20,7 @@ public class SettingsConfig : ScriptableObject
     public void Load()
     {
         _settings.Load();
+        IsLoaded = true;
 
         OnSettingsLoaded?.Invoke();
     }

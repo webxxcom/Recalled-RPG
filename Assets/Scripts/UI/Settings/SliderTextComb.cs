@@ -11,10 +11,12 @@ public class SliderTextComb : MonoBehaviour
     private void Awake()
         => _slider = GetComponentInChildren<Slider>();
     private void Start()
-        => OnValChanged(_slider.value);
-    private void OnEnable()
-        => _slider.onValueChanged.AddListener(OnValChanged);
-    private void OnDisable()
+    {
+        _slider.onValueChanged.AddListener(OnValChanged);
+
+        OnValChanged(_slider.value);
+    }
+    private void OnDestroy()
         => _slider.onValueChanged.RemoveListener(OnValChanged);
 
     void OnValChanged(float val)

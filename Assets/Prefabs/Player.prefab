@@ -304,6 +304,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   _health: {fileID: 4202473506490510331}
   _damagePopup: {fileID: 7535224943969880707, guid: 385f75b1c0c81584c85f5375d9fc8db4, type: 3}
+  _settings: {fileID: 11400000, guid: 43fb6679744b4a746b6728a93098e51e, type: 2}
 --- !u!114 &6084795570454335282
 MonoBehaviour:
   m_ObjectHideFlags: 0
