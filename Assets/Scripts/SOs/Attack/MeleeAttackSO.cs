@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "ApplyAttack/Melee Data")]
+[CreateAssetMenu(menuName = "ApplyAttack/Melee Value")]
 public class MeleeAttackSO : AttackSO
 {
     [field: SerializeField] public int DealtDamage { get; private set; } = 10;

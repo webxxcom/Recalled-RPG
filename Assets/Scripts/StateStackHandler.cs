@@ -7,10 +7,16 @@ public class StateStackHandler : MonoBehaviour
 {
     [SerializeField] PlayerInput _playerInput;
     [SerializeField] GameState _baseState;
+    [SerializeField] SettingsConfig _settings;
 
     readonly Stack<GameState> _states = new();
 
-    void Awake() => UncheckedAdd(_baseState);
+    void Awake()
+    {
+        UncheckedAdd(_baseState);
+
+        _settings.Load();
+    }
 
     void UpdateState()
     {
@@ -32,7 +38,7 @@ public class StateStackHandler : MonoBehaviour
 
     public bool Add(GameState state)
     {
-        if (_states.Peek().BlockedStates.Contains(state))
+        if (_states.Peek().BlockedStates?.Contains(state) ?? true)
             return false;
 
         UncheckedAdd(state);

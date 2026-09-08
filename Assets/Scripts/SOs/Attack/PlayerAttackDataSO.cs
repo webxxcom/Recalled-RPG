@@ -1,6 +1,6 @@
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "Combat Data/Player")]
+[CreateAssetMenu(menuName = "Combat Value/Player")]
 public sealed class PlayerCombatData : ScriptableObject
 {
     [SerializeField] InventorySO _inventory;

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "ApplyAttack / ApplyAttack Curves Data")]
+[CreateAssetMenu(menuName = "ApplyAttack / ApplyAttack Curves Value")]
 public class AttackCurvesSO : ScriptableObject
 {
     [field: SerializeField] public AnimationCurve ColliderSizeX { get; private set; }

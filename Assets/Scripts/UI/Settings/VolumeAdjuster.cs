@@ -8,12 +8,6 @@ public class VolumeAdjuster : MonoBehaviour
     [SerializeField] AudioMixer _mixer;
     [SerializeField] string _varName;
 
-    private void Awake()
-    {
-        if (_mixer.GetFloat(_varName, out var val))
-            _slider.value = Mathf.Approximately(val, -80) ? 0f : Mathf.Pow(10, val / 20);
-    }
-
     private void OnEnable()
         => _slider.onValueChanged.AddListener(OnValChanged);
     private void OnDisable()

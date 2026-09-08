@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-[CreateAssetMenu(menuName = "ApplyAttack / Projectile ApplyAttack Data")]
+[CreateAssetMenu(menuName = "ApplyAttack / Projectile ApplyAttack Value")]
 public class ProjectileAttackDataSO : AttackSO
 {
     [field: SerializeField] public GameObject ProjectilePrefab { get; private set; }

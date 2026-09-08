@@ -6,7 +6,7 @@ public abstract class ValueResource : MonoBehaviour
     [SerializeField] ValueProviderConfig _config;
 
     [SerializeField] int _maxValue;
-    [Tooltip("Set the value variable in the config")]
+    [Tooltip("SetField the value variable in the config")]
     [SerializeField] IntVariable _currentValue;
     [SerializeField] bool _isInfinite;
 
