@@ -11,13 +11,13 @@ public class PauseScreen : UIScreen
 
     void OnEnable()
     {
-        _resumeButton.onClick.AddListener(OnResume);
-        _quitButton.onClick.AddListener(OnQuit);
+        //_resumeButton.onClick.AddListener(OnResume);
+        //_quitButton.onClick.AddListener(OnQuit);
     }
     void OnDisable()
     {
-        _resumeButton.onClick.RemoveListener(OnResume);
-        _quitButton.onClick.RemoveListener(OnQuit);
+        //_resumeButton.onClick.RemoveListener(OnResume);
+        //_quitButton.onClick.RemoveListener(OnQuit);
     }
 
     public override void Close()

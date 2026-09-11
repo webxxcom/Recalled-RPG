@@ -1,7 +1,6 @@
 ﻿using System;
 using UnityEngine;
 using UnityEngine.UI;
-using static UnityEngine.Rendering.DebugUI;
 
 [RequireComponent(typeof(Canvas))]
 public abstract class UIScreen : MonoBehaviour

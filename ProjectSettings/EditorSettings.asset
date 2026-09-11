@@ -3,12 +3,12 @@
 --- !u!159 &1
 EditorSettings:
   m_ObjectHideFlags: 0
-  serializedVersion: 15
+  serializedVersion: 16
   m_SerializationMode: 2
   m_LineEndingsForNewScripts: 0
   m_DefaultBehaviorMode: 1
   m_PrefabRegularEnvironment: {fileID: 0}
-  m_PrefabUIEnvironment: {fileID: 0}
+  m_PrefabUIEnvironment: {fileID: 102900000, guid: be678c559c07f7f4db574cc53d7d95c4, type: 3}
   m_SpritePackerMode: 5
   m_SpritePackerCacheSize: 10
   m_SpritePackerPaddingPower: 1
@@ -33,7 +33,6 @@ EditorSettings:
   m_AssetNamingUsesSpace: 1
   m_InspectorUseIMGUIDefaultInspector: 0
   m_UseLegacyProbeSampleCount: 0
-  m_SerializeInlineMappingsOnOneLine: 1
   m_DisableCookiesInLightmapper: 1
   m_ShadowmaskStitching: 0
   m_AssetPipelineMode: 1
@@ -44,9 +43,11 @@ EditorSettings:
   m_CacheServerEnableDownload: 1
   m_CacheServerEnableUpload: 1
   m_CacheServerEnableTls: 0
+  m_CacheServerImportResultCachingEnabled: 0
   m_CacheServerValidationMode: 2
   m_CacheServerDownloadBatchSize: 128
   m_EnableEnlightenBakedGI: 0
   m_ReferencedClipsExactNaming: 1
   m_ForceAssetUnloadAndGCOnSceneLoad: 1
   m_HideBuildProfileClassicPlatforms: 1
+  m_UseLegacyHierarchy: 0
