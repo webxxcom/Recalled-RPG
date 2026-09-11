@@ -11,16 +11,10 @@ public class PlayerMovement : MovementBase
 
     void OnMove(InputValue value)
         => MovementIntention = value.Get<Vector2>();
-
     void OnDash(InputValue _)
-    {
-        if (_playerDash != null) _playerDash.TryDash(FacingDirection);
-    }
-
+        => _playerDash.TryDash(FacingDirection);
     void OnSprint(InputValue value)
-    {
-        if (_playerSprinting != null) _playerSprinting.Toggle(value.isPressed);
-    }
+        => _playerSprinting.Toggle(value.isPressed);
 
     protected override Vector2 GetMovementIntention()
     {

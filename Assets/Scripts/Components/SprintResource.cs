@@ -24,8 +24,9 @@ public class SprintingResource : ValueResource
                     _movementBase.AddSpeedCoef(_speedMultiplier);
                 else
                     _movementBase.RemoveSpeedCoef(_speedMultiplier);
+
+                _isActive = value;
             }
-            _isActive = value;
         }
     }
 
@@ -36,8 +37,8 @@ public class SprintingResource : ValueResource
         _movementBase = GetComponent<PlayerMovement>();
     }
 
-    public void Toggle(bool isPressed)
-        => IsActive = isPressed;
+    public void Toggle(bool isActive)
+        => IsActive = isActive;
 
     private void FixedUpdate()
     {
