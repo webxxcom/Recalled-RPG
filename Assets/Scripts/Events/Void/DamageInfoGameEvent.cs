@@ -12,6 +12,6 @@ public class DamageInfoGameEvent : ScriptableObject
             listeners[i].OnEventRaised(di);
     }
 
-    public void RegisterListener(IDamageInfoGameEventListener listener) => listeners.Add(listener);
-    public void UnregisterListener(IDamageInfoGameEventListener listener) => listeners.Remove(listener);
+    public void AddListener(IDamageInfoGameEventListener listener) => listeners.Add(listener);
+    public void RemoveListener(IDamageInfoGameEventListener listener) => listeners.Remove(listener);
 }

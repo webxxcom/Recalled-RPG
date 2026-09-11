@@ -8,8 +8,8 @@ public class GameEventListener : MonoBehaviour, IDamageInfoGameEventListener
     [SerializeField] private DamageInfoGameEvent Event;
     [SerializeField] private UnityEvent<DamageInfo> Response;
 
-    private void OnEnable() => Event.RegisterListener(this);
-    private void OnDisable() => Event.UnregisterListener(this);
+    private void OnEnable() => Event.AddListener(this);
+    private void OnDisable() => Event.RemoveListener(this);
 
     public void OnEventRaised(DamageInfo di) => Response.Invoke(di);
 }

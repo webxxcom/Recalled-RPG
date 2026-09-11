@@ -2,8 +2,6 @@ using UnityEngine;
 
 public class PlayerController : EntityController
 {
-    private static readonly int IsArmedHash = Animator.StringToHash("IsArmed");
-
     bool _isArmed;
     public bool IsArmed
     {
@@ -11,7 +9,7 @@ public class PlayerController : EntityController
         private set
         {
             _isArmed = value;
-            Animator.SetBool(IsArmedHash, value);
+            Animator.SetBool(AnimatorParameters.IsArmedHash, value);
         }
     }
 
