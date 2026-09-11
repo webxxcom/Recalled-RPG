@@ -16,9 +16,6 @@ public class BookUITab : MonoBehaviour, IPointerUpHandler, IPointerEnterHandler,
     private void Start()
     {
         _graphic.sprite = _inactive;
-        Debug.Log(GetComponentInParent<Canvas>().name);
-        Debug.Log(GetComponentInParent<Canvas>().rootCanvas.name);
-        Debug.Log(GetComponentInParent<Canvas>().rootCanvas.referencePixelsPerUnit);
     }
 
     void OnPress()
@@ -26,9 +23,6 @@ public class BookUITab : MonoBehaviour, IPointerUpHandler, IPointerEnterHandler,
         if (_coroutine != null) StopCoroutine(_coroutine);
 
         _coroutine = StartCoroutine(ShowSpritesCoroutine(_pressed));
-        Debug.Log(GetComponentInParent<Canvas>().name);
-        Debug.Log(GetComponentInParent<Canvas>().rootCanvas.name);
-        Debug.Log(GetComponentInParent<Canvas>().rootCanvas.referencePixelsPerUnit);
     }
 
     void OnHide()
