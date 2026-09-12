@@ -41,7 +41,7 @@ public class StateStackHandler : MonoBehaviour
 
     public bool Add(GameState state)
     {
-        if (_states.Peek().BlockedStates?.Contains(state) ?? true)
+        if (_states.Peek().BlockedStates?.Contains(state) ?? false)
             return false;
 
         UncheckedAdd(state);
