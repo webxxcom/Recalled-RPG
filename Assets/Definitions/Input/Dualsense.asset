@@ -1,0 +1,40 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31ccf9ec5f5914d4f9af24d2077707dc, type: 3}
+  m_Name: Dualsense
+  m_EditorClassIdentifier: Assembly-CSharp::InputDeviceSO
+  _schemeName: DualSense
+  _pairs:
+  - _path: leftShoulder
+    _frames:
+      Pressed: {fileID: 906810817016980456, guid: 7bc84bcbf4e2e6d428ad5f230524e072, type: 3}
+      Released: {fileID: -7734426524509958602, guid: 7bc84bcbf4e2e6d428ad5f230524e072, type: 3}
+  - _path: rightShoulder
+    _frames:
+      Pressed: {fileID: 5917708854176736804, guid: 7bc84bcbf4e2e6d428ad5f230524e072, type: 3}
+      Released: {fileID: 1803908694912622976, guid: 7bc84bcbf4e2e6d428ad5f230524e072, type: 3}
+  - _path: buttonSouth
+    _frames:
+      Pressed: {fileID: -8263004545807738486, guid: 7bc84bcbf4e2e6d428ad5f230524e072, type: 3}
+      Released: {fileID: -865134689270857091, guid: 7bc84bcbf4e2e6d428ad5f230524e072, type: 3}
+  - _path: buttonWest
+    _frames:
+      Pressed: {fileID: 5115316859978443003, guid: 7bc84bcbf4e2e6d428ad5f230524e072, type: 3}
+      Released: {fileID: 4188269376781999986, guid: 7bc84bcbf4e2e6d428ad5f230524e072, type: 3}
+  - _path: buttonNorth
+    _frames:
+      Pressed: {fileID: -8957810126692695313, guid: 7bc84bcbf4e2e6d428ad5f230524e072, type: 3}
+      Released: {fileID: 122692995608253385, guid: 7bc84bcbf4e2e6d428ad5f230524e072, type: 3}
+  - _path: buttonEast
+    _frames:
+      Pressed: {fileID: -5261879909288418216, guid: 7bc84bcbf4e2e6d428ad5f230524e072, type: 3}
+      Released: {fileID: -1053650907505013972, guid: 7bc84bcbf4e2e6d428ad5f230524e072, type: 3}

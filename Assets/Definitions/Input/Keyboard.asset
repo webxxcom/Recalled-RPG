@@ -12,13 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31ccf9ec5f5914d4f9af24d2077707dc, type: 3}
   m_Name: Keyboard
   m_EditorClassIdentifier: Assembly-CSharp::InputDeviceSO
-  _deviceName: Keyboard
-  _binds:
-  - _path: F1
+  _schemeName: Keyboard&Mouse
+  _pairs:
+  - _path: f1
     _frames:
       Pressed: {fileID: 4238370271312669069, guid: 8ec24e7ae85c4dc4881f9e2cf7db9fba, type: 3}
       Released: {fileID: 2380680262592371056, guid: 8ec24e7ae85c4dc4881f9e2cf7db9fba, type: 3}
-  - _path: F2
+  - _path: f2
     _frames:
       Pressed: {fileID: -7356569441769284874, guid: 8ec24e7ae85c4dc4881f9e2cf7db9fba, type: 3}
       Released: {fileID: -4092373821739516249, guid: 8ec24e7ae85c4dc4881f9e2cf7db9fba, type: 3}

@@ -1,4 +1,4 @@
-using Unity.VisualScripting;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
@@ -9,70 +9,71 @@ using static InputDeviceSO.ActionImagePair;
 public class HintInputButton : MonoBehaviour
 {
     [SerializeField] InputActionReference _inputAction;
-    [SerializeField] InputDeviceSO _inputDevice;
+    [SerializeField] AvailableInputDevicesSO _inputDevices;
+
+    [Header("Listens to")]
+    [SerializeField] StringGameEvent _controlsChanged;
 
     Image _graphic;
-    PlayerInput _playerInput;
     StateFrames _frames;
-
-    InputDeviceSO GetCurrentDeviceMap()
-    {
-        foreach (var device in _playerInput.devices)
-            if (device.displayName.Equals(_inputDevice.name))
-                return _inputDevice;
-        return null;
-    }
-
-    void FindBindingFrames()
-    {
-        foreach (var bind in _inputDevice.Binds)
-        {
-            if (_inputDevice.HaveSamePath(bind, _inputAction.action.bindings[0]))
-            {
-                _frames = bind.Frames;
-                break;
-            }
-        }
-    }
 
     private void Awake()
     {
-        _playerInput = FindAnyObjectByType<PlayerInput>();
+        _graphic = GetComponent<Image>();
     }
 
-    void OnPress(InputAction.CallbackContext _) { _graphic.sprite = _frames.Pressed; }
-    void OnRelease(InputAction.CallbackContext _) { _graphic.sprite = _frames.Released; }
+    void OnPress(InputAction.CallbackContext _) { _graphic.sprite = _frames?.Pressed; }
+    void OnRelease(InputAction.CallbackContext _) { _graphic.sprite = _frames?.Released; }
 
     private void OnEnable()
     {
         _inputAction.action.started += OnPress;
         _inputAction.action.canceled += OnRelease;
+        _controlsChanged.AddListener(SetHintSprite);
     }
 
     private void OnDisable()
     {
         _inputAction.action.started -= OnPress;
         _inputAction.action.canceled -= OnRelease;
+        _controlsChanged.RemoveListener(SetHintSprite);
     }
 
-#if UNITY_EDITOR
-
-    InputActionReference _prevAction;
-    private void OnValidate()
+    InputBinding GetBinding(InputAction inputAction, string scheme)
     {
-        if (_graphic == null) _graphic = GetComponent<Image>();
-        if (_inputDevice == null)
+        return scheme switch
+        {
+            "Keyboard&Mouse" => inputAction.bindings[0],
+            "DualSense" => inputAction.bindings[1],
+            _ => throw new MissingReferenceException($"Can't find a controlPath for {scheme}"),
+        };
+    }
+
+    string GetControlPath(string path)
+    {
+        InputControlPath.ToHumanReadableString(
+            path,
+            out var _,
+            out var controlPath,
+            InputControlPath.HumanReadableStringOptions.OmitDevice);
+
+        return controlPath;
+    }
+
+    void SetHintSprite(string scheme)
+    {
+        string controlPath = GetControlPath(GetBinding(_inputAction.action, scheme).path);
+
+        _frames = _inputDevices.CurrentDevice.Pairs
+            .FirstOrDefault(p => p.Path.Equals(controlPath))?.Frames;
+        if (_frames != null)
+        {
+            _graphic.sprite = _frames.Released;
+        }
+        else
         {
             _graphic.sprite = null;
-            _frames = null;
-        }
-
-        if (_inputDevice != null && _prevAction != _inputAction)
-        {
-            FindBindingFrames();
-            _graphic.sprite = _frames.Released;
-            _prevAction = _inputAction;
+            Debug.Log($"Couldnt find an input image for {scheme} for {_inputAction.name}.{controlPath}");
         }
     }
-#endif
 }

@@ -1,13 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using TMPro.EditorUtilities;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.UIElements;
 
-[CreateAssetMenu(menuName = "UI/Input Device")]
+[CreateAssetMenu(menuName = "UI/Input Device Mapping")]
 public class InputDeviceSO : ScriptableObject
 {
     [System.Serializable]
@@ -26,26 +23,28 @@ public class InputDeviceSO : ScriptableObject
         public string Path => _path;
         public StateFrames Frames => _frames;
     }
-    [SerializeField] string _deviceName;
-    [SerializeField] List<ActionImagePair> _binds;
-    public List<ActionImagePair> Binds => _binds;
+    [SerializeField, Dropdown(nameof(AvailableDevices))] string _schemeName;
+    [SerializeField] List<ActionImagePair> _pairs;
+    public string Name => _schemeName;
+    public List<ActionImagePair> Pairs => _pairs;
 
-    public bool HaveSamePath(ActionImagePair aip, InputBinding binding)
-        => $"<{_deviceName}>/{aip.Path.ToLower()}".Equals(binding.path);
+    string[] AvailableDevices()
+        => InputSystem.actions.controlSchemes.Select(cs => cs.name).ToArray();
 
     string[] ShowBindingPaths()
     {
-        if (_deviceName == null)
+        if (_schemeName == null)
             return Array.Empty<string>();
 
-        var a = InputSystem.devices.First(d => d.displayName.Equals(_deviceName));
-        if (a == null)
+        string[] schemes = _schemeName.Split("&");
+
+        var inputDevices = InputSystem.devices.Where(d => schemes.Any(s => d.name.Contains(s)));
+        if (inputDevices.Count() == 0)
         {
-            Debug.Log($"Incorrect Input device name for {nameof(InputDeviceSO)}");
+            Debug.Log($"Incorrect Input device name for {nameof(InputDeviceSO)}.{name}");
             return Array.Empty<string>();
         }
-
-        return a.allControls.Select(c => c.displayName).ToArray();
+        return inputDevices.SelectMany(d => d.allControls.Select(d => d.name)).ToArray();
     }
 
 }
