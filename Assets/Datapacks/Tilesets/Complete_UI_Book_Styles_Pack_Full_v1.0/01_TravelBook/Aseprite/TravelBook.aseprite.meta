@@ -489,7 +489,7 @@ ScriptedImporter:
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
-    border: {x: 0, y: 0, z: 0, w: 0}
+    border: {x: 4, y: 5, z: 4, w: 4}
     customData: 
     rect:
       serializedVersion: 2
@@ -573,7 +573,7 @@ ScriptedImporter:
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
-    border: {x: 0, y: 0, z: 0, w: 0}
+    border: {x: 4, y: 4, z: 4, w: 2}
     customData: 
     rect:
       serializedVersion: 2
@@ -594,7 +594,7 @@ ScriptedImporter:
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
-    border: {x: 0, y: 0, z: 0, w: 0}
+    border: {x: 4, y: 4, z: 3, w: 3}
     customData: 
     rect:
       serializedVersion: 2
@@ -636,7 +636,7 @@ ScriptedImporter:
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
-    border: {x: 5, y: 4, z: 6, w: 4}
+    border: {x: 4, y: 4, z: 3, w: 3}
     customData: 
     rect:
       serializedVersion: 2
@@ -741,7 +741,7 @@ ScriptedImporter:
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
-    border: {x: 0, y: 0, z: 0, w: 0}
+    border: {x: 6, y: 5, z: 5, w: 5}
     customData: 
     rect:
       serializedVersion: 2
@@ -888,7 +888,7 @@ ScriptedImporter:
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
-    border: {x: 0, y: 0, z: 0, w: 0}
+    border: {x: 4, y: 1, z: 4, w: 1}
     customData: 
     rect:
       serializedVersion: 2
@@ -1245,7 +1245,7 @@ ScriptedImporter:
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
-    border: {x: 0, y: 0, z: 0, w: 0}
+    border: {x: 2, y: 2, z: 2, w: 2}
     customData: 
     rect:
       serializedVersion: 2
@@ -1503,7 +1503,7 @@ ScriptedImporter:
       serializedVersion: 2
       x: 132
       y: 634
-      width: 32
+      width: 16
       height: 6
     spriteID: a0020e0b39f4eb14fa342f75d9a3395a
     spriteBone: []
@@ -3963,6 +3963,27 @@ ScriptedImporter:
       width: 4
       height: 6
     spriteID: 105815b4dcffd744fb44b8dccc66a90d
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 0, y: 0}
+  - name: TravelBook_17
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 148
+      y: 634
+      width: 16
+      height: 6
+    spriteID: ce57c8efdb0d57741b52af8547f76327
     spriteBone: []
     spriteOutline: []
     vertices: []
