@@ -41,4 +41,6 @@ public class AvailableInputDevicesSO : ScriptableObject
         else
             Debug.Log($"Scheme {scheme} was not found");
     }
+
+    
 }

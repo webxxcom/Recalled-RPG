@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.Layouts;
 
 [CreateAssetMenu(menuName = "UI/Input Device Mapping")]
 public class InputDeviceSO : ScriptableObject
@@ -17,34 +18,20 @@ public class InputDeviceSO : ScriptableObject
             [SerializeField] public Sprite Released;
         }
 
-        [SerializeField, Dropdown(nameof(ShowBindingPaths))] string _path;
+        [SerializeField, Dropdown(nameof(ListBindingPaths))] string _path;
         [SerializeField] StateFrames _frames;
 
         public string Path => _path;
         public StateFrames Frames => _frames;
     }
-    [SerializeField, Dropdown(nameof(AvailableDevices))] string _schemeName;
+    [SerializeField, Dropdown(nameof(ListInputSchemes))] string _schemeName;
     [SerializeField] List<ActionImagePair> _pairs;
+
     public string Name => _schemeName;
     public List<ActionImagePair> Pairs => _pairs;
 
-    string[] AvailableDevices()
-        => InputSystem.actions.controlSchemes.Select(cs => cs.name).ToArray();
-
-    string[] ShowBindingPaths()
-    {
-        if (_schemeName == null)
-            return Array.Empty<string>();
-
-        string[] schemes = _schemeName.Split("&");
-
-        var inputDevices = InputSystem.devices.Where(d => schemes.Any(s => d.name.Contains(s)));
-        if (inputDevices.Count() == 0)
-        {
-            Debug.Log($"Incorrect Input device name for {nameof(InputDeviceSO)}.{name}");
-            return Array.Empty<string>();
-        }
-        return inputDevices.SelectMany(d => d.allControls.Select(d => d.name)).ToArray();
-    }
-
+    string[] ListInputSchemes()
+        => ControlSchemeBindings.ListInputSchemes();
+    string[] ListBindingPaths()
+        => ControlSchemeBindings.ListAllPathsForScheme(_schemeName);
 }

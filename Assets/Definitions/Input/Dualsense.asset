@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31ccf9ec5f5914d4f9af24d2077707dc, type: 3}
   m_Name: Dualsense
   m_EditorClassIdentifier: Assembly-CSharp::InputDeviceSO
-  _schemeName: DualSense
+  _schemeName: Gamepad
   _pairs:
   - _path: leftShoulder
     _frames:
@@ -38,3 +38,23 @@ MonoBehaviour:
     _frames:
       Pressed: {fileID: -5261879909288418216, guid: 7bc84bcbf4e2e6d428ad5f230524e072, type: 3}
       Released: {fileID: -1053650907505013972, guid: 7bc84bcbf4e2e6d428ad5f230524e072, type: 3}
+  - _path: rightStick/up
+    _frames:
+      Pressed: {fileID: -2838395359410401164, guid: b240b7f8ab30c4040b2453212eb7ee38, type: 3}
+      Released: {fileID: 2693708649983283906, guid: b240b7f8ab30c4040b2453212eb7ee38, type: 3}
+  - _path: dpad/up
+    _frames:
+      Pressed: {fileID: -8410299208668734097, guid: 7bc84bcbf4e2e6d428ad5f230524e072, type: 3}
+      Released: {fileID: -5619119907902605489, guid: 7bc84bcbf4e2e6d428ad5f230524e072, type: 3}
+  - _path: dpad/down
+    _frames:
+      Pressed: {fileID: -994391196253222399, guid: 7bc84bcbf4e2e6d428ad5f230524e072, type: 3}
+      Released: {fileID: 859647077928970139, guid: 7bc84bcbf4e2e6d428ad5f230524e072, type: 3}
+  - _path: dpad/left
+    _frames:
+      Pressed: {fileID: -756791948948891235, guid: 7bc84bcbf4e2e6d428ad5f230524e072, type: 3}
+      Released: {fileID: -4904327974445110918, guid: 7bc84bcbf4e2e6d428ad5f230524e072, type: 3}
+  - _path: dpad/right
+    _frames:
+      Pressed: {fileID: -6813834263637813421, guid: 7bc84bcbf4e2e6d428ad5f230524e072, type: 3}
+      Released: {fileID: 6592654583719695969, guid: 7bc84bcbf4e2e6d428ad5f230524e072, type: 3}

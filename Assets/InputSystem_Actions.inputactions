@@ -163,7 +163,7 @@
                     "path": "<Gamepad>/leftStick",
                     "interactions": "",
                     "processors": "",
-                    "groups": "DualSense",
+                    "groups": "Gamepad",
                     "action": "Move",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -196,7 +196,7 @@
                     "path": "<Gamepad>/buttonWest",
                     "interactions": "",
                     "processors": "",
-                    "groups": "DualSense",
+                    "groups": "Gamepad",
                     "action": "Attack",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -218,7 +218,7 @@
                     "path": "<Gamepad>/leftStickPress",
                     "interactions": "",
                     "processors": "",
-                    "groups": "DualSense",
+                    "groups": "Gamepad",
                     "action": "Sprint",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -240,7 +240,7 @@
                     "path": "<Gamepad>/buttonNorth",
                     "interactions": "",
                     "processors": "",
-                    "groups": "DualSense",
+                    "groups": "Gamepad",
                     "action": "Interact",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -262,7 +262,7 @@
                     "path": "<DualShockGamepad>/buttonSouth",
                     "interactions": "",
                     "processors": "",
-                    "groups": "DualSense",
+                    "groups": "Gamepad",
                     "action": "Dash",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -279,7 +279,7 @@
                     "id": "c95b2375-e6d9-4b88-9c4c-c5e76515df4b",
                     "expectedControlType": "Vector2",
                     "processors": "",
-                    "interactions": "",
+                    "interactions": "Press(behavior=2)",
                     "initialStateCheck": false,
                     "priority": 0
                 },
@@ -370,6 +370,26 @@
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "Hold",
+                    "initialStateCheck": false,
+                    "priority": 0
+                },
+                {
+                    "name": "Prev Tab",
+                    "type": "Button",
+                    "id": "67c5ce53-a9db-42b2-86cc-094ed9409602",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false,
+                    "priority": 0
+                },
+                {
+                    "name": "Next Tab",
+                    "type": "Button",
+                    "id": "cc01558f-ca59-4d8f-bee8-7c35950439ea",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
                     "initialStateCheck": false,
                     "priority": 0
                 }
@@ -491,7 +511,7 @@
                     "path": "<Gamepad>/leftStick/up",
                     "interactions": "",
                     "processors": "",
-                    "groups": "DualSense",
+                    "groups": "Gamepad",
                     "action": "Navigate",
                     "isComposite": false,
                     "isPartOfComposite": true
@@ -502,7 +522,7 @@
                     "path": "<Gamepad>/rightStick/up",
                     "interactions": "",
                     "processors": "",
-                    "groups": "DualSense",
+                    "groups": "Gamepad",
                     "action": "Navigate",
                     "isComposite": false,
                     "isPartOfComposite": true
@@ -513,7 +533,7 @@
                     "path": "<Gamepad>/leftStick/down",
                     "interactions": "",
                     "processors": "",
-                    "groups": "DualSense",
+                    "groups": "Gamepad",
                     "action": "Navigate",
                     "isComposite": false,
                     "isPartOfComposite": true
@@ -524,7 +544,7 @@
                     "path": "<Gamepad>/rightStick/down",
                     "interactions": "",
                     "processors": "",
-                    "groups": "DualSense",
+                    "groups": "Gamepad",
                     "action": "Navigate",
                     "isComposite": false,
                     "isPartOfComposite": true
@@ -535,7 +555,7 @@
                     "path": "<Gamepad>/leftStick/left",
                     "interactions": "",
                     "processors": "",
-                    "groups": "DualSense",
+                    "groups": "Gamepad",
                     "action": "Navigate",
                     "isComposite": false,
                     "isPartOfComposite": true
@@ -546,7 +566,7 @@
                     "path": "<Gamepad>/rightStick/left",
                     "interactions": "",
                     "processors": "",
-                    "groups": "DualSense",
+                    "groups": "Gamepad",
                     "action": "Navigate",
                     "isComposite": false,
                     "isPartOfComposite": true
@@ -557,7 +577,7 @@
                     "path": "<Gamepad>/leftStick/right",
                     "interactions": "",
                     "processors": "",
-                    "groups": "DualSense",
+                    "groups": "Gamepad",
                     "action": "Navigate",
                     "isComposite": false,
                     "isPartOfComposite": true
@@ -568,21 +588,10 @@
                     "path": "<Gamepad>/rightStick/right",
                     "interactions": "",
                     "processors": "",
-                    "groups": "DualSense",
+                    "groups": "Gamepad",
                     "action": "Navigate",
                     "isComposite": false,
                     "isPartOfComposite": true
-                },
-                {
-                    "name": "",
-                    "id": "fb8277d4-c5cd-4663-9dc7-ee3f0b506d90",
-                    "path": "<Gamepad>/dpad",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "DualSense",
-                    "action": "Navigate",
-                    "isComposite": false,
-                    "isPartOfComposite": false
                 },
                 {
                     "name": "",
@@ -590,7 +599,7 @@
                     "path": "*/{Submit}",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Keyboard&Mouse;Touch;Joystick;DualSense",
+                    "groups": "Keyboard&Mouse;Touch;Joystick;Gamepad",
                     "action": "Submit",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -601,7 +610,7 @@
                     "path": "*/{Cancel}",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Keyboard&Mouse;Touch;Joystick;DualSense",
+                    "groups": "Keyboard&Mouse;Touch;Joystick;Gamepad",
                     "action": "Cancel",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -678,7 +687,7 @@
                     "path": "<Gamepad>/rightShoulder",
                     "interactions": "",
                     "processors": "",
-                    "groups": "DualSense",
+                    "groups": "Gamepad",
                     "action": "Next Page",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -700,8 +709,30 @@
                     "path": "<Gamepad>/leftShoulder",
                     "interactions": "",
                     "processors": "",
-                    "groups": "DualSense",
+                    "groups": "Gamepad",
                     "action": "Prev Page",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "c3e8aead-8e7c-400b-8e7a-a579e6a66e21",
+                    "path": "<Gamepad>/dpad/left",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Gamepad",
+                    "action": "Prev Tab",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "c3f5ad77-b641-4f6a-b175-79c8f441146c",
+                    "path": "<Gamepad>/dpad/right",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Gamepad",
+                    "action": "Next Tab",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
@@ -750,7 +781,7 @@
                     "path": "<DualShockGamepad>/touchpadButton",
                     "interactions": "",
                     "processors": "",
-                    "groups": "DualSense",
+                    "groups": "Gamepad",
                     "action": "Toggle Inventory",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -772,7 +803,7 @@
                     "path": "<DualShockGamepad>/start",
                     "interactions": "",
                     "processors": "",
-                    "groups": "DualSense",
+                    "groups": "Gamepad",
                     "action": "Pause",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -798,11 +829,11 @@
             ]
         },
         {
-            "name": "DualSense",
-            "bindingGroup": "DualSense",
+            "name": "Gamepad",
+            "bindingGroup": "Gamepad",
             "devices": [
                 {
-                    "devicePath": "<DualShockGamepad>",
+                    "devicePath": "<Gamepad>",
                     "isOptional": false,
                     "isOR": false
                 }
