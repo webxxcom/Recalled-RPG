@@ -52,8 +52,6 @@ public class ControlsSettingsMenu : ToggleableObject
 
     InputActionRebindingExtensions.RebindingOperation _currentRebinding;
 
-    public override event Action<ToggleableObject> Toggled;
-
     public void NotifyRebinding(InputActionRebindingExtensions.RebindingOperation oper)
         => _currentRebinding = oper;
 

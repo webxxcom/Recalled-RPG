@@ -13,8 +13,6 @@ public sealed class DisplaySettingsSection : ToggleableObject
 
     List<Resolution> _resolutions;
 
-    public override event Action<ToggleableObject> Toggled;
-
     protected override void Start()
     {
         base.Start();

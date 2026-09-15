@@ -11,8 +11,6 @@ public class BossHpUiManager : UiView
     [SerializeField] BossStartDataGameEvent OnBossStarted;
     [SerializeField] BossStartDataGameEvent OnBossDefeat;
 
-    public override event Action<ToggleableObject> Toggled;
-
     private void OnEnable()
     {
         OnBossStarted.OnEventRaised += StartBoss;
@@ -26,7 +24,8 @@ public class BossHpUiManager : UiView
 
     void StartBoss(BossData bossStartData)
     {
-        IsActive = true;
+        // TODO resolve this boss appear
+        //IsActive = true;
 
         _fillHpBar.Init(bossStartData.Health, bossStartData.Health.Value);
         _bossText.text = bossStartData.Name;
@@ -34,6 +33,6 @@ public class BossHpUiManager : UiView
 
     void EndBoss(BossData bossStartData)
     {
-        IsActive = false;
+        //IsActive = false;
     }
 }

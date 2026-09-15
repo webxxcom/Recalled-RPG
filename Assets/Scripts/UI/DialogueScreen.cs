@@ -66,7 +66,7 @@ public class DialogueManager : ScreenViewUi
     public void BeginDialogue(DialogueSource dialogueData)
     {
         _dialogueData = JsonUtility.FromJson<DialogueData>(dialogueData.TextFile.text);
-        IsActive = true;
+        //IsActive = true;
         //TODO not finished
         _enterPressed.Value = false;
         _buttonPressedData.Value = null;
@@ -175,7 +175,7 @@ public class DialogueManager : ScreenViewUi
 
     void EndTalking()
     {
-        IsActive = false;
+        //IsActive = false;
         _playerInput.SwitchCurrentActionMap("Player");
         ResetFields();
     }

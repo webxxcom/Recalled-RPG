@@ -9,13 +9,10 @@ public class ScreenViewUi : UiView
     [Tooltip("Game Event which toggles(!) the UI screen")]
     [SerializeField] VoidGameEvent OnGameEventRaised;
 
-    public override event Action<ToggleableObject> Toggled;
-
-    void Raise() => Toggled?.Invoke(this);
     void OnEnable()
-        => OnGameEventRaised.OnEventRaised += Raise;
+        => OnGameEventRaised.OnEventRaised += RequestToggle;
     void OnDisable()
-        => OnGameEventRaised.OnEventRaised -= Raise;
+        => OnGameEventRaised.OnEventRaised -= RequestToggle;
 
     protected override void Activate()
     {

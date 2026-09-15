@@ -10,11 +10,8 @@ public class BookUITab : ToggleableObject, IPointerEnterHandler, IPointerExitHan
     UISpriteAnimator _animator;
     Button _button;
 
-    public override event Action<ToggleableObject> Toggled;
-
-    void Raise() => Toggled?.Invoke(this);
-    private void OnEnable() => _button.onClick.AddListener(Raise);
-    private void OnDisable() => _button.onClick.RemoveListener(Raise);
+    private void OnEnable() => _button.onClick.AddListener(RequestToggle);
+    private void OnDisable() => _button.onClick.RemoveListener(RequestToggle);
 
     private void Awake()
     {

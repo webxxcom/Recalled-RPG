@@ -42,13 +42,13 @@ public class ScreenGroup : MonoBehaviour
     private void OnEnable()
     {
         foreach (var screen in _screens)
-            screen.Toggled += ToggleSreen;
+            screen.ToggleRequested += ToggleSreen;
     }
 
     private void OnDisable()
     {
         foreach (var screen in _screens)
-            screen.Toggled -= ToggleSreen;
+            screen.ToggleRequested -= ToggleSreen;
     }
 
     private void Start()
@@ -73,7 +73,7 @@ public class ScreenGroup : MonoBehaviour
             UncheckedRemoveActiveScreen(_activeScreens[0]);
 
         _activeScreens.Add(screen);
-        screen.IsActive = true;
+        ((IToggleable)screen).SetActive(true);
         ScreenChanged?.Invoke(screen);
         return true;
     }
@@ -91,7 +91,7 @@ public class ScreenGroup : MonoBehaviour
         if (!_activeScreens.Remove(screen))
             return false;
 
-        screen.IsActive = false;
+        ((IToggleable)screen).SetActive(false);
         return true;
     }
 
