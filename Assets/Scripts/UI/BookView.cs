@@ -2,5 +2,5 @@ using System;
 
 public class BookView : UIScreen
 {
-    public override event Action<ToggleableScreen> Toggled;
+    public override event Action<ToggleableState> Toggled;
 }

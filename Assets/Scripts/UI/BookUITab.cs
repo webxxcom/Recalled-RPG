@@ -5,12 +5,12 @@ using UnityEngine.UI;
 
 [RequireComponent(typeof(Button))]
 [RequireComponent(typeof(UISpriteAnimator))]
-public class BookUITab : ToggleableScreen, IPointerEnterHandler, IPointerExitHandler
+public class BookUITab : ToggleableState, IPointerEnterHandler, IPointerExitHandler
 { 
     UISpriteAnimator _animator;
     Button _button;
 
-    public override event Action<ToggleableScreen> Toggled;
+    public override event Action<ToggleableState> Toggled;
 
     void Raise() => Toggled?.Invoke(this);
     private void OnEnable() => _button.onClick.AddListener(Raise);
@@ -22,24 +22,24 @@ public class BookUITab : ToggleableScreen, IPointerEnterHandler, IPointerExitHan
         _button = GetComponent<Button>();
     }
 
-    protected override void Show()
+    protected override void Activate()
     {
         _animator.Play("Press");
     }
 
-    protected override void Hide()
+    protected override void Deactivate()
     {
-        _animator.Play("Hide");
+        _animator.Play("Deactivate");
     }
 
     void OnEnter()
     {
-        if (!IsOpen) _animator.Play("Enter");
+        if (!IsActive) _animator.Play("Enter");
     }
 
     void OnExit()
     {
-        if (!IsOpen) _animator.Play("Exit");
+        if (!IsActive) _animator.Play("Exit");
     }
 
     public void OnPointerEnter(PointerEventData eventData) => OnEnter();

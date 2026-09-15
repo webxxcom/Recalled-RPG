@@ -11,7 +11,7 @@ public class BossHpUiManager : UIScreen
     [SerializeField] BossStartDataGameEvent OnBossStarted;
     [SerializeField] BossStartDataGameEvent OnBossDefeat;
 
-    public override event Action<ToggleableScreen> Toggled;
+    public override event Action<ToggleableState> Toggled;
 
     private void OnEnable()
     {
@@ -26,7 +26,7 @@ public class BossHpUiManager : UIScreen
 
     void StartBoss(BossData bossStartData)
     {
-        IsOpen = true;
+        IsActive = true;
 
         _fillHpBar.Init(bossStartData.Health, bossStartData.Health.Value);
         _bossText.text = bossStartData.Name;
@@ -34,6 +34,6 @@ public class BossHpUiManager : UIScreen
 
     void EndBoss(BossData bossStartData)
     {
-        IsOpen = false;
+        IsActive = false;
     }
 }

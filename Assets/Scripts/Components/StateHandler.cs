@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-public class StateHandler : ToggleableScreen
+public class StateHandler : ToggleableState
 {
     [SerializeField] GameState _definition;
     [SerializeField] VoidGameEvent OnGameEventRaised;
@@ -9,7 +9,7 @@ public class StateHandler : ToggleableScreen
 
     public GameState Definition => _definition;
 
-    public override event Action<ToggleableScreen> Toggled;
+    public override event Action<ToggleableState> Toggled;
 
     void Raise() => Toggled?.Invoke(this);
     void OnEnable()
@@ -17,12 +17,12 @@ public class StateHandler : ToggleableScreen
     void OnDisable()
         => OnGameEventRaised.OnEventRaised -= Raise;
 
-    protected override void Show()
+    protected override void Activate()
     {
-        _uiScreen.IsOpen = true;
+        _uiScreen.IsActive = true;
     }
-    protected override void Hide()
+    protected override void Deactivate()
     {
-        _uiScreen.IsOpen = false;
+        _uiScreen.IsActive = false;
     }
 }

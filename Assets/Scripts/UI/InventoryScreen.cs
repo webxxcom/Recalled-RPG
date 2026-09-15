@@ -24,7 +24,7 @@ public sealed class InventoryManager : UIScreen
     readonly List<InventorySlot> _createdInventorySlots = new();
 
     public event Action OnEquippedItems;
-    public override event Action<ToggleableScreen> Toggled;
+    public override event Action<ToggleableState> Toggled;
 
     protected override void Awake()
     {
@@ -37,14 +37,14 @@ public sealed class InventoryManager : UIScreen
     {
         OnUIElementSelected.OnEventRaised += ItemSelected;
         OnUIElementDeselected.OnEventRaised += ItemDeselected;
-        _inventory.OnItemsChanged += Show;
+        _inventory.OnItemsChanged += Activate;
     }
 
     void OnDisable()
     {
         OnUIElementSelected.OnEventRaised -= ItemSelected;
         OnUIElementDeselected.OnEventRaised -= ItemDeselected;
-        _inventory.OnItemsChanged -= Show;
+        _inventory.OnItemsChanged -= Activate;
     }
 
     void CreateGeneralItemSlot(ItemInstance itemInstance)
@@ -79,14 +79,14 @@ public sealed class InventoryManager : UIScreen
         else _bootsInventoryItem.Absent();
     }
 
-    protected override void Show()
+    protected override void Activate()
     {
         RefreshGeneralSlots();
         RefreshEquipSlots();
         ItemDeselected();
     }
 
-    protected override void Hide()
+    protected override void Deactivate()
     {
         DeleteGeneralSlots();
         ItemDeselected();

@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 [RequireComponent(typeof(Canvas))]
-public abstract class UIScreen : ToggleableScreen
+public abstract class UIScreen : ToggleableState
 {
     Selectable[] _selectables;
     Canvas _canvas;
@@ -38,12 +38,12 @@ public abstract class UIScreen : ToggleableScreen
         ToggleNavigation(val);
     }
 
-    protected override void Show()
+    protected override void Activate()
     {
         ToggleElements(true);
     }
 
-    protected override void Hide()
+    protected override void Deactivate()
     {
         ToggleElements(false);
     }

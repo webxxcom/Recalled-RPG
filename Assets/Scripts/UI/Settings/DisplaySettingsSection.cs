@@ -13,7 +13,7 @@ public sealed class DisplaySettingsSection : UIScreen
 
     List<Resolution> _resolutions;
 
-    public override event Action<ToggleableScreen> Toggled;
+    public override event Action<ToggleableState> Toggled;
 
     protected override void Start()
     {

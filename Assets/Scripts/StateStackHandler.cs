@@ -39,11 +39,11 @@ public class StateStackHandler : MonoBehaviour
             state.Toggled -= OnToggle;
     }
 
-    void OnToggle(ToggleableScreen screen)
+    void OnToggle(ToggleableState screen)
     {
         if (screen is StateHandler stateHandler)
         {
-            if (screen.IsOpen)
+            if (screen.IsActive)
                 TryRemove(stateHandler);
             else TryAdd(stateHandler);
         }
@@ -66,7 +66,7 @@ public class StateStackHandler : MonoBehaviour
             return false;
 
         _states.Push(state.Definition);
-        state.IsOpen = true;
+        state.IsActive = true;
 
         ApplyCurrentState();
         return true;
@@ -83,7 +83,7 @@ public class StateStackHandler : MonoBehaviour
             return false;
 
         _states.Pop();
-        state.IsOpen = false;
+        state.IsActive = false;
 
         ApplyCurrentState();
         return true;

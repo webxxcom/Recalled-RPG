@@ -54,12 +54,12 @@ public class ControlsSettingsMenu : UIScreen
 
     InputActionRebindingExtensions.RebindingOperation _currentRebinding;
 
-    public override event Action<ToggleableScreen> Toggled;
+    public override event Action<ToggleableState> Toggled;
 
     public void NotifyRebinding(InputActionRebindingExtensions.RebindingOperation oper)
         => _currentRebinding = oper;
 
-    protected override void Hide()
+    protected override void Deactivate()
     {
         if (_currentRebinding != null && _currentRebinding.started)
             _currentRebinding.Cancel();
