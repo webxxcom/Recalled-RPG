@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Canvas))]
-public sealed class InventoryManager : UIScreen
+public sealed class InventoryManager : ScreenViewUi
 {
     [SerializeField] InventorySO _inventory;
 

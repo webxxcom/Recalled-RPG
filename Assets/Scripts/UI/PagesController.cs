@@ -4,7 +4,27 @@ using UnityEngine;
 
 public class PagesController : MonoBehaviour
 {
-    [SerializeField] Dictionary<BookUITab, ToggleableObject> _tabToScreenDictionary;
+    [SerializeField] ScreenGroup _tabs;
+    [SerializeField] ScreenGroup _pages;
+    [SerializeField] Dictionary<BookUITab, BookView> _tabToScreenDictionary = new();
+
+    private void OnEnable()
+    {
+        _tabs.ScreenChanged += OnTabChange;
+    }
+    private void OnDisable()
+    {
+        _tabs.ScreenChanged -= OnTabChange;
+    }
+
+    void OnTabChange(ToggleableObject tab)
+    {
+        if (_tabToScreenDictionary.TryGetValue((BookUITab)tab, out var bookView))
+        {
+            if (!_pages.RequestScreen(bookView))
+                throw new System.Exception($"Invalid operation of toggling a {nameof(BookView)} on {nameof(PagesController)}");
+        }
+    }
 
 #if UNITY_EDITOR
     private void OnValidate()

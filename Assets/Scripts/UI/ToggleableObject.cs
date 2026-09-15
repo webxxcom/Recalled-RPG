@@ -22,7 +22,10 @@ public abstract class ToggleableObject : MonoBehaviour
         }
     }
 
-    ///<summary>Event describing the desire to be toggled not an actual toggling</summary>
+    ///<summary>
+    ///Event describing the desire to be toggled not an actual toggling.
+    ///The manager then allows or disallows the call
+    ///</summary>
     public abstract event Action<ToggleableObject> Toggled;
 
     protected virtual void Start()

@@ -2,7 +2,7 @@ using System;
 using TMPro;
 using UnityEngine;
 
-public class BossHpUiManager : UIScreen
+public class BossHpUiManager : UiView
 {
     [SerializeField] TextMeshProUGUI _bossText;
     [SerializeField] BarScriptUI _fillHpBar;

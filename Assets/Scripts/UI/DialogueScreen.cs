@@ -8,7 +8,7 @@ using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 [RequireComponent(typeof(AudioSource))]
-public class DialogueManager : UIScreen
+public class DialogueManager : ScreenViewUi
 {
     [SerializeField] Object _playerDialogueButtonPrefab;
     [SerializeField] GameObject _buttonGrid;

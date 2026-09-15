@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -21,6 +22,8 @@ public class ScreenGroup : MonoBehaviour
 
     List<ToggleableObject> _screens;
     [SerializeField] protected List<ToggleableObject> _activeScreens = new();
+
+    public event Action<ToggleableObject> ScreenChanged;
 
     private void Awake()
     {
@@ -71,6 +74,7 @@ public class ScreenGroup : MonoBehaviour
 
         _activeScreens.Add(screen);
         screen.IsActive = true;
+        ScreenChanged?.Invoke(screen);
         return true;
     }
 
@@ -101,5 +105,14 @@ public class ScreenGroup : MonoBehaviour
 
         var nextTab = _screens[(_screens.IndexOf(_activeScreens[0]) + offset) % _screens.Count];
         AddActiveScreen(nextTab);
+    }
+
+    public bool RequestScreen(ToggleableObject toggleable)
+    {
+        if (toggleable == null || !_screens.Contains(toggleable))
+            return false;
+
+        AddActiveScreen(toggleable);
+        return true;
     }
 }

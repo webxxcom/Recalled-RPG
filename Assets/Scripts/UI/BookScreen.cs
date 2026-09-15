@@ -1,5 +1,5 @@
 using System;
 
-public class BookScreen : UIScreen
+public class BookScreen : ScreenViewUi
 {
 }
