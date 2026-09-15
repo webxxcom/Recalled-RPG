@@ -7,11 +7,11 @@ public class ScreenGroupInputActionBinder : MonoBehaviour
     [SerializeField] InputActionReference _prevPageAction;
     [SerializeField] InputActionReference _nextPageAction;
 
-    ScreenGroup _tabGroup;
+    ScreenGroup _screenGroup;
 
     private void Awake()
     {
-        _tabGroup = GetComponent<ScreenGroup>();
+        _screenGroup = GetComponent<ScreenGroup>();
     }
 
     private void OnEnable()
@@ -26,6 +26,6 @@ public class ScreenGroupInputActionBinder : MonoBehaviour
         _prevPageAction.action.started -= PrevPage;
     }
 
-    void NextPage(InputAction.CallbackContext _) => _tabGroup.ShiftActiveScreen(1);
-    void PrevPage(InputAction.CallbackContext _) => _tabGroup.ShiftActiveScreen(-1);
+    void NextPage(InputAction.CallbackContext _) => _screenGroup.ShiftActiveScreen(1);
+    void PrevPage(InputAction.CallbackContext _) => _screenGroup.ShiftActiveScreen(-1);
 }

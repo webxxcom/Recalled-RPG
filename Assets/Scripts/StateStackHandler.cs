@@ -43,10 +43,9 @@ public class StateStackHandler : MonoBehaviour
     {
         if (screen is StateHandler stateHandler)
         {
-            if (_states.Peek() != screen)
-                TryAdd(stateHandler);
-            else
+            if (stateHandler.IsOpen)
                 TryRemove(stateHandler);
+            else TryAdd(stateHandler);
         }
     }
 
@@ -63,7 +62,7 @@ public class StateStackHandler : MonoBehaviour
 
     bool TryAdd(StateHandler state)
     {
-        if (_states.Count != 0 && (_states.Peek().BlockedStates?.Contains(state.Definition) == null))
+        if (!_states.TryPeek(out var peek) || (peek.BlockedStates?.Contains(state.Definition) ?? false))
             return false;
 
         _states.Push(state.Definition);
@@ -80,7 +79,7 @@ public class StateStackHandler : MonoBehaviour
             Debug.LogError($"Cannot pop last element from {nameof(StateStackHandler)}.");
             return false;
         }
-        if (_states.Peek() != state)
+        if (_states.Peek() != state.Definition)
             return false;
 
         _states.Pop();
