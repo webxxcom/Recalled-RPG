@@ -3,38 +3,23 @@ using UnityEngine;
 using UnityEngine.UI;
 
 [RequireComponent(typeof(Canvas))]
-public abstract class UIScreen : MonoBehaviour
+public abstract class UIScreen : ToggleableScreen
 {
     Selectable[] _selectables;
     Canvas _canvas;
-
-    public bool IsActive
-    {
-        get => _canvas.enabled;
-        set
-        {
-            if (value == IsActive)
-                return;
-
-            SetIsActiveWithoutNotify(value);
-            OnStateChange?.Invoke(this, value);
-        }
-    }
 
     public event Action<UIScreen, bool> OnStateChange;
 
     protected virtual void Awake()
     {
         _canvas = GetComponent<Canvas>();
+        _selectables = GetComponentsInChildren<Selectable>(true);
     }
 
-    protected virtual void Start()
+    protected override void Start()
     {
-        _selectables = GetComponentsInChildren<Selectable>();
-        SetIsActiveWithoutNotify(false);
+        base.Start();
     }
-
-    protected void Toggle() => IsActive = !IsActive;
 
     void ToggleNavigation(bool isNavigable)
     {
@@ -47,15 +32,19 @@ public abstract class UIScreen : MonoBehaviour
         }
     }
 
-    void SetIsActiveWithoutNotify(bool val)
+    void ToggleElements(bool val)
     {
         _canvas.enabled = val;
         ToggleNavigation(val);
-
-        if (val) Open();
-        else Close();
     }
 
-    public virtual void Open() { }
-    public virtual void Close() { }
+    protected override void Show()
+    {
+        ToggleElements(true);
+    }
+
+    protected override void Hide()
+    {
+        ToggleElements(false);
+    }
 }

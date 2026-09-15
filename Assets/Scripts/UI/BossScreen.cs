@@ -1,3 +1,4 @@
+using System;
 using TMPro;
 using UnityEngine;
 
@@ -9,6 +10,8 @@ public class BossHpUiManager : UIScreen
     [Header("Listens to")]
     [SerializeField] BossStartDataGameEvent OnBossStarted;
     [SerializeField] BossStartDataGameEvent OnBossDefeat;
+
+    public override event Action<ToggleableScreen> Toggled;
 
     private void OnEnable()
     {
@@ -23,7 +26,7 @@ public class BossHpUiManager : UIScreen
 
     void StartBoss(BossData bossStartData)
     {
-        IsActive = true;
+        IsOpen = true;
 
         _fillHpBar.Init(bossStartData.Health, bossStartData.Health.Value);
         _bossText.text = bossStartData.Name;
@@ -31,6 +34,6 @@ public class BossHpUiManager : UIScreen
 
     void EndBoss(BossData bossStartData)
     {
-        IsActive = false;
+        IsOpen = false;
     }
 }

@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b52387baa966bb44b9a13e735e453b78, type: 3}
+  m_Name: MarkerShow
+  m_EditorClassIdentifier: Assembly-CSharp::SpriteSequence
+  _sourceGuid: b4f00b9273c64e346b81f3966a8f34ce
+  _clipName: Show
+  _frames:
+  - Time: 0
+    Sprite: {fileID: 8928981334631204155, guid: b4f00b9273c64e346b81f3966a8f34ce, type: 3}
+  - Time: 0.100000024
+    Sprite: {fileID: -6875248700039734290, guid: b4f00b9273c64e346b81f3966a8f34ce, type: 3}
+  - Time: 0.20000005
+    Sprite: {fileID: -2635369505281983773, guid: b4f00b9273c64e346b81f3966a8f34ce, type: 3}
+  - Time: 0.2700001
+    Sprite: {fileID: 6738604759925069839, guid: b4f00b9273c64e346b81f3966a8f34ce, type: 3}
+  - Time: 1.1600001
+    Sprite: {fileID: 6738604759925069839, guid: b4f00b9273c64e346b81f3966a8f34ce, type: 3}
+  _length: 1.1700001
+  _loop: 0

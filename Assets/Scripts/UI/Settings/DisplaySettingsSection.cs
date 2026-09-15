@@ -1,16 +1,19 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public sealed class DisplaySettingsSection : SettingsSection
+public sealed class DisplaySettingsSection : UIScreen
 {
     [SerializeField] Toggle _fullscreen;
     [SerializeField] TMP_Dropdown _resolutionsDropDown;
     [SerializeField] Toggle _vsync;
 
     List<Resolution> _resolutions;
+
+    public override event Action<ToggleableScreen> Toggled;
 
     protected override void Start()
     {

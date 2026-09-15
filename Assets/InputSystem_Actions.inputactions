@@ -359,7 +359,7 @@
                     "id": "3338a655-d8c6-411a-9fea-1fe8ab1b5bd7",
                     "expectedControlType": "",
                     "processors": "",
-                    "interactions": "Hold",
+                    "interactions": "Press(behavior=2)",
                     "initialStateCheck": false,
                     "priority": 0
                 },
@@ -369,8 +369,8 @@
                     "id": "27a0c684-d256-47e5-b4c2-7ceab3126b1c",
                     "expectedControlType": "",
                     "processors": "",
-                    "interactions": "Hold",
-                    "initialStateCheck": false,
+                    "interactions": "Press(behavior=2)",
+                    "initialStateCheck": true,
                     "priority": 0
                 },
                 {

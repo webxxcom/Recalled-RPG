@@ -1,59 +1,47 @@
-using System.Collections;
+using System;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 [RequireComponent(typeof(Button))]
-public class BookUITab : MonoBehaviour, IPointerUpHandler, IPointerEnterHandler, IPointerExitHandler
-{
-    [SerializeField] Sprite[] _pressed;
-    [SerializeField] Sprite[] _hidden;
-    [SerializeField] Sprite _highlighted;
-    [SerializeField] Sprite _inactive;
-    [SerializeField] Image _graphic;
-    [SerializeField] float _step;
+[RequireComponent(typeof(UISpriteAnimator))]
+public class BookUITab : ToggleableScreen, IPointerEnterHandler, IPointerExitHandler
+{ 
+    UISpriteAnimator _animator;
+    Button _button;
 
-    private void Start()
+    public override event Action<ToggleableScreen> Toggled;
+
+    void Raise() => Toggled?.Invoke(this);
+    private void OnEnable() => _button.onClick.AddListener(Raise);
+    private void OnDisable() => _button.onClick.RemoveListener(Raise);
+
+    private void Awake()
     {
-        _graphic.sprite = _inactive;
+        _animator = GetComponent<UISpriteAnimator>();
+        _button = GetComponent<Button>();
     }
 
-    void OnPress()
+    protected override void Show()
     {
-        if (_coroutine != null) StopCoroutine(_coroutine);
-
-        _coroutine = StartCoroutine(ShowSpritesCoroutine(_pressed));
+        _animator.Play("Press");
     }
 
-    void OnHide()
+    protected override void Hide()
     {
-        if (_coroutine != null) StopCoroutine(_coroutine);
-
-        _coroutine = StartCoroutine(ShowSpritesCoroutine(_hidden));
+        _animator.Play("Hide");
     }
 
     void OnEnter()
     {
-        _graphic.sprite = _highlighted;
+        if (!IsOpen) _animator.Play("Enter");
     }
 
     void OnExit()
     {
-        _graphic.sprite = _inactive;
+        if (!IsOpen) _animator.Play("Exit");
     }
 
-    Coroutine _coroutine;
-    IEnumerator ShowSpritesCoroutine(Sprite[] goOver)
-    {
-        foreach (var sprite in goOver)
-        {
-            yield return new WaitForSecondsRealtime(_step);
-
-            _graphic.sprite = sprite;
-        }
-    }
-
-    public void OnPointerUp(PointerEventData eventData) => OnPress();
     public void OnPointerEnter(PointerEventData eventData) => OnEnter();
     public void OnPointerExit(PointerEventData eventData) => OnExit();
 }

@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -9,11 +10,16 @@ public class StateStackHandler : MonoBehaviour
     [SerializeField] GameState _baseState;
     [SerializeField] SettingsConfig _settings;
 
+    List<StateHandler> _allScreens;
+
     readonly Stack<GameState> _states = new();
 
     void Awake()
     {
-        UncheckedAdd(_baseState);
+        _allScreens = GetComponents<StateHandler>().ToList();
+
+        _states.Push(_baseState);
+        ApplyCurrentState();
     }
 
     void Start()
@@ -21,7 +27,30 @@ public class StateStackHandler : MonoBehaviour
         _settings.Load();
     }
 
-    void UpdateState()
+    private void OnEnable()
+    {
+        foreach (var state in _allScreens)
+            state.Toggled += OnToggle;
+    }
+
+    private void OnDisable()
+    {
+        foreach (var state in _allScreens)
+            state.Toggled -= OnToggle;
+    }
+
+    void OnToggle(ToggleableScreen screen)
+    {
+        if (screen is StateHandler stateHandler)
+        {
+            if (_states.Peek() != screen)
+                TryAdd(stateHandler);
+            else
+                TryRemove(stateHandler);
+        }
+    }
+
+    void ApplyCurrentState()
     {
         GameState current = _states.Peek();
 
@@ -32,23 +61,19 @@ public class StateStackHandler : MonoBehaviour
         Cursor.lockState = current.CursorMode;
     }
 
-    void UncheckedAdd(GameState state)
+    bool TryAdd(StateHandler state)
     {
-        _states.Push(state);
-
-        UpdateState();
-    }
-
-    public bool Add(GameState state)
-    {
-        if (_states.Peek().BlockedStates?.Contains(state) ?? false)
+        if (_states.Count != 0 && (_states.Peek().BlockedStates?.Contains(state.Definition) == null))
             return false;
 
-        UncheckedAdd(state);
+        _states.Push(state.Definition);
+        state.IsOpen = true;
+
+        ApplyCurrentState();
         return true;
     }
 
-    public bool Remove(GameState state)
+    bool TryRemove(StateHandler state)
     {
         if (_states.Count == 1)
         {
@@ -59,7 +84,9 @@ public class StateStackHandler : MonoBehaviour
             return false;
 
         _states.Pop();
-        UpdateState();
+        state.IsOpen = false;
+
+        ApplyCurrentState();
         return true;
     }
 }

@@ -71,7 +71,7 @@ public class HintInputButton : MonoBehaviour
 
             // Debug message just in case
             if (_frames == null)
-                Debug.Log($"Couldnt find an input image for {scheme} for {_inputAction.name}.{controlPath}");
+                Debug.LogError($"Couldnt find an input image for {scheme} for {_inputAction.name}.{controlPath}", this);
         }
 
         UpdateGraphics();

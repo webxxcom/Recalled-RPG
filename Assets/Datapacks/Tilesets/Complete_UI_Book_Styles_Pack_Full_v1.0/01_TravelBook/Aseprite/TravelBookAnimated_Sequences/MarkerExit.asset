@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b52387baa966bb44b9a13e735e453b78, type: 3}
+  m_Name: MarkerExit
+  m_EditorClassIdentifier: Assembly-CSharp::SpriteSequence
+  _sourceGuid: b4f00b9273c64e346b81f3966a8f34ce
+  _clipName: Exit
+  _frames:
+  - Time: 0
+    Sprite: {fileID: -168948052204032064, guid: b4f00b9273c64e346b81f3966a8f34ce, type: 3}
+  - Time: 0.89
+    Sprite: {fileID: -168948052204032064, guid: b4f00b9273c64e346b81f3966a8f34ce, type: 3}
+  _length: 0.9
+  _loop: 0

@@ -26,6 +26,8 @@ public class DialogueManager : UIScreen
     [Header("Listens to")]
     [SerializeField] DialogueSourceGameEvent OnDialogueStarted;
 
+    public override event System.Action<ToggleableScreen> Toggled;
+
     void ResetFields()
     {
         _continueButton.gameObject.SetActive(false);
@@ -66,7 +68,7 @@ public class DialogueManager : UIScreen
     public void BeginDialogue(DialogueSource dialogueData)
     {
         _dialogueData = JsonUtility.FromJson<DialogueData>(dialogueData.TextFile.text);
-        IsActive = true;
+        IsOpen = true;
         //TODO not finished
         _enterPressed.Value = false;
         _buttonPressedData.Value = null;
@@ -175,7 +177,7 @@ public class DialogueManager : UIScreen
 
     void EndTalking()
     {
-        IsActive = false;
+        IsOpen = false;
         _playerInput.SwitchCurrentActionMap("Player");
         ResetFields();
     }

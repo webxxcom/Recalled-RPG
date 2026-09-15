@@ -1,40 +1,28 @@
+using System;
 using UnityEngine;
 
-public class StateHandler : MonoBehaviour
+public class StateHandler : ToggleableScreen
 {
-    [SerializeField] StateStackHandler _stateManager;
     [SerializeField] GameState _definition;
     [SerializeField] VoidGameEvent OnGameEventRaised;
-    [SerializeField] UIScreen _uIScreen;
+    [SerializeField] UIScreen _uiScreen;
 
-    public bool IsActive
-    {
-        get => _uIScreen.IsActive;
-        set
-        {
-            if (value == IsActive)
-                return;
+    public GameState Definition => _definition;
 
-            if (value) Show();
-            else Hide();
-        }
-    }
+    public override event Action<ToggleableScreen> Toggled;
 
+    void Raise() => Toggled?.Invoke(this);
     void OnEnable()
-        => OnGameEventRaised.OnEventRaised += Toggle;
+        => OnGameEventRaised.OnEventRaised += Raise;
     void OnDisable()
-        => OnGameEventRaised.OnEventRaised -= Toggle;
-    void Toggle() 
-        => IsActive = !IsActive;
+        => OnGameEventRaised.OnEventRaised -= Raise;
 
-    void Show()
+    protected override void Show()
     {
-        if (_stateManager.Add(_definition))
-            _uIScreen.IsActive = true;
+        _uiScreen.IsOpen = true;
     }
-    void Hide()
+    protected override void Hide()
     {
-        if (_stateManager.Remove(_definition))
-            _uIScreen.IsActive = false;
+        _uiScreen.IsOpen = false;
     }
 }

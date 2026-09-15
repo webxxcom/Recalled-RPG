@@ -1,10 +1,11 @@
+using System;
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
-public class ControlsSettingsMenu : SettingsSection
+public class ControlsSettingsMenu : UIScreen
 {
     [SerializeField] InputActionAsset _currentInput;
     [SerializeField] ControlBindItem _inputBindUIItem;
@@ -52,10 +53,13 @@ public class ControlsSettingsMenu : SettingsSection
     }
 
     InputActionRebindingExtensions.RebindingOperation _currentRebinding;
+
+    public override event Action<ToggleableScreen> Toggled;
+
     public void NotifyRebinding(InputActionRebindingExtensions.RebindingOperation oper)
         => _currentRebinding = oper;
 
-    public override void Close()
+    protected override void Hide()
     {
         if (_currentRebinding != null && _currentRebinding.started)
             _currentRebinding.Cancel();

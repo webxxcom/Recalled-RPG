@@ -22,7 +22,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 553927085509989883, guid: 1375b4fb4facc2147bd3696b6e41c9b3, type: 3}
       propertyPath: m_Pivot.y
-      value: 0
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 553927085509989883, guid: 1375b4fb4facc2147bd3696b6e41c9b3, type: 3}
       propertyPath: m_AnchorMax.x
@@ -46,7 +46,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 553927085509989883, guid: 1375b4fb4facc2147bd3696b6e41c9b3, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 0
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 553927085509989883, guid: 1375b4fb4facc2147bd3696b6e41c9b3, type: 3}
       propertyPath: m_LocalPosition.x
@@ -95,6 +95,10 @@ PrefabInstance:
     - target: {fileID: 553927085509989883, guid: 1375b4fb4facc2147bd3696b6e41c9b3, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7114851240669994903, guid: 1375b4fb4facc2147bd3696b6e41c9b3, type: 3}
+      propertyPath: m_RaycastPadding.w
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

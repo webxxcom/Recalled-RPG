@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 
 [RequireComponent(typeof(Canvas))]
@@ -25,6 +24,7 @@ public sealed class InventoryManager : UIScreen
     readonly List<InventorySlot> _createdInventorySlots = new();
 
     public event Action OnEquippedItems;
+    public override event Action<ToggleableScreen> Toggled;
 
     protected override void Awake()
     {
@@ -37,14 +37,14 @@ public sealed class InventoryManager : UIScreen
     {
         OnUIElementSelected.OnEventRaised += ItemSelected;
         OnUIElementDeselected.OnEventRaised += ItemDeselected;
-        _inventory.OnItemsChanged += Open;
+        _inventory.OnItemsChanged += Show;
     }
 
     void OnDisable()
     {
         OnUIElementSelected.OnEventRaised -= ItemSelected;
         OnUIElementDeselected.OnEventRaised -= ItemDeselected;
-        _inventory.OnItemsChanged -= Open;
+        _inventory.OnItemsChanged -= Show;
     }
 
     void CreateGeneralItemSlot(ItemInstance itemInstance)
@@ -79,14 +79,14 @@ public sealed class InventoryManager : UIScreen
         else _bootsInventoryItem.Absent();
     }
 
-    public override void Open()
+    protected override void Show()
     {
         RefreshGeneralSlots();
         RefreshEquipSlots();
         ItemDeselected();
     }
 
-    public override void Close()
+    protected override void Hide()
     {
         DeleteGeneralSlots();
         ItemDeselected();
