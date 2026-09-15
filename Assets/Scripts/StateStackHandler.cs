@@ -43,7 +43,7 @@ public class StateStackHandler : MonoBehaviour
     {
         if (screen is StateHandler stateHandler)
         {
-            if (stateHandler.IsOpen)
+            if (screen.IsOpen)
                 TryRemove(stateHandler);
             else TryAdd(stateHandler);
         }

@@ -26,6 +26,6 @@ public class ScreenGroupInputActionBinder : MonoBehaviour
         _prevPageAction.action.started -= PrevPage;
     }
 
-    void NextPage(InputAction.CallbackContext _) => _screenGroup.ShiftActiveScreen(1);
-    void PrevPage(InputAction.CallbackContext _) => _screenGroup.ShiftActiveScreen(-1);
+    void NextPage(InputAction.CallbackContext _) => _screenGroup.ChooseNext(1);
+    void PrevPage(InputAction.CallbackContext _) => _screenGroup.ChooseNext(-1);
 }
