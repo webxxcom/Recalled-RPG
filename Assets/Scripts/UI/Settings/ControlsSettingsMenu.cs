@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
-public class ControlsSettingsMenu : UIScreen
+public class ControlsSettingsMenu : ToggleableObject
 {
     [SerializeField] InputActionAsset _currentInput;
     [SerializeField] ControlBindItem _inputBindUIItem;
@@ -16,10 +16,8 @@ public class ControlsSettingsMenu : UIScreen
     readonly List<ControlBindItem> _controlBinds = new();
     const string controlsSaveFile = "Controls/inputBinds.json";
 
-    protected override void Awake()
+     void Awake()
     {
-        base.Awake();
-
         _bindMap = _currentInput.FindActionMap("Player");
         _currentInput.LoadBindingOverridesFromJson(File.ReadAllText(controlsSaveFile));
         InitControls();
@@ -30,7 +28,7 @@ public class ControlsSettingsMenu : UIScreen
         _saveButton.onClick.AddListener(OnSaveButtonClick);
     }
 
-     void OnDisable()
+    void OnDisable()
     {
         _saveButton.onClick.RemoveListener(OnSaveButtonClick);
     }
@@ -54,7 +52,7 @@ public class ControlsSettingsMenu : UIScreen
 
     InputActionRebindingExtensions.RebindingOperation _currentRebinding;
 
-    public override event Action<ToggleableState> Toggled;
+    public override event Action<ToggleableObject> Toggled;
 
     public void NotifyRebinding(InputActionRebindingExtensions.RebindingOperation oper)
         => _currentRebinding = oper;

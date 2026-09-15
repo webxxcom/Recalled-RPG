@@ -5,7 +5,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public sealed class DisplaySettingsSection : UIScreen
+public sealed class DisplaySettingsSection : ToggleableObject
 {
     [SerializeField] Toggle _fullscreen;
     [SerializeField] TMP_Dropdown _resolutionsDropDown;
@@ -13,7 +13,7 @@ public sealed class DisplaySettingsSection : UIScreen
 
     List<Resolution> _resolutions;
 
-    public override event Action<ToggleableState> Toggled;
+    public override event Action<ToggleableObject> Toggled;
 
     protected override void Start()
     {

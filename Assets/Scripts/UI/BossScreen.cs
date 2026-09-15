@@ -11,7 +11,7 @@ public class BossHpUiManager : UIScreen
     [SerializeField] BossStartDataGameEvent OnBossStarted;
     [SerializeField] BossStartDataGameEvent OnBossDefeat;
 
-    public override event Action<ToggleableState> Toggled;
+    public override event Action<ToggleableObject> Toggled;
 
     private void OnEnable()
     {

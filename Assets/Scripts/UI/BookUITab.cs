@@ -5,12 +5,12 @@ using UnityEngine.UI;
 
 [RequireComponent(typeof(Button))]
 [RequireComponent(typeof(UISpriteAnimator))]
-public class BookUITab : ToggleableState, IPointerEnterHandler, IPointerExitHandler
+public class BookUITab : ToggleableObject, IPointerEnterHandler, IPointerExitHandler
 { 
     UISpriteAnimator _animator;
     Button _button;
 
-    public override event Action<ToggleableState> Toggled;
+    public override event Action<ToggleableObject> Toggled;
 
     void Raise() => Toggled?.Invoke(this);
     private void OnEnable() => _button.onClick.AddListener(Raise);
@@ -29,7 +29,7 @@ public class BookUITab : ToggleableState, IPointerEnterHandler, IPointerExitHand
 
     protected override void Deactivate()
     {
-        _animator.Play("Deactivate");
+        _animator.Play("Hide");
     }
 
     void OnEnter()

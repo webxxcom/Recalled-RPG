@@ -26,8 +26,6 @@ public class DialogueManager : UIScreen
     [Header("Listens to")]
     [SerializeField] DialogueSourceGameEvent OnDialogueStarted;
 
-    public override event System.Action<ToggleableState> Toggled;
-
     void ResetFields()
     {
         _continueButton.gameObject.SetActive(false);

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PagesController : MonoBehaviour
 {
-    [SerializeField] Dictionary<BookUITab, UIScreen> _tabToScreenDictionary;
+    [SerializeField] Dictionary<BookUITab, ToggleableObject> _tabToScreenDictionary;
 
 #if UNITY_EDITOR
     private void OnValidate()

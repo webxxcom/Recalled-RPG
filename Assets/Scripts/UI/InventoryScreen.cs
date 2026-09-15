@@ -24,7 +24,6 @@ public sealed class InventoryManager : UIScreen
     readonly List<InventorySlot> _createdInventorySlots = new();
 
     public event Action OnEquippedItems;
-    public override event Action<ToggleableState> Toggled;
 
     protected override void Awake()
     {

@@ -11,17 +11,16 @@ using UnityEngine;
 ///     <strong>ToggleableScreen.Toggled</strong>. The component itself only manages whether
 ///     the screen should be turned on or not which wholly depends whether the screen
 ///     is active or multiple screens are allowed
-///     
 /// 
 /// </summary>
 public class ScreenGroup : MonoBehaviour
 {
     [SerializeField] bool _allowMultiple;
     [SerializeField] bool _allowEmpty;
-    [SerializeField] ToggleableState _defaultScreen;
+    [SerializeField] ToggleableObject _defaultScreen;
 
-    List<ToggleableState> _screens;
-    [SerializeField] List<ToggleableState> _activeScreens = new();
+    List<ToggleableObject> _screens;
+    [SerializeField] protected List<ToggleableObject> _activeScreens = new();
 
     private void Awake()
     {
@@ -29,7 +28,7 @@ public class ScreenGroup : MonoBehaviour
 
         foreach (Transform child in transform)
         {
-            if (child.TryGetComponent(out ToggleableState screen))
+            if (child.TryGetComponent(out ToggleableObject screen))
                 _screens.Add(screen);
         }
 
@@ -54,40 +53,42 @@ public class ScreenGroup : MonoBehaviour
         AddActiveScreen(_defaultScreen);
     }
 
-    void ToggleSreen(ToggleableState screen)
+    void ToggleSreen(ToggleableObject screen)
     {
-        if (_allowEmpty && screen.IsActive && !_activeScreens.Contains(screen))
+        if (_allowEmpty && screen.IsActive && _activeScreens.Contains(screen))
             RemoveActiveScreen(screen);
-
-        AddActiveScreen(screen);
+        else AddActiveScreen(screen);
     }
 
-
-    void AddActiveScreen(ToggleableState screen)
+    protected virtual bool AddActiveScreen(ToggleableObject screen)
     {
         // Don't want to set same screen again or more than one if disallowed
         if (screen == null || screen.IsActive)
-            return;
+            return false;
 
         if (!_allowMultiple && _activeScreens.Count > 0)
             UncheckedRemoveActiveScreen(_activeScreens[0]);
 
         _activeScreens.Add(screen);
         screen.IsActive = true;
+        return true;
     }
 
-    void RemoveActiveScreen(ToggleableState screen)
+    protected virtual bool RemoveActiveScreen(ToggleableObject screen)
     {
         if (screen == null || !screen.IsActive || (_activeScreens.Count == 1 && !_allowEmpty))
-            return;
+            return false;
 
-        UncheckedRemoveActiveScreen(screen);
+        return UncheckedRemoveActiveScreen(screen);
     }
 
-    void UncheckedRemoveActiveScreen(ToggleableState screen)
+    bool UncheckedRemoveActiveScreen(ToggleableObject screen)
     {
-        if (_activeScreens.Remove(screen))
-            screen.IsActive = false;
+        if (!_activeScreens.Remove(screen))
+            return false;
+
+        screen.IsActive = false;
+        return true;
     }
 
     public void ChooseNext(int offset)

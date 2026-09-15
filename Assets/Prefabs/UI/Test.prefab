@@ -642,6 +642,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8840309887204711764}
   - component: {fileID: 4614718370897817246}
+  - component: {fileID: 929929293902065810}
   m_Layer: 5
   m_Name: Content
   m_TagString: Untagged
@@ -694,6 +695,22 @@ MonoBehaviour:
   m_LayoutPriority: 1
   m_MaxWidth: -1
   m_MaxHeight: -1
+--- !u!114 &929929293902065810
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 493450851898734617}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c0d5f8ee152db6429435d64bd56bb33, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ScreenGroup
+  _allowMultiple: 0
+  _allowEmpty: 0
+  _defaultScreen: {fileID: 161892180215879903}
+  _activeScreens: []
 --- !u!1 &556002619257930608
 GameObject:
   m_ObjectHideFlags: 0
@@ -1139,6 +1156,8 @@ GameObject:
   m_Component:
   - component: {fileID: 3368399121837093754}
   - component: {fileID: 4265122185040337019}
+  - component: {fileID: 2114412452667558299}
+  - component: {fileID: 2424566918353856122}
   m_Layer: 5
   m_Name: Tabs
   m_TagString: Untagged
@@ -1195,6 +1214,36 @@ MonoBehaviour:
   m_ChildScaleWidth: 1
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!114 &2114412452667558299
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 935781428817869467}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c0d5f8ee152db6429435d64bd56bb33, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ScreenGroup
+  _allowMultiple: 0
+  _allowEmpty: 0
+  _defaultScreen: {fileID: 6456415415469202260}
+  _activeScreens: []
+--- !u!114 &2424566918353856122
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 935781428817869467}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95ef7ff7a580e9f42974641b4e8939d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ScreenGroupInputActionBinder
+  _prevPageAction: {fileID: -1650557099248533712, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
+  _nextPageAction: {fileID: 4475253954407227911, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
 --- !u!1 &994807695691922236
 GameObject:
   m_ObjectHideFlags: 0
@@ -1544,6 +1593,7 @@ GameObject:
   - component: {fileID: 2860260172984928160}
   - component: {fileID: 3513828680334018968}
   - component: {fileID: 3102951910512009951}
+  - component: {fileID: 7633788319921381373}
   m_Layer: 5
   m_Name: Test
   m_TagString: Untagged
@@ -1613,6 +1663,21 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &7633788319921381373
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1204620722222649022}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 87e9b4aaaedd1ee4396c8ccaadbafbfa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+  _gameState: {fileID: 11400000, guid: 3029483e43a1c5a4e94100700962da7f, type: 2}
+  _playerInput: {fileID: 0}
+  OnGameEventRaised: {fileID: 11400000, guid: 1488ef76c18cdfe4d9ab67f05904969f, type: 2}
 --- !u!1 &1288130367956329864
 GameObject:
   m_ObjectHideFlags: 0
@@ -2810,7 +2875,7 @@ GameObject:
   - component: {fileID: 6614013880503241578}
   - component: {fileID: 2679375310227001550}
   - component: {fileID: 343149922622696352}
-  - component: {fileID: 558340179373404534}
+  - component: {fileID: 3987203321135240595}
   m_Layer: 5
   m_Name: Equipment
   m_TagString: Untagged
@@ -2904,7 +2969,7 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &558340179373404534
+--- !u!114 &3987203321135240595
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2915,7 +2980,7 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 658c48d95a7b72d44a9f6d11e4929775, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: '::'
+  m_EditorClassIdentifier: Assembly-CSharp::BookView
 --- !u!1 &3264252372563402387
 GameObject:
   m_ObjectHideFlags: 0
@@ -3680,7 +3745,7 @@ GameObject:
   - component: {fileID: 4066536601488338640}
   - component: {fileID: 7113034435132839349}
   - component: {fileID: 2086160175558793792}
-  - component: {fileID: 2757928027541656301}
+  - component: {fileID: 6377931048421762320}
   m_Layer: 5
   m_Name: Journal
   m_TagString: Untagged
@@ -3774,7 +3839,7 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &2757928027541656301
+--- !u!114 &6377931048421762320
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3785,7 +3850,7 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 658c48d95a7b72d44a9f6d11e4929775, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: '::'
+  m_EditorClassIdentifier: Assembly-CSharp::BookView
 --- !u!1 &4223665171452222209
 GameObject:
   m_ObjectHideFlags: 0
@@ -3841,7 +3906,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -0.00004545476}
+  m_AnchoredPosition: {x: 0, y: -0.00012444137}
   m_SizeDelta: {x: -10, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &6158688771640721329
@@ -5312,7 +5377,7 @@ GameObject:
   - component: {fileID: 4359985455342614239}
   - component: {fileID: 2920441198175101886}
   - component: {fileID: 5321319170027313395}
-  - component: {fileID: 449826968353624076}
+  - component: {fileID: 161892180215879903}
   m_Layer: 5
   m_Name: Inventory
   m_TagString: Untagged
@@ -5406,7 +5471,7 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &449826968353624076
+--- !u!114 &161892180215879903
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -5417,7 +5482,7 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 658c48d95a7b72d44a9f6d11e4929775, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: '::'
+  m_EditorClassIdentifier: Assembly-CSharp::BookView
 --- !u!1 &6525545871934953070
 GameObject:
   m_ObjectHideFlags: 0
@@ -5695,7 +5760,7 @@ GameObject:
   - component: {fileID: 2250967448574155469}
   - component: {fileID: 8358510985839730133}
   - component: {fileID: 4590717436699288478}
-  - component: {fileID: 1879392865639458639}
+  - component: {fileID: 3708269560564009716}
   m_Layer: 5
   m_Name: Settings
   m_TagString: Untagged
@@ -5789,7 +5854,7 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &1879392865639458639
+--- !u!114 &3708269560564009716
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -6271,8 +6336,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 8669378882285945401}
   m_HandleRect: {fileID: 5795597351785619697}
   m_Direction: 2
-  m_Value: 1.000001
-  m_Size: 0.61952853
+  m_Value: 1.0000027
+  m_Size: 0.6195287
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -14401,6 +14466,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 213e919195df67f49aa8adffc9b219be, type: 3}
+--- !u!114 &6456415415469202260 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3031138560999401347, guid: 213e919195df67f49aa8adffc9b219be, type: 3}
+  m_PrefabInstance: {fileID: 8325202887227374807}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e812b7e7235f3d4fa1501c954bd5b11, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BookUITab
 --- !u!224 &8003889505155420547 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2061110360768408916, guid: 213e919195df67f49aa8adffc9b219be, type: 3}
