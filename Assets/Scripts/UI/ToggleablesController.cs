@@ -7,8 +7,8 @@ public class ToggleablesController : MonoBehaviour
 {
     [SerializeField] ToggleableGroup _activators;
     [SerializeField] ToggleableGroup _activated;
-    [SerializeField] ToggleableObject _firstActivated;
-    [SerializeField] Dictionary<ToggleableObject, ToggleableObject> _activorsToActivated = new();
+    [SerializeField] Toggleable _firstActivated;
+    [SerializeField] Dictionary<Toggleable, Toggleable> _activorsToActivated = new();
 
     private void Start()
     {
@@ -31,12 +31,12 @@ public class ToggleablesController : MonoBehaviour
         _activators.ScreenChanged -= ToggleToggleable;
     }
 
-    void ToggleToggleable(ToggleableObject toggleable)
+    void ToggleToggleable(Toggleable toggleable)
     {
         if (_activorsToActivated.TryGetValue(toggleable, out var value))
         {
             if (!_activated.Request(value))
-                Debug.LogError($"Invalid operation of toggling a {nameof(ToggleableObject)} on {nameof(ToggleablesController)}");
+                Debug.LogError($"Invalid operation of toggling a {nameof(Toggleable)} on {nameof(ToggleablesController)}");
         
         }
     }

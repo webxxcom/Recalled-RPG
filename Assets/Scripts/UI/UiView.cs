@@ -3,43 +3,49 @@ using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 [RequireComponent(typeof(Canvas))]
-public abstract class UiView : ToggleableObject
+[RequireComponent(typeof(Toggleable))]
+public abstract class UiView : MonoBehaviour
 {
     Selectable[] _selectables;
     Canvas _canvas;
+    protected Toggleable _toggleable;
 
     protected virtual void Awake()
     {
-        _canvas = GetComponent<Canvas>();
+        _toggleable = GetComponent<Toggleable>();
         _selectables = GetComponentsInChildren<Selectable>(true);
+        _canvas = GetComponent<Canvas>();
     }
 
-    void ToggleNavigation(bool isNavigable)
+    protected virtual void Start()
     {
-        foreach (var selectable in _selectables)
-        {
-            selectable.navigation = new Navigation()
-            {
-                mode = isNavigable ? Navigation.Mode.Automatic : Navigation.Mode.None
-            };
-        }
+        _toggleable.Activated += Show;
+        _toggleable.Deactivated += Hide;
     }
+
+    protected virtual void OnDestroy()
+    {
+        _toggleable.Activated -= Show;
+        _toggleable.Deactivated -= Hide;
+    }
+
+    protected virtual void OnEnable() { }
+    protected virtual void OnDisable() { }
 
     void ToggleElements(bool val)
     {
         gameObject.SetActive(val);
-        //_canvas.enabled = val;
-        //ToggleNavigation(val);
+        _canvas.enabled = val;
     }
 
-    protected override void Activate()
+    void Show()
     {
         ToggleElements(true);
 
         EventSystem.current.SetSelectedGameObject(_selectables.Length > 0 ? _selectables[0].gameObject : null);
     }
 
-    protected override void Deactivate()
+    void Hide()
     {
         ToggleElements(false);
     }

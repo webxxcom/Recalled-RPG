@@ -32,18 +32,20 @@ public sealed class InventoryManager : ScreenViewUi
         _descriptionManager = GetComponentInChildren<DescriptionManager>();
     }
 
-    void OnEnable()
+    protected override void OnEnable()
     {
+        base.OnEnable();
         OnUIElementSelected.OnEventRaised += ItemSelected;
         OnUIElementDeselected.OnEventRaised += ItemDeselected;
-        _inventory.OnItemsChanged += Activate;
+        _inventory.OnItemsChanged += Show;
     }
 
-    void OnDisable()
+    protected override void OnDisable()
     {
+        base.OnDisable();
         OnUIElementSelected.OnEventRaised -= ItemSelected;
         OnUIElementDeselected.OnEventRaised -= ItemDeselected;
-        _inventory.OnItemsChanged -= Activate;
+        _inventory.OnItemsChanged -= Show;
     }
 
     void CreateGeneralItemSlot(ItemInstance itemInstance)
@@ -78,14 +80,14 @@ public sealed class InventoryManager : ScreenViewUi
         else _bootsInventoryItem.Absent();
     }
 
-    protected override void Activate()
+    void Show()
     {
         RefreshGeneralSlots();
         RefreshEquipSlots();
         ItemDeselected();
     }
 
-    protected override void Deactivate()
+    void Hide()
     {
         DeleteGeneralSlots();
         ItemDeselected();

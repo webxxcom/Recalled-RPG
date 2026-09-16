@@ -786,6 +786,7 @@ GameObject:
   - component: {fileID: 3459949773907928765}
   - component: {fileID: 1250029668684872769}
   - component: {fileID: 5301661991235769020}
+  - component: {fileID: 6692090285530471467}
   m_Layer: 5
   m_Name: Graphics
   m_TagString: Untagged
@@ -846,7 +847,7 @@ Canvas:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 800612094497337047}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 3
   m_RenderMode: 2
   m_Camera: {fileID: 0}
@@ -880,6 +881,18 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &6692090285530471467
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 800612094497337047}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ccbf9b5ad9a2b374b92f768ea5e9ed8d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Toggleable
 --- !u!1 &916751518473030212
 GameObject:
   m_ObjectHideFlags: 0
@@ -1527,6 +1540,7 @@ GameObject:
   - component: {fileID: 2860260172984928160}
   - component: {fileID: 3513828680334018968}
   - component: {fileID: 3102951910512009951}
+  - component: {fileID: 5082944138232568711}
   - component: {fileID: 7633788319921381373}
   m_Layer: 5
   m_Name: Test
@@ -1597,6 +1611,18 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &5082944138232568711
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1204620722222649022}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ccbf9b5ad9a2b374b92f768ea5e9ed8d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Toggleable
 --- !u!114 &7633788319921381373
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1974,6 +2000,7 @@ GameObject:
   - component: {fileID: 2536610068003760781}
   - component: {fileID: 2571194898995940023}
   - component: {fileID: 8590178730757153059}
+  - component: {fileID: 224790915800724832}
   m_Layer: 5
   m_Name: Music&Sounds
   m_TagString: Untagged
@@ -2037,7 +2064,7 @@ Canvas:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1970812944053168424}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 3
   m_RenderMode: 2
   m_Camera: {fileID: 0}
@@ -2071,6 +2098,18 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &224790915800724832
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1970812944053168424}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ccbf9b5ad9a2b374b92f768ea5e9ed8d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Toggleable
 --- !u!1 &1972189469336844933
 GameObject:
   m_ObjectHideFlags: 0
@@ -2650,6 +2689,7 @@ GameObject:
   - component: {fileID: 956763858110326454}
   - component: {fileID: 5464347159021261384}
   - component: {fileID: 1967886563551637294}
+  - component: {fileID: 7858668571800885141}
   m_Layer: 5
   m_Name: Controls
   m_TagString: Untagged
@@ -2707,7 +2747,7 @@ Canvas:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2938345748141871025}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 3
   m_RenderMode: 2
   m_Camera: {fileID: 0}
@@ -2741,6 +2781,18 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &7858668571800885141
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2938345748141871025}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ccbf9b5ad9a2b374b92f768ea5e9ed8d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Toggleable
 --- !u!1 &3152830238998986610
 GameObject:
   m_ObjectHideFlags: 0
@@ -2890,6 +2942,7 @@ GameObject:
   - component: {fileID: 4458666827236854316}
   - component: {fileID: 1604416223359098462}
   - component: {fileID: 5044253850786589920}
+  - component: {fileID: 2463351006782248928}
   m_Layer: 5
   m_Name: Helps
   m_TagString: Untagged
@@ -2950,7 +3003,7 @@ Canvas:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3225623915656012282}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 3
   m_RenderMode: 2
   m_Camera: {fileID: 0}
@@ -2984,6 +3037,18 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &2463351006782248928
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3225623915656012282}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ccbf9b5ad9a2b374b92f768ea5e9ed8d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Toggleable
 --- !u!1 &3261832914326470719
 GameObject:
   m_ObjectHideFlags: 0
@@ -2996,6 +3061,7 @@ GameObject:
   - component: {fileID: 6614013880503241578}
   - component: {fileID: 2679375310227001550}
   - component: {fileID: 343149922622696352}
+  - component: {fileID: 1503003210318662562}
   - component: {fileID: 3987203321135240595}
   m_Layer: 5
   m_Name: Equipment
@@ -3090,6 +3156,18 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &1503003210318662562
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3261832914326470719}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ccbf9b5ad9a2b374b92f768ea5e9ed8d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Toggleable
 --- !u!114 &3987203321135240595
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3866,6 +3944,7 @@ GameObject:
   - component: {fileID: 4066536601488338640}
   - component: {fileID: 7113034435132839349}
   - component: {fileID: 2086160175558793792}
+  - component: {fileID: 4172389532917478951}
   - component: {fileID: 6377931048421762320}
   m_Layer: 5
   m_Name: Journal
@@ -3960,6 +4039,18 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &4172389532917478951
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4135721980095598699}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ccbf9b5ad9a2b374b92f768ea5e9ed8d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Toggleable
 --- !u!114 &6377931048421762320
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5498,6 +5589,7 @@ GameObject:
   - component: {fileID: 4359985455342614239}
   - component: {fileID: 2920441198175101886}
   - component: {fileID: 5321319170027313395}
+  - component: {fileID: 1928005033051134554}
   - component: {fileID: 161892180215879903}
   m_Layer: 5
   m_Name: Inventory
@@ -5592,6 +5684,18 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &1928005033051134554
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6337109803070084893}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ccbf9b5ad9a2b374b92f768ea5e9ed8d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Toggleable
 --- !u!114 &161892180215879903
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5817,6 +5921,7 @@ GameObject:
   - component: {fileID: 2250967448574155469}
   - component: {fileID: 8358510985839730133}
   - component: {fileID: 4590717436699288478}
+  - component: {fileID: 8692951266351000902}
   - component: {fileID: 3708269560564009716}
   - component: {fileID: 6809185064766889384}
   m_Layer: 5
@@ -5912,6 +6017,18 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &8692951266351000902
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6743936405905493451}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ccbf9b5ad9a2b374b92f768ea5e9ed8d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Toggleable
 --- !u!114 &3708269560564009716
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5938,7 +6055,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ToggleablesController
   _activators: {fileID: 919776858137929056}
   _activated: {fileID: 4871653026120351067}
-  _firstActivated: {fileID: 2840924489976776987}
+  _firstActivated: {fileID: 6441420468158283599}
   _activorsToActivated: []
 --- !u!1 &6852140107741669596
 GameObject:
@@ -6127,6 +6244,7 @@ GameObject:
   - component: {fileID: 4415889900650395780}
   - component: {fileID: 7531734752059024436}
   - component: {fileID: 6369452447265247377}
+  - component: {fileID: 7498230081269670481}
   m_Layer: 5
   m_Name: Quit
   m_TagString: Untagged
@@ -6184,7 +6302,7 @@ Canvas:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6930637230405155323}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 3
   m_RenderMode: 2
   m_Camera: {fileID: 0}
@@ -6218,6 +6336,18 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &7498230081269670481
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6930637230405155323}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ccbf9b5ad9a2b374b92f768ea5e9ed8d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Toggleable
 --- !u!1 &6949670988345368716
 GameObject:
   m_ObjectHideFlags: 0
@@ -6611,6 +6741,7 @@ GameObject:
   - component: {fileID: 1401918074514015611}
   - component: {fileID: 7119869320077393994}
   - component: {fileID: 3585192329948877427}
+  - component: {fileID: 2387521972294823936}
   - component: {fileID: 3111869633355051089}
   m_Layer: 5
   m_Name: Display
@@ -6673,7 +6804,7 @@ Canvas:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7654485018692136399}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 3
   m_RenderMode: 2
   m_Camera: {fileID: 0}
@@ -6707,6 +6838,18 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &2387521972294823936
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7654485018692136399}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ccbf9b5ad9a2b374b92f768ea5e9ed8d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Toggleable
 --- !u!114 &3111869633355051089
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7052,7 +7195,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PagesController
   _activators: {fileID: 2114412452667558299}
   _activated: {fileID: 929929293902065810}
-  _firstActivated: {fileID: 6456415415469202260}
+  _firstActivated: {fileID: 176958087489545595}
   _activorsToActivated: []
 --- !u!1 &7983397536858771919
 GameObject:
@@ -7208,6 +7351,7 @@ GameObject:
   - component: {fileID: 375363474454962322}
   - component: {fileID: 6672413267449964282}
   - component: {fileID: 7030406836534208148}
+  - component: {fileID: 7317906252886840492}
   m_Layer: 5
   m_Name: Save
   m_TagString: Untagged
@@ -7265,7 +7409,7 @@ Canvas:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8244491282033033403}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 3
   m_RenderMode: 2
   m_Camera: {fileID: 0}
@@ -7299,6 +7443,18 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &7317906252886840492
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8244491282033033403}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ccbf9b5ad9a2b374b92f768ea5e9ed8d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Toggleable
 --- !u!1 &8286745375946342950
 GameObject:
   m_ObjectHideFlags: 0
@@ -7524,6 +7680,7 @@ GameObject:
   - component: {fileID: 3068748604230246481}
   - component: {fileID: 8636252011472879279}
   - component: {fileID: 1084466218931972575}
+  - component: {fileID: 5817115617776378485}
   m_Layer: 5
   m_Name: Load
   m_TagString: Untagged
@@ -7581,7 +7738,7 @@ Canvas:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8354656560824244690}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 3
   m_RenderMode: 2
   m_Camera: {fileID: 0}
@@ -7615,6 +7772,18 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &5817115617776378485
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8354656560824244690}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ccbf9b5ad9a2b374b92f768ea5e9ed8d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Toggleable
 --- !u!1 &8625631493624350059
 GameObject:
   m_ObjectHideFlags: 0
@@ -11938,22 +12107,22 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8e8a2902780be1a4db9622d8496109b0, type: 3}
---- !u!114 &2840924489976776987 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7236778059893084656, guid: 8e8a2902780be1a4db9622d8496109b0, type: 3}
-  m_PrefabInstance: {fileID: 4828648834953550059}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2e812b7e7235f3d4fa1501c954bd5b11, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::BookUITab
 --- !u!224 &6201216189721561128 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 1517127914578235587, guid: 8e8a2902780be1a4db9622d8496109b0, type: 3}
   m_PrefabInstance: {fileID: 4828648834953550059}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &6441420468158283599 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1902290637789833124, guid: 8e8a2902780be1a4db9622d8496109b0, type: 3}
+  m_PrefabInstance: {fileID: 4828648834953550059}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ccbf9b5ad9a2b374b92f768ea5e9ed8d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Toggleable
 --- !u!1001 &4940579633664583423
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14947,17 +15116,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 213e919195df67f49aa8adffc9b219be, type: 3}
---- !u!114 &6456415415469202260 stripped
+--- !u!114 &176958087489545595 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3031138560999401347, guid: 213e919195df67f49aa8adffc9b219be, type: 3}
+  m_CorrespondingSourceObject: {fileID: 8213898985183386028, guid: 213e919195df67f49aa8adffc9b219be, type: 3}
   m_PrefabInstance: {fileID: 8325202887227374807}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2e812b7e7235f3d4fa1501c954bd5b11, type: 3}
+  m_Script: {fileID: 11500000, guid: ccbf9b5ad9a2b374b92f768ea5e9ed8d, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::BookUITab
+  m_EditorClassIdentifier: Assembly-CSharp::Toggleable
 --- !u!224 &8003889505155420547 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2061110360768408916, guid: 213e919195df67f49aa8adffc9b219be, type: 3}

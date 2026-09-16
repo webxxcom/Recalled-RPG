@@ -3,17 +3,17 @@ using UnityEngine;
 
 public sealed class UIScreenGroup : ToggleableGroup
 {
-    [SerializeField] ScreenViewUi _firstView;
-    readonly Stack<ToggleableObject> _screens = new();
+    [SerializeField] Toggleable _firstView;
+    readonly Stack<Toggleable> _screens = new();
 
     private void Start()
     {
         AddActiveToggleable(_firstView);
     }
 
-    protected override bool AddActiveToggleable(ToggleableObject screen)
+    protected override bool AddActiveToggleable(Toggleable screen)
     {
-        ToggleableObject prev = null;
+        Toggleable prev = null;
         if (_active.Count != 0)
             prev = _active[0];
 
@@ -22,7 +22,7 @@ public sealed class UIScreenGroup : ToggleableGroup
         return true;
     }
 
-    protected override bool RemoveActiveToggleable(ToggleableObject screen)
+    protected override bool RemoveActiveToggleable(Toggleable screen)
     {
         if (base.RemoveActiveToggleable(screen) && _screens.Count != 0)
             AddActiveToggleable(_screens.Pop());

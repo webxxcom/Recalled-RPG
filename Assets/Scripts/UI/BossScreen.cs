@@ -11,13 +11,15 @@ public class BossHpUiManager : UiView
     [SerializeField] BossStartDataGameEvent OnBossStarted;
     [SerializeField] BossStartDataGameEvent OnBossDefeat;
 
-    private void OnEnable()
+    protected override void OnEnable()
     {
+        base.OnEnable();
         OnBossStarted.OnEventRaised += StartBoss;
         OnBossDefeat.OnEventRaised += EndBoss;
     }
-    private void OnDisable()
+    protected override void OnDisable()
     {
+        base.OnDisable();
         OnBossStarted.OnEventRaised -= StartBoss;
         OnBossDefeat.OnEventRaised -= EndBoss;
     }

@@ -1,5 +1,4 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class ScreenViewUi : UiView
@@ -9,16 +8,20 @@ public class ScreenViewUi : UiView
     [Tooltip("Game Event which toggles(!) the UI screen")]
     [SerializeField] VoidGameEvent OnGameEventRaised;
 
-    void OnEnable()
-        => OnGameEventRaised.OnEventRaised += RequestToggle;
-    void OnDisable()
-        => OnGameEventRaised.OnEventRaised -= RequestToggle;
-
-    protected override void Activate()
+    protected override void OnEnable()
     {
-        base.Activate();
+        base.OnEnable();
 
-        ApplyCurrentState();
+        OnGameEventRaised.OnEventRaised += _toggleable.RequestToggle;
+        _toggleable.Activated += ApplyCurrentState;
+    }
+
+    protected override void OnDisable()
+    {
+        base.OnDisable();
+
+        OnGameEventRaised.OnEventRaised -= _toggleable.RequestToggle;
+        _toggleable.Activated -= ApplyCurrentState;
     }
 
     void ApplyCurrentState()

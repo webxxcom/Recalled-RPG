@@ -10,7 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 553927085509989883}
   - component: {fileID: 3494358299966575099}
-  - component: {fileID: 3541444738843123500}
+  - component: {fileID: 7694638383640617219}
+  - component: {fileID: 5618719260677781742}
   m_Layer: 5
   m_Name: Tab
   m_TagString: Untagged
@@ -61,7 +62,19 @@ MonoBehaviour:
   - key: Enter
     value: {fileID: 11400000, guid: 34b8888ff3d3ca94f8bf610abef4b92b, type: 2}
   _useUnscaledTime: 1
---- !u!114 &3541444738843123500
+--- !u!114 &7694638383640617219
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 12825557610876373}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ccbf9b5ad9a2b374b92f768ea5e9ed8d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Toggleable
+--- !u!114 &5618719260677781742
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -72,7 +85,7 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2e812b7e7235f3d4fa1501c954bd5b11, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::BookUITab
+  m_EditorClassIdentifier: Assembly-CSharp::ToggleableAnimation
 --- !u!1 &5925012911335335216
 GameObject:
   m_ObjectHideFlags: 0

@@ -20,12 +20,12 @@ public class ToggleableGroup : MonoBehaviour
     [SerializeField] bool _allowMultiple;
     [SerializeField] bool _allowEmpty;
 
-    List<ToggleableObject> _toggleables;
-    [SerializeField] protected List<ToggleableObject> _active = new();
+    List<Toggleable> _toggleables;
+    [SerializeField] protected List<Toggleable> _active = new();
 
-    public IReadOnlyList<ToggleableObject> Elements => _toggleables;
+    public IReadOnlyList<Toggleable> Elements => _toggleables;
 
-    public event Action<ToggleableObject> ScreenChanged;
+    public event Action<Toggleable> ScreenChanged;
 
     private void Awake()
     {
@@ -44,14 +44,14 @@ public class ToggleableGroup : MonoBehaviour
             screen.ToggleRequested -= ToggleToggleable;
     }
 
-    void ToggleToggleable(ToggleableObject toggleable)
+    void ToggleToggleable(Toggleable toggleable)
     {
         if (_active.Contains(toggleable))
             RemoveActiveToggleable(toggleable);
         else AddActiveToggleable(toggleable);
     }
 
-    protected virtual bool AddActiveToggleable(ToggleableObject toggleable)
+    protected virtual bool AddActiveToggleable(Toggleable toggleable)
     {
         // Don't want to set same screen again or more than one if disallowed
         if (toggleable == null || toggleable.IsActive)
@@ -66,7 +66,7 @@ public class ToggleableGroup : MonoBehaviour
         return true;
     }
 
-    protected virtual bool RemoveActiveToggleable(ToggleableObject screen)
+    protected virtual bool RemoveActiveToggleable(Toggleable screen)
     {
         if (screen == null || !screen.IsActive || (_active.Count == 1 && !_allowEmpty))
             return false;
@@ -74,7 +74,7 @@ public class ToggleableGroup : MonoBehaviour
         return UncheckedRemoveActiveScreen(screen);
     }
 
-    bool UncheckedRemoveActiveScreen(ToggleableObject screen)
+    bool UncheckedRemoveActiveScreen(Toggleable screen)
     {
         if (!_active.Remove(screen))
             return false;
@@ -95,7 +95,7 @@ public class ToggleableGroup : MonoBehaviour
         AddActiveToggleable(nextTab);
     }
 
-    public bool Request(ToggleableObject toggleable)
+    public bool Request(Toggleable toggleable)
     {
         if (toggleable == null || !_toggleables.Contains(toggleable))
             return false;
@@ -110,7 +110,7 @@ public class ToggleableGroup : MonoBehaviour
 
         foreach (Transform child in transform)
         {
-            if (child.TryGetComponent(out ToggleableObject screen))
+            if (child.TryGetComponent(out Toggleable screen))
                 _toggleables.Add(screen);
         }
     }

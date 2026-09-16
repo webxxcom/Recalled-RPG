@@ -1,7 +1,8 @@
 ﻿using System;
 using UnityEngine;
 
-public class ToggleableObject : MonoBehaviour, IToggleable
+[DisallowMultipleComponent]
+public class Toggleable : MonoBehaviour, IToggleable
 {
     /// <summary>
     /// IsActive is never called withing the class or the inheritors to avoid races for being active.
@@ -14,11 +15,14 @@ public class ToggleableObject : MonoBehaviour, IToggleable
     /// Event describing the desire to be toggled not an actual toggling.
     /// The manager then allows or disallows the call
     ///</summary>
-    public event Action<ToggleableObject> ToggleRequested;
+    public event Action<Toggleable> ToggleRequested;
 
-    protected void RequestToggle() => ToggleRequested?.Invoke(this);
+    public event Action Activated;
+    public event Action Deactivated;
 
-    protected virtual void Start()
+    public void RequestToggle() => ToggleRequested?.Invoke(this);
+
+    void Start()
     {
         UpdateState();
     }
@@ -29,11 +33,8 @@ public class ToggleableObject : MonoBehaviour, IToggleable
         else Deactivate();
     }
 
-    /// <summary>
-    /// Virtual methods representing instructions to complete after the desire to be toggled is fulfilled
-    /// </summary>
-    protected virtual void Activate() { }
-    protected virtual void Deactivate() { }
+    void Activate() { Activated?.Invoke(); }
+    void Deactivate() { Deactivated?.Invoke(); }
 
     void IToggleable.SetActive(bool value)
     {

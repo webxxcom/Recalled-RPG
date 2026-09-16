@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
-public class ControlsSettingsMenu : ToggleableObject
+public class ControlsSettingsMenu : Toggleable
 {
     [SerializeField] InputActionAsset _currentInput;
     [SerializeField] ControlBindItem _inputBindUIItem;
@@ -55,7 +55,7 @@ public class ControlsSettingsMenu : ToggleableObject
     public void NotifyRebinding(InputActionRebindingExtensions.RebindingOperation oper)
         => _currentRebinding = oper;
 
-    protected override void Deactivate()
+    void Deactivate()
     {
         if (_currentRebinding != null && _currentRebinding.started)
             _currentRebinding.Cancel();

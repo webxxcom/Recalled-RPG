@@ -49,17 +49,18 @@ public class DialogueManager : ScreenViewUi
     protected override void Start()
     {
         base.Start();
-
         ResetFields();
     }
 
-    private void OnEnable()
+    protected override void OnEnable()
     {
+        base.OnEnable();
         OnDialogueStarted.OnEventRaised += BeginDialogue;
     }
 
-    private void OnDisable()
+    protected override void OnDisable()
     {
+        base.OnDisable();
         OnDialogueStarted.OnEventRaised -= BeginDialogue;
     }
 
