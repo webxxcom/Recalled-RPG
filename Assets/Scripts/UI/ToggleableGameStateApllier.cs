@@ -1,26 +1,26 @@
 ﻿using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class ScreenViewUi : UiView
+[RequireComponent(typeof(Toggleable))]
+public class ToggleableGameStateApllier : MonoBehaviour
 {
     [SerializeField] GameState _gameState;
     [SerializeField] PlayerInput _playerInput;
-    [Tooltip("Game Event which toggles(!) the UI screen")]
-    [SerializeField] VoidGameEvent OnGameEventRaised;
 
-    protected override void OnEnable()
+    Toggleable _toggleable;
+
+    private void Awake()
     {
-        base.OnEnable();
+        _toggleable = GetComponent<Toggleable>();
+    }
 
-        OnGameEventRaised.OnEventRaised += _toggleable.RequestToggle;
+    void OnEnable()
+    {
         _toggleable.Activated += ApplyCurrentState;
     }
 
-    protected override void OnDisable()
+    void OnDisable()
     {
-        base.OnDisable();
-
-        OnGameEventRaised.OnEventRaised -= _toggleable.RequestToggle;
         _toggleable.Activated -= ApplyCurrentState;
     }
 

@@ -21,26 +21,36 @@ public class ToggleableGroup : MonoBehaviour
     [SerializeField] bool _allowEmpty;
 
     List<Toggleable> _toggleables;
-    [SerializeField] protected List<Toggleable> _active = new();
+    protected List<Toggleable> _active = new();
 
-    public IReadOnlyList<Toggleable> Elements => _toggleables;
+    public IReadOnlyList<Toggleable> Elements
+    {
+        get
+        {
+            if (_toggleables == null)
+            {
+                _toggleables = new();
+                foreach (Transform child in transform)
+                {
+                    if (child.TryGetComponent(out Toggleable screen))
+                        _toggleables.Add(screen);
+                }
+            }
+            return _toggleables;
+        }
+    }
 
     public event Action<Toggleable> ScreenChanged;
 
-    private void Awake()
-    {
-        GetImmeaditeChildren();
-    }
-
     private void OnEnable()
     {
-        foreach (var screen in _toggleables)
+        foreach (var screen in Elements)
             screen.ToggleRequested += ToggleToggleable;
     }
 
     private void OnDisable()
     {
-        foreach (var screen in _toggleables)
+        foreach (var screen in Elements)
             screen.ToggleRequested -= ToggleToggleable;
     }
 
@@ -102,16 +112,5 @@ public class ToggleableGroup : MonoBehaviour
 
         AddActiveToggleable(toggleable);
         return true;
-    }
-
-    void GetImmeaditeChildren()
-    {
-        _toggleables = new();
-
-        foreach (Transform child in transform)
-        {
-            if (child.TryGetComponent(out Toggleable screen))
-                _toggleables.Add(screen);
-        }
     }
 }

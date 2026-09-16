@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Canvas))]
-public sealed class InventoryManager : ScreenViewUi
+public sealed class InventoryManager : MonoBehaviour
 {
     [SerializeField] InventorySO _inventory;
 
@@ -25,24 +25,20 @@ public sealed class InventoryManager : ScreenViewUi
 
     public event Action OnEquippedItems;
 
-    protected override void Awake()
+    void Awake()
     {
-        base.Awake();
-
         _descriptionManager = GetComponentInChildren<DescriptionManager>();
     }
 
-    protected override void OnEnable()
+    void OnEnable()
     {
-        base.OnEnable();
         OnUIElementSelected.OnEventRaised += ItemSelected;
         OnUIElementDeselected.OnEventRaised += ItemDeselected;
         _inventory.OnItemsChanged += Show;
     }
 
-    protected override void OnDisable()
+    void OnDisable()
     {
-        base.OnDisable();
         OnUIElementSelected.OnEventRaised -= ItemSelected;
         OnUIElementDeselected.OnEventRaised -= ItemDeselected;
         _inventory.OnItemsChanged -= Show;

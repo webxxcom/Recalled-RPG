@@ -2,7 +2,7 @@ using System;
 using TMPro;
 using UnityEngine;
 
-public class BossHpUiManager : UiView
+public class BossHpUiManager : MonoBehaviour
 {
     [SerializeField] TextMeshProUGUI _bossText;
     [SerializeField] BarScriptUI _fillHpBar;
@@ -11,15 +11,13 @@ public class BossHpUiManager : UiView
     [SerializeField] BossStartDataGameEvent OnBossStarted;
     [SerializeField] BossStartDataGameEvent OnBossDefeat;
 
-    protected override void OnEnable()
+    void OnEnable()
     {
-        base.OnEnable();
         OnBossStarted.OnEventRaised += StartBoss;
         OnBossDefeat.OnEventRaised += EndBoss;
     }
-    protected override void OnDisable()
+    void OnDisable()
     {
-        base.OnDisable();
         OnBossStarted.OnEventRaised -= StartBoss;
         OnBossDefeat.OnEventRaised -= EndBoss;
     }

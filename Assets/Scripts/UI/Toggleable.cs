@@ -4,6 +4,8 @@ using UnityEngine;
 [DisallowMultipleComponent]
 public class Toggleable : MonoBehaviour, IToggleable
 {
+    [SerializeField] bool _hidesWhenInactive;
+
     /// <summary>
     /// IsActive is never called withing the class or the inheritors to avoid races for being active.
     /// The manager, or handler, or anything else manages the activation of the gameobject,
@@ -33,8 +35,8 @@ public class Toggleable : MonoBehaviour, IToggleable
         else Deactivate();
     }
 
-    void Activate() { Activated?.Invoke(); }
-    void Deactivate() { Deactivated?.Invoke(); }
+    void Activate() { if (_hidesWhenInactive) gameObject.SetActive(true); Activated?.Invoke(); }
+    void Deactivate() { if (_hidesWhenInactive) gameObject.SetActive(false); Deactivated?.Invoke(); }
 
     void IToggleable.SetActive(bool value)
     {

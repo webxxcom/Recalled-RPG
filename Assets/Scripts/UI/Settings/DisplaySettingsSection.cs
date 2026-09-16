@@ -4,7 +4,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public sealed class DisplaySettingsSection : UiView
+public sealed class DisplaySettingsSection : MonoBehaviour
 {
     [SerializeField] Toggle _fullscreen;
     [SerializeField] TMP_Dropdown _resolutionsDropDown;
@@ -24,16 +24,14 @@ public sealed class DisplaySettingsSection : UiView
         _vsync.isOn = QualitySettings.vSyncCount > 0;
     }
 
-    protected override void OnEnable()
+    void OnEnable()
     {
-        base.OnEnable();
         _fullscreen.onValueChanged.AddListener(OnFullScreen);
         _resolutionsDropDown.onValueChanged.AddListener(OnResolution);
         _vsync.onValueChanged.AddListener(OnVSync);
     }
-    protected override void OnDisable()
+    void OnDisable()
     {
-        base.OnDisable();
         _fullscreen.onValueChanged.RemoveListener(OnFullScreen);
         _resolutionsDropDown.onValueChanged.RemoveListener(OnResolution);
         _vsync.onValueChanged.RemoveListener(OnVSync);

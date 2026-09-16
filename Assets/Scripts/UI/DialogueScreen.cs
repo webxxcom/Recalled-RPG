@@ -8,7 +8,7 @@ using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 [RequireComponent(typeof(AudioSource))]
-public class DialogueManager : ScreenViewUi
+public class DialogueManager : MonoBehaviour
 {
     [SerializeField] Object _playerDialogueButtonPrefab;
     [SerializeField] GameObject _buttonGrid;
@@ -33,10 +33,8 @@ public class DialogueManager : ScreenViewUi
         _enterPressed.Value = false;
     }
 
-    protected override void Awake()
+    void Awake()
     {
-        base.Awake();
-
         _audioSource = GetComponent<AudioSource>();
 
         _leftEntity = FindAnyObjectByType<LeftEntityDialogController>();
@@ -46,21 +44,18 @@ public class DialogueManager : ScreenViewUi
         _continueButton.onClick.AddListener(() => _enterPressed.Value = true);
     }
 
-    protected override void Start()
+    void Start()
     {
-        base.Start();
         ResetFields();
     }
 
-    protected override void OnEnable()
+    void OnEnable()
     {
-        base.OnEnable();
         OnDialogueStarted.OnEventRaised += BeginDialogue;
     }
 
-    protected override void OnDisable()
+    void OnDisable()
     {
-        base.OnDisable();
         OnDialogueStarted.OnEventRaised -= BeginDialogue;
     }
 
