@@ -14,51 +14,37 @@ using UnityEngine;
 ///     is active or multiple screens are allowed
 /// 
 /// </summary>
-public class ScreenGroup : MonoBehaviour
+public class ToggleableGroup : MonoBehaviour
 {
     [SerializeField] bool _allowMultiple;
-    [SerializeField] bool _allowEmpty;
-    [SerializeField] ToggleableObject _defaultScreen;
 
-    List<ToggleableObject> _screens;
-    [SerializeField] protected List<ToggleableObject> _activeScreens = new();
+    List<ToggleableObject> _toggleables;
+    [SerializeField] protected List<ToggleableObject> _active = new();
+
+    public IReadOnlyList<ToggleableObject> Elements => _toggleables;
 
     public event Action<ToggleableObject> ScreenChanged;
 
     private void Awake()
     {
-        _screens = new();
-
-        foreach (Transform child in transform)
-        {
-            if (child.TryGetComponent(out ToggleableObject screen))
-                _screens.Add(screen);
-        }
-
-        if (!_allowEmpty && _defaultScreen == null)
-            Debug.LogException(new MissingReferenceException("Can't have a non-empty group with no default screen"), this);
+        GetImmeaditeChildren();
     }
 
     private void OnEnable()
     {
-        foreach (var screen in _screens)
+        foreach (var screen in _toggleables)
             screen.ToggleRequested += ToggleSreen;
     }
 
     private void OnDisable()
     {
-        foreach (var screen in _screens)
+        foreach (var screen in _toggleables)
             screen.ToggleRequested -= ToggleSreen;
-    }
-
-    private void Start()
-    {
-        AddActiveScreen(_defaultScreen);
     }
 
     void ToggleSreen(ToggleableObject screen)
     {
-        if (_allowEmpty && screen.IsActive && _activeScreens.Contains(screen))
+        if (_active.Contains(screen))
             RemoveActiveScreen(screen);
         else AddActiveScreen(screen);
     }
@@ -69,10 +55,10 @@ public class ScreenGroup : MonoBehaviour
         if (screen == null || screen.IsActive)
             return false;
 
-        if (!_allowMultiple && _activeScreens.Count > 0)
-            UncheckedRemoveActiveScreen(_activeScreens[0]);
+        if (!_allowMultiple && _active.Count > 0)
+            UncheckedRemoveActiveScreen(_active[0]);
 
-        _activeScreens.Add(screen);
+        _active.Add(screen);
         ((IToggleable)screen).SetActive(true);
         ScreenChanged?.Invoke(screen);
         return true;
@@ -80,7 +66,7 @@ public class ScreenGroup : MonoBehaviour
 
     protected virtual bool RemoveActiveScreen(ToggleableObject screen)
     {
-        if (screen == null || !screen.IsActive || (_activeScreens.Count == 1 && !_allowEmpty))
+        if (screen == null || !screen.IsActive)
             return false;
 
         return UncheckedRemoveActiveScreen(screen);
@@ -88,7 +74,7 @@ public class ScreenGroup : MonoBehaviour
 
     bool UncheckedRemoveActiveScreen(ToggleableObject screen)
     {
-        if (!_activeScreens.Remove(screen))
+        if (!_active.Remove(screen))
             return false;
 
         ((IToggleable)screen).SetActive(false);
@@ -101,18 +87,29 @@ public class ScreenGroup : MonoBehaviour
             return;
 
         if (offset < 0)
-            offset = _screens.Count + offset;
+            offset = _toggleables.Count + offset;
 
-        var nextTab = _screens[(_screens.IndexOf(_activeScreens[0]) + offset) % _screens.Count];
+        var nextTab = _toggleables[(_toggleables.IndexOf(_active[0]) + offset) % _toggleables.Count];
         AddActiveScreen(nextTab);
     }
 
     public bool RequestScreen(ToggleableObject toggleable)
     {
-        if (toggleable == null || !_screens.Contains(toggleable))
+        if (toggleable == null || !_toggleables.Contains(toggleable))
             return false;
 
         AddActiveScreen(toggleable);
         return true;
+    }
+
+    void GetImmeaditeChildren()
+    {
+        _toggleables = new();
+
+        foreach (Transform child in transform)
+        {
+            if (child.TryGetComponent(out ToggleableObject screen))
+                _toggleables.Add(screen);
+        }
     }
 }

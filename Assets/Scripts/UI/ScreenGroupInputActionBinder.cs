@@ -1,17 +1,17 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-[RequireComponent(typeof(ScreenGroup))]
+[RequireComponent(typeof(ToggleableGroup))]
 public class ScreenGroupInputActionBinder : MonoBehaviour
 {
     [SerializeField] InputActionReference _prevPageAction;
     [SerializeField] InputActionReference _nextPageAction;
 
-    ScreenGroup _screenGroup;
+    ToggleableGroup _screenGroup;
 
     private void Awake()
     {
-        _screenGroup = GetComponent<ScreenGroup>();
+        _screenGroup = GetComponent<ToggleableGroup>();
     }
 
     private void OnEnable()

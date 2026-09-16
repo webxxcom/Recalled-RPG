@@ -1,14 +1,14 @@
 using System.Collections.Generic;
 
-public sealed class UIScreenGroup : ScreenGroup
+public sealed class UIScreenGroup : ToggleableGroup
 {
     readonly Stack<ToggleableObject> _screens = new();
 
     protected override bool AddActiveScreen(ToggleableObject screen)
     {
         ToggleableObject prev = null;
-        if (_activeScreens.Count != 0)
-            prev = _activeScreens[0];
+        if (_active.Count != 0)
+            prev = _active[0];
 
         if (base.AddActiveScreen(screen) && prev != null)
             _screens.Push(prev);
