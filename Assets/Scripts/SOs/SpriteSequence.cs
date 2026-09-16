@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "UI/Sprite Sequence")]
@@ -46,6 +47,11 @@ public class SpriteSequence : ScriptableObject
     {
         _frames = frames;
         _length = length;
+    }
+
+    private void OnValidate()
+    {
+        _length = _frames?.Sum(f => f.Time) ?? 0;
     }
 #endif
 }

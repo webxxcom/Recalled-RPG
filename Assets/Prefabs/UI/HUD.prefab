@@ -880,7 +880,6 @@ GameObject:
   m_Component:
   - component: {fileID: 5483117024435693952}
   - component: {fileID: 6591008581597008549}
-  - component: {fileID: 685661870943255960}
   m_Layer: 5
   m_Name: HUD
   m_TagString: Untagged
@@ -933,21 +932,6 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
---- !u!114 &685661870943255960
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8201910989504618622}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c8604750d8ff2a94eb38670633df6908, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::UIScreen
-  _gameState: {fileID: 11400000, guid: 7c01c6c4536ce5e4092af52bd179adcf, type: 2}
-  _playerInput: {fileID: 0}
-  OnGameEventRaised: {fileID: 11400000, guid: 0551eca51c97cfb44bcff5249c9bafa4, type: 2}
 --- !u!1 &8844188239557749939
 GameObject:
   m_ObjectHideFlags: 0

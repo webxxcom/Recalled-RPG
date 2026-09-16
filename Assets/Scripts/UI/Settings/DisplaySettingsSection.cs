@@ -1,11 +1,10 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public sealed class DisplaySettingsSection : ToggleableObject
+public sealed class DisplaySettingsSection : UiView
 {
     [SerializeField] Toggle _fullscreen;
     [SerializeField] TMP_Dropdown _resolutionsDropDown;

@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 [RequireComponent(typeof(Canvas))]
@@ -26,13 +27,16 @@ public abstract class UiView : ToggleableObject
 
     void ToggleElements(bool val)
     {
-        _canvas.enabled = val;
-        ToggleNavigation(val);
+        gameObject.SetActive(val);
+        //_canvas.enabled = val;
+        //ToggleNavigation(val);
     }
 
     protected override void Activate()
     {
         ToggleElements(true);
+
+        EventSystem.current.SetSelectedGameObject(_selectables.Length > 0 ? _selectables[0].gameObject : null);
     }
 
     protected override void Deactivate()

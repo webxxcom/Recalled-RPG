@@ -1,22 +1,21 @@
-using System;
 using UnityEngine;
 using UnityEngine.EventSystems;
-using UnityEngine.UI;
 
-[RequireComponent(typeof(Button))]
 [RequireComponent(typeof(UISpriteAnimator))]
-public class BookUITab : ToggleableObject, IPointerEnterHandler, IPointerExitHandler
+public class BookUITab : ToggleableObject, IPointerEnterHandler, IPointerExitHandler, ISelectHandler, IDeselectHandler, IPointerClickHandler
 { 
     UISpriteAnimator _animator;
-    Button _button;
 
-    private void OnEnable() => _button.onClick.AddListener(RequestToggle);
-    private void OnDisable() => _button.onClick.RemoveListener(RequestToggle);
+    public void OnSelect(BaseEventData eventData)
+    {
+        RequestToggle();
+        OnEnter();
+    }
+    public void OnPointerClick(PointerEventData eventData) => RequestToggle();
 
     private void Awake()
     {
         _animator = GetComponent<UISpriteAnimator>();
-        _button = GetComponent<Button>();
     }
 
     protected override void Activate()
@@ -41,4 +40,5 @@ public class BookUITab : ToggleableObject, IPointerEnterHandler, IPointerExitHan
 
     public void OnPointerEnter(PointerEventData eventData) => OnEnter();
     public void OnPointerExit(PointerEventData eventData) => OnExit();
+    public void OnDeselect(BaseEventData eventData) => OnExit();
 }

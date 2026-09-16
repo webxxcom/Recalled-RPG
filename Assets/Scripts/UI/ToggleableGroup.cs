@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 /// <summary>
 /// 
@@ -17,6 +18,7 @@ using UnityEngine;
 public class ToggleableGroup : MonoBehaviour
 {
     [SerializeField] bool _allowMultiple;
+    [SerializeField] bool _allowEmpty;
 
     List<ToggleableObject> _toggleables;
     [SerializeField] protected List<ToggleableObject> _active = new();
@@ -33,40 +35,40 @@ public class ToggleableGroup : MonoBehaviour
     private void OnEnable()
     {
         foreach (var screen in _toggleables)
-            screen.ToggleRequested += ToggleSreen;
+            screen.ToggleRequested += ToggleToggleable;
     }
 
     private void OnDisable()
     {
         foreach (var screen in _toggleables)
-            screen.ToggleRequested -= ToggleSreen;
+            screen.ToggleRequested -= ToggleToggleable;
     }
 
-    void ToggleSreen(ToggleableObject screen)
+    void ToggleToggleable(ToggleableObject toggleable)
     {
-        if (_active.Contains(screen))
-            RemoveActiveScreen(screen);
-        else AddActiveScreen(screen);
+        if (_active.Contains(toggleable))
+            RemoveActiveToggleable(toggleable);
+        else AddActiveToggleable(toggleable);
     }
 
-    protected virtual bool AddActiveScreen(ToggleableObject screen)
+    protected virtual bool AddActiveToggleable(ToggleableObject toggleable)
     {
         // Don't want to set same screen again or more than one if disallowed
-        if (screen == null || screen.IsActive)
+        if (toggleable == null || toggleable.IsActive)
             return false;
 
         if (!_allowMultiple && _active.Count > 0)
             UncheckedRemoveActiveScreen(_active[0]);
 
-        _active.Add(screen);
-        ((IToggleable)screen).SetActive(true);
-        ScreenChanged?.Invoke(screen);
+        _active.Add(toggleable);
+        ((IToggleable)toggleable).SetActive(true);
+        ScreenChanged?.Invoke(toggleable);
         return true;
     }
 
-    protected virtual bool RemoveActiveScreen(ToggleableObject screen)
+    protected virtual bool RemoveActiveToggleable(ToggleableObject screen)
     {
-        if (screen == null || !screen.IsActive)
+        if (screen == null || !screen.IsActive || (_active.Count == 1 && !_allowEmpty))
             return false;
 
         return UncheckedRemoveActiveScreen(screen);
@@ -90,15 +92,15 @@ public class ToggleableGroup : MonoBehaviour
             offset = _toggleables.Count + offset;
 
         var nextTab = _toggleables[(_toggleables.IndexOf(_active[0]) + offset) % _toggleables.Count];
-        AddActiveScreen(nextTab);
+        AddActiveToggleable(nextTab);
     }
 
-    public bool RequestScreen(ToggleableObject toggleable)
+    public bool Request(ToggleableObject toggleable)
     {
         if (toggleable == null || !_toggleables.Contains(toggleable))
             return false;
 
-        AddActiveScreen(toggleable);
+        AddActiveToggleable(toggleable);
         return true;
     }
 

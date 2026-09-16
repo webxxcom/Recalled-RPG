@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-public abstract class ToggleableObject : MonoBehaviour, IToggleable
+public class ToggleableObject : MonoBehaviour, IToggleable
 {
     /// <summary>
     /// IsActive is never called withing the class or the inheritors to avoid races for being active.
