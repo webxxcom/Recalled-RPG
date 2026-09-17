@@ -1,9 +1,20 @@
 using System.Linq;
+using Unity.AppUI.UI;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
 using static InputDeviceSO.ActionImagePair;
 
+/// <summary>
+/// The component describes an object which shows the current binding by a connected device to the serialized action
+/// 
+/// The visuals are changed only in 2 cases:
+///     1. The button is currently observable and controls are changed;
+///     2. The button was activated
+/// 
+/// The second point makes it difficult because the button should make a request for current binding or smth should tell it.
+/// The object activating the button should populate current control scheme
+/// </summary>
 [RequireComponent(typeof(Image))]
 public class HintInputButton : MonoBehaviour
 {
@@ -11,6 +22,7 @@ public class HintInputButton : MonoBehaviour
     [Tooltip("Fill in only if the action contains composite bindings")]
     [SerializeField] string _compositePartName;
     [SerializeField] AvailableInputDevicesSO _inputDevices;
+    [SerializeField] bool _listenToInput;
 
     [Header("Listens to")]
     [SerializeField] StringGameEvent _controlsChanged;
@@ -25,8 +37,19 @@ public class HintInputButton : MonoBehaviour
         _graphic = GetComponent<Image>();
     }
 
-    void OnPress(InputAction.CallbackContext _) { _graphic.sprite = _frames?.Pressed; }
-    void OnRelease(InputAction.CallbackContext _) { _graphic.sprite = _frames?.Released; }
+    void UpdateGraphics(Sprite sprite)
+    {
+        _graphic.sprite = sprite;
+    }
+
+    void OnPress(InputAction.CallbackContext _)
+    {
+        if (_listenToInput) UpdateGraphics(_frames?.Pressed);
+    }
+    void OnRelease(InputAction.CallbackContext _)
+    {
+        if (_listenToInput) UpdateGraphics(_frames?.Released);
+    }
 
     private void OnEnable()
     {
@@ -34,7 +57,7 @@ public class HintInputButton : MonoBehaviour
         _inputAction.action.canceled += OnRelease;
         _controlsChanged.AddListener(SetHintSprite);
 
-        UpdateGraphics();
+        SetHintSprite(PlayerInputWatcher.CurrentScheme);
     }
 
     private void OnDisable()

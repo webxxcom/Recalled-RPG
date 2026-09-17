@@ -68,7 +68,7 @@ MonoBehaviour:
   m_text: Display
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 6d6aadbce0f46a84598d2e5ae7ce87a2, type: 2}
-  m_sharedMaterial: {fileID: 2502885144650723280, guid: 6d6aadbce0f46a84598d2e5ae7ce87a2, type: 2}
+  m_sharedMaterial: {fileID: 2100000, guid: 790deb43363005747bec14b5a8ede0e9, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -273,6 +273,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ccbf9b5ad9a2b374b92f768ea5e9ed8d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Toggleable
+  _hidesWhenInactive: 0
 --- !u!114 &2424012927989337741
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Unity.Loading;
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "Inventory/Player Inventory")]
@@ -16,7 +15,16 @@ public class InventorySO : ScriptableObject
 
     public event Action OnItemsChanged;
 
+    public int MaxItemsCount => _maxItemsCount;
     public bool IsFull => Items.Count >= _maxItemsCount;
+
+    public IReadOnlyList<ItemInstance> GeneralItems
+        => Items.Where(i => !i.IsQuickSlot).ToArray();
+
+    public void VisualsChanged()
+    {
+        OnItemsChanged?.Invoke();
+    }
 
     public bool AddItem(ItemInstance item)
     {
@@ -36,7 +44,7 @@ public class InventorySO : ScriptableObject
 
     bool TryAddStocked(ItemDefinition itemDefinition, int count)
     {
-        if (!itemDefinition.IsStockable)
+        if (!itemDefinition.IsStackable)
             return false;
 
         foreach (var iitem in Items)
@@ -88,9 +96,40 @@ public class InventorySO : ScriptableObject
 #if UNITY_EDITOR
     private void OnValidate()
     {
+        if (Items == null)
+            return;
+
         for (int i = 0; i < Items.Count; i++)
-            if (Items[i].Definition != null)
-                Items[i] = Items[i].Definition.CreateInstance();
+        {
+            ItemInstance item = Items[i];
+
+            if (item == null)
+            {
+                Debug.LogWarning($"{name}: entry {i} is null.", this);
+                continue;
+            }
+
+            ItemDefinition definition = item.Definition;
+
+            if (definition == null)
+            {
+                Debug.LogWarning($"{name}: entry {i} has no definition.", this);
+                continue;
+            }
+
+            int min = definition.IsStackable ? definition.MinStockSize : 1;
+            int max = definition.IsStackable ? definition.MaxStockSize : 1;
+
+            if (item.Count < min || item.Count > max)
+            {
+                Debug.LogWarning(
+                    $"{name}: '{definition.name}' count {item.Count} is outside [{min}, {max}]. Clamping.", this);
+                item.Count = Mathf.Clamp(item.Count, min, max);
+            }
+        }
+
+        if (Items.Count > _maxItemsCount)
+            Debug.LogWarning($"{name}: {Items.Count} entries exceeds Max Items Count ({_maxItemsCount}).", this);
     }
 #endif
 }

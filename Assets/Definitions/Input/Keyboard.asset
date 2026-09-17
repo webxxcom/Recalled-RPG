@@ -38,3 +38,19 @@ MonoBehaviour:
     _frames:
       Pressed: {fileID: 570643459060714625, guid: 8ec24e7ae85c4dc4881f9e2cf7db9fba, type: 3}
       Released: {fileID: -3861228366798567656, guid: 8ec24e7ae85c4dc4881f9e2cf7db9fba, type: 3}
+  - _path: 1
+    _frames:
+      Pressed: {fileID: -2601136688697361768, guid: 8ec24e7ae85c4dc4881f9e2cf7db9fba, type: 3}
+      Released: {fileID: -2757011897347712697, guid: 8ec24e7ae85c4dc4881f9e2cf7db9fba, type: 3}
+  - _path: 2
+    _frames:
+      Pressed: {fileID: -35191743808256028, guid: 8ec24e7ae85c4dc4881f9e2cf7db9fba, type: 3}
+      Released: {fileID: -4637980410275206831, guid: 8ec24e7ae85c4dc4881f9e2cf7db9fba, type: 3}
+  - _path: 3
+    _frames:
+      Pressed: {fileID: -5523906700707039277, guid: 8ec24e7ae85c4dc4881f9e2cf7db9fba, type: 3}
+      Released: {fileID: -4365598964058588665, guid: 8ec24e7ae85c4dc4881f9e2cf7db9fba, type: 3}
+  - _path: 4
+    _frames:
+      Pressed: {fileID: 6464851886681190896, guid: 8ec24e7ae85c4dc4881f9e2cf7db9fba, type: 3}
+      Released: {fileID: -7265340805825683727, guid: 8ec24e7ae85c4dc4881f9e2cf7db9fba, type: 3}

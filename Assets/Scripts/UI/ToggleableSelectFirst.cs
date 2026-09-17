@@ -1,17 +1,18 @@
-﻿using UnityEngine;
+﻿using Unity.VisualScripting;
+using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 [RequireComponent(typeof(Toggleable))]
 public sealed class ToggleableSelectFirst : MonoBehaviour
 {
-    Selectable[] _selectables;
+    [SerializeField] Selectable _selectFirst;
+
     Toggleable _toggleable;
 
     void Awake()
     {
         _toggleable = GetComponent<Toggleable>();
-        _selectables = GetComponentsInChildren<Selectable>(true);
     }
 
     void OnEnable()
@@ -26,6 +27,13 @@ public sealed class ToggleableSelectFirst : MonoBehaviour
 
     void Show()
     {
-        EventSystem.current.SetSelectedGameObject(_selectables.Length > 0 ? _selectables[0].gameObject : null);
+        if (_selectFirst != null)
+            EventSystem.current.SetSelectedGameObject(_selectFirst.gameObject);
+        else
+        {
+            var selectable = GetComponentInChildren<Selectable>(true);
+            if (selectable != null)
+                EventSystem.current.SetSelectedGameObject(selectable.gameObject);
+        }
     }
 }

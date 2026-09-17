@@ -14,12 +14,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Inventory
   <Items>k__BackingField:
   - <Definition>k__BackingField: {fileID: 11400000, guid: e9eb1697ef0bf4846b5420bd6ab75501, type: 2}
-    <Count>k__BackingField: 1
+    _count: 1
   - <Definition>k__BackingField: {fileID: 11400000, guid: eaf1831fb346c5a47aeae7be05e9301e, type: 2}
-    <Count>k__BackingField: 1
+    _count: 1
   - <Definition>k__BackingField: {fileID: 11400000, guid: 751922f4b8ee5c540bda5357669b2e25, type: 2}
-    <Count>k__BackingField: 1
+    _count: 1
   - <Definition>k__BackingField: {fileID: 11400000, guid: 34c7a720b0e1804408665a3950b33fdc, type: 2}
-    <Count>k__BackingField: 1
-  _maxItemsCount: 9
-  _rejectItemText: {fileID: 7535224943969880707, guid: 60b7ea13c618dc14a93a5a3939157a8f, type: 3}
+    _count: 1
+  - <Definition>k__BackingField: {fileID: 11400000, guid: 27c11f398eced9b43914af4ea06a153d, type: 2}
+    _count: 1
+  - <Definition>k__BackingField: {fileID: 11400000, guid: 27c11f398eced9b43914af4ea06a153d, type: 2}
+    _count: 17
+  - <Definition>k__BackingField: {fileID: 11400000, guid: bfe601e8fe71394458b1add582d113b8, type: 2}
+    _count: 9
+  _maxItemsCount: 7

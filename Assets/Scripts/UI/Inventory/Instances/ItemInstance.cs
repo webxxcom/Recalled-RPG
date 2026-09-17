@@ -5,6 +5,8 @@ public class ItemInstance
 {
     [field: SerializeField] public ItemDefinition Definition { get; private set; }
     [SerializeField] int _count;
+    public bool IsQuickSlot { get; set; }
+
 
     public virtual string Description => Definition.Description;
 
