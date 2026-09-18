@@ -6,11 +6,14 @@ public sealed class InventorySlot : InventoryCell
 {
     [SerializeField] Selectable _selectable;
 
-    public override void SetItem(ItemInstance item)
+    public override bool SetItem(ItemInstance item)
     {
-        base.SetItem(item);
-
-        _selectable.enabled = true;
+        if (base.SetItem(item))
+        {
+            _selectable.enabled = true;
+            return true;
+        }
+        return false;
     }
 
     public override ItemInstance RemoveItem()

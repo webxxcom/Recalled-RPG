@@ -14,7 +14,7 @@ public class ItemDefinition : ScriptableObject
 
     public virtual ItemInstance CreateInstance(int count = 1)
     {
-        if (count > MaxStockSize)
+        if (count < MinStockSize || count > MaxStockSize)
             throw new System.ArgumentException($"{Name}'s quantity of {count} exceeded the allowed ${MaxStockSize}");
 
         return new(this, count);

@@ -1,12 +1,11 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 [System.Serializable]
 public class ItemInstance
 {
-    [field: SerializeField] public ItemDefinition Definition { get; private set; }
+    [field: SerializeField] public ItemDefinition Definition { get; set; }
     [SerializeField] int _count;
-    public bool IsQuickSlot { get; set; }
-
 
     public virtual string Description => Definition.Description;
 
@@ -21,6 +20,9 @@ public class ItemInstance
             _count = value;
         }
     }
+
+    public bool IsEmpty => Definition == null;
+    public void SetEmpty() => Definition = null;
 
     public ItemInstance(ItemDefinition itemDefinition, int count = 1)
     {

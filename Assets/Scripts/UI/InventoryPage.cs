@@ -1,3 +1,4 @@
+using System.Linq;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
@@ -6,8 +7,8 @@ public class InventoryPage : MonoBehaviour
 {
     [SerializeField] InputActionReference _quickSlotAction;
     [SerializeField] Highlighter _highlighter;
-    [SerializeField] QuickSlotsBook _quickSlots;
-    [SerializeField] InventoryContent _content;
+    [SerializeField] LoadoutView _quickSlotsView;
+    [SerializeField] LoadoutView _generalItemsView;
     [SerializeField] InventorySO _inventory;
 
     private void OnEnable()
@@ -19,35 +20,23 @@ public class InventoryPage : MonoBehaviour
         _quickSlotAction.action.performed -= OnQuickSlotToggle;
     }
 
-    void QuickSlotToggle(InventoryCell inventoryCell)
+    void QuickSlotToggle(InventorySlot slot)
     {
-        InventoryCell selected;
-        ItemInstance item;
-        if (inventoryCell.Item.IsQuickSlot)
-        {
-            if (_content.IsFull) return;
+        bool isInQuick = _quickSlotsView.Slots.Contains(slot);
+        bool isInGeneral = _generalItemsView.Slots.Contains(slot);
 
-            item = _quickSlots.RemoveItemFromCell(inventoryCell);
-            selected = _content.AddItemToView(item);
-        }
-        else
-        {
-            if (_quickSlots.IsFull) return;
+        if (!isInQuick && !isInGeneral) return;
 
-            item = _content.RemoveItemFromView(inventoryCell);
-            selected = _quickSlots.Add(item);
-        }
+        LoadoutView from = isInGeneral ? _generalItemsView : _quickSlotsView;
+        LoadoutView to = isInGeneral ? _quickSlotsView : _generalItemsView;
 
-        item.IsQuickSlot = !item.IsQuickSlot;
-        _inventory.VisualsChanged();
-
-        if (selected != null)
-            EventSystem.current.SetSelectedGameObject(selected.gameObject);
+        if (to.Loadout.Add(slot.Item))
+            from.Loadout.Remove(slot.Item);
     }
 
     void OnQuickSlotToggle(InputAction.CallbackContext _)
     {
         if (EventSystem.current.currentSelectedGameObject != null)
-            QuickSlotToggle(EventSystem.current.currentSelectedGameObject.GetComponent<InventoryCell>());
+            QuickSlotToggle(EventSystem.current.currentSelectedGameObject.GetComponent<InventorySlot>());
     }
 }

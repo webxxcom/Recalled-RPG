@@ -7,8 +7,8 @@ internal interface IEquippable
         ItemInstance replaced = GetInTheInventory(inventory);
 
         SetInTheInventory(inventory, equipped);
-        if (replaced != null) inventory.AddItem(replaced);
-        inventory.Remove(equipped);
+        if (replaced != null) inventory.GeneralLoadout.Add(replaced);
+        inventory.GeneralLoadout.Remove(equipped);
 
         return replaced;
     }
@@ -17,7 +17,7 @@ internal interface IEquippable
         ItemInstance cpy = GetInTheInventory(inventory);
 
         SetInTheInventory(inventory, null);
-        inventory.AddItem(cpy);
+        inventory.GeneralLoadout.Add(cpy);
 
         return cpy;
     }

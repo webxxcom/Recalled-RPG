@@ -8,14 +8,15 @@ public class InventoryCell : MonoBehaviour
     public ItemInstance Item { get; private set; }
     public bool HasItem => Item != null;
 
-    public virtual void SetItem(ItemInstance item)
+    public virtual bool SetItem(ItemInstance item)
     {
-        if (item == null) return;
+        if (item == null || item.IsEmpty) return false;
 
         Item = item;
         _icon.sprite = Item.Definition.Icon;
         _icon.preserveAspect = true;
         _icon.enabled = true;
+        return true;
     }
 
     public virtual ItemInstance RemoveItem()
