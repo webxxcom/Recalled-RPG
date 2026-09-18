@@ -10,8 +10,11 @@ public abstract class RuntimeVariable<T> : ScriptableObject
         get => _value;
         set
         {
-            OnValueChanged?.Invoke(_value);
+            if (_value != null && _value.Equals(value))
+                return;
+
             _value = value;
+            OnValueChanged?.Invoke(_value);
         }
     }
 

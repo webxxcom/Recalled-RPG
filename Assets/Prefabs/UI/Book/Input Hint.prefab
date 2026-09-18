@@ -92,7 +92,8 @@ MonoBehaviour:
   _inputAction: {fileID: 0}
   _compositePartName: 
   _inputDevices: {fileID: 11400000, guid: 99a9f4f6ecea88248a32e08c318dfd8c, type: 2}
-  _controlsChanged: {fileID: 11400000, guid: 54ed8a60461d07c468a7b47a263f6418, type: 2}
+  _listenToInput: 0
+  _currentControlSchemeVariable: {fileID: 11400000, guid: b48e44f68f3f6774a9c4af6bab7f1ea4, type: 2}
 --- !u!114 &6855545225360083881
 MonoBehaviour:
   m_ObjectHideFlags: 0

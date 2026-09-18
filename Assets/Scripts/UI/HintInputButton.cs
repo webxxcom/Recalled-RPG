@@ -23,9 +23,7 @@ public class HintInputButton : MonoBehaviour
     [SerializeField] string _compositePartName;
     [SerializeField] AvailableInputDevicesSO _inputDevices;
     [SerializeField] bool _listenToInput;
-
-    [Header("Listens to")]
-    [SerializeField] StringGameEvent _controlsChanged;
+    [SerializeField] StringRuntimeVariable _currentControlSchemeVariable;
 
     bool IsAvailable => _frames != null;
 
@@ -55,16 +53,16 @@ public class HintInputButton : MonoBehaviour
     {
         _inputAction.action.started += OnPress;
         _inputAction.action.canceled += OnRelease;
-        _controlsChanged.AddListener(SetHintSprite);
+        _currentControlSchemeVariable.OnValueChanged += SetHintSprite;
 
-        SetHintSprite(PlayerInputWatcher.CurrentScheme);
+        SetHintSprite(_currentControlSchemeVariable.Value);
     }
 
     private void OnDisable()
     {
         _inputAction.action.started -= OnPress;
         _inputAction.action.canceled -= OnRelease;
-        _controlsChanged.RemoveListener(SetHintSprite);
+        _currentControlSchemeVariable.OnValueChanged -= SetHintSprite;
     }
 
     void UpdateGraphics()
@@ -82,9 +80,12 @@ public class HintInputButton : MonoBehaviour
 
     void SetHintSprite(string scheme)
     {
+        if (string.IsNullOrEmpty(scheme))
+            return;
+
         string controlPath = ControlSchemeBindings.GetControlPathNoDevice(_inputAction.action, scheme, _compositePartName);
 
-        // We may not have a keyboard representation for each action
+        // We may not have a scheme representation for each action
         if (string.IsNullOrEmpty(controlPath))
             _frames = null;
         else
