@@ -1132,6 +1132,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3777615296247598500, guid: 05c21f723d3cdbc4ab0a31fbd70cd0f7, type: 3}
+      propertyPath: _list
+      value: 
+      objectReference: {fileID: 11400000, guid: 6001e6b1416f52845822eb0c5f3d799c, type: 2}
     - target: {fileID: 4055700531725833157, guid: 05c21f723d3cdbc4ab0a31fbd70cd0f7, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -1156,6 +1160,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4418968815334182666, guid: 05c21f723d3cdbc4ab0a31fbd70cd0f7, type: 3}
+      propertyPath: _list
+      value: 
+      objectReference: {fileID: 11400000, guid: 657c61cca6a98b649bce1f984d1003cb, type: 2}
     - target: {fileID: 4433775226407802543, guid: 05c21f723d3cdbc4ab0a31fbd70cd0f7, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -1461,9 +1469,25 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7325574808925116375, guid: 05c21f723d3cdbc4ab0a31fbd70cd0f7, type: 3}
+      propertyPath: _quickSlots
+      value: 
+      objectReference: {fileID: 11400000, guid: 657c61cca6a98b649bce1f984d1003cb, type: 2}
+    - target: {fileID: 7325574808925116375, guid: 05c21f723d3cdbc4ab0a31fbd70cd0f7, type: 3}
+      propertyPath: _generalItems
+      value: 
+      objectReference: {fileID: 11400000, guid: 6001e6b1416f52845822eb0c5f3d799c, type: 2}
+    - target: {fileID: 7325574808925116375, guid: 05c21f723d3cdbc4ab0a31fbd70cd0f7, type: 3}
+      propertyPath: _quickSlotAdd
+      value: 
+      objectReference: {fileID: 9072136222087115967, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
+    - target: {fileID: 7325574808925116375, guid: 05c21f723d3cdbc4ab0a31fbd70cd0f7, type: 3}
       propertyPath: _quickSlotsView
       value: 
       objectReference: {fileID: 1236014671}
+    - target: {fileID: 7325574808925116375, guid: 05c21f723d3cdbc4ab0a31fbd70cd0f7, type: 3}
+      propertyPath: _quickSlotRemove
+      value: 
+      objectReference: {fileID: 22364365118713342, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
     - target: {fileID: 7325574808925116375, guid: 05c21f723d3cdbc4ab0a31fbd70cd0f7, type: 3}
       propertyPath: _generalItemsView
       value: 

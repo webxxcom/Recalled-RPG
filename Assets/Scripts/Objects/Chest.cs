@@ -23,13 +23,13 @@ public class Chest : SingleTimeInteractableObject
         {
             IsInteracted = true;
 
-            if (_lootable.LootItem()) _inventory.GeneralLoadout.Remove(_requiredKey);
+            if (_lootable.LootItem()) _inventory.GeneralItems.Remove(_requiredKey);
             enabled = false;
         }
     }
 
     public override bool PlayerCanInteract()
     {
-        return enabled && (_requiredKey == null || _inventory.GeneralLoadout.Has(_requiredKey));
+        return enabled && (_requiredKey == null || _inventory.GeneralItems.Has(_requiredKey));
     }
 }

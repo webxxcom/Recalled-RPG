@@ -14,23 +14,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::InventoryLoadoutSO
   _items:
   - <Definition>k__BackingField: {fileID: 11400000, guid: 27c11f398eced9b43914af4ea06a153d, type: 2}
-    _count: 12
+    _count: 999
+  - <Definition>k__BackingField: {fileID: 11400000, guid: bfe601e8fe71394458b1add582d113b8, type: 2}
+    _count: 108
   - <Definition>k__BackingField: {fileID: 11400000, guid: 27c11f398eced9b43914af4ea06a153d, type: 2}
     _count: 12
-  - <Definition>k__BackingField: {fileID: 11400000, guid: 27c11f398eced9b43914af4ea06a153d, type: 2}
+  - <Definition>k__BackingField: {fileID: 0}
     _count: 12
-  - <Definition>k__BackingField: {fileID: 11400000, guid: 27c11f398eced9b43914af4ea06a153d, type: 2}
+  - <Definition>k__BackingField: {fileID: 0}
+    _count: 999
+  - <Definition>k__BackingField: {fileID: 0}
     _count: 12
-  - <Definition>k__BackingField: {fileID: 11400000, guid: 27c11f398eced9b43914af4ea06a153d, type: 2}
+  - <Definition>k__BackingField: {fileID: 0}
     _count: 12
-  - <Definition>k__BackingField: {fileID: 11400000, guid: 27c11f398eced9b43914af4ea06a153d, type: 2}
+  - <Definition>k__BackingField: {fileID: 0}
     _count: 12
-  - <Definition>k__BackingField: {fileID: 11400000, guid: 27c11f398eced9b43914af4ea06a153d, type: 2}
+  - <Definition>k__BackingField: {fileID: 0}
     _count: 12
-  - <Definition>k__BackingField: {fileID: 11400000, guid: 27c11f398eced9b43914af4ea06a153d, type: 2}
-    _count: 12
-  - <Definition>k__BackingField: {fileID: 11400000, guid: 27c11f398eced9b43914af4ea06a153d, type: 2}
-    _count: 12
-  - <Definition>k__BackingField: {fileID: 11400000, guid: 27c11f398eced9b43914af4ea06a153d, type: 2}
+  - <Definition>k__BackingField: {fileID: 0}
     _count: 12
   _maxItemsCount: 10

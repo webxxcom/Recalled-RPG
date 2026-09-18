@@ -15,7 +15,7 @@ public class ItemInstance
         set
         {
             if (value < 1 || value > Definition.MaxStockSize)
-                throw new System.ArgumentException($"Count can't be less than 1 for {nameof(ItemInstance)}\n");
+                throw new System.ArgumentException($"Count={value} can't be less than 1 for {nameof(ItemInstance)}\n");
 
             _count = value;
         }
@@ -23,6 +23,12 @@ public class ItemInstance
 
     public bool IsEmpty => Definition == null;
     public void SetEmpty() => Definition = null;
+
+    public ItemInstance()
+    {
+        Definition = null;
+        _count = 1;
+    }
 
     public ItemInstance(ItemDefinition itemDefinition, int count = 1)
     {

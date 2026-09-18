@@ -1,24 +1,15 @@
+using JetBrains.Annotations;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "Inventory/Collection")]
-public class InventoryItemCollectionSO : ScriptableObject
+public class BagSO : RuntimeArbitraryList
 {
-    [SerializeField] ItemInstance[] _items;
     [SerializeField, Min(1), Delayed] int _maxItemsCount;
 
     public bool IsFull => !_items.Contains(null);
-    public IReadOnlyList<ItemInstance> Items => _items;
-    public int MaxItemsCount => _maxItemsCount;
-
-    public event Action ItemsChanged;
-
-    public void VisualsChanged()
-    {
-        ItemsChanged?.Invoke();
-    }
+    public int ItemLimit => _maxItemsCount;
 
     bool AddNewItem(ItemInstance item)
     {
@@ -30,7 +21,7 @@ public class InventoryItemCollectionSO : ScriptableObject
             // Found empty spot then we can assign
             _items[i].Definition = item.Definition;
             _items[i].Count = item.Count;
-            ItemsChanged?.Invoke();
+            VisualsChanged();
             return true;
         }
 
@@ -40,20 +31,21 @@ public class InventoryItemCollectionSO : ScriptableObject
     /// <summary>Either adds more stocks to the <see cref="ItemInstance.Count"/> or adds brand new item depending on <see cref="ItemDefinition.MaxStockSize"/></summary>
     public bool Add(ItemInstance itemInstance)
     {
-        if (itemInstance == null || itemInstance.IsEmpty) return false;
+        if (itemInstance == null || itemInstance.IsEmpty || _items.Contains(itemInstance)) return false;
 
         // Optimize a little not trying to add instackable item
         if (itemInstance.Definition.IsStackable)
         {
+            int count = itemInstance.Count;
             foreach (var item in _items)
             {
                 if (item.Definition != itemInstance.Definition)
                     continue;
 
                 // If we'll overflow the max stock count then current item count becomes the difference
-                if (item.Count + itemInstance.Count > item.Definition.MaxStockSize)
+                if (item.Count + count > item.Definition.MaxStockSize)
                 {
-                    itemInstance.Count -= (item.Definition.MaxStockSize - item.Count);
+                    count -= (item.Definition.MaxStockSize - item.Count);
                     item.Count = item.Definition.MaxStockSize;
                 }
                 else
@@ -72,7 +64,7 @@ public class InventoryItemCollectionSO : ScriptableObject
     bool RemoveItem(int ind)
     {
         _items[ind].SetEmpty();
-        ItemsChanged?.Invoke();
+        VisualsChanged();
         return true;
     }
 
@@ -132,7 +124,7 @@ public class InventoryItemCollectionSO : ScriptableObject
 
         if (TakeRecursively(definition, count, 0))
         {
-            ItemsChanged?.Invoke();
+            VisualsChanged();
             return true;
         }
         return false;

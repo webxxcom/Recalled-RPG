@@ -56,7 +56,7 @@ public class SpriteSequenceEditor : Editor
 
     private static void AssignSource(SpriteSequence sequence, Object picked)
     {
-        Undo.RecordObject(sequence, "Set Sprite Sequence Source");
+        Undo.RecordObject(sequence, "TrySet Sprite Sequence Source");
 
         if (picked == null)
         {
@@ -87,7 +87,7 @@ public class SpriteSequenceEditor : Editor
         if (clipNames.Length == 0)
         {
             EditorGUILayout.HelpBox(
-                "No clips in this file. Set its import mode to Animated Sprite, " +
+                "No clips in this file. TrySet its import mode to Animated Sprite, " +
                 "and check it has more than one frame.",
                 MessageType.Warning);
             return;
@@ -104,7 +104,7 @@ public class SpriteSequenceEditor : Editor
 
         if (EditorGUI.EndChangeCheck() || sequence.ClipName != clipNames[index])
         {
-            Undo.RecordObject(sequence, "Set Sprite Sequence Clip");
+            Undo.RecordObject(sequence, "TrySet Sprite Sequence Clip");
             sequence.ClipName = clipNames[index];
             EditorUtility.SetDirty(sequence);
         }

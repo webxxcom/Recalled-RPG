@@ -9,16 +9,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1182f6319e1fd2d4f9b9ad57d786c101, type: 3}
-  m_Name: Quick Loadout
-  m_EditorClassIdentifier: Assembly-CSharp::InventoryLoadoutSO
+  m_Script: {fileID: 11500000, guid: 054494718f22b1e448248ec70afb49f3, type: 3}
+  m_Name: Quick Slots
+  m_EditorClassIdentifier: Assembly-CSharp::QuickSlotsSO
   _items:
   - <Definition>k__BackingField: {fileID: 0}
-    _count: 12
-  - <Definition>k__BackingField: {fileID: 0}
     _count: 0
   - <Definition>k__BackingField: {fileID: 0}
     _count: 0
   - <Definition>k__BackingField: {fileID: 0}
     _count: 0
-  _maxItemsCount: 4
+  - <Definition>k__BackingField: {fileID: 0}
+    _count: 0

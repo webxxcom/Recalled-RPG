@@ -10,7 +10,7 @@ public class Lootable : MonoBehaviour
     {
         ItemInstance item = _lootTable.GetItem().CreateInstance();
 
-        if (_inventory.GeneralLoadout.Add(item))
+        if (_inventory.GeneralItems.Add(item))
             return true;
         else
         {

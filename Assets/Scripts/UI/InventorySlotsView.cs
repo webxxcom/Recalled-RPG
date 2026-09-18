@@ -2,12 +2,12 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class LoadoutView : MonoBehaviour
+public class InventorySlotsView : MonoBehaviour
 {
-    [SerializeField] InventoryItemCollectionSO _loadout;
+    [SerializeField] RuntimeArbitraryList _list;
 
     IReadOnlyList<InventorySlot> _slots;
-    /// <summary>View can be populated with the slotes with slots creator</summary>
+    /// <summary>View can be populated with the slots with slots creator</summary>
     public IReadOnlyList<InventorySlot> Slots
     {
         get => _slots;
@@ -17,18 +17,18 @@ public class LoadoutView : MonoBehaviour
             RefreshView();
         }
     }
-    public InventoryItemCollectionSO Loadout => _loadout;
+    public RuntimeArbitraryList List => _list;
 
     private void OnEnable()
     {
-        _loadout.ItemsChanged += RefreshView;
+        _list.ItemsChanged += RefreshView;
 
         if (Slots != null) RefreshView();
     }
 
     private void OnDisable()
     {
-        _loadout.ItemsChanged -= RefreshView;
+        _list.ItemsChanged -= RefreshView;
     }
 
     private void Start()
@@ -38,7 +38,7 @@ public class LoadoutView : MonoBehaviour
 
     void RefreshView()
     {
-        var items = _loadout.Items;
+        var items = _list.Items;
         for (int i = 0; i < Slots.Count; i++)
         {
             if (i < items.Count && !items[i].IsEmpty) Slots[i].SetItem(items[i]);

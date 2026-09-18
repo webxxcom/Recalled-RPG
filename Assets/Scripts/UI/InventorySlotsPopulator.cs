@@ -1,25 +1,25 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(LoadoutView))]
+[RequireComponent(typeof(InventorySlotsView))]
 public class InventorySlotsPopulator : MonoBehaviour
 {
     [SerializeField] InventorySlot _inventorySlotPrefab;
     [SerializeField] GameObject _parent;
 
-    LoadoutView _loadoutView;
+    InventorySlotsView _loadoutView;
     readonly List<InventoryCell> _createdSlots = new();
 
     private void Awake()
     {
-        _loadoutView = GetComponent<LoadoutView>();
+        _loadoutView = GetComponent<InventorySlotsView>();
 
         PopulateView();
     }
 
     void PopulateView()
     {
-        for (int i = 0; i < _loadoutView.Loadout.MaxItemsCount; i++)
+        for (int i = 0; i < _loadoutView.List.Items.Count; i++)
         {
             InventoryCell slot = Instantiate(_inventorySlotPrefab, _parent.transform);
 

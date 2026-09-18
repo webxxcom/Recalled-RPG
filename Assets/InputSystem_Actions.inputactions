@@ -491,7 +491,7 @@
                     "priority": 0
                 },
                 {
-                    "name": "Quick Slot",
+                    "name": "Quick Slot Remove",
                     "type": "Button",
                     "id": "e258d19a-a567-43b2-9572-4ac9baf71ca0",
                     "expectedControlType": "",
@@ -916,7 +916,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": ";Keyboard&Mouse",
-                    "action": "Quick Slot",
+                    "action": "Quick Slot Remove",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
