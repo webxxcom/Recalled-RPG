@@ -1,5 +1,4 @@
 using System.Linq;
-using Unity.VisualScripting;
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "UI/Available Input Devices")]
@@ -35,12 +34,10 @@ public class AvailableInputDevicesSO : ScriptableObject
 
     void OnControlsChange(string scheme)
     {
-        InputDeviceSO inputDevice = _devices.FirstOrDefault(d => d.Name.ContainsInsensitive(scheme));
+        InputDeviceSO inputDevice = _devices.FirstOrDefault(d => d.Name.ToLower().Contains(scheme.ToLower()));
         if (inputDevice != null)
             CurrentDevice = inputDevice;
         else
             Debug.Log($"Scheme {scheme} was not found");
     }
-
-    
 }
