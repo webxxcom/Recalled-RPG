@@ -2,25 +2,30 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class InventoryPage : MonoBehaviour
 {
     [SerializeField] InputActionReference _quickSlotRemove;
     [SerializeField] InputActionReference _quickSlotAdd;
-    [SerializeField] Highlighter _highlighter;
     [SerializeField] QuickSlotsSO _quickSlots;
     [SerializeField] BagSO _generalItems;
     [SerializeField] InventorySO _inventory;
+    [SerializeField] Highlighter _highlighter;
 
     private void OnEnable()
     {
         _quickSlotRemove.action.performed += OnQuickSlotRemove;
         _quickSlotAdd.action.performed += OnQuickSlotItemPressed;
+
+        _highlighter.gameObject.SetActive(true);
     }
     private void OnDisable()
     {
         _quickSlotRemove.action.performed -= OnQuickSlotRemove;
         _quickSlotAdd.action.performed -= OnQuickSlotItemPressed;
+
+        _highlighter.gameObject.SetActive(false);
     }
 
     void OnQuickSlotItemPressed(InputAction.CallbackContext context)
@@ -35,6 +40,9 @@ public class InventoryPage : MonoBehaviour
             _generalItems.Remove(slot.Item);
         if (!replaced.IsEmpty)
             _generalItems.Add(replaced);
+
+        // so dumb, i can't
+        EventSystem.current.SetSelectedGameObject(Selectable.allSelectablesArray[0].gameObject);
     }
 
     void OnQuickSlotRemove(InputAction.CallbackContext context)
@@ -46,5 +54,7 @@ public class InventoryPage : MonoBehaviour
 
         if (_generalItems.Add(slot.Item))
             _quickSlots.UnSet(slot.Item);
+
+        EventSystem.current.SetSelectedGameObject(Selectable.allSelectablesArray[0].gameObject);
     }
 }

@@ -13,11 +13,11 @@ MonoBehaviour:
   m_Name: Quick Slots
   m_EditorClassIdentifier: Assembly-CSharp::QuickSlotsSO
   _items:
-  - <Definition>k__BackingField: {fileID: 0}
-    _count: 0
-  - <Definition>k__BackingField: {fileID: 0}
-    _count: 0
-  - <Definition>k__BackingField: {fileID: 0}
-    _count: 0
-  - <Definition>k__BackingField: {fileID: 0}
-    _count: 0
+  - <Definition>k__BackingField: {fileID: 11400000, guid: c8a246ab4cb3c2b4688cd95489f8d28c, type: 2}
+    _count: 1
+  - <Definition>k__BackingField: {fileID: 11400000, guid: 5c02a86e175a6ef47b5b688e53c34ba8, type: 2}
+    _count: 1
+  - <Definition>k__BackingField: {fileID: 11400000, guid: eaf1831fb346c5a47aeae7be05e9301e, type: 2}
+    _count: 1
+  - <Definition>k__BackingField: {fileID: 11400000, guid: 27c11f398eced9b43914af4ea06a153d, type: 2}
+    _count: 1

@@ -15,4 +15,4 @@ MonoBehaviour:
   _devices:
   - {fileID: 11400000, guid: 7d6b8ea5181015445baffdcba4a99e8b, type: 2}
   - {fileID: 11400000, guid: f85e6351beabf584392a7718a115fc53, type: 2}
-  _controlsChanged: {fileID: 11400000, guid: 54ed8a60461d07c468a7b47a263f6418, type: 2}
+  _currentControlScheme: {fileID: 11400000, guid: b48e44f68f3f6774a9c4af6bab7f1ea4, type: 2}

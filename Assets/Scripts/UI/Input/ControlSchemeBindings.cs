@@ -21,7 +21,6 @@ public static class ControlSchemeBindings
                 GetBindingPathRecursive(child, controls, parent + inputControl.name + "/");
         else
             controls.Add(parent + inputControl.name);
-        Debug.Log(inputControl.path);
     }
 
     public static string[] ListAllPathsForScheme(string schemeName)

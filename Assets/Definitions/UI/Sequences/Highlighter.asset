@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b52387baa966bb44b9a13e735e453b78, type: 3}
+  m_Name: Highlighter
+  m_EditorClassIdentifier: Assembly-CSharp::SpriteSequence
+  _sourceGuid: 77822b2f1cae1a644a7c652da1d88845
+  _clipName: Highlighter_Clip
+  _frames:
+  - Time: 0
+    Sprite: {fileID: -5861416330652852623, guid: 77822b2f1cae1a644a7c652da1d88845, type: 3}
+  - Time: 0.1
+    Sprite: {fileID: -1255018616089914854, guid: 77822b2f1cae1a644a7c652da1d88845, type: 3}
+  - Time: 0.2
+    Sprite: {fileID: 8176212050445945830, guid: 77822b2f1cae1a644a7c652da1d88845, type: 3}
+  - Time: 0.3
+    Sprite: {fileID: -6107826765447581224, guid: 77822b2f1cae1a644a7c652da1d88845, type: 3}
+  - Time: 0.39000002
+    Sprite: {fileID: -6107826765447581224, guid: 77822b2f1cae1a644a7c652da1d88845, type: 3}
+  _length: 0.4
+  _loop: 1

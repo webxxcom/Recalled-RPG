@@ -30,9 +30,9 @@ public sealed class ToggleableSelectFirst : MonoBehaviour
             EventSystem.current.SetSelectedGameObject(_selectFirst.gameObject);
         else
         {
-            var selectable = GetComponentInChildren<Selectable>(true);
-            if (selectable != null)
-                EventSystem.current.SetSelectedGameObject(selectable.gameObject);
+            //var selectable = GetComponentInChildren<Selectable>(true);
+            //if (selectable != null)
+            //    EventSystem.current.SetSelectedGameObject(selectable.gameObject);
         }
     }
 }
