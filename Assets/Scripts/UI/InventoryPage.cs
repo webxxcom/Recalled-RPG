@@ -37,12 +37,14 @@ public class InventoryPage : MonoBehaviour
         var vec2 = context.ReadValue<Vector2>();
 
         if (_quickSlots.Set(vec2, slot.Item, out var replaced))
+        {
             _generalItems.Remove(slot.Item);
+
+            // so dumb, i can't
+            EventSystem.current.SetSelectedGameObject(Selectable.allSelectablesArray[0].gameObject);
+        }
         if (!replaced.IsEmpty)
             _generalItems.Add(replaced);
-
-        // so dumb, i can't
-        EventSystem.current.SetSelectedGameObject(Selectable.allSelectablesArray[0].gameObject);
     }
 
     void OnQuickSlotRemove(InputAction.CallbackContext context)
@@ -53,8 +55,9 @@ public class InventoryPage : MonoBehaviour
         var slot = EventSystem.current.currentSelectedGameObject.GetComponent<InventorySlot>();
 
         if (_generalItems.Add(slot.Item))
+        {
             _quickSlots.UnSet(slot.Item);
-
-        EventSystem.current.SetSelectedGameObject(Selectable.allSelectablesArray[0].gameObject);
+            EventSystem.current.SetSelectedGameObject(Selectable.allSelectablesArray[0].gameObject);
+        }
     }
 }

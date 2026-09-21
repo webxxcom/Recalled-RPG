@@ -1,5 +1,4 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
 [System.Serializable]
 public class ItemInstance
@@ -23,6 +22,7 @@ public class ItemInstance
 
     public bool IsEmpty => Definition == null;
     public void SetEmpty() => Definition = null;
+    public void SetItem(ItemDefinition def, int count) { Definition = def; Count = count; }
 
     public ItemInstance()
     {

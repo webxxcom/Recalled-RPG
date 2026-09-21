@@ -35,7 +35,7 @@ public class QuickSlotsSO : RuntimeArbitraryList
             replaced = new(_items[ind].Definition, _items[ind].Count);
 
         _items[ind] = newItem;
-        VisualsChanged();
+        ContentChanged();
         return true;
     }
 
@@ -61,7 +61,7 @@ public class QuickSlotsSO : RuntimeArbitraryList
                 continue;
 
             slot.SetEmpty();
-            VisualsChanged();
+            ContentChanged();
             return true;
         }
         return false;

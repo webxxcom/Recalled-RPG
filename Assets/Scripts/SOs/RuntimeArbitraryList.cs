@@ -9,7 +9,10 @@ public abstract class RuntimeArbitraryList : ScriptableObject
     public IReadOnlyList<ItemInstance> Items => _items;
     public event Action ItemsChanged;
 
-    public void VisualsChanged()
+    /// <summary>
+    /// Function called in child classes which simply invokes the event <see cref="RuntimeArbitraryList.ItemsChanged"/>
+    /// </summary>
+    protected void ContentChanged()
     {
         ItemsChanged?.Invoke();
     }

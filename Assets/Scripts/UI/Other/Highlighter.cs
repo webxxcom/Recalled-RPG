@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Rendering.RenderGraphModule;
 using UnityEngine.UI;
 
 [RequireComponent(typeof(UISpriteAnimator))]
@@ -11,6 +12,7 @@ public class Highlighter : MonoBehaviour
 
     UISpriteAnimator _animator;
     RectTransform _rectTransform;
+    GameObject _currentSelected;
 
     private void Awake()
     {
@@ -32,6 +34,9 @@ public class Highlighter : MonoBehaviour
         _animator.Play("Idle");
         _image.enabled = true;
         transform.position = game.transform.position;
+        _currentSelected = game;
+        transform.SetParent(game.transform);
+        transform.SetAsLastSibling();
 
         var rect = game.GetComponent<RectTransform>().rect;
         _rectTransform.sizeDelta = new(rect.width + 2, rect.height + 2);
@@ -42,5 +47,11 @@ public class Highlighter : MonoBehaviour
     {
         _image.enabled = false;
         _animator.Stop();
+    }
+
+    private void Update()
+    {
+        if (_currentSelected != null)
+            transform.position = _currentSelected.transform.position;
     }
 }

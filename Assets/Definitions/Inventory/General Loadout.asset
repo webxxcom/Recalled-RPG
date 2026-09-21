@@ -14,23 +14,62 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::InventoryLoadoutSO
   _items:
   - <Definition>k__BackingField: {fileID: 11400000, guid: 27c11f398eced9b43914af4ea06a153d, type: 2}
-    _count: 3
+    _count: 19
+  - <Definition>k__BackingField: {fileID: 11400000, guid: eaf1831fb346c5a47aeae7be05e9301e, type: 2}
+    _count: 1
   - <Definition>k__BackingField: {fileID: 11400000, guid: bfe601e8fe71394458b1add582d113b8, type: 2}
     _count: 2
-  - <Definition>k__BackingField: {fileID: 11400000, guid: 27c11f398eced9b43914af4ea06a153d, type: 2}
-    _count: 5
   - <Definition>k__BackingField: {fileID: 11400000, guid: 27c11f398eced9b43914af4ea06a153d, type: 2}
     _count: 4
   - <Definition>k__BackingField: {fileID: 0}
     _count: 1
   - <Definition>k__BackingField: {fileID: 0}
     _count: 6
-  - <Definition>k__BackingField: {fileID: 11400000, guid: 27c11f398eced9b43914af4ea06a153d, type: 2}
+  - <Definition>k__BackingField: {fileID: 0}
     _count: 7
   - <Definition>k__BackingField: {fileID: 0}
     _count: 1
-  - <Definition>k__BackingField: {fileID: 11400000, guid: 27c11f398eced9b43914af4ea06a153d, type: 2}
+  - <Definition>k__BackingField: {fileID: 0}
     _count: 2
   - <Definition>k__BackingField: {fileID: 0}
     _count: 12
-  _maxItemsCount: 10
+  - <Definition>k__BackingField: {fileID: 0}
+    _count: 12
+  - <Definition>k__BackingField: {fileID: 0}
+    _count: 12
+  - <Definition>k__BackingField: {fileID: 0}
+    _count: 12
+  - <Definition>k__BackingField: {fileID: 0}
+    _count: 12
+  - <Definition>k__BackingField: {fileID: 0}
+    _count: 12
+  - <Definition>k__BackingField: {fileID: 0}
+    _count: 12
+  - <Definition>k__BackingField: {fileID: 0}
+    _count: 12
+  - <Definition>k__BackingField: {fileID: 0}
+    _count: 12
+  - <Definition>k__BackingField: {fileID: 0}
+    _count: 12
+  - <Definition>k__BackingField: {fileID: 0}
+    _count: 12
+  - <Definition>k__BackingField: {fileID: 0}
+    _count: 12
+  - <Definition>k__BackingField: {fileID: 0}
+    _count: 12
+  - <Definition>k__BackingField: {fileID: 0}
+    _count: 12
+  - <Definition>k__BackingField: {fileID: 0}
+    _count: 12
+  - <Definition>k__BackingField: {fileID: 0}
+    _count: 12
+  - <Definition>k__BackingField: {fileID: 0}
+    _count: 12
+  - <Definition>k__BackingField: {fileID: 0}
+    _count: 12
+  - <Definition>k__BackingField: {fileID: 0}
+    _count: 12
+  - <Definition>k__BackingField: {fileID: 11400000, guid: 3ab233bcb14d04847b07c29f2bfee65a, type: 2}
+    _count: 12
+  - <Definition>k__BackingField: {fileID: 0}
+    _count: 12
