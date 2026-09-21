@@ -13,14 +13,14 @@ MonoBehaviour:
   m_Name: General Loadout
   m_EditorClassIdentifier: Assembly-CSharp::InventoryLoadoutSO
   _items:
-  - <Definition>k__BackingField: {fileID: 11400000, guid: 27c11f398eced9b43914af4ea06a153d, type: 2}
-    _count: 19
   - <Definition>k__BackingField: {fileID: 11400000, guid: eaf1831fb346c5a47aeae7be05e9301e, type: 2}
-    _count: 1
-  - <Definition>k__BackingField: {fileID: 11400000, guid: bfe601e8fe71394458b1add582d113b8, type: 2}
     _count: 2
+  - <Definition>k__BackingField: {fileID: 11400000, guid: 5c02a86e175a6ef47b5b688e53c34ba8, type: 2}
+    _count: 1
+  - <Definition>k__BackingField: {fileID: 11400000, guid: c8a246ab4cb3c2b4688cd95489f8d28c, type: 2}
+    _count: 1
   - <Definition>k__BackingField: {fileID: 11400000, guid: 27c11f398eced9b43914af4ea06a153d, type: 2}
-    _count: 4
+    _count: 24
   - <Definition>k__BackingField: {fileID: 0}
     _count: 1
   - <Definition>k__BackingField: {fileID: 0}
@@ -70,6 +70,6 @@ MonoBehaviour:
   - <Definition>k__BackingField: {fileID: 0}
     _count: 12
   - <Definition>k__BackingField: {fileID: 11400000, guid: 3ab233bcb14d04847b07c29f2bfee65a, type: 2}
-    _count: 12
+    _count: 1
   - <Definition>k__BackingField: {fileID: 0}
     _count: 12
