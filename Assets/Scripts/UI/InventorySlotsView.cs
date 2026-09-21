@@ -7,7 +7,7 @@ public class InventorySlotsView : MonoBehaviour
     [SerializeField] RuntimeArbitraryList _list;
 
     IReadOnlyList<InventorySlot> _slots;
-    /// <summary>View can be populated with the slots with slots creator</summary>
+    /// <summary>View can be populated with the slots by slots creator</summary>
     public IReadOnlyList<InventorySlot> Slots
     {
         get => _slots;
@@ -44,15 +44,5 @@ public class InventorySlotsView : MonoBehaviour
             if (i < items.Count && !items[i].IsEmpty) Slots[i].SetItem(items[i]);
             else Slots[i].RemoveItem();
         }
-    }
-
-    public ItemInstance RemoveItemFromView(InventorySlot slot)
-    {
-        if (Slots.Contains(slot))
-        {
-            var removed = slot.RemoveItem();
-            return removed;
-        }
-        return null;
     }
 }
