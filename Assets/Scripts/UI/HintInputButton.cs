@@ -21,9 +21,8 @@ public class HintInputButton : MonoBehaviour
     [SerializeField] InputActionReference _inputAction;
     [Tooltip("Fill in only if the action contains composite bindings")]
     [SerializeField] string _compositePartName;
-    [SerializeField] AvailableInputDevicesSO _inputDevices;
     [SerializeField] bool _listenToInput;
-    [SerializeField] StringRuntimeVariable _currentControlSchemeVariable;
+    [SerializeField] InputDeviceRuntimeVariable _currentInputDevice;
 
     bool IsAvailable => _frames != null;
 
@@ -53,16 +52,16 @@ public class HintInputButton : MonoBehaviour
     {
         _inputAction.action.started += OnPress;
         _inputAction.action.canceled += OnRelease;
-        _currentControlSchemeVariable.OnValueChanged += SetHintSprite;
+        _currentInputDevice.ValueChanged += SetHintSprite;
 
-        SetHintSprite(_currentControlSchemeVariable.Value);
+        SetHintSprite(_currentInputDevice.Value);
     }
 
     private void OnDisable()
     {
         _inputAction.action.started -= OnPress;
         _inputAction.action.canceled -= OnRelease;
-        _currentControlSchemeVariable.OnValueChanged -= SetHintSprite;
+        _currentInputDevice.ValueChanged -= SetHintSprite;
     }
 
     void UpdateGraphics()
@@ -78,25 +77,9 @@ public class HintInputButton : MonoBehaviour
         }
     }
 
-    void SetHintSprite(string scheme)
+    void SetHintSprite(InputDeviceSO inputDevice)
     {
-        if (string.IsNullOrEmpty(scheme))
-            return;
-
-        string controlPath = ControlSchemeBindings.GetControlPathNoDevice(_inputAction.action, scheme, _compositePartName);
-
-        // We may not have a scheme representation for each action
-        if (string.IsNullOrEmpty(controlPath))
-            _frames = null;
-        else
-        {
-            _frames = _inputDevices.CurrentDevice.Pairs
-                .FirstOrDefault(p => p.Path.Equals(controlPath))?.Frames;
-
-            // Debug message just in case
-            if (_frames == null)
-                Debug.LogError($"Couldnt find an input image for {scheme} for {_inputAction.name}.{controlPath}", this);
-        }
+        _frames = inputDevice.GetFramesForAction(_inputAction.action, _compositePartName);
 
         UpdateGraphics();
     }

@@ -4,9 +4,8 @@ using UnityEngine.EventSystems;
 [RequireComponent(typeof(EventSystem))]
 public class UIEventRaiser : MonoBehaviour
 {
-    [Header("Broadcasts to")]
-    [SerializeField] GameobjectGameEvent OnUIElementSelected;
-    [SerializeField] VoidGameEvent OnUIElementDeselected;
+    [Header("Sets Value to")]
+    [SerializeField] GameObjectRuntimeVariable _currentSelected;
 
     GameObject _selectedObject;
     EventSystem _eventSystem;
@@ -19,10 +18,7 @@ public class UIEventRaiser : MonoBehaviour
         if (_selectedObject != _eventSystem.currentSelectedGameObject)
         {
             _selectedObject = _eventSystem.currentSelectedGameObject;
-
-            if (_eventSystem.currentSelectedGameObject != null)
-                OnUIElementSelected.Invoke(_selectedObject);
-            else OnUIElementDeselected.Invoke();
+            _currentSelected.Value = _selectedObject;
         }
     }
 }

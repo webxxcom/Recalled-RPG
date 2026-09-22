@@ -1,6 +1,6 @@
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "Inventory/Item Definition")]
+[CreateAssetMenu(menuName = "Inventory/Items/General")]
 public class ItemDefinition : ScriptableObject
 {
     [field: SerializeField] public string Name { get; private set; }
@@ -14,9 +14,6 @@ public class ItemDefinition : ScriptableObject
 
     public virtual ItemInstance CreateInstance(int count = 1)
     {
-        if (count < MinStockSize || count > MaxStockSize)
-            throw new System.ArgumentException($"{Name}'s quantity of {count} exceeded the allowed ${MaxStockSize}");
-
         return new(this, count);
     }
 }

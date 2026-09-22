@@ -4,4 +4,6 @@ public enum ItemCategory
     Treasure,
     KeyItem,
     Equipment,
+    Armor,
+    Any
 }

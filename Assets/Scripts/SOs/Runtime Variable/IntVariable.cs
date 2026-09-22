@@ -1,6 +1,6 @@
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "Variables/Int")]
+[CreateAssetMenu(menuName = "Runtime/Variables/Int")]
 public class IntVariable : RuntimeVariable<int>
 {
 }

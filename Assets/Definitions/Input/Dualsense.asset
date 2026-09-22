@@ -14,14 +14,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::InputDeviceSO
   _schemeName: Gamepad
   _pairs:
+  - _path: leftTrigger
+    _frames:
+      Pressed: {fileID: -819598000894799853, guid: 7bc84bcbf4e2e6d428ad5f230524e072, type: 3}
+      Released: {fileID: -3866476090100257293, guid: 7bc84bcbf4e2e6d428ad5f230524e072, type: 3}
+  - _path: rightTrigger
+    _frames:
+      Pressed: {fileID: 5868245250832824558, guid: 7bc84bcbf4e2e6d428ad5f230524e072, type: 3}
+      Released: {fileID: 3283328459220709489, guid: 7bc84bcbf4e2e6d428ad5f230524e072, type: 3}
   - _path: leftShoulder
     _frames:
-      Pressed: {fileID: 906810817016980456, guid: 7bc84bcbf4e2e6d428ad5f230524e072, type: 3}
-      Released: {fileID: -7734426524509958602, guid: 7bc84bcbf4e2e6d428ad5f230524e072, type: 3}
+      Pressed: {fileID: -3763852509494824753, guid: 7bc84bcbf4e2e6d428ad5f230524e072, type: 3}
+      Released: {fileID: 3829430754940939545, guid: 7bc84bcbf4e2e6d428ad5f230524e072, type: 3}
   - _path: rightShoulder
     _frames:
-      Pressed: {fileID: 5917708854176736804, guid: 7bc84bcbf4e2e6d428ad5f230524e072, type: 3}
-      Released: {fileID: 1803908694912622976, guid: 7bc84bcbf4e2e6d428ad5f230524e072, type: 3}
+      Pressed: {fileID: 3727805887711677589, guid: 7bc84bcbf4e2e6d428ad5f230524e072, type: 3}
+      Released: {fileID: 4474304409867257272, guid: 7bc84bcbf4e2e6d428ad5f230524e072, type: 3}
   - _path: buttonSouth
     _frames:
       Pressed: {fileID: -8263004545807738486, guid: 7bc84bcbf4e2e6d428ad5f230524e072, type: 3}

@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-[CreateAssetMenu(menuName = "Variables/String")]
+[CreateAssetMenu(menuName = "Runtime/Variables/String")]
 public class StringRuntimeVariable : RuntimeVariable<string>
 {
 

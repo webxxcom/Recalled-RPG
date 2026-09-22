@@ -1,18 +1,15 @@
 using UnityEngine;
-using UnityEngine.Rendering.RenderGraphModule;
 using UnityEngine.UI;
 
 [RequireComponent(typeof(UISpriteAnimator))]
 [RequireComponent(typeof(RectTransform))]
 public class Highlighter : MonoBehaviour
 {
-    [Header("Listens to")]
-    [SerializeField] GameobjectGameEvent _selectableChanged;
     [SerializeField] Image _image;
+    [Header("Watches"), SerializeField] GameObjectRuntimeVariable _currentSelected;
 
     UISpriteAnimator _animator;
     RectTransform _rectTransform;
-    GameObject _currentSelected;
 
     private void Awake()
     {
@@ -22,19 +19,18 @@ public class Highlighter : MonoBehaviour
 
     private void OnEnable()
     {
-        _selectableChanged.AddListener(Show);
+        _currentSelected.ValueChanged += SetTo;
     }
     private void OnDisable()
     {
-        _selectableChanged.RemoveListener(Show);
+        _currentSelected.ValueChanged -= SetTo;
     }
 
-    public void Show(GameObject game)
+    void Show(GameObject game)
     {
         _animator.Play("Idle");
         _image.enabled = true;
         transform.position = game.transform.position;
-        _currentSelected = game;
         transform.SetParent(game.transform);
         transform.SetAsLastSibling();
 
@@ -43,15 +39,21 @@ public class Highlighter : MonoBehaviour
         _image.GetComponent<RectTransform>().sizeDelta = _rectTransform.sizeDelta;
     }
 
-    public void Hide()
+    void Hide()
     {
         _image.enabled = false;
         _animator.Stop();
     }
 
+    public void SetTo(GameObject game)
+    {
+        if (game == null) Hide();
+        else Show(game);
+    }
+
     private void Update()
     {
-        if (_currentSelected != null)
-            transform.position = _currentSelected.transform.position;
+        if (_currentSelected.Value != null)
+            transform.position = _currentSelected.Value.transform.position;
     }
 }

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "InventorySO Items/Boots")]
+[CreateAssetMenu(menuName = "Inventory/Items/Boots")]
 public class BootsDefinition : ItemDefinition
 {
     [field: SerializeField] public float SpeedMultiplier { get; private set; }

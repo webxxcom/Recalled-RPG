@@ -3,16 +3,12 @@ using UnityEngine.EventSystems;
 
 [RequireComponent(typeof(UISpriteAnimator))]
 [RequireComponent(typeof(Toggleable))]
-public sealed class ToggleableInteraction : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, ISelectHandler, IDeselectHandler, IPointerClickHandler
+public sealed class ToggleableInteraction : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
 { 
+    [SerializeField] bool _playHovering;
     UISpriteAnimator _animator;
     Toggleable _toggleable;
 
-    public void OnSelect(BaseEventData eventData)
-    {
-        _toggleable.RequestToggle();
-        OnEnter();
-    }
     public void OnPointerClick(PointerEventData eventData) => _toggleable.RequestToggle();
 
     private void Awake()
@@ -44,15 +40,14 @@ public sealed class ToggleableInteraction : MonoBehaviour, IPointerEnterHandler,
 
     void OnEnter()
     {
-        if (!_toggleable.IsActive) _animator.Play("Enter");
+        if (_playHovering && !_toggleable.IsActive) _animator.Play("Enter");
     }
 
     void OnExit()
     {
-        if (!_toggleable.IsActive) _animator.Play("Exit");
+        if (_playHovering && !_toggleable.IsActive) _animator.Play("Exit");
     }
 
     public void OnPointerEnter(PointerEventData eventData) => OnEnter();
     public void OnPointerExit(PointerEventData eventData) => OnExit();
-    public void OnDeselect(BaseEventData eventData) => OnExit();
 }

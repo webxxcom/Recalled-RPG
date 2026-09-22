@@ -34,14 +34,16 @@ public class InventoryPage : MonoBehaviour
             return;
 
         var slot = EventSystem.current.currentSelectedGameObject.GetComponent<InventorySlot>();
+        if (slot.Item.Definition.Category != ItemCategory.Consumable)
+            return;
+
         var vec2 = context.ReadValue<Vector2>();
 
         if (_quickSlots.Set(vec2, slot.Item, out var replaced))
         {
             _generalItems.Remove(slot.Item);
 
-            // so dumb, i can't
-            EventSystem.current.SetSelectedGameObject(Selectable.allSelectablesArray[0].gameObject);
+            SetCurrentSelected();
         }
         if (!replaced.IsEmpty)
             _generalItems.Add(replaced);
@@ -57,7 +59,15 @@ public class InventoryPage : MonoBehaviour
         if (_generalItems.Add(slot.Item))
         {
             _quickSlots.UnSet(slot.Item);
-            EventSystem.current.SetSelectedGameObject(Selectable.allSelectablesArray[0].gameObject);
+
+            SetCurrentSelected();
         }
+    }
+
+    void SetCurrentSelected()
+    {
+        // so dumb, i can't
+        EventSystem.current.SetSelectedGameObject(
+            Selectable.allSelectablesArray.FirstOrDefault(s => s.navigation.mode != Navigation.Mode.None).gameObject);
     }
 }

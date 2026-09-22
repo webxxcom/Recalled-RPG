@@ -14,11 +14,11 @@ public abstract class RuntimeVariable<T> : ScriptableObject
                 return;
 
             _value = value;
-            OnValueChanged?.Invoke(_value);
+            ValueChanged?.Invoke(_value);
         }
     }
 
-    public event Action<T> OnValueChanged;
+    public event Action<T> ValueChanged;
 
 #if UNITY_EDITOR
     T _prev;

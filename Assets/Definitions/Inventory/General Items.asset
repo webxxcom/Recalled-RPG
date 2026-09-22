@@ -1,0 +1,75 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1182f6319e1fd2d4f9b9ad57d786c101, type: 3}
+  m_Name: General Items
+  m_EditorClassIdentifier: Assembly-CSharp::InventoryLoadoutSO
+  _items:
+  - _definition: {fileID: 11400000, guid: 3ab233bcb14d04847b07c29f2bfee65a, type: 2}
+    _count: 1
+  - _definition: {fileID: 11400000, guid: 27c11f398eced9b43914af4ea06a153d, type: 2}
+    _count: 24
+  - _definition: {fileID: 11400000, guid: 7731e81e68071414da725ade43d9b4ec, type: 2}
+    _count: 4
+  - _definition: {fileID: 11400000, guid: d46a40fa60fa96e4baec8cc674a76eb1, type: 2}
+    _count: 2
+  - _definition: {fileID: 11400000, guid: bfe601e8fe71394458b1add582d113b8, type: 2}
+    _count: 5
+  - _definition: {fileID: 0}
+    _count: 0
+  - _definition: {fileID: 11400000, guid: 3aeea00b91451b84dae2342f27dda5b9, type: 2}
+    _count: 1
+  - _definition: {fileID: 0}
+    _count: 0
+  - _definition: {fileID: 0}
+    _count: 0
+  - _definition: {fileID: 0}
+    _count: 0
+  - _definition: {fileID: 0}
+    _count: 0
+  - _definition: {fileID: 0}
+    _count: 0
+  - _definition: {fileID: 0}
+    _count: 0
+  - _definition: {fileID: 0}
+    _count: 0
+  - _definition: {fileID: 0}
+    _count: 0
+  - _definition: {fileID: 0}
+    _count: 0
+  - _definition: {fileID: 0}
+    _count: 0
+  - _definition: {fileID: 0}
+    _count: 0
+  - _definition: {fileID: 0}
+    _count: 0
+  - _definition: {fileID: 0}
+    _count: 0
+  - _definition: {fileID: 0}
+    _count: 0
+  - _definition: {fileID: 0}
+    _count: 0
+  - _definition: {fileID: 0}
+    _count: 0
+  - _definition: {fileID: 0}
+    _count: 0
+  - _definition: {fileID: 0}
+    _count: 0
+  - _definition: {fileID: 0}
+    _count: 0
+  - _definition: {fileID: 0}
+    _count: 0
+  - _definition: {fileID: 0}
+    _count: 0
+  - _definition: {fileID: 0}
+    _count: 0
+  - _definition: {fileID: 0}
+    _count: 0

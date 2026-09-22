@@ -74,6 +74,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ccbf9b5ad9a2b374b92f768ea5e9ed8d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Toggleable
+  _hidesWhenInactive: 0
 --- !u!114 &5618719260677781742
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -86,6 +87,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e812b7e7235f3d4fa1501c954bd5b11, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ToggleableAnimation
+  _playHovering: 1
 --- !u!1 &5925012911335335216
 GameObject:
   m_ObjectHideFlags: 0

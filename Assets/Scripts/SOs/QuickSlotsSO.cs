@@ -2,7 +2,7 @@ using System.Linq;
 using UnityEngine;
 
 [CreateAssetMenu(menuName ="Inventory/quick slots")]
-public class QuickSlotsSO : RuntimeArbitraryList
+public class QuickSlotsSO : InventoryItemsListSO
 {
     /// <summary>
     /// 

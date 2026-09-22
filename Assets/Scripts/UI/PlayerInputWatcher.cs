@@ -4,28 +4,11 @@ using UnityEngine.InputSystem;
 [RequireComponent(typeof(PlayerInput))]
 public class PlayerInputWatcher : MonoBehaviour
 {
-    [SerializeField] StringRuntimeVariable _currentControlSchemeVariable;
+    [SerializeField] InputDeviceRuntimeVariable _currentInputDevice;
+    [SerializeField] AvailableInputDevicesSO _devices;
 
-    PlayerInput _playerInput;
-    bool _isDirty;
-
-    private void Awake()
+    void OnControlsChanged(PlayerInput playerInput)
     {
-        _playerInput = GetComponent<PlayerInput>();
-    }
-
-    void OnControlsChanged()
-    {
-        if (_playerInput == null) _isDirty = true;
-        else _currentControlSchemeVariable.Value = _playerInput.currentControlScheme;
-    }
-
-    private void Update()
-    {
-        if (_isDirty)
-        {
-            _currentControlSchemeVariable.Value = _playerInput.currentControlScheme;
-            _isDirty = false;
-        }
+        _currentInputDevice.Value = _devices.FindForScheme(playerInput.currentControlScheme);
     }
 }

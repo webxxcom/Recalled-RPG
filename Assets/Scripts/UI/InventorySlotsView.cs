@@ -1,13 +1,16 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class InventorySlotsView : MonoBehaviour
 {
-    [SerializeField] RuntimeArbitraryList _list;
+    [SerializeField] InventoryItemsListSO _inventoryItems;
+    [SerializeField] bool _isPopulated;
 
-    IReadOnlyList<InventorySlot> _slots;
     /// <summary>View can be populated with the slots by slots creator</summary>
+    IReadOnlyList<InventorySlot> _slots;
     public IReadOnlyList<InventorySlot> Slots
     {
         get => _slots;
@@ -17,32 +20,52 @@ public class InventorySlotsView : MonoBehaviour
             RefreshView();
         }
     }
-    public RuntimeArbitraryList List => _list;
+    public IReadOnlyList<ItemInstance> Items => _inventoryItems.Items;
+
+    ItemCategory _currentFilter = ItemCategory.Any;
+    public ItemCategory Filter
+    {
+        get => _currentFilter;
+        set
+        {
+            if (value == _currentFilter)
+                return;
+
+            _currentFilter = value;
+            RefreshView();
+        }
+    }
+
+    private void Awake()
+    {
+        if (!_isPopulated) _slots = GetComponentsInChildren<InventorySlot>();
+    }
 
     private void OnEnable()
     {
-        _list.ItemsChanged += RefreshView;
+        _inventoryItems.ItemsChanged += RefreshView;
 
-        if (Slots != null) RefreshView();
+        RefreshView();
     }
 
     private void OnDisable()
     {
-        _list.ItemsChanged -= RefreshView;
+        _inventoryItems.ItemsChanged -= RefreshView;
     }
 
-    private void Start()
+    public void RefreshView()
     {
-        Slots ??= GetComponentsInChildren<InventorySlot>();
-    }
+        if (Slots == null)
+            return;
 
-    void RefreshView()
-    {
-        var items = _list.Items;
+        var items = _inventoryItems.Items;
         for (int i = 0; i < Slots.Count; i++)
         {
-            if (i < items.Count && !items[i].IsEmpty) Slots[i].SetItem(items[i]);
-            else Slots[i].RemoveItem();
+            if (i < items.Count && !items[i].IsEmpty
+                && (Filter == ItemCategory.Any || items[i].Definition.Category == Filter))
+                Slots[i].SetItem(items[i]);
+            else
+                Slots[i].RemoveItem();
         }
     }
 }

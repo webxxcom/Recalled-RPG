@@ -3,7 +3,7 @@ using System.Linq;
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "Inventory/Collection")]
-public class BagSO : RuntimeArbitraryList
+public class BagSO : InventoryItemsListSO
 {
     public int MaxItemsCount => _items.Length;
 
@@ -143,4 +143,12 @@ public class BagSO : RuntimeArbitraryList
 
     public bool Has(ItemDefinition itemDefinition)
         => itemDefinition != null && (_items.FirstOrDefault(item => item?.Definition == itemDefinition) != null);
+
+    private void OnValidate()
+    {
+        foreach (var item in _items)
+        {
+            item.SetItem(item.Definition, item.Count);
+        }
+    }
 }

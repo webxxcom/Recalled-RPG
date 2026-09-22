@@ -27,11 +27,11 @@ public class BarScriptUI : MonoBehaviour
         MaxValue = _valueVariable.Value;
         Set(MaxValue);
 
-        _valueVariable.OnValueChanged += OnValueChanged;
+        _valueVariable.ValueChanged += OnValueChanged;
     }
 
     private void OnDisable()
-        => _valueVariable.OnValueChanged -= OnValueChanged;
+        => _valueVariable.ValueChanged -= OnValueChanged;
 
     IEnumerator ProgressBars()
     {

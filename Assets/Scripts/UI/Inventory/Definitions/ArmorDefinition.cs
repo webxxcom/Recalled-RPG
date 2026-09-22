@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-[CreateAssetMenu(menuName = "InventorySO Items/Armor")]
+[CreateAssetMenu(menuName = "Inventory/Items/Armor")]
 public class ArmorDefinition : ItemDefinition
 {
     [field: SerializeField] public float Protection { get; private set; }

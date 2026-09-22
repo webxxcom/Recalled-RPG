@@ -7,16 +7,15 @@ public class DescriptionView : MonoBehaviour
     [SerializeField] TextMeshProUGUI _header;
     [SerializeField] TextMeshProUGUI _extra;
     [SerializeField] TextMeshProUGUI _description;
-    [Header("Listens to")]
-    [SerializeField] GameobjectGameEvent _selectableChanged;
+    [Header("Read"), SerializeField] GameObjectRuntimeVariable _currentSelected;
 
     private void OnEnable()
     {
-        _selectableChanged.AddListener(OnCellSelected);
+        _currentSelected.ValueChanged += OnCellSelected;
     }
     private void OnDisable()
     {
-        _selectableChanged.RemoveListener(OnCellSelected);
+        _currentSelected.ValueChanged -= OnCellSelected;
     }
 
     public void Show(ItemInstance item)

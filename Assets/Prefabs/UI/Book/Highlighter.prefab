@@ -51,8 +51,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81f77c22030f0fb44b0cec7db57bb233, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Highlighter
-  _selectableChanged: {fileID: 11400000, guid: a976fdfc622384d4db0b424bd3e06ea3, type: 2}
   _image: {fileID: 3453782123415535354}
+  _currentSelected: {fileID: 11400000, guid: d4ee457ad6b9d184498cb5d9c591e923, type: 2}
 --- !u!114 &1960531945211277294
 MonoBehaviour:
   m_ObjectHideFlags: 0

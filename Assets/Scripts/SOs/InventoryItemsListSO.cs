@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class RuntimeArbitraryList : ScriptableObject
+public abstract class InventoryItemsListSO : ScriptableObject
 {
     [SerializeField] protected ItemInstance[] _items;
 
@@ -10,7 +10,7 @@ public abstract class RuntimeArbitraryList : ScriptableObject
     public event Action ItemsChanged;
 
     /// <summary>
-    /// Function called in child classes which simply invokes the event <see cref="RuntimeArbitraryList.ItemsChanged"/>
+    /// Function called in child classes which simply invokes the event <see cref="ItemsChanged"/>
     /// </summary>
     protected void ContentChanged()
     {
