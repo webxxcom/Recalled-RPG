@@ -58,19 +58,20 @@ public static class ControlSchemeBindings
         for (int i = 0; i < action.bindings.Count; i++)
         {
             result = action.bindings[i];
+            if (result.isComposite)
+                continue;
+
             if (result.groups.Split(InputBinding.Separator).Contains(scheme))
             {
                 if (!string.IsNullOrWhiteSpace(compositePartName))
                 {
-                    if (result.name.Equals(compositePartName))
+                    if (result.name.Equals(compositePartName, StringComparison.OrdinalIgnoreCase))
                         return true;
                     else continue;
                 }
                 else return true;
             }
         }
-        //Debug.Log($"Couldn't find binding for {action.name}"
-        //    + (compositePartName != null ? $" and {nameof(compositePartName)}={compositePartName}" : ""));
         return false;
     }
 

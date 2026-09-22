@@ -4091,7 +4091,7 @@ MonoBehaviour:
   _header: {fileID: 7088186892590772230}
   _extra: {fileID: 3654204154801754464}
   _description: {fileID: 5211111544061990813}
-  _selectableChanged: {fileID: 11400000, guid: a976fdfc622384d4db0b424bd3e06ea3, type: 2}
+  _currentSelected: {fileID: 11400000, guid: d4ee457ad6b9d184498cb5d9c591e923, type: 2}
 --- !u!1 &3754363581106497566
 GameObject:
   m_ObjectHideFlags: 0
@@ -12419,6 +12419,10 @@ PrefabInstance:
       propertyPath: _inputAction
       value: 
       objectReference: {fileID: -1662293123113559041, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
+    - target: {fileID: 7553587275356630907, guid: a63c4c8243c9c0040843b65c4a933436, type: 3}
+      propertyPath: _listenToInput
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8470652127296711069, guid: a63c4c8243c9c0040843b65c4a933436, type: 3}
       propertyPath: m_Name
       value: Input Hint (1)
@@ -13464,6 +13468,10 @@ PrefabInstance:
       propertyPath: _inputAction
       value: 
       objectReference: {fileID: -5070075939474610090, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
+    - target: {fileID: 7553587275356630907, guid: a63c4c8243c9c0040843b65c4a933436, type: 3}
+      propertyPath: _listenToInput
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8470652127296711069, guid: a63c4c8243c9c0040843b65c4a933436, type: 3}
       propertyPath: m_Name
       value: Input Hint

@@ -19,7 +19,7 @@
     </xs:complexContent>
   </xs:complexType>
   <xs:element name="TabbedView" xmlns:q4="UnityEngine.UIElements" substitutionGroup="q4:VisualElement" type="tns:TabbedViewType" />
-  <xs:complexType name="ProjectSettingsSectionType">
+  <xs:complexType name="ProjectSettingsTitleBarType">
     <xs:complexContent mixed="false">
       <xs:extension xmlns:q5="UnityEngine.UIElements" base="q5:VisualElementType">
         <xs:choice />
@@ -27,10 +27,19 @@
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
-  <xs:element name="ProjectSettingsSection" xmlns:q6="UnityEngine.UIElements" substitutionGroup="q6:VisualElement" type="tns:ProjectSettingsSectionType" />
-  <xs:complexType name="BuiltInShaderElementType">
+  <xs:element name="ProjectSettingsTitleBar" xmlns:q6="UnityEngine.UIElements" substitutionGroup="q6:VisualElement" type="tns:ProjectSettingsTitleBarType" />
+  <xs:complexType name="ProjectSettingsSectionType">
     <xs:complexContent mixed="false">
       <xs:extension xmlns:q7="UnityEngine.UIElements" base="q7:VisualElementType">
+        <xs:choice />
+        <xs:attribute name="label" type="xs:string" />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ProjectSettingsSection" xmlns:q8="UnityEngine.UIElements" substitutionGroup="q8:VisualElement" type="tns:ProjectSettingsSectionType" />
+  <xs:complexType name="BuiltInShaderElementType">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q9="UnityEngine.UIElements" base="q9:VisualElementType">
         <xs:choice />
         <xs:attribute name="shader-mode" type="xs:string" />
         <xs:attribute name="custom-shader" type="xs:string" />
@@ -39,14 +48,5 @@
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
-  <xs:element name="BuiltInShaderElement" xmlns:q8="UnityEngine.UIElements" substitutionGroup="q8:VisualElement" type="tns:BuiltInShaderElementType" />
-  <xs:complexType name="ProjectSettingsTitleBarType">
-    <xs:complexContent mixed="false">
-      <xs:extension xmlns:q9="UnityEngine.UIElements" base="q9:VisualElementType">
-        <xs:choice />
-        <xs:attribute name="label" type="xs:string" />
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-  <xs:element name="ProjectSettingsTitleBar" xmlns:q10="UnityEngine.UIElements" substitutionGroup="q10:VisualElement" type="tns:ProjectSettingsTitleBarType" />
+  <xs:element name="BuiltInShaderElement" xmlns:q10="UnityEngine.UIElements" substitutionGroup="q10:VisualElement" type="tns:BuiltInShaderElementType" />
 </xs:schema>

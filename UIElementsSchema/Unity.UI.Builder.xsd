@@ -31,6 +31,8 @@
       <xs:extension xmlns:q5="UnityEngine.UIElements" base="q5:BindableElementType">
         <xs:choice />
         <xs:attribute name="text" type="xs:string" />
+        <xs:attribute name="documentation-url" type="xs:string" />
+        <xs:attribute name="documentation-tooltip" type="xs:string" />
         <xs:attribute default="true" name="value" type="xs:boolean" />
       </xs:extension>
     </xs:complexContent>

@@ -52,17 +52,17 @@ MonoBehaviour:
       Released: {fileID: 2693708649983283906, guid: b240b7f8ab30c4040b2453212eb7ee38, type: 3}
   - _path: dpad/up
     _frames:
-      Pressed: {fileID: -8410299208668734097, guid: 7bc84bcbf4e2e6d428ad5f230524e072, type: 3}
-      Released: {fileID: -5619119907902605489, guid: 7bc84bcbf4e2e6d428ad5f230524e072, type: 3}
+      Pressed: {fileID: 3748167293724885773, guid: b10d0f9df714a3947bfa3e86134eaf7a, type: 3}
+      Released: {fileID: 1690350123862750284, guid: b10d0f9df714a3947bfa3e86134eaf7a, type: 3}
   - _path: dpad/down
     _frames:
-      Pressed: {fileID: -994391196253222399, guid: 7bc84bcbf4e2e6d428ad5f230524e072, type: 3}
-      Released: {fileID: 859647077928970139, guid: 7bc84bcbf4e2e6d428ad5f230524e072, type: 3}
+      Pressed: {fileID: -6608621346297814346, guid: b10d0f9df714a3947bfa3e86134eaf7a, type: 3}
+      Released: {fileID: -5843400385420062974, guid: b10d0f9df714a3947bfa3e86134eaf7a, type: 3}
   - _path: dpad/left
     _frames:
-      Pressed: {fileID: -756791948948891235, guid: 7bc84bcbf4e2e6d428ad5f230524e072, type: 3}
-      Released: {fileID: -4904327974445110918, guid: 7bc84bcbf4e2e6d428ad5f230524e072, type: 3}
+      Pressed: {fileID: -5325720778019076065, guid: b10d0f9df714a3947bfa3e86134eaf7a, type: 3}
+      Released: {fileID: -1149440019849829769, guid: b10d0f9df714a3947bfa3e86134eaf7a, type: 3}
   - _path: dpad/right
     _frames:
-      Pressed: {fileID: -6813834263637813421, guid: 7bc84bcbf4e2e6d428ad5f230524e072, type: 3}
-      Released: {fileID: 6592654583719695969, guid: 7bc84bcbf4e2e6d428ad5f230524e072, type: 3}
+      Pressed: {fileID: 332659519393252310, guid: b10d0f9df714a3947bfa3e86134eaf7a, type: 3}
+      Released: {fileID: 7077469740812172911, guid: b10d0f9df714a3947bfa3e86134eaf7a, type: 3}

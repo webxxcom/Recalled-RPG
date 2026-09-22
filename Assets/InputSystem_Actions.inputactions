@@ -60,7 +60,7 @@
                     "name": "Quick Slots",
                     "type": "Value",
                     "id": "357d707a-7e33-41a7-a487-10dfb42adc03",
-                    "expectedControlType": "Vector2",
+                    "expectedControlType": "Dpad",
                     "processors": "",
                     "interactions": "Press(behavior=2)",
                     "initialStateCheck": true,
@@ -339,17 +339,6 @@
                     "interactions": "",
                     "processors": "",
                     "groups": ";Gamepad",
-                    "action": "Quick Slots",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "0d4e081f-e1f3-413e-9f5c-ab8945e66609",
-                    "path": "",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
                     "action": "Quick Slots",
                     "isComposite": false,
                     "isPartOfComposite": false

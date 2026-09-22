@@ -21,7 +21,7 @@ public abstract class RuntimeVariable<T> : ScriptableObject
     public event Action<T> ValueChanged;
 
 #if UNITY_EDITOR
-    T _prev;
+    [SerializeField, HideInInspector] T _prev;
     private void OnValidate()
     {
         if (_prev != null && !_prev.Equals(_value))
