@@ -16,22 +16,22 @@ public class ScreenGroupInputActionBinder : MonoBehaviour
 
     private void OnEnable()
     {
-        _nextPageAction.action.started += NextPage;
-        _prevPageAction.action.started += PrevPage;
+        _nextPageAction.action.canceled += NextPage;
+        _prevPageAction.action.canceled += PrevPage;
     }
 
     private void OnDisable()
     {
-        _nextPageAction.action.started -= NextPage;
-        _prevPageAction.action.started -= PrevPage;
+        _nextPageAction.action.canceled -= NextPage;
+        _prevPageAction.action.canceled -= PrevPage;
     }
 
     void NextPage(InputAction.CallbackContext context)
     {
-        if (context.performed) _screenGroup.ChooseNext(1);
+        _screenGroup.ChooseNext(1);
     }
     void PrevPage(InputAction.CallbackContext context)
     {
-        if (context.performed) _screenGroup.ChooseNext(-1);
+        _screenGroup.ChooseNext(-1);
     }
 }

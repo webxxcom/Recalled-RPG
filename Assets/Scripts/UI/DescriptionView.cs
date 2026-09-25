@@ -7,7 +7,7 @@ public class DescriptionView : MonoBehaviour
     [SerializeField] TextMeshProUGUI _header;
     [SerializeField] TextMeshProUGUI _extra;
     [SerializeField] TextMeshProUGUI _description;
-    [Header("Read"), SerializeField] GameObjectRuntimeVariable _currentSelected;
+    [Header("Reads"), SerializeField] GameObjectRuntimeVariable _currentSelected;
 
     private void OnEnable()
     {
@@ -27,6 +27,6 @@ public class DescriptionView : MonoBehaviour
 
     void OnCellSelected(GameObject game)
     {
-        Show(game.GetComponent<InventorySlot>().Item);
+        if (game != null) Show(game.GetComponent<InventorySlot>().Item);
     }
 }
