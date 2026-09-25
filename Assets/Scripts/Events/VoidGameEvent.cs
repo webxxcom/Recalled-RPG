@@ -9,4 +9,5 @@ public class VoidGameEvent : ScriptableObject
     public void AddListener(Action list) => OnEventRaised += list;
     public void RemoveListener(Action list) => OnEventRaised -= list;
     public void Invoke() => OnEventRaised?.Invoke();
+    public void Invoke(object _) => OnEventRaised?.Invoke();
 }

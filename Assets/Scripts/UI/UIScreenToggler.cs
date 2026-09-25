@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Rendering;
 
 public class UIScreenToggler : MonoBehaviour
 {
@@ -15,10 +14,5 @@ public class UIScreenToggler : MonoBehaviour
     {
         foreach (var pair in _dictionary)
             pair.Key.RemoveListener(pair.Value.RequestToggle);
-    }
-
-    void ToggleScreen()
-    {
-
     }
 }

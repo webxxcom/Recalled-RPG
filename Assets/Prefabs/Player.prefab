@@ -396,7 +396,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.18
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -1494,7 +1494,7 @@ GameObject:
   - component: {fileID: 2708507066674380346}
   - component: {fileID: 6443777087678772007}
   - component: {fileID: 1255662501661695068}
-  - component: {fileID: 6060224944460093095}
+  - component: {fileID: 5642640477246636282}
   m_Layer: 8
   m_Name: Player
   m_TagString: Player
@@ -1698,7 +1698,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ExternalVelocity
   decayRate: 8
   restThreshold: 0.05
---- !u!114 &6060224944460093095
+--- !u!114 &5642640477246636282
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1707,11 +1707,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 7559287907167481913}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 88919415d7170df4aa35aa9e4aeed9a7, type: 3}
+  m_Script: {fileID: 11500000, guid: 87d248c24243bac47879c3b79f1e01c0, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PlayerInputBroadcast
-  OnInventory: {fileID: 11400000, guid: 4604c42548b19bf498c44dc741a3dda2, type: 2}
-  OnPauseMenu: {fileID: 11400000, guid: 1488ef76c18cdfe4d9ab67f05904969f, type: 2}
+  m_EditorClassIdentifier: '::'
+  _currentInputDevice: {fileID: 11400000, guid: 8116cefb92c0bfa498ed98723bb495e2, type: 2}
+  _devices: {fileID: 11400000, guid: 99a9f4f6ecea88248a32e08c318dfd8c, type: 2}
 --- !u!1 &8375044973183638792
 GameObject:
   m_ObjectHideFlags: 0

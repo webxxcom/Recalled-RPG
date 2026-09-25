@@ -9,17 +9,14 @@ public class ToggleableGameStateApllier : MonoBehaviour
 
     Toggleable _toggleable;
 
-    private void Awake()
+    void Awake()
     {
         _toggleable = GetComponent<Toggleable>();
-    }
 
-    void OnEnable()
-    {
         _toggleable.Activated += ApplyCurrentState;
     }
 
-    void OnDisable()
+    void OnDestroy()
     {
         _toggleable.Activated -= ApplyCurrentState;
     }
