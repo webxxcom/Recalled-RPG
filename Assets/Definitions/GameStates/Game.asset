@@ -9,11 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7b3a2fd079008c645881ad6a93011fcc, type: 3}
+  m_Script: {fileID: 11500000, guid: 060a85c0e21c5e3499c5f03b7bdefd22, type: 3}
   m_Name: Game
   m_EditorClassIdentifier: Assembly-CSharp::GameState
-  <ActionMaps>k__BackingField:
-  - System
+  _actionMaps:
   - Player
-  <CursorMode>k__BackingField: 1
-  <FreezeTime>k__BackingField: 0
+  _cursorMode: 1
+  _freezeTime: 0
+  _disallowedAbove: []

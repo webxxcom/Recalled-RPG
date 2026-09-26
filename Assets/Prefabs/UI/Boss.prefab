@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9028402120805114007}
   - component: {fileID: 4658989971234155441}
+  - component: {fileID: 4492185911458622298}
   - component: {fileID: 7208070713647066648}
   m_Layer: 5
   m_Name: Boss
@@ -58,11 +59,24 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_VertexColorAlwaysGammaSpace: 1
   m_UseReflectionProbes: 0
-  m_AdditionalShaderChannelsFlag: 25
+  m_AdditionalShaderChannelsFlag: 0
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!114 &4492185911458622298
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1626665157626396237}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ccbf9b5ad9a2b374b92f768ea5e9ed8d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Toggleable
+  _hidesWhenInactive: 1
 --- !u!114 &7208070713647066648
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -263,8 +277,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -33.6375}
-  m_SizeDelta: {x: 175.2827, y: 33.6375}
+  m_AnchoredPosition: {x: 0.0000019073486, y: -20.7126}
+  m_SizeDelta: {x: 127.1082, y: 20.7126}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!1 &3970720725198281582
 GameObject:

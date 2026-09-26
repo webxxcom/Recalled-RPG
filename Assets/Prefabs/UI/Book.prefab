@@ -1532,7 +1532,7 @@ GameObject:
   - component: {fileID: 3513828680334018968}
   - component: {fileID: 3102951910512009951}
   - component: {fileID: 5082944138232568711}
-  - component: {fileID: 7413989682060361255}
+  - component: {fileID: 1880892856924950256}
   m_Layer: 5
   m_Name: Book
   m_TagString: Untagged
@@ -1568,7 +1568,7 @@ Canvas:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1204620722222649022}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_RenderMode: 0
   m_Camera: {fileID: 0}
@@ -1614,8 +1614,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ccbf9b5ad9a2b374b92f768ea5e9ed8d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Toggleable
-  _hidesWhenInactive: 0
---- !u!114 &7413989682060361255
+  _hidesWhenInactive: 1
+--- !u!114 &1880892856924950256
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1624,11 +1624,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 1204620722222649022}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bdcdbd85f8f6ad34986888d6be114900, type: 3}
+  m_Script: {fileID: 11500000, guid: 9ab1f1f1024f42447a28a377fc8fae06, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ScreenViewUi
-  _gameState: {fileID: 11400000, guid: 3029483e43a1c5a4e94100700962da7f, type: 2}
+  m_EditorClassIdentifier: '::'
+  _stack: {fileID: 0}
+  _pauseState: {fileID: 11400000, guid: 3029483e43a1c5a4e94100700962da7f, type: 2}
   _playerInput: {fileID: 0}
+  _pauseAction: {fileID: -4958776791114779791, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
+  _resumeButton: {fileID: 0}
 --- !u!1 &1288130367956329864
 GameObject:
   m_ObjectHideFlags: 0
@@ -7667,7 +7670,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -0.000022888184}
+  m_AnchoredPosition: {x: 0, y: -0.000030517578}
   m_SizeDelta: {x: 0, y: 0.000045776}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8949238244516751483

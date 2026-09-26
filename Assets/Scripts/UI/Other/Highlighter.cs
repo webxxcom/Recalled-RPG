@@ -20,6 +20,8 @@ public class Highlighter : MonoBehaviour
     private void OnEnable()
     {
         _currentSelected.ValueChanged += SetTo;
+
+        SetTo(_currentSelected.Value);
     }
     private void OnDisable()
     {

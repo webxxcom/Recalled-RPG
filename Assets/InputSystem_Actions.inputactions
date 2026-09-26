@@ -928,6 +928,17 @@
                 },
                 {
                     "name": "",
+                    "id": "b214a310-ea8c-41aa-b48f-26fae71f875a",
+                    "path": "<Keyboard>/f",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard&Mouse",
+                    "action": "Pause",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "becbb7f5-9998-4554-b110-f502f3ebadcb",
                     "path": "<Keyboard>/escape",
                     "interactions": "",

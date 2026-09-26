@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class DamageInfo
 {
@@ -9,8 +8,7 @@ public class DamageInfo
     public Collider2D Hurtbox { get; private set; }
     public Vector2 Direction { get; private set; }
 
-    public DamageInfo(int quantity, float knockbackPower, EntityController source,
-        Collider2D hurtbox)
+    public DamageInfo(int quantity, float knockbackPower, EntityController source, Collider2D hurtbox)
     {
         Amount = quantity;
         KnockbackPower = knockbackPower;

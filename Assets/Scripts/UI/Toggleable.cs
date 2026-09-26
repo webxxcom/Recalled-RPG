@@ -38,7 +38,7 @@ public class Toggleable : MonoBehaviour, IToggleable
     void Activate() { if (_hidesWhenInactive) gameObject.SetActive(true); Activated?.Invoke(); }
     void Deactivate() { if (_hidesWhenInactive) gameObject.SetActive(false); Deactivated?.Invoke(); }
 
-    void IToggleable.SetActive(bool value)
+    void IToggleable.SetIsActive(bool value)
     {
         if (value == IsActive)
             return;

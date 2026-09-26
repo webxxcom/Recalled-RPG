@@ -26,11 +26,11 @@ public class ToggleablesController : MonoBehaviour
 
     private void OnEnable()
     {
-        _activators.ScreenChanged += ToggleToggleable;
+        _activators.ActiveChanged += ToggleToggleable;
     }
     private void OnDisable()
     {
-        _activators.ScreenChanged -= ToggleToggleable;
+        _activators.ActiveChanged -= ToggleToggleable;
     }
 
     void ToggleToggleable(Toggleable toggleable)

@@ -3,19 +3,12 @@ using UnityEngine;
 
 public sealed class UIScreenGroup : ToggleableGroup
 {
-    [SerializeField] Toggleable _firstView;
+    [SerializeField] GameStateSO _baseGameState;
     readonly Stack<Toggleable> _screens = new();
-
-    private void Start()
-    {
-        AddActiveToggleable(_firstView);
-    }
 
     protected override bool AddActiveToggleable(Toggleable screen)
     {
-        Toggleable prev = null;
-        if (_active.Count != 0)
-            prev = _active[0];
+        Toggleable prev = _active.Count != 0 ? _active[0] : null;
 
         if (base.AddActiveToggleable(screen) && prev != null)
             _screens.Push(prev);

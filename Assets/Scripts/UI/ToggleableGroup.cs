@@ -40,7 +40,7 @@ public class ToggleableGroup : MonoBehaviour
         }
     }
 
-    public event Action<Toggleable> ScreenChanged;
+    public event Action<Toggleable> ActiveChanged;
 
     private void OnEnable()
     {
@@ -63,7 +63,7 @@ public class ToggleableGroup : MonoBehaviour
 
     protected virtual bool AddActiveToggleable(Toggleable toggleable)
     {
-        // Don't want to set same screen again or more than one if disallowed
+        // Don't want to set same again or more than one if disallowed
         if (toggleable == null || toggleable.IsActive)
             return false;
 
@@ -71,8 +71,8 @@ public class ToggleableGroup : MonoBehaviour
             UncheckedRemoveActiveScreen(_active[0]);
 
         _active.Add(toggleable);
-        ((IToggleable)toggleable).SetActive(true);
-        ScreenChanged?.Invoke(toggleable);
+        ((IToggleable)toggleable).SetIsActive(true);
+        ActiveChanged?.Invoke(toggleable);
         return true;
     }
 
@@ -89,7 +89,7 @@ public class ToggleableGroup : MonoBehaviour
         if (!_active.Remove(screen))
             return false;
 
-        ((IToggleable)screen).SetActive(false);
+        ((IToggleable)screen).SetIsActive(false);
         return true;
     }
 
