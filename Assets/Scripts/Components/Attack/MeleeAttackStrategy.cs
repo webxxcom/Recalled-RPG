@@ -32,7 +32,7 @@ public class MeleeAttackStrategy : AttackStrategy
 
     public override void ProcessState(float normalizedTime, AttackContext attackContext)
     {
-        if (normalizedTime < _meleeAttackData.ImpactTime || normalizedTime > _meleeAttackData.RecoveryTime)
+        if (normalizedTime < _meleeAttackData.ImpactTime || normalizedTime > _meleeAttackData.RecoveryTime || !enabled)
             return;
 
         _meleeAttackData.HitboxOverTime(_hitbox, normalizedTime);

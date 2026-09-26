@@ -64,7 +64,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 5607217336452520731, guid: 88f3f5d3d30a3be408b303c00defc7a5, type: 2}
+  - {fileID: -8783977265312176518, guid: be8ab1ba9c502584faa530ad36b6d4fb, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -110,8 +110,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 20
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 88f3f5d3d30a3be408b303c00defc7a5, type: 2}
-  m_sharedMaterial: {fileID: 5607217336452520731, guid: 88f3f5d3d30a3be408b303c00defc7a5, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: be8ab1ba9c502584faa530ad36b6d4fb, type: 2}
+  m_sharedMaterial: {fileID: -8783977265312176518, guid: be8ab1ba9c502584faa530ad36b6d4fb, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -158,7 +158,7 @@ MonoBehaviour:
   m_linkedTextComponent: {fileID: 0}
   parentLinkedComponent: {fileID: 0}
   m_enableKerning: 0
-  m_ActiveFontFeatures: 6e72656b
+  m_ActiveFontFeatures: 6e72656bu
   m_enableExtraPadding: 0
   checkPaddingRequired: 0
   m_isRichText: 1

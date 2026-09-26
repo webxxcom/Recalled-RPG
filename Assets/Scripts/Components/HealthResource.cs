@@ -7,7 +7,6 @@ public class HealthResource : ValueResource
 {
     [SerializeField] PlayerCombatData _combatData;
     public Collider2D Hurtbox { get; private set; }
-    public bool IsInvincible => _invincibilityTimer > 0f;
     float _invincibilityTimer;
 
     public event Action<DamageInfo> OnHpChangeApplied;
@@ -22,6 +21,7 @@ public class HealthResource : ValueResource
         Hurtbox = GetComponent<Collider2D>();
     }
 
+    public bool IsInvincible => _invincibilityTimer > 0f;
     public bool IsDead => CurrentValue <= 0;
 
     public void ApplyDamage(DamageInfo damageInfo)
@@ -31,17 +31,20 @@ public class HealthResource : ValueResource
 
         if (_combatData) damageInfo.Amount = Mathf.RoundToInt(damageInfo.Amount / _combatData.Protection);
         OnHpChange?.Invoke(damageInfo);
-        int applied = Replenish(-damageInfo.Amount);
+        int applied = Consume(damageInfo.Amount);
         if (applied == 0)
             return;
 
         damageInfo.Amount = applied;
         OnHpChangeApplied?.Invoke(damageInfo);
 
-        if (CurrentValue == 0)
-            OnDeath?.Invoke(damageInfo);
-        if (CurrentValue == MaxValue)
-            OnMax?.Invoke(damageInfo);
+        if (applied != 0)
+        {
+            if (IsDead)
+                OnDeath?.Invoke(damageInfo);
+            if (CurrentValue == MaxValue )
+                OnMax?.Invoke(damageInfo);
+        }
     }
 
     public void GrantInvincibility(float time)

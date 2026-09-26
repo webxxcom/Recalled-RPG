@@ -1531,8 +1531,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 418a9a8b047a1c843aecb9bd700ae752, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HealthResource
-  _config: {fileID: 11400000, guid: 8c7025ebdf498ce49baf01dcca61e655, type: 2}
-  _maxValue: 100
+  _config: {fileID: 11400000, guid: 2e463e3769a329247a9da0cbb5b94970, type: 2}
+  _maxValue: 1
   _currentValue: {fileID: 0}
   _isInfinite: 0
   _combatData: {fileID: 0}
@@ -1594,7 +1594,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::DamageNumberPopup
   _health: {fileID: 6943032192117191510}
   _damagePopup: {fileID: 7535224943969880707, guid: 385f75b1c0c81584c85f5375d9fc8db4, type: 3}
-  _settings: {fileID: 11400000, guid: 43fb6679744b4a746b6728a93098e51e, type: 2}
 --- !u!114 &7958631696725362405
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1623,6 +1622,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::DamageDeath
   _health: {fileID: 6943032192117191510}
   _animator: {fileID: 6696174316393343614}
+  _toDisable:
+  - {fileID: 8238773066907892438}
 --- !u!1 &8533387803823033690
 GameObject:
   m_ObjectHideFlags: 0

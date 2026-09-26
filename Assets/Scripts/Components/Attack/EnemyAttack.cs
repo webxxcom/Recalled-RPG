@@ -14,7 +14,7 @@ public class EnemyAttack : EntityAttack
 
     void Update()
     {
-        if (_timeSinceLastAttack > _intervalBetweenStates && _targetProviderInstance.HasTarget)
+        if (_timeSinceLastAttack > _intervalBetweenStates && _targetProviderInstance.HasTarget && gameObject.activeInHierarchy)
         {
             foreach (var attackStrategy in _attackStrategies)
             {

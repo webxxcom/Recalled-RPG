@@ -3,12 +3,19 @@ using UnityEngine;
 public class DamageNumberPopup : HealthReactor
 {
     [SerializeField] PopupWorldText _damagePopup;
-    [SerializeField] SettingsConfig _settings;
+
+    private void Awake()
+    {
+        if (_damagePopup == null)
+        {
+            Debug.Log($"{gameObject.name} doesn't have {nameof(_damagePopup)} assigned");
+            enabled = false;
+        }
+    }
 
     protected override void OnHpChange(DamageInfo di)
     {
-        if (_settings.SettingsData._data.showDamageNumbers)
-            Instantiate(_damagePopup, _health.Hurtbox.bounds.center, Quaternion.identity)
-                .Init(di.Amount.ToString());
+        Instantiate(_damagePopup, _health.Hurtbox.bounds.center, Quaternion.identity)
+            .Init(di.Amount.ToString());
     }
 }
