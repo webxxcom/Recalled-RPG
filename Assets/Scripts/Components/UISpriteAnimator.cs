@@ -72,7 +72,7 @@ public class UISpriteAnimator : MonoBehaviour
 
     private void Update()
     {
-        if (!IsPlaying)
+        if (!IsPlaying || !_graphic.enabled)
             return;
 
         _time += _useUnscaledTime ? Time.unscaledDeltaTime : Time.deltaTime;

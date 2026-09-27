@@ -119,6 +119,27 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &85303722 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4665989738541649455, guid: 204b88dbe0aa4b842817d3019a99f7b9, type: 3}
+  m_PrefabInstance: {fileID: 514391170}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &85303727
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 85303722}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fc81b36b07f0104dac395947ac3e4e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CanvasBobbleEffect
+  _frequency: 10
+  _amplitude: 2.3
+  _direction: 1
+  _useUnscaledTime: 1
 --- !u!114 &166377690
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -133,6 +154,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: Unity.InputSystem::UnityEngine.InputSystem.InputActionReference
   m_Asset: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_ActionId: 3c7022bf-7922-4f7c-a998-c437916075ad
+--- !u!114 &182567048 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6558320101663027422, guid: 204b88dbe0aa4b842817d3019a99f7b9, type: 3}
+  m_PrefabInstance: {fileID: 514391170}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
 --- !u!1001 &514391170
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -245,6 +277,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6533286984726787073, guid: 204b88dbe0aa4b842817d3019a99f7b9, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6533286984726787073, guid: 204b88dbe0aa4b842817d3019a99f7b9, type: 3}
+      propertyPath: m_OverridePixelPerfect
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6975066739280812760, guid: 204b88dbe0aa4b842817d3019a99f7b9, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -261,10 +301,24 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7847359336757088239, guid: 204b88dbe0aa4b842817d3019a99f7b9, type: 3}
+      propertyPath: _AD
+      value: 
+      objectReference: {fileID: 182567048}
+    - target: {fileID: 7847359336757088239, guid: 204b88dbe0aa4b842817d3019a99f7b9, type: 3}
+      propertyPath: _tmpText
+      value: 
+      objectReference: {fileID: 182567048}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4440890812020815409, guid: 204b88dbe0aa4b842817d3019a99f7b9, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1772831154}
+    - targetCorrespondingSourceObject: {fileID: 4665989738541649455, guid: 204b88dbe0aa4b842817d3019a99f7b9, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 85303727}
   m_SourcePrefab: {fileID: 100100000, guid: 204b88dbe0aa4b842817d3019a99f7b9, type: 3}
 --- !u!224 &514391171 stripped
 RectTransform:
@@ -893,6 +947,27 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 5483117024435693952, guid: f0f1c602fa75d304ab2370c186e3c571, type: 3}
   m_PrefabInstance: {fileID: 1613743445}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1772831149 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4440890812020815409, guid: 204b88dbe0aa4b842817d3019a99f7b9, type: 3}
+  m_PrefabInstance: {fileID: 514391170}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1772831154
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1772831149}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fc81b36b07f0104dac395947ac3e4e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CanvasBobbleEffect
+  _frequency: -10
+  _amplitude: 2.3
+  _direction: 1
+  _useUnscaledTime: 1
 --- !u!114 &2002416767
 MonoBehaviour:
   m_ObjectHideFlags: 0

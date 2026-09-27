@@ -1,16 +1,16 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
-[RequireComponent(typeof(AudioSource))]
 public class DialogueManager : MonoBehaviour
 {
     [SerializeField] Button _continueButton;
     [SerializeField] SpeakerDialogueController _leftEntity;
     [SerializeField] PlayerDialogueController _player;
     [SerializeField] ScreenController _screenController;
+    [SerializeField] InputActionReference _submitAction;
 
-    AudioSource _audioSource;
     ConsumableValue<bool> _enterPressed = new();
     ConsumableValue<DialogueData.Line.Choice> _buttonPressedData = new();
 
@@ -26,8 +26,6 @@ public class DialogueManager : MonoBehaviour
 
     void Awake()
     {
-        _audioSource = GetComponent<AudioSource>();
-
         _continueButton.onClick.AddListener(() => _enterPressed.Value = true);
         _currentDialogue.ValueChanged += OnCurrentDialogue;
 
@@ -37,11 +35,22 @@ public class DialogueManager : MonoBehaviour
     void OnEnable()
     {
         BeginDialogue(_currentDialogue.Value);
+
+        _submitAction.action.performed += OnSubmitAction;
+    }
+    private void OnDisable()
+    {
+        _submitAction.action.performed += OnSubmitAction;
     }
 
     void OnDestroy()
     {
         _currentDialogue.ValueChanged -= OnCurrentDialogue;
+    }
+
+    void OnSubmitAction(InputAction.CallbackContext _)
+    {
+        _enterPressed.Value = true;
     }
 
     void OnCurrentDialogue(DialogueSource dialogueData)
@@ -71,8 +80,12 @@ public class DialogueManager : MonoBehaviour
 
         while (true)
         {
+            ResetFields();
+
             // Wait until left entity stops talking or is out of space for letters
-            yield return StartCoroutine(_leftEntity.RevealDialogueText(currentLine.text));
+            _leftEntity.StartRevealDialogueText(currentLine.text);
+            yield return new WaitUntil(() => _enterPressed.Consume() || !_leftEntity.IsSpeaking);
+            _leftEntity.FinishText(currentLine.text);
 
             switch (currentLine.Type)
             {
@@ -112,8 +125,6 @@ public class DialogueManager : MonoBehaviour
         _continueButton.gameObject.SetActive(true);
 
         yield return new WaitUntil(() => _enterPressed.Consume());
-
-        _continueButton.gameObject.SetActive(false);
     }
 
     void EndTalking()

@@ -724,6 +724,17 @@
                 },
                 {
                     "name": "",
+                    "id": "c1fe024b-e321-40c2-a0f0-3e761e6bc314",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Submit",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "82627dcc-3b13-4ba9-841d-e4b746d6553e",
                     "path": "*/{Cancel}",
                     "interactions": "",
@@ -883,16 +894,6 @@
             "id": "06d9a4f7-1291-4f63-9b7a-093cbccc2c26",
             "actions": [
                 {
-                    "name": "Toggle Inventory",
-                    "type": "Button",
-                    "id": "6129c378-b9b5-48ab-94a0-ff7591289eab",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false,
-                    "priority": 0
-                },
-                {
                     "name": "Pause",
                     "type": "Button",
                     "id": "3a7134f8-414a-4264-bcf7-2dd5b048785c",
@@ -904,28 +905,6 @@
                 }
             ],
             "bindings": [
-                {
-                    "name": "",
-                    "id": "f6258b04-52ba-457b-8870-2b7dfeda7a6b",
-                    "path": "<Keyboard>/f",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": ";Keyboard&Mouse",
-                    "action": "Toggle Inventory",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "c8d2fc52-8ef1-4a7e-8965-e574e3634aed",
-                    "path": "<DualShockGamepad>/touchpadButton",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Gamepad",
-                    "action": "Toggle Inventory",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
                 {
                     "name": "",
                     "id": "b214a310-ea8c-41aa-b48f-26fae71f875a",

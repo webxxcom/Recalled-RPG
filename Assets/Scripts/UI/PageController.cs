@@ -4,33 +4,39 @@ using UnityEngine;
 
 public class PageController : MonoBehaviour
 {
-    [SerializeField] TextMeshProUGUI _textMeshPro;
+    [SerializeField] TMP_Text _tmpText;
 
-    public bool HasNextPage => true;
-    public bool HasPrevPage => _textMeshPro.pageToDisplay > 1;
+    public bool HasNextPage => _tmpText.pageToDisplay < _tmpText.textInfo.pageCount;
+    public bool HasPrevPage => _tmpText.pageToDisplay > 1;
 
     public Action<PageController> PageChanged;
 
-    private void OnEnable()
-    {
-        _isDirty = true;
-    }
-
     public void NextPage()
     {
-        if (_textMeshPro.overflowMode != TextOverflowModes.Page || !HasNextPage)
+        if (_tmpText.overflowMode != TextOverflowModes.Page || !HasNextPage)
             return;
 
-        _textMeshPro.pageToDisplay++;
+        _tmpText.pageToDisplay++;
         _isDirty = true;
     }
     public void PrevPage()
     {
-        if (_textMeshPro.overflowMode != TextOverflowModes.Page || !HasPrevPage)
+        if (_tmpText.overflowMode != TextOverflowModes.Page || !HasPrevPage)
             return;
 
-        _textMeshPro.pageToDisplay--;
+        _tmpText.pageToDisplay--;
         _isDirty = true;
+    }
+
+    string _prevText;
+    private void Update()
+    {
+        if (_tmpText.text != _prevText)
+        {
+            _prevText = _tmpText.text;
+            _tmpText.pageToDisplay = 1;
+            PageChanged?.Invoke(this);
+        }
     }
 
     bool _isDirty;
