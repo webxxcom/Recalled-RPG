@@ -4,10 +4,10 @@
 TagManager:
   serializedVersion: 3
   tags:
-  - Stairs
   - Collectible
   - Enemy
   - Interactable
+  - Door
   layers:
   - Default
   - TransparentFX

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-[RequireComponent(typeof(StageScript))]
+[RequireComponent(typeof(StageController))]
 public class BossStageScript : MonoBehaviour
 {
     [SerializeField] BossDataVariable _bossData;
@@ -9,10 +9,10 @@ public class BossStageScript : MonoBehaviour
     [SerializeField] BossStartDataGameEvent OnBossStart;
     [SerializeField] BossStartDataGameEvent OnBossDefeat;
 
-    StageScript _stageScript;
+    StageController _stageScript;
 
     private void Awake()
-        => _stageScript = GetComponent<StageScript>();
+        => _stageScript = GetComponent<StageController>();
     private void OnEnable()
     {
         _stageScript.OnStageStarted.AddListener(BossStart);

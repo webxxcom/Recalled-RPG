@@ -1,20 +1,43 @@
+using System.Collections;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 
-[RequireComponent(typeof(Animator))]
+[RequireComponent(typeof(Light2D))]
 public class StageClearenceLight : MonoBehaviour
 {
-    Animator _animator;
+    [Tooltip("Normalized intensity 0-1 where 0 is no light at all and 1 is base intensity")]
+    [SerializeField] AnimationCurve _intensityOverTime;
+    [SerializeField] float _duration;
 
-    [Header("Listens to")]
-    [SerializeField] VoidGameEvent OnStageCleared;
+    Light2D _light;
+    float _baseIntensity;
 
     private void Awake()
-        => _animator = GetComponent<Animator>();
-    private void OnEnable()
-        => OnStageCleared.OnEventRaised += Interact;
-    private void OnDisable()
-        => OnStageCleared.OnEventRaised -= Interact;
+    {
+        _light = GetComponent<Light2D>();
+    }
 
-    void Interact()
-        => _animator.SetTrigger(AnimatorParameters.InteractHash);
+    private void Start()
+    {
+        _baseIntensity = _light.intensity;
+        _light.intensity = 0;
+    }
+
+    IEnumerator ProcessLightIntensityOverTime()
+    {
+        float elapsed = 0;
+        while (elapsed < _duration)
+        {
+            _light.intensity = _baseIntensity * _intensityOverTime.Evaluate(elapsed);
+
+            elapsed += Time.deltaTime;
+            yield return null;
+        }
+    }
+
+    public void Activate()
+    {
+        StopAllCoroutines();
+        StartCoroutine(ProcessLightIntensityOverTime());
+    }
 }
