@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -9,6 +10,7 @@ public class UISpriteAnimator : MonoBehaviour
     [SerializeField] Image _graphic;
     [SerializeField] Dictionary<string, SpriteSequence> _sequences;
     [SerializeField] bool _useUnscaledTime = true;
+    [SerializeField] bool _playOnAwake;
 
     /// <summary>Raised when a non-looping sequence reaches its end.</summary>
     public event Action Completed;
@@ -18,6 +20,11 @@ public class UISpriteAnimator : MonoBehaviour
 
     SpriteSequence _currentPlaying;
     public bool IsPlaying => _currentPlaying != null;
+
+    private void OnEnable()
+    {
+        if (_playOnAwake) Play(_sequences.First().Value);
+    }
 
     private void OnDisable()
     {

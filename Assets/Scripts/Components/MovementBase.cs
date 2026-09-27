@@ -70,8 +70,20 @@ public abstract class MovementBase : MonoBehaviour
             _rigidbody2D.linearVelocity.magnitude / 4f);
     }
 
+    void FullStop()
+    {
+        MovementIntention = Vector2.zero;
+        _rigidbody2D.linearVelocity = Vector2.zero;
+        _animationController.MoveAnimation(FacingDirection, 0);
+    }
+
     public void AddSpeedCoef(float coef) => _speedAggregator.Add(coef);
     public void RemoveSpeedCoef(float coef) => _speedAggregator.Remove(coef);
+
+    private void Update()
+    {
+        if (Mathf.Approximately(Time.timeScale, 0)) FullStop();
+    }
 
 #if UNITY_EDITOR
     private void OnValidate()

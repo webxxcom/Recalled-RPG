@@ -141,65 +141,29 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 557578753}
     m_Modifications:
-    - target: {fileID: 698403532655968544, guid: 204b88dbe0aa4b842817d3019a99f7b9, type: 3}
-      propertyPath: Loop
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 698403532655968544, guid: 204b88dbe0aa4b842817d3019a99f7b9, type: 3}
-      propertyPath: Mute
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 698403532655968544, guid: 204b88dbe0aa4b842817d3019a99f7b9, type: 3}
-      propertyPath: m_Resource
-      value: 
-      objectReference: {fileID: 8300000, guid: 1b0e76b09307190459a562f97a27b318, type: 3}
-    - target: {fileID: 698403532655968544, guid: 204b88dbe0aa4b842817d3019a99f7b9, type: 3}
-      propertyPath: m_PlayOnAwake
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 698403532655968544, guid: 204b88dbe0aa4b842817d3019a99f7b9, type: 3}
-      propertyPath: OutputAudioMixerGroup
-      value: 
-      objectReference: {fileID: -7715994481459056151, guid: 690e8d8c0ae056542bcef00037ba2c5a, type: 2}
     - target: {fileID: 1934459226839117811, guid: 204b88dbe0aa4b842817d3019a99f7b9, type: 3}
       propertyPath: _stack
       value: 
       objectReference: {fileID: 557578748}
-    - target: {fileID: 1934459226839117811, guid: 204b88dbe0aa4b842817d3019a99f7b9, type: 3}
-      propertyPath: _state
-      value: 
-      objectReference: {fileID: 11400000, guid: 8cae5a555b587004a85c422192e28695, type: 2}
     - target: {fileID: 1978171857540762701, guid: 204b88dbe0aa4b842817d3019a99f7b9, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1978171857540762701, guid: 204b88dbe0aa4b842817d3019a99f7b9, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1978171857540762701, guid: 204b88dbe0aa4b842817d3019a99f7b9, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 116.9442
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1978171857540762701, guid: 204b88dbe0aa4b842817d3019a99f7b9, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 253.5094
       objectReference: {fileID: 0}
     - target: {fileID: 1978171857540762701, guid: 204b88dbe0aa4b842817d3019a99f7b9, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -168.19186
       objectReference: {fileID: 0}
     - target: {fileID: 2660291057807698806, guid: 204b88dbe0aa4b842817d3019a99f7b9, type: 3}
       propertyPath: m_Name
       value: Dialogue
-      objectReference: {fileID: 0}
-    - target: {fileID: 2778320893897245046, guid: 204b88dbe0aa4b842817d3019a99f7b9, type: 3}
-      propertyPath: m_Spacing
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 2778320893897245046, guid: 204b88dbe0aa4b842817d3019a99f7b9, type: 3}
-      propertyPath: m_ChildControlHeight
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6067347336338818101, guid: 204b88dbe0aa4b842817d3019a99f7b9, type: 3}
       propertyPath: m_Pivot.x
@@ -281,14 +245,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6533286984726787073, guid: 204b88dbe0aa4b842817d3019a99f7b9, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6558320101663027422, guid: 204b88dbe0aa4b842817d3019a99f7b9, type: 3}
-      propertyPath: m_text
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 6975066739280812760, guid: 204b88dbe0aa4b842817d3019a99f7b9, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -304,26 +260,6 @@ PrefabInstance:
     - target: {fileID: 6975066739280812760, guid: 204b88dbe0aa4b842817d3019a99f7b9, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7392104804820502095, guid: 204b88dbe0aa4b842817d3019a99f7b9, type: 3}
-      propertyPath: Loop
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7392104804820502095, guid: 204b88dbe0aa4b842817d3019a99f7b9, type: 3}
-      propertyPath: m_Resource
-      value: 
-      objectReference: {fileID: 8300000, guid: 1b0e76b09307190459a562f97a27b318, type: 3}
-    - target: {fileID: 7392104804820502095, guid: 204b88dbe0aa4b842817d3019a99f7b9, type: 3}
-      propertyPath: m_PlayOnAwake
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7392104804820502095, guid: 204b88dbe0aa4b842817d3019a99f7b9, type: 3}
-      propertyPath: OutputAudioMixerGroup
-      value: 
-      objectReference: {fileID: -7715994481459056151, guid: 690e8d8c0ae056542bcef00037ba2c5a, type: 2}
-    - target: {fileID: 7757044491077471928, guid: 204b88dbe0aa4b842817d3019a99f7b9, type: 3}
-      propertyPath: m_Padding.m_Left
-      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -525,6 +461,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2409675021506303179, guid: ef7a4d2f735b5c342b5d27fda3be7ed5, type: 3}
+      propertyPath: m_LinearDamping
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 3750387735865093422, guid: ef7a4d2f735b5c342b5d27fda3be7ed5, type: 3}
       propertyPath: m_UpdateMode
       value: 2
@@ -809,6 +749,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8269825708709769701, guid: e9435db4719c6bc4d8539fbccaec89fa, type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 1248148872}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

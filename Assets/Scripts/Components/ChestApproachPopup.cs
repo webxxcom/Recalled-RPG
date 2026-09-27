@@ -15,7 +15,7 @@ public sealed class ChestApproachPopup : ApproachTextPopup
     void StopOnInteracted()
     {
         enabled = false;
-        Destroy(_textMeshPro.gameObject);
+        Destroy(_behaviour.gameObject);
     }
 
     public override void Show()
