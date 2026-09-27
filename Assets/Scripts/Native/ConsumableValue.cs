@@ -1,4 +1,4 @@
-﻿public struct ConsumableValue<T>
+﻿public class ConsumableValue<T>
 {
     public T Value { get; set; }
 

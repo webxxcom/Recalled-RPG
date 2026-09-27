@@ -1,12 +1,11 @@
 ﻿using Newtonsoft.Json;
-using UnityEditor;
-using static DialogueData.Line;
+using Unity.Collections.Tests.CoreCLR.TestJobs;
 
 [System.Serializable]
-public class DialogueData
+public struct DialogueData
 {
     [System.Serializable]
-    public class Line
+    public struct Line
     {
         [System.Serializable]
         public class Choice
@@ -18,7 +17,9 @@ public class DialogueData
 
         public int id;
         public string text;
+        public string emotion;
 
+        // A line can: 1. provide choices, 2. have next line, 3. finish dialogue
         public Choice[] choices;
         public int next;
         public int end;
@@ -29,18 +30,32 @@ public class DialogueData
             {
                 if (choices != null) // The player is going to have choices lines
                     return Types.Choices;
-                else if (choices == null && end == 0 && next != 0) // No choices available but also no end then continue
+                else if (next != 0) // No choices available but also no end then continue
                     return Types.Continue;
-                else if (choices == null && end == 1 && next == 0) // No choices and the end
+                else if (end != 0) // No choices and the end
                     return Types.End;
 
-                throw new JsonReaderException("Invalid data for a line dialog in " + nameof(DialogueData));
+                throw new JsonReaderException($"Invalid data for a line dialog in {nameof(DialogueData)}");
             }
         }
 
-        public enum Types { Continue, End, Choices}
+        public enum Types { Continue, End, Choices }
+        public enum Emotions { Surprised, Neutral, Tired }
     }
 
     public string speaker;
     public Line[] lines;
+
+    public readonly bool TryGetLineWithId(int id, out Line line)
+    {
+        for (int i = 0; i < lines.Length; i++)
+        {
+            line = lines[i];
+            if (line.id == id)
+                return true;
+        }
+
+        line = default;
+        return false;
+    }
 }

@@ -1,34 +1,26 @@
 using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using TMPro;
 using UnityEngine;
-using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 [RequireComponent(typeof(AudioSource))]
 public class DialogueManager : MonoBehaviour
 {
-    [SerializeField] GameObject _playerDialogueButtonPrefab;
-    [SerializeField] GameObject _buttonGrid;
     [SerializeField] Button _continueButton;
+    [SerializeField] SpeakerDialogueController _leftEntity;
+    [SerializeField] PlayerDialogueController _player;
+    [SerializeField] ScreenController _screenController;
 
-    PlayerInput _playerInput;
-    LeftEntityDialogController _leftEntity;
-    PlayerDialogueController _player;
-    DialogueData _dialogueData;
     AudioSource _audioSource;
-    readonly List<Button> _playerButtons = new();
-    ConsumableValue<bool > _enterPressed;
-    ConsumableValue<DialogueData.Line.Choice> _buttonPressedData;
+    ConsumableValue<bool> _enterPressed = new();
+    ConsumableValue<DialogueData.Line.Choice> _buttonPressedData = new();
 
-    [Header("Listens to")]
-    [SerializeField] DialogueSourceGameEvent OnDialogueStarted;
+    [Header("Reads")]
+    [SerializeField] DialogueVariable _currentDialogue;
 
     void ResetFields()
     {
         _continueButton.gameObject.SetActive(false);
-        _buttonPressedData.Value = null;
+        _buttonPressedData.Value = default;
         _enterPressed.Value = false;
     }
 
@@ -36,88 +28,73 @@ public class DialogueManager : MonoBehaviour
     {
         _audioSource = GetComponent<AudioSource>();
 
-        _leftEntity = FindAnyObjectByType<LeftEntityDialogController>();
-        _player = FindAnyObjectByType<PlayerDialogueController>();
-        _playerInput = FindAnyObjectByType<PlayerInput>();
-
         _continueButton.onClick.AddListener(() => _enterPressed.Value = true);
-    }
+        _currentDialogue.ValueChanged += OnCurrentDialogue;
 
-    void Start()
-    {
-        ResetFields();
+        if (_currentDialogue.Value != null) OnCurrentDialogue(_currentDialogue.Value);
     }
 
     void OnEnable()
     {
-        OnDialogueStarted.OnEventRaised += BeginDialogue;
+        BeginDialogue(_currentDialogue.Value);
     }
 
-    void OnDisable()
+    void OnDestroy()
     {
-        OnDialogueStarted.OnEventRaised -= BeginDialogue;
+        _currentDialogue.ValueChanged -= OnCurrentDialogue;
+    }
+
+    void OnCurrentDialogue(DialogueSource dialogueData)
+    {
+        if (dialogueData == null) _screenController.Deactivate();
+        else _screenController.Activate();
     }
 
     public void BeginDialogue(DialogueSource dialogueData)
     {
-        _dialogueData = JsonUtility.FromJson<DialogueData>(dialogueData.TextFile.text);
-        //IsActive = true;
-        //TODO not finished
-        _enterPressed.Value = false;
-        _buttonPressedData.Value = null;
-        
-        _leftEntity.SpriteImage.sprite = dialogueData.EntitySprite;
+        if (dialogueData == null) return;
 
-        StartCoroutine(BeginTalking());
+        DialogueContext context = new()
+        {
+            faceset = dialogueData.EntitySprite,
+            data = JsonUtility.FromJson<DialogueData>(dialogueData.TextFile.text)
+        };
+
+        ResetFields();
+        _leftEntity.Init(context);
+        StartCoroutine(ProcessDialogue(context));
     }
 
-    IEnumerator RevealDialogueText(DefaultDialogComponent ddc, string text)
+    public IEnumerator ProcessDialogue(DialogueContext context)
     {
-        ddc.AudioSource.Play();
-
-        yield return Utils.RevealTextOverTime(ddc.MainText, ddc.DelayTime, text, ddc.MaxTextLength, _audioSource);
-
-        ddc.AudioSource.Stop();
-    }
-
-    IEnumerator WaitDialogueInput()
-    {
-        _continueButton.gameObject.SetActive(true);
-
-        yield return new WaitUntil(() => _enterPressed.Consume());
-
-        _continueButton.gameObject.SetActive(false);
-    }
-
-    IEnumerator BeginTalking()
-    {
-        var currentLine = _dialogueData.lines.First(); // The first line is always the opening line
+        var currentLine = context.data.lines[0]; // The first line is always the opening line
 
         while (true)
         {
             // Wait until left entity stops talking or is out of space for letters
-            yield return StartCoroutine(RevealDialogueText(_leftEntity, currentLine.text));
+            yield return StartCoroutine(_leftEntity.RevealDialogueText(currentLine.text));
 
             switch (currentLine.Type)
             {
                 case DialogueData.Line.Types.Choices:
-                    yield return StartCoroutine(PutPlayersChoices(currentLine.choices));
+                    _player.PutChoices(currentLine.choices, _buttonPressedData);
 
-                    yield return new WaitUntil(() => _buttonPressedData.Value != null);
+                    yield return new WaitUntil(() => _buttonPressedData.Value != default);
 
-                    DestroyButtons();
-                    currentLine = GetNext(_buttonPressedData.Consume().next);
-                    if (currentLine == null)
-                    {
-                        Debug.Log("ERROR WITH DIALOG ID");
-                    }
+                    int nextId = _buttonPressedData.Consume().next;
+                    if (context.data.TryGetLineWithId(nextId, out var nextLine))
+                        currentLine = nextLine;
+                    else
+                        Debug.LogException(new MissingReferenceException($"The line with id {nextId} is missing"));
+
                     break;
 
                 case DialogueData.Line.Types.Continue:
                     // Wait for player continue button push;
                     yield return StartCoroutine(WaitDialogueInput());
 
-                    currentLine = GetNext(currentLine.next);
+                    context.data.TryGetLineWithId(currentLine.next, out currentLine);
+
                     break;
 
                 case DialogueData.Line.Types.End:
@@ -130,48 +107,18 @@ public class DialogueManager : MonoBehaviour
         }
     }
 
-    DialogueData.Line GetNext(int id)
+    IEnumerator WaitDialogueInput()
     {
-        foreach (var l in _dialogueData.lines)
-        {
-            if (l.id == id)
-                return l;
-        }
-        return null;
-    }
+        _continueButton.gameObject.SetActive(true);
 
-    void DestroyButtons()
-    {
-        _playerButtons.ForEach(b => Destroy(b.gameObject));
-        _playerButtons.Clear();
-    }
+        yield return new WaitUntil(() => _enterPressed.Consume());
 
-    IEnumerator PutPlayersChoices(DialogueData.Line.Choice[] choices)
-    {
-        int i = 0;
-
-        foreach (var choice in choices)
-        {
-            _playerButtons.Add(Instantiate(
-                _playerDialogueButtonPrefab, Vector3.zero, Quaternion.identity, _buttonGrid.transform).GetComponent<Button>());
-
-            _playerButtons.Last().onClick.AddListener(() => _buttonPressedData.Value = choice);
-
-            yield return StartCoroutine(Utils.RevealTextOverTime(
-                _playerButtons.Last().GetComponentInChildren<TextMeshProUGUI>(),
-                _player.DelayTime,
-                (i + 1) + ". " + choice.text,
-                200,
-                _audioSource)
-                );
-            ++i;
-        }
+        _continueButton.gameObject.SetActive(false);
     }
 
     void EndTalking()
     {
-        //IsActive = false;
-        _playerInput.SwitchCurrentActionMap("Player");
-        ResetFields();
+        _screenController.Deactivate();
+        _currentDialogue.Value = null;
     }
 }

@@ -1228,8 +1228,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::DamageDeath
   _health: {fileID: 5848999282206741749}
   _animator: {fileID: 7369017045533857347}
-  _toDisable:
-  - {fileID: 8238773066907892438}
+  _timeout: 1
 --- !u!1 &4738529277594835524
 GameObject:
   m_ObjectHideFlags: 0
@@ -1242,6 +1241,7 @@ GameObject:
   - component: {fileID: 3436857251089669775}
   - component: {fileID: 8238773066907892438}
   - component: {fileID: 8011551335146223041}
+  - component: {fileID: 8872282931362217595}
   m_Layer: 7
   m_Name: Hitbox
   m_TagString: Untagged
@@ -1331,6 +1331,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MeleeAttackStrategy
   _meleeAttackData: {fileID: 11400000, guid: f4155314e6c37254183efe9ffd2a8146, type: 2}
+--- !u!114 &8872282931362217595
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4738529277594835524}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ea7e5e3ea475d0449d31e3bfd6f6015, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DisableOnDeath
+  _health: {fileID: 5848999282206741749}
+  _toDisable:
+  - {fileID: 8238773066907892438}
 --- !u!1 &5046599424978369931
 GameObject:
   m_ObjectHideFlags: 0
@@ -1572,6 +1587,7 @@ GameObject:
   - component: {fileID: 8023279021401798368}
   - component: {fileID: 1313544978890093267}
   - component: {fileID: 1217682329630351431}
+  - component: {fileID: 3609198687551911363}
   m_Layer: 11
   m_Name: Slime 3
   m_TagString: Enemy
@@ -1727,6 +1743,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   _gameSet: {fileID: 11400000, guid: bbac75fc2fc9c7c4eac897c9723139fb, type: 2}
+--- !u!114 &3609198687551911363
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6097617918995308611}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ea7e5e3ea475d0449d31e3bfd6f6015, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DisableOnDeath
+  _health: {fileID: 5848999282206741749}
+  _toDisable:
+  - {fileID: 8023279021401798368}
 --- !u!1 &6428286076280884639
 GameObject:
   m_ObjectHideFlags: 0

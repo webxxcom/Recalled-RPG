@@ -5,14 +5,15 @@ public class NpcController : EntityController, IInteractable
 {
     [SerializeField] DialogueSource _dialogueSource;
 
-    [Header("Broadcasts to")]
-    [SerializeField] DialogueSourceGameEvent OnDialogueStarted;
+    [Header("Sets")]
+    [SerializeField] DialogueVariable _currentDialogue;
 
     public event Action OnInteract;
 
     public void Interact()
     {
-        OnDialogueStarted.Invoke(_dialogueSource);
+        _currentDialogue.Value = _dialogueSource;
+
         OnInteract?.Invoke();
     }
 }

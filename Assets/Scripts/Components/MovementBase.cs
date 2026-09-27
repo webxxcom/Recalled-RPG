@@ -6,7 +6,7 @@ public abstract class MovementBase : MonoBehaviour
 {
     [SerializeField] float _walkingSpeed;
 
-    public Vector2 LastMovement { get; set; }
+    public Vector2 LastMovement { get; private set; }
     public bool IsWalking => MovementIntention != Vector2.zero;
     public Vector2 FacingDirection => MovementIntention != Vector2.zero ? MovementIntention : LastMovement;
     public float CurrentSpeed => _rigidbody2D.linearVelocity.magnitude;
@@ -28,13 +28,12 @@ public abstract class MovementBase : MonoBehaviour
                 LastMovement = _movementIntention;
 
             var _prevMov = _movementIntention;
-            _movementIntention = value;
-
             if (_prevMov == Vector2.zero && value != Vector2.zero)
                 OnMovementStarted?.Invoke();
             else if (_prevMov != Vector2.zero && value == Vector2.zero)
                 OnMovementStopped?.Invoke();
 
+            _movementIntention = value;
             if (value != Vector2.zero)
                 OnMovement?.Invoke();
         }
@@ -44,12 +43,14 @@ public abstract class MovementBase : MonoBehaviour
     public event Action OnMovementStopped;
     public event Action OnMovement;
 
+    private void OnDisable()
+    {
+        MovementIntention = Vector2.zero;
+    }
+
     protected abstract Vector2 GetMovementIntention();
     public Vector2 GetFinalMovement()
     {
-        if (!isActiveAndEnabled)
-            return Vector2.zero;
-
         float speedCoeficient = _speedAggregator.Get();
         Vector2 externalVelocity = _externalVelocity != null ? _externalVelocity.TickAndGet(Time.fixedDeltaTime) : Vector2.zero;
         Vector2 finalMovement = GetMovementIntention();

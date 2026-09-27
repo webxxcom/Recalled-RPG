@@ -13,12 +13,12 @@ public abstract class EntityAttack : MonoBehaviour
     public event Action OnAttackStarted;
     public event Action OnAttackFinished;
 
-    bool _isActive;
+    bool IsActive => gameObject.activeInHierarchy;
 
     private void OnDisable()
     {
         // If entity dies during attack execution it should stop doing an attack
-        _isActive = false;
+        gameObject.SetActive(false);
     }
 
     protected AttackStrategy _currentAttack;
@@ -33,7 +33,6 @@ public abstract class EntityAttack : MonoBehaviour
 
     public void StartAttack()
     {
-        _isActive = true;
         _currentAttack.StartExecuting(_attackContext);
 
         OnAttackStarted?.Invoke();
@@ -41,7 +40,7 @@ public abstract class EntityAttack : MonoBehaviour
 
     public void ProcessAttack(float normalizedTime)
     {
-        if (!_isActive)
+        if (!IsActive)
             return;
 
         _currentAttack.ProcessState(normalizedTime, _attackContext);
@@ -50,7 +49,6 @@ public abstract class EntityAttack : MonoBehaviour
     public void FinishAttack()
     {
         _currentAttack.FinishExecuting(_attackContext);
-        _isActive = false;
 
         OnAttackFinished?.Invoke();
     }

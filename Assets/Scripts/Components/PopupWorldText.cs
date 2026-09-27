@@ -39,7 +39,7 @@ public class PopupWorldText : MonoBehaviour
             float distance = _distanceOverTime.Evaluate(t);
             transform.position = startPosition + (Vector3)(_direction * distance);
 
-            elapsed += Time.deltaTime;
+            elapsed += Time.unscaledDeltaTime;
             yield return null;
         }
         Destroy(gameObject);

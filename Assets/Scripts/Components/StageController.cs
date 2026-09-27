@@ -1,6 +1,5 @@
 using UnityEngine;
 
-[RequireComponent(typeof(Collider2D))]
 public class StageController : MonoBehaviour
 {
     [SerializeField] DoorsRuntimeSet _doors;
@@ -12,11 +11,14 @@ public class StageController : MonoBehaviour
     public VoidGameEvent OnStageStarted;
     public VoidGameEvent OnStageCleared;
 
-    Collider2D _collider2D;
-
     private void Awake()
     {
-        _collider2D = GetComponent<Collider2D>();
+        if (_clearenceLight == null)
+        {
+            Debug.LogError($"{nameof(StageController)} requires {nameof(_clearenceLight)}, {nameof(_detectionZone)} to be wired");
+            enabled = false;
+            return;
+        }
     }
     private void OnEnable()
     {
@@ -43,7 +45,7 @@ public class StageController : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            _collider2D.enabled = false;
+            _detectionZone.enabled = false;
             foreach (var door in _doors.Items)
                 door.Close();
             

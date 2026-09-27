@@ -4,9 +4,9 @@ using UnityEngine;
 [RequireComponent(typeof(SpriteRendererGroup))]
 public class AnimationController : MonoBehaviour
 {
-    public bool FlippedX { get; private set; }
-
     [SerializeField] bool _isXFlippable;
+
+    public bool FlippedX { get; private set; }
 
     protected Animator _animator;
     protected SpriteRendererGroup _spriteRendererGroup;

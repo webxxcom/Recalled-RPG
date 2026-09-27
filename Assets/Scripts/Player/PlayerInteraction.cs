@@ -6,7 +6,7 @@ using UnityEngine.InputSystem;
 [RequireComponent(typeof(Collider2D))]
 public class PlayerInteraction : MonoBehaviour
 {
-    readonly List<IInteractable> _interactables = new(16);
+    readonly HashSet<IInteractable> _interactables = new(16);
 
     void OnInteract(InputValue _) => _interactables.FirstOrDefault()?.Interact();
 
@@ -21,8 +21,7 @@ public class PlayerInteraction : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.TryGetComponent(out IInteractable interactable)
-                && _interactables.Contains(interactable))
+        if (collision.TryGetComponent(out IInteractable interactable))
             _interactables.Remove(interactable);
 
         if (collision.TryGetComponent<ApproachTextPopup>(out var popup))

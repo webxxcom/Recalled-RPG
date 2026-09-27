@@ -161,7 +161,7 @@ Transform:
   - {fileID: 157068816}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &36937246
+--- !u!114 &48725570
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -174,7 +174,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::IntVariable
   _value: 1
-  _prev: 1
+  _prev: 0
 --- !u!1001 &49413293
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1888,13 +1888,21 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 440519711}
     m_Modifications:
+    - target: {fileID: 181632092390176455, guid: 61b92fcdc9f1d7344b858987a6cd5b1f, type: 3}
+      propertyPath: m_LinearDamping
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 5848999282206741749, guid: 61b92fcdc9f1d7344b858987a6cd5b1f, type: 3}
       propertyPath: _currentValue
       value: 
-      objectReference: {fileID: 36937246}
+      objectReference: {fileID: 991234526}
     - target: {fileID: 6097617918995308611, guid: 61b92fcdc9f1d7344b858987a6cd5b1f, type: 3}
       propertyPath: m_Name
       value: Slime 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6097617918995308611, guid: 61b92fcdc9f1d7344b858987a6cd5b1f, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8526230742337842442, guid: 61b92fcdc9f1d7344b858987a6cd5b1f, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2166,20 +2174,6 @@ Sprite:
   m_Bones: []
   m_ScriptableObjects: []
   m_SpriteID: 
---- !u!114 &408220346
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b31892992fe58d84984d3831904b384a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::IntVariable
-  _value: 1
-  _prev: 0
 --- !u!1 &440519710
 GameObject:
   m_ObjectHideFlags: 0
@@ -24642,6 +24636,20 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!114 &455863648
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b31892992fe58d84984d3831904b384a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::IntVariable
+  _value: 1
+  _prev: 1
 --- !u!1 &456474055
 GameObject:
   m_ObjectHideFlags: 0
@@ -28723,13 +28731,21 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 440519711}
     m_Modifications:
+    - target: {fileID: 181632092390176455, guid: a36798c2fab103f4797ce026132d4fc6, type: 3}
+      propertyPath: m_Mass
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 3686550405581697464, guid: a36798c2fab103f4797ce026132d4fc6, type: 3}
       propertyPath: _currentValue
       value: 
-      objectReference: {fileID: 1469311698}
+      objectReference: {fileID: 1179546382}
     - target: {fileID: 6097617918995308611, guid: a36798c2fab103f4797ce026132d4fc6, type: 3}
       propertyPath: m_Name
       value: Slime 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6097617918995308611, guid: a36798c2fab103f4797ce026132d4fc6, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8526230742337842442, guid: a36798c2fab103f4797ce026132d4fc6, type: 3}
       propertyPath: m_LocalPosition.x
@@ -29166,7 +29182,7 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2801740844161678784, guid: c26c1777bd24f274f8afd2389f1676a4, type: 3}
   m_PrefabInstance: {fileID: 7697261058976927419}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &989882311
+--- !u!114 &969277428
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -29180,6 +29196,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::IntVariable
   _value: 1
   _prev: 0
+--- !u!114 &991234526
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b31892992fe58d84984d3831904b384a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::IntVariable
+  _value: 1
+  _prev: 1
 --- !u!1 &1002331518
 GameObject:
   m_ObjectHideFlags: 0
@@ -29827,7 +29857,7 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &1166288045
+--- !u!114 &1179546382
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -29841,20 +29871,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::IntVariable
   _value: 1
   _prev: 1
---- !u!114 &1211432122
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b31892992fe58d84984d3831904b384a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::IntVariable
-  _value: 1
-  _prev: 0
 --- !u!114 &1289887577
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -29879,7 +29895,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2950508437654071488, guid: db28618c0b0800e40a25e1129fe22195, type: 3}
       propertyPath: orthographic size
-      value: 9.96875
+      value: 10.09375
       objectReference: {fileID: 0}
     - target: {fileID: 4428258451964421232, guid: db28618c0b0800e40a25e1129fe22195, type: 3}
       propertyPath: m_Name
@@ -30571,6 +30587,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: Unity.InputSystem::UnityEngine.InputSystem.InputActionReference
   m_Asset: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_ActionId: 24908448-c609-4bc3-a128-ea258674378a
+--- !u!114 &1386865788
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b31892992fe58d84984d3831904b384a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::IntVariable
+  _value: 1
+  _prev: 0
 --- !u!114 &1416314035 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4486504741362455994, guid: 62137a2ce0efea14bb0f7d6bcfffc9d3, type: 3}
@@ -31009,20 +31039,6 @@ MonoBehaviour:
     - _item: {fileID: 11400000, guid: eaf1831fb346c5a47aeae7be05e9301e, type: 2}
       _weight: 0
   _rejectItemText: {fileID: 7535224943969880707, guid: 60b7ea13c618dc14a93a5a3939157a8f, type: 3}
---- !u!114 &1469311698
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b31892992fe58d84984d3831904b384a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::IntVariable
-  _value: 1
-  _prev: 1
 --- !u!4 &1469449007 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6133840983594500735, guid: 3fcf37dd0e06cc042b060fb5038a5360, type: 3}
@@ -31601,14 +31617,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 440519711}
     m_Modifications:
+    - target: {fileID: 181632092390176455, guid: b30d2dca2fb456b408b03623c3021dd7, type: 3}
+      propertyPath: m_LinearDamping
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 6097617918995308611, guid: b30d2dca2fb456b408b03623c3021dd7, type: 3}
       propertyPath: m_Name
       value: Slime 2
       objectReference: {fileID: 0}
+    - target: {fileID: 6097617918995308611, guid: b30d2dca2fb456b408b03623c3021dd7, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6943032192117191510, guid: b30d2dca2fb456b408b03623c3021dd7, type: 3}
       propertyPath: _currentValue
       value: 
-      objectReference: {fileID: 1166288045}
+      objectReference: {fileID: 455863648}
     - target: {fileID: 8526230742337842442, guid: b30d2dca2fb456b408b03623c3021dd7, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.33
@@ -43922,10 +43946,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 371744216739374176, guid: 62137a2ce0efea14bb0f7d6bcfffc9d3, type: 3}
-      propertyPath: _currentSelected
-      value: 
-      objectReference: {fileID: 11400000, guid: d4ee457ad6b9d184498cb5d9c591e923, type: 2}
     - target: {fileID: 4486504741362455994, guid: 62137a2ce0efea14bb0f7d6bcfffc9d3, type: 3}
       propertyPath: m_MoveAction
       value: 

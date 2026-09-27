@@ -92,5 +92,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d296b7ca04a31b4281300c2c3cb169d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  OnUIElementSelected: {fileID: 11400000, guid: a976fdfc622384d4db0b424bd3e06ea3, type: 2}
-  OnUIElementDeselected: {fileID: 11400000, guid: 303c6f2ae7d26b944b2a670c7f961b1a, type: 2}
+  _currentSelected: {fileID: 11400000, guid: d4ee457ad6b9d184498cb5d9c591e923, type: 2}

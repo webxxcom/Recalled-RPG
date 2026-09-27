@@ -1328,9 +1328,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   _health: {fileID: 3686550405581697464}
   _animator: {fileID: 3120718460063332462}
-  _toDisable:
-  - {fileID: 7912021147809363513}
-  - {fileID: 2478195225114280807}
+  _timeout: 1
 --- !u!1 &4117085876247267688
 GameObject:
   m_ObjectHideFlags: 0
@@ -1343,6 +1341,7 @@ GameObject:
   - component: {fileID: 2478195225114280807}
   - component: {fileID: 7912021147809363513}
   - component: {fileID: 897671907333597264}
+  - component: {fileID: 3499306942368469397}
   m_Layer: 7
   m_Name: Hitbox
   m_TagString: Untagged
@@ -1432,6 +1431,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MeleeAttackStrategy
   _meleeAttackData: {fileID: 11400000, guid: e71c6577981f54f43b354d5516fc1f75, type: 2}
+--- !u!114 &3499306942368469397
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4117085876247267688}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ea7e5e3ea475d0449d31e3bfd6f6015, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DisableOnDeath
+  _health: {fileID: 3686550405581697464}
+  _toDisable:
+  - {fileID: 7912021147809363513}
 --- !u!1 &5046599424978369931
 GameObject:
   m_ObjectHideFlags: 0
@@ -1739,6 +1753,7 @@ GameObject:
   - component: {fileID: 2853014250811514214}
   - component: {fileID: 4598033842935235403}
   - component: {fileID: 6254559109632540528}
+  - component: {fileID: 4847679411288701971}
   m_Layer: 11
   m_Name: Slime 1
   m_TagString: Enemy
@@ -1779,7 +1794,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 100
-  m_LinearDamping: 1
+  m_LinearDamping: 3
   m_AngularDamping: 0
   m_GravityScale: 0
   m_Material: {fileID: 0}
@@ -1885,6 +1900,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   _gameSet: {fileID: 11400000, guid: bbac75fc2fc9c7c4eac897c9723139fb, type: 2}
+--- !u!114 &4847679411288701971
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6097617918995308611}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ea7e5e3ea475d0449d31e3bfd6f6015, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+  _health: {fileID: 3686550405581697464}
+  _toDisable:
+  - {fileID: 2853014250811514214}
 --- !u!1 &6584024271604664051
 GameObject:
   m_ObjectHideFlags: 0
