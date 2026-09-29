@@ -1,7 +1,5 @@
-﻿using Newtonsoft.Json;
-
-[System.Serializable]
-public struct DialogueData
+﻿[System.Serializable]
+internal struct DialogueDTO
 {
     [System.Serializable]
     public struct Line
@@ -10,7 +8,6 @@ public struct DialogueData
         public string text;
         public string emotion;
 
-        // A line can: 1. provide choices, 2. have next line, 3. finish dialogue
         public Choice[] choices;
         public int next;
         public int end;
@@ -19,12 +16,14 @@ public struct DialogueData
         {
             get
             {
-                if (choices != null) // The player is going to have choices lines
+                if (choices != null)
                     return Types.Choices;
-                else if (next != 0) // No choices available but also no end then continue
+                else if (next != 0)
                     return Types.Continue;
-                else // Fallback to end
+                else if (end != 0)
                     return Types.End;
+
+                throw new InvalidLineTypeException($"Line is not properly defined {id}");
             }
         }
 
@@ -41,6 +40,7 @@ public struct DialogueData
 
     public string speaker;
     public Line[] lines;
+    public string emotion;
 
     public readonly bool TryGetLineWithId(int id, out int ind)
     {

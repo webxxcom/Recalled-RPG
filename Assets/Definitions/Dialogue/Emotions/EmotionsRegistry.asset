@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff9843e57cb01294b893e95d557c633a, type: 3}
+  m_Name: EmotionsRegistry
+  m_EditorClassIdentifier: Recalled.Dialogue::Recalled.Dialogue.EmotionRegistry
+  _emotionToSpriteMap:
+  - key: {fileID: 11400000, guid: 01d585c6c261c144da5e6e5c9ec08675, type: 2}
+    value: {fileID: 21300000, guid: e90ba15bdca32144bbb5c16878913956, type: 3}
+  - key: {fileID: 11400000, guid: 8bc198c50d0edfb46b64118de6eb6e9f, type: 2}
+    value: {fileID: 21300000, guid: aa682297a941bdc478a88d4b3eab6d6a, type: 3}
+  - key: {fileID: 11400000, guid: 9d87697f22728ac47aafcc65057761f1, type: 2}
+    value: {fileID: 21300000, guid: 206527ef9f97b734a8b21f9eb3951bcb, type: 3}
+  - key: {fileID: 11400000, guid: b569c64eec7f45048a644b542297f6ab, type: 2}
+    value: {fileID: 21300000, guid: b85e8ead3f594dd4f820b12fe1412eab, type: 3}
+  - key: {fileID: 11400000, guid: 949bff768e9d215409cf9c341b6f9691, type: 2}
+    value: {fileID: 21300000, guid: ee11bc9589b516b409b88f8ec0405019, type: 3}
+  - key: {fileID: 11400000, guid: ec7c698f935bdd24782584e65faa776b, type: 2}
+    value: {fileID: 21300000, guid: f87ecc7c255c4c946bd05a607681d3ac, type: 3}

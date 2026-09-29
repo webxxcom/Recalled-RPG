@@ -1,5 +1,6 @@
 {
   "speaker": "Sheep",
+  "emotion": "tired",
   "lines": [
     {
       "id": 1,
@@ -126,7 +127,8 @@
     {
       "id": 12,
       "text": "Safe travels, traveller. The field has a way of keeping people longer than they intended.",
-      "emotion": "neutral"
+      "emotion": "neutral",
+      "end":  1
     }
   ]
 }

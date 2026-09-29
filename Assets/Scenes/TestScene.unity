@@ -133,24 +133,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Unity.InputSystem::UnityEngine.InputSystem.InputActionReference
   m_Asset: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_ActionId: 3c7022bf-7922-4f7c-a998-c437916075ad
---- !u!1 &278550313 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1459502085907806261, guid: e9435db4719c6bc4d8539fbccaec89fa, type: 3}
-  m_PrefabInstance: {fileID: 1507300244}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &278550318
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 278550313}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b175eb53c58a2814aaa6940aa57d827d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Recalled.Gameplay::AutomaticToggler
-  _behaviour: {fileID: 1749467761}
 --- !u!1001 &514391170
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -183,6 +165,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Dialogue
       objectReference: {fileID: 0}
+    - target: {fileID: 5267413561232144189, guid: 204b88dbe0aa4b842817d3019a99f7b9, type: 3}
+      propertyPath: _emotionImage
+      value: 
+      objectReference: {fileID: 724170746}
     - target: {fileID: 6067347336338818101, guid: 204b88dbe0aa4b842817d3019a99f7b9, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -280,12 +266,15 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7815034603764567672, guid: 204b88dbe0aa4b842817d3019a99f7b9, type: 3}
-      propertyPath: _skipAction
+      propertyPath: _emotions
       value: 
-      objectReference: {fileID: 3001919216989983466, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
+      objectReference: {fileID: 11400000, guid: 60469432a2a20934c80fecb41fe121a0, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 6975066739280812760, guid: 204b88dbe0aa4b842817d3019a99f7b9, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 724170745}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 204b88dbe0aa4b842817d3019a99f7b9, type: 3}
 --- !u!224 &514391171 stripped
@@ -564,6 +553,81 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Unity.InputSystem::UnityEngine.InputSystem.PlayerInput
+--- !u!1 &724170744
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 724170745}
+  - component: {fileID: 724170747}
+  - component: {fileID: 724170746}
+  m_Layer: 5
+  m_Name: Emotion
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &724170745
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 724170744}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2028819952}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -61.8, y: 34}
+  m_SizeDelta: {x: 39.4965, y: 32.92}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &724170746
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 724170744}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &724170747
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 724170744}
+  m_CullTransparentMesh: 1
 --- !u!1 &1137712248
 GameObject:
   m_ObjectHideFlags: 0
@@ -727,22 +791,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1375917583171785032, guid: e9435db4719c6bc4d8539fbccaec89fa, type: 3}
-      propertyPath: _data
-      value: 
-      objectReference: {fileID: 11400000, guid: 85a4c3da0eafb774988cf3f1db737068, type: 2}
-    - target: {fileID: 1375917583171785032, guid: e9435db4719c6bc4d8539fbccaec89fa, type: 3}
-      propertyPath: _speaker
-      value: 
-      objectReference: {fileID: 11400000, guid: 95bb0e85a16945d49a930d5ff3f9f97c, type: 2}
-    - target: {fileID: 1375917583171785032, guid: e9435db4719c6bc4d8539fbccaec89fa, type: 3}
-      propertyPath: _dialogueSpeaker
-      value: 
-      objectReference: {fileID: 11400000, guid: 95bb0e85a16945d49a930d5ff3f9f97c, type: 2}
-    - target: {fileID: 1375917583171785032, guid: e9435db4719c6bc4d8539fbccaec89fa, type: 3}
-      propertyPath: _dialogueDefinition
-      value: 
-      objectReference: {fileID: 11400000, guid: 85a4c3da0eafb774988cf3f1db737068, type: 2}
     - target: {fileID: 1459502085907806261, guid: e9435db4719c6bc4d8539fbccaec89fa, type: 3}
       propertyPath: m_Name
       value: Armory
@@ -794,10 +842,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 1459502085907806261, guid: e9435db4719c6bc4d8539fbccaec89fa, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 278550318}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e9435db4719c6bc4d8539fbccaec89fa, type: 3}
 --- !u!114 &1570460989
 MonoBehaviour:
@@ -832,10 +877,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 557578753}
     m_Modifications:
-    - target: {fileID: 4509128474170484430, guid: f0f1c602fa75d304ab2370c186e3c571, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 5483117024435693952, guid: f0f1c602fa75d304ab2370c186e3c571, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -920,10 +961,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: HUD
       objectReference: {fileID: 0}
-    - target: {fileID: 8201910989504618622, guid: f0f1c602fa75d304ab2370c186e3c571, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -934,17 +971,6 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 5483117024435693952, guid: f0f1c602fa75d304ab2370c186e3c571, type: 3}
   m_PrefabInstance: {fileID: 1613743445}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1749467761 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2654350301490266842, guid: e9435db4719c6bc4d8539fbccaec89fa, type: 3}
-  m_PrefabInstance: {fileID: 1507300244}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
 --- !u!114 &2002416767
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -959,6 +985,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: Unity.InputSystem::UnityEngine.InputSystem.InputActionReference
   m_Asset: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_ActionId: dad70c86-b58c-4b17-88ad-f5e53adf419e
+--- !u!224 &2028819952 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 6975066739280812760, guid: 204b88dbe0aa4b842817d3019a99f7b9, type: 3}
+  m_PrefabInstance: {fileID: 514391170}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &2043034493
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -1,37 +1,30 @@
-using UnityEngine;
-
 namespace Recalled.Dialogue
 {
     public partial class Conversation
     {
-        DialogueData _data;
-        int _currLineIndex;
+        public DialogueModel.Line CurrentLine { get; private set; }
 
-        public DialogueData.Line CurrentLine => _data.lines[_currLineIndex];
+        readonly DialogueModel _data;
 
         public Conversation(DialogueDefinition definition)
         {
-            _data = JsonUtility.FromJson<DialogueData>(definition.TextData);
-        }
+            _data = Parser.Parse(definition);
 
-        void ProceedTo(int lineId)
-        {
-            _data.TryGetLineWithId(lineId, out _currLineIndex);
+            CurrentLine = _data.StartLine;
         }
 
         public void Proceed()
         {
-            if (CurrentLine.Type != DialogueData.Line.Types.Continue)
-                return;
-
-            ProceedTo(CurrentLine.next);
+            ProceedTo(CurrentLine.Next);
         }
 
-        public void Choose(DialogueData.Choice choice)
+        void ProceedTo(DialogueModel.Line line)
         {
-            if (CurrentLine.Type != DialogueData.Line.Types.Choices)
-                return;
+            CurrentLine = line;
+        }
 
+        public void Choose(DialogueModel.Choice choice)
+        {
             ProceedTo(choice.next);
         }
     }

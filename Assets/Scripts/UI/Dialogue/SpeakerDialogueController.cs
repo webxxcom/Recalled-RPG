@@ -9,6 +9,7 @@ using UnityEngine.UI;
 internal class SpeakerDialogueController : MonoBehaviour
 {
     [SerializeField] Image _facesetImage;
+    [SerializeField] Image _emotionImage;
     [SerializeField] TMP_Text _text;
     [SerializeField] float _delayTime = 0.035f;
 
@@ -24,9 +25,10 @@ internal class SpeakerDialogueController : MonoBehaviour
         _facesetImage.sprite = faceset;
     }
 
-    public IEnumerator Speak(string text, InputAction skipAction)
+    public IEnumerator Speak(string text, InputAction skipAction, Sprite emotionSprite)
     {
         _audioSource.Play();
+        _emotionImage.sprite = emotionSprite;
 
         // Typewrite until skip action
         yield return TypeWriter.TypeWriteWithSkip(_text, _delayTime, text, skipAction);

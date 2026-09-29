@@ -267,7 +267,6 @@ MonoBehaviour:
   _facesetImage: {fileID: 5395680483831413717}
   _text: {fileID: 6558320101663027422}
   _delayTime: 0.035
-  _skipAction: {fileID: 3001919216989983466, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
 --- !u!1 &1881469038572157629
 GameObject:
   m_ObjectHideFlags: 0
@@ -619,6 +618,7 @@ MonoBehaviour:
   _dialogueChannel: {fileID: 11400000, guid: 3d6d91bce485a9c4fb1dd8da51988aef, type: 2}
   _choiceButtonPrefab: {fileID: 9115217538702500494, guid: 80ce04c39bba38244815620cd01eab7b, type: 3}
   _buttonParent: {fileID: 1978171857540762701}
+  _skipAction: {fileID: 3001919216989983466, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
 --- !u!1 &4440890812020815409
 GameObject:
   m_ObjectHideFlags: 0

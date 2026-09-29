@@ -16,6 +16,7 @@ namespace Recalled.UI
         [SerializeField] ChoiceButton _choiceButtonPrefab;
         [SerializeField] Transform _buttonParent;
         [SerializeField] InputActionReference _skipAction;
+        [SerializeField] EmotionRegistry _emotions;
 
         readonly List<ChoiceButton> _createdButtons = new();
         ScreenController _screenContoller;
@@ -67,19 +68,20 @@ namespace Recalled.UI
             while (_conversation != null)
             {
                 // Wait until finished talking
-                yield return _speaker.Speak(_conversation.CurrentLine.text, _skipAction.action);
+                yield return _speaker.Speak(_conversation.CurrentLine.Text, _skipAction.action,
+                    _emotions.SpriteMap[_conversation.CurrentLine.Emotion]);
 
                 // What to do next?
-                DialogueData.Line line = _conversation.CurrentLine;
+                DialogueModel.Line line = _conversation.CurrentLine;
                 switch (line.Type)
-                {
-                    case DialogueData.Line.Types.Choices:
-                        yield return UserChoosing(line.choices);
+                {   
+                    case DialogueModel.Line.Types.Choice:
+                        yield return UserChoosing(line.Choices);
                         break;
-                    case DialogueData.Line.Types.End:
+                    case DialogueModel.Line.Types.End:
                         FinishDialogue();
                         break;
-                    case DialogueData.Line.Types.Continue:
+                    case DialogueModel.Line.Types.Continue:
                         ContinueToNextLine();
                         break;
                 }
@@ -91,8 +93,8 @@ namespace Recalled.UI
             _dialogueCoroutine = null;
         }
 
-        ConsumableValue<DialogueData.Choice> _choice = default;
-        IEnumerator UserChoosing(DialogueData.Choice[] choices)
+        ConsumableValue<DialogueModel.Choice> _choice = default;
+        IEnumerator UserChoosing(DialogueModel.Choice[] choices)
         {
             foreach (var choice in choices)
             {
@@ -112,7 +114,7 @@ namespace Recalled.UI
             _createdButtons.Clear();
 
             // Proceed with conversation
-            _conversation.Choose((DialogueData.Choice)_choice.Consume());
+            _conversation.Choose((DialogueModel.Choice)_choice.Consume());
         }
 
         void ContinueToNextLine()
