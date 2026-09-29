@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 1999128151587467108}
   - component: {fileID: 3688771516497709855}
   - component: {fileID: 1375917583171785032}
-  - component: {fileID: 6106467052067312749}
   m_Layer: 11
   m_Name: Armory
   m_TagString: Enemy
@@ -113,21 +112,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af3ec20ec44e1764e89a93c50afaf4f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NpcController
-  _dialogueSource: {fileID: 11400000, guid: 85a4c3da0eafb774988cf3f1db737068, type: 2}
-  _currentDialogue: {fileID: 11400000, guid: cb2c784e854b20d4ea145c3daaed2d04, type: 2}
---- !u!114 &6106467052067312749
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1459502085907806261}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9928754adf4e7ce4798741c684369cab, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ApproachTextPopup
-  _behaviour: {fileID: 2654350301490266842}
+  _dialogueDefinition: {fileID: 0}
+  _dialogueEventChannel: {fileID: 11400000, guid: 3d6d91bce485a9c4fb1dd8da51988aef, type: 2}
 --- !u!1 &2211559066543472866
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,16 +1,16 @@
+using Recalled.UI;
 using System.Collections;
 using TMPro;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 [RequireComponent(typeof(AudioSource))]
-public class SpeakerDialogueController : MonoBehaviour
+internal class SpeakerDialogueController : MonoBehaviour
 {
     [SerializeField] Image _facesetImage;
-    [SerializeField] TextMeshProUGUI _text;
+    [SerializeField] TMP_Text _text;
     [SerializeField] float _delayTime = 0.035f;
-
-    public bool IsSpeaking => _text.maxVisibleCharacters < _text.text.Length;
 
     AudioSource _audioSource;
 
@@ -19,29 +19,18 @@ public class SpeakerDialogueController : MonoBehaviour
         _audioSource = GetComponent<AudioSource>();
     }
 
-    public void Init(DialogueContext context)
+    public void Init(Sprite faceset)
     {
-        _facesetImage.sprite = context.faceset;
+        _facesetImage.sprite = faceset;
     }
 
-    public void FinishText(string text)
-    {
-        _text.text = text;
-        _text.maxVisibleCharacters = _text.text.Length;
-        _audioSource.Stop();
-
-        if (_currentCoroutine != null)
-        {
-            StopCoroutine(_currentCoroutine);
-            _currentCoroutine = null;
-        }
-    }
-
-    Coroutine _currentCoroutine;
-    public void StartRevealDialogueText(string text)
+    public IEnumerator Speak(string text, InputAction skipAction)
     {
         _audioSource.Play();
 
-        _currentCoroutine = StartCoroutine(Utils.RevealTextOverTime(_text, _delayTime, text));
+        // Typewrite until skip action
+        yield return TypeWriter.TypeWriteWithSkip(_text, _delayTime, text, skipAction);
+
+        _audioSource.Stop();
     }
 }

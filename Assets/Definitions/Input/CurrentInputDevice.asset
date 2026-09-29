@@ -9,8 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c7158b80a7c213d4aa56429e3dc439dd, type: 3}
+  m_Script: {fileID: 11500000, guid: 7f7bf22f3dcbe0e4fa5bfe94054729d4, type: 3}
   m_Name: CurrentInputDevice
   m_EditorClassIdentifier: Assembly-CSharp::InputDeviceRuntimeVariable
-  _value: {fileID: 11400000, guid: 7d6b8ea5181015445baffdcba4a99e8b, type: 2}
+  _value: {fileID: 0}
   _prev: {fileID: 0}

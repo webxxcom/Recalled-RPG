@@ -7,11 +7,11 @@ public class DisableOnDeath : MonoBehaviour
 
     private void OnEnable()
     {
-        _health.OnDeath += DisableAll;
+        _health.Died += DisableAll;
     }
     private void OnDisable()
     {
-        _health.OnDeath -= DisableAll;
+        _health.Died -= DisableAll;
     }
 
     void DisableAll(DamageInfo _)

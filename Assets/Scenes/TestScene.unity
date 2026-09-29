@@ -119,27 +119,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &85303722 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4665989738541649455, guid: 204b88dbe0aa4b842817d3019a99f7b9, type: 3}
-  m_PrefabInstance: {fileID: 514391170}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &85303727
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 85303722}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5fc81b36b07f0104dac395947ac3e4e7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::CanvasBobbleEffect
-  _frequency: 10
-  _amplitude: 2.3
-  _direction: 1
-  _useUnscaledTime: 1
 --- !u!114 &166377690
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -154,17 +133,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: Unity.InputSystem::UnityEngine.InputSystem.InputActionReference
   m_Asset: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_ActionId: 3c7022bf-7922-4f7c-a998-c437916075ad
---- !u!114 &182567048 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6558320101663027422, guid: 204b88dbe0aa4b842817d3019a99f7b9, type: 3}
-  m_PrefabInstance: {fileID: 514391170}
+--- !u!1 &278550313 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1459502085907806261, guid: e9435db4719c6bc4d8539fbccaec89fa, type: 3}
+  m_PrefabInstance: {fileID: 1507300244}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+--- !u!114 &278550318
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 278550313}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Script: {fileID: 11500000, guid: b175eb53c58a2814aaa6940aa57d827d, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
+  m_EditorClassIdentifier: Recalled.Gameplay::AutomaticToggler
+  _behaviour: {fileID: 1749467761}
 --- !u!1001 &514391170
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -277,14 +263,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6533286984726787073, guid: 204b88dbe0aa4b842817d3019a99f7b9, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6533286984726787073, guid: 204b88dbe0aa4b842817d3019a99f7b9, type: 3}
-      propertyPath: m_OverridePixelPerfect
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 6975066739280812760, guid: 204b88dbe0aa4b842817d3019a99f7b9, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -301,24 +279,14 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7847359336757088239, guid: 204b88dbe0aa4b842817d3019a99f7b9, type: 3}
-      propertyPath: _AD
+    - target: {fileID: 7815034603764567672, guid: 204b88dbe0aa4b842817d3019a99f7b9, type: 3}
+      propertyPath: _skipAction
       value: 
-      objectReference: {fileID: 182567048}
-    - target: {fileID: 7847359336757088239, guid: 204b88dbe0aa4b842817d3019a99f7b9, type: 3}
-      propertyPath: _tmpText
-      value: 
-      objectReference: {fileID: 182567048}
+      objectReference: {fileID: 3001919216989983466, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 4440890812020815409, guid: 204b88dbe0aa4b842817d3019a99f7b9, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1772831154}
-    - targetCorrespondingSourceObject: {fileID: 4665989738541649455, guid: 204b88dbe0aa4b842817d3019a99f7b9, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 85303727}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 204b88dbe0aa4b842817d3019a99f7b9, type: 3}
 --- !u!224 &514391171 stripped
 RectTransform:
@@ -759,6 +727,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1375917583171785032, guid: e9435db4719c6bc4d8539fbccaec89fa, type: 3}
+      propertyPath: _data
+      value: 
+      objectReference: {fileID: 11400000, guid: 85a4c3da0eafb774988cf3f1db737068, type: 2}
+    - target: {fileID: 1375917583171785032, guid: e9435db4719c6bc4d8539fbccaec89fa, type: 3}
+      propertyPath: _speaker
+      value: 
+      objectReference: {fileID: 11400000, guid: 95bb0e85a16945d49a930d5ff3f9f97c, type: 2}
+    - target: {fileID: 1375917583171785032, guid: e9435db4719c6bc4d8539fbccaec89fa, type: 3}
+      propertyPath: _dialogueSpeaker
+      value: 
+      objectReference: {fileID: 11400000, guid: 95bb0e85a16945d49a930d5ff3f9f97c, type: 2}
+    - target: {fileID: 1375917583171785032, guid: e9435db4719c6bc4d8539fbccaec89fa, type: 3}
+      propertyPath: _dialogueDefinition
+      value: 
+      objectReference: {fileID: 11400000, guid: 85a4c3da0eafb774988cf3f1db737068, type: 2}
     - target: {fileID: 1459502085907806261, guid: e9435db4719c6bc4d8539fbccaec89fa, type: 3}
       propertyPath: m_Name
       value: Armory
@@ -810,7 +794,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1459502085907806261, guid: e9435db4719c6bc4d8539fbccaec89fa, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 278550318}
   m_SourcePrefab: {fileID: 100100000, guid: e9435db4719c6bc4d8539fbccaec89fa, type: 3}
 --- !u!114 &1570460989
 MonoBehaviour:
@@ -947,27 +934,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 5483117024435693952, guid: f0f1c602fa75d304ab2370c186e3c571, type: 3}
   m_PrefabInstance: {fileID: 1613743445}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1772831149 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4440890812020815409, guid: 204b88dbe0aa4b842817d3019a99f7b9, type: 3}
-  m_PrefabInstance: {fileID: 514391170}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1772831154
+--- !u!114 &1749467761 stripped
 MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 2654350301490266842, guid: e9435db4719c6bc4d8539fbccaec89fa, type: 3}
+  m_PrefabInstance: {fileID: 1507300244}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1772831149}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5fc81b36b07f0104dac395947ac3e4e7, type: 3}
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::CanvasBobbleEffect
-  _frequency: -10
-  _amplitude: 2.3
-  _direction: 1
-  _useUnscaledTime: 1
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
 --- !u!114 &2002416767
 MonoBehaviour:
   m_ObjectHideFlags: 0

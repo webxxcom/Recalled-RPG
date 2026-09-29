@@ -6,7 +6,6 @@ public class AvailableInputDevicesSO : ScriptableObject
 {
     [SerializeField] InputDeviceSO[] _devices;
     [Header("Sets"), SerializeField] InputDeviceRuntimeVariable _currentInputDevice;
-    [Header("Reads"), SerializeField] StringRuntimeVariable _currentControlScheme;
 
     public InputDeviceSO FindForScheme(string scheme)
     {

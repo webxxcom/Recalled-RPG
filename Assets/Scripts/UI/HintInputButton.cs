@@ -1,5 +1,3 @@
-using System.Linq;
-using Unity.AppUI.UI;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;

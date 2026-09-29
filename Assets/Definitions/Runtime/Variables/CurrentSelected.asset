@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: CurrentSelected
   m_EditorClassIdentifier: Assembly-CSharp::GameObjectRuntimeVariable
   _value: {fileID: 0}
+  _prev: {fileID: 0}
