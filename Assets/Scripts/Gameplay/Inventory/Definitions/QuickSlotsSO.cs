@@ -1,7 +1,7 @@
 using System.Linq;
 using UnityEngine;
 
-[CreateAssetMenu(menuName ="Inventory/quick slots")]
+[CreateAssetMenu(menuName = "Inventory/quick slots")]
 public class QuickSlotsSO : InventoryItemsListSO
 {
     /// <summary>

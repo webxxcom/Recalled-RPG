@@ -1,5 +1,4 @@
-﻿using System.Text;
-using UnityEngine;
+﻿using UnityEngine;
 
 [System.Serializable]
 public class ItemInstance
@@ -25,7 +24,7 @@ public class ItemInstance
                 _count = 0;
                 return;
             }
-            
+
             _count = Mathf.Clamp(value, Definition.MinStockSize, Definition.MaxStockSize);
             if (value != _count)
                 Debug.LogWarning($"Count={value} can't be less than {Definition.MinStockSize} or greater than {Definition.MaxStockSize} " +

@@ -50,7 +50,7 @@ namespace Recalled.Gameplay
                 _detectionZone.enabled = false;
                 foreach (var door in _doors.Items)
                     door.Close();
-            
+
                 OnStageStarted.Invoke();
             }
         }

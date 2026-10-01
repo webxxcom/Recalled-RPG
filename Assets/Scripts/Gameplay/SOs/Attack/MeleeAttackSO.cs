@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "ApplyAttack/Melee Value")]
@@ -15,7 +14,7 @@ public class MeleeAttackSO : AttackSO
     {
         if (hurtbox.TryGetComponent(out HealthResource target))
         {
-            DamageInfo di = _combatData != null 
+            DamageInfo di = _combatData != null
                 ? new(_combatData.DealtDamage, _combatData.KnockbackPower, source, hurtbox)
                 : new(DealtDamage, KnockbackPower, source, hurtbox);
 

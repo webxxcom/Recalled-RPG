@@ -12,7 +12,7 @@ public class SprintingResource : ValueResource
 
     MovementBase _movementBase;
     bool _isActive;
-    
+
     public bool IsActive
     {
         get => _isActive;

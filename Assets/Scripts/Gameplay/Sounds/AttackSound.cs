@@ -17,6 +17,6 @@ public class AttackSound : EntitySound
 
     void HandleAttackSound()
     {
-         _audioSource.PlayOneShot(_attackSound);
+        _audioSource.PlayOneShot(_attackSound);
     }
 }

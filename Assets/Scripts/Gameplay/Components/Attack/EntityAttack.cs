@@ -57,7 +57,7 @@ public abstract class EntityAttack : MonoBehaviour
     private void OnValidate()
     {
         if (_attackStrategies == null || _attackStrategies.Count == 0)
-             GetComponents(_attackStrategies);
+            GetComponents(_attackStrategies);
     }
 
 #endif

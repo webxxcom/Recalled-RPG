@@ -42,7 +42,7 @@ public class HealthResource : ValueResource
         {
             if (IsDead)
                 Died?.Invoke(damageInfo);
-            if (CurrentValue == MaxValue )
+            if (CurrentValue == MaxValue)
                 OnMax?.Invoke(damageInfo);
         }
     }

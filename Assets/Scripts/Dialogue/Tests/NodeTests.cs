@@ -1,5 +1,5 @@
-using System;
 using NUnit.Framework;
+using System;
 using Choice = Recalled.Dialogue.DialogueGraph.Node.Choice;
 
 namespace Recalled.Dialogue.Tests
