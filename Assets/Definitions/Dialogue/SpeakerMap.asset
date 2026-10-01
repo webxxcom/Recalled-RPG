@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb1203acc88f3be47852a81fd419e2d5, type: 3}
+  m_Name: SpeakerMap
+  m_EditorClassIdentifier: Recalled.UI::Recalled.UI.Dialogue.SpeakerRegistry
+  _speakerToSpriteMap:
+  - key: {fileID: 11400000, guid: 95bb0e85a16945d49a930d5ff3f9f97c, type: 2}
+    value: {fileID: 21300000, guid: d4d35e82bf19f3f439135ca5ab6edafd, type: 3}

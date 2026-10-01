@@ -9,6 +9,7 @@ public class CanvasBobbleEffect : MonoBehaviour
     [SerializeField] float _amplitude = 0.07f;
     [SerializeField] DirectionEnum _direction;
     [SerializeField] bool _useUnscaledTime;
+    [SerializeField] bool _startAwake = true;
 
     enum DirectionEnum { Vertical, Horizontal }
 
@@ -22,10 +23,17 @@ public class CanvasBobbleEffect : MonoBehaviour
         _uiElement = GetComponent<UIBehaviour>();
     }
 
+    private void OnEnable()
+    {
+        _uiElement.enabled = true;
+    }
+
     private void Start()
     {
         Canvas.ForceUpdateCanvases();
         _basePosition = _transform.position;
+
+        if (!_startAwake) _uiElement.enabled = false;
     }
 
     void Update()

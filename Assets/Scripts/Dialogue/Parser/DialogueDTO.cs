@@ -23,7 +23,7 @@ internal struct DialogueDTO
                 else if (end != 0)
                     return Types.End;
 
-                throw new InvalidLineTypeException($"Line is not properly defined {id}");
+                throw new InvalidLineStateException($"Node is not properly defined {id}");
             }
         }
 
@@ -41,16 +41,4 @@ internal struct DialogueDTO
     public string speaker;
     public Line[] lines;
     public string emotion;
-
-    public readonly bool TryGetLineWithId(int id, out int ind)
-    {
-        for (int i = 0; i < lines.Length; i++)
-        {
-            ind = i;
-            if (lines[ind].id == id)
-                return true;
-        }
-        ind = default;
-        return false;
-    }
 }

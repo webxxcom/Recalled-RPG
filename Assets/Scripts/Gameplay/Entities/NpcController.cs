@@ -7,7 +7,7 @@ namespace Recalled.Gameplay
     public class NpcController : EntityController, IInteractable
     {
         [SerializeField] DialogueDefinition _data;
-        [SerializeField] DialogueSpeaker _speaker;
+        [SerializeField] SpeakerSO _speaker;
 
         [Header("Raises")]
         [SerializeField] DialogueEventChannel _dialogueEventChannel;

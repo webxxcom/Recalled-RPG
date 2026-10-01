@@ -1,31 +1,21 @@
 namespace Recalled.Dialogue
 {
-    public partial class Conversation
+    public class Conversation
     {
-        public DialogueModel.Line CurrentLine { get; private set; }
+        public DialogueGraph.Node CurrentNode { get; private set; }
 
-        readonly DialogueModel _data;
+        readonly DialogueGraph _data;
 
         public Conversation(DialogueDefinition definition)
         {
             _data = Parser.Parse(definition);
 
-            CurrentLine = _data.StartLine;
+            CurrentNode = _data.StartLine;
         }
 
-        public void Proceed()
+        public void ProceedTo(DialogueGraph.Node line)
         {
-            ProceedTo(CurrentLine.Next);
-        }
-
-        void ProceedTo(DialogueModel.Line line)
-        {
-            CurrentLine = line;
-        }
-
-        public void Choose(DialogueModel.Choice choice)
-        {
-            ProceedTo(choice.next);
+            CurrentNode = line;
         }
     }
 }

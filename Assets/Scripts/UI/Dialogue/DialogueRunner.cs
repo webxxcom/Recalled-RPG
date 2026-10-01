@@ -1,5 +1,6 @@
 using Recalled.Dialogue;
 using Recalled.Gameplay;
+using Recalled.UI.Dialogue;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -17,6 +18,8 @@ namespace Recalled.UI
         [SerializeField] Transform _buttonParent;
         [SerializeField] InputActionReference _skipAction;
         [SerializeField] EmotionRegistry _emotions;
+        [SerializeField] SpeakerRegistry _speakers;
+        [SerializeField] CanvasBobbleEffect _continueButton;
 
         readonly List<ChoiceButton> _createdButtons = new();
         ScreenController _screenContoller;
@@ -48,7 +51,7 @@ namespace Recalled.UI
                 return; // Sorry pal but we have our current dialogue
 
             _conversation = new(payload.dialogueDefinition);
-            _speaker.Init(payload.speaker.Faceset);
+            _speaker.Init(_speakers.SpriteMap[payload.speaker]);
 
             _screenContoller.Activate();
             _isDirty = true;
@@ -68,39 +71,40 @@ namespace Recalled.UI
             while (_conversation != null)
             {
                 // Wait until finished talking
-                yield return _speaker.Speak(_conversation.CurrentLine.Text, _skipAction.action,
-                    _emotions.SpriteMap[_conversation.CurrentLine.Emotion]);
+                yield return _speaker.Speak(_conversation.CurrentNode.Line.text, _skipAction.action,
+                    _emotions.SpriteMap[_conversation.CurrentNode.Line.emotion]);
 
                 // What to do next?
-                DialogueModel.Line line = _conversation.CurrentLine;
+                DialogueGraph.Node line = _conversation.CurrentNode;
                 switch (line.Type)
                 {   
-                    case DialogueModel.Line.Types.Choice:
-                        yield return UserChoosing(line.Choices);
+                    case DialogueGraph.Node.Types.Choice:
+                        yield return UserChoosing(line.Next);
                         break;
-                    case DialogueModel.Line.Types.End:
+                    case DialogueGraph.Node.Types.End:
                         FinishDialogue();
                         break;
-                    case DialogueModel.Line.Types.Continue:
+                    case DialogueGraph.Node.Types.Continue:
                         ContinueToNextLine();
                         break;
                 }
 
                 yield return WaitForInputAction();
+                _continueButton.gameObject.SetActive(false);
             }
             yield return WaitForInputAction();
             _screenContoller.Deactivate();
             _dialogueCoroutine = null;
         }
 
-        ConsumableValue<DialogueModel.Choice> _choice = default;
-        IEnumerator UserChoosing(DialogueModel.Choice[] choices)
+        ConsumableValue<DialogueGraph.Node> _choice = default;
+        IEnumerator UserChoosing(DialogueGraph.Node[] choices)
         {
             foreach (var choice in choices)
             {
                 ChoiceButton butt = Instantiate(_choiceButtonPrefab, _buttonParent);
 
-                butt.Init(choice.text, () => _choice.Value = choice);
+                butt.Init(choice.Line.text, () => _choice.Value = choice.Next[0]);
                 _createdButtons.Add(butt);
                 Canvas.ForceUpdateCanvases();
             }
@@ -114,12 +118,13 @@ namespace Recalled.UI
             _createdButtons.Clear();
 
             // Proceed with conversation
-            _conversation.Choose((DialogueModel.Choice)_choice.Consume());
+            _conversation.ProceedTo(_choice.Consume());
         }
 
         void ContinueToNextLine()
         {
-            _conversation.Proceed();
+            _continueButton.gameObject.SetActive(true);
+            _conversation.ProceedTo(_conversation.CurrentNode.Next[0]);
         }
 
         void FinishDialogue()

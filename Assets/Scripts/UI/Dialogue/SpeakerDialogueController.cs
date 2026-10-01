@@ -29,6 +29,7 @@ internal class SpeakerDialogueController : MonoBehaviour
     {
         _audioSource.Play();
         _emotionImage.sprite = emotionSprite;
+        _emotionImage.preserveAspect = true;
 
         // Typewrite until skip action
         yield return TypeWriter.TypeWriteWithSkip(_text, _delayTime, text, skipAction);

@@ -1,11 +1,11 @@
-﻿public struct ConsumableValue<T> where T : struct
+﻿public struct ConsumableValue<T>
 {
-    public T? Value { get; set; }
+    public T Value { get; set; }
 
-    public T? Consume()
+    public T Consume()
     {
-        T? cpy = Value;
-        Value = null;
+        T cpy = Value;
+        Value = default;
         return cpy;
     }
 }

@@ -1,7 +1,10 @@
 using Recalled.Dialogue;
 
-public struct DialoguePayload
+namespace Recalled.Gameplay
 {
-    public DialogueDefinition dialogueDefinition;
-    public DialogueSpeaker speaker;
+    public struct DialoguePayload
+    {
+        public DialogueDefinition dialogueDefinition;
+        public SpeakerSO speaker;
+    }
 }
