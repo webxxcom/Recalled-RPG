@@ -4,18 +4,17 @@ using UnityEngine;
 
 namespace Recalled.Gameplay
 {
-    public class NpcController : EntityController, IInteractable
+    [SelectionBase]
+    public class NpcController : MonoBehaviour, IInteractable
     {
-        [SerializeField] DialogueDefinition _data;
+        [SerializeField] DialogueSource _data;
         [SerializeField] SpeakerSO _speaker;
 
         [Header("Raises")]
         [SerializeField] DialogueEventChannel _dialogueEventChannel;
 
-        protected override void Awake()
+        void Awake()
         {
-            base.Awake();
-
             if (_data == null || _speaker == null)
             {
                 Debug.LogError($"{gameObject.name}: missing some references");
@@ -27,7 +26,7 @@ namespace Recalled.Gameplay
 
         public void Interact()
         {
-            _dialogueEventChannel.Invoke(new() { dialogueDefinition = _data, speaker = _speaker });
+            _dialogueEventChannel.Invoke(new(_data, _speaker));
 
             OnInteract?.Invoke();
         }

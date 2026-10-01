@@ -1349,7 +1349,7 @@ Animator:
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 83e639da2fec0304cb6ecaf2f7d77cab, type: 2}
   m_CullingMode: 0
-  m_UpdateMode: 0
+  m_UpdateMode: 2
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
@@ -1565,7 +1565,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 10
-  m_LinearDamping: 0
+  m_LinearDamping: 3
   m_AngularDamping: 0
   m_GravityScale: 0
   m_Material: {fileID: 0}

@@ -1,6 +1,5 @@
 using UnityEngine;
 
-[SelectionBase]
 [DisallowMultipleComponent]
 [RequireComponent(typeof(Rigidbody2D))]
 [RequireComponent(typeof(Collider2D))]

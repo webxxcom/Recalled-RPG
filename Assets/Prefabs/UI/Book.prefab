@@ -1568,7 +1568,7 @@ Canvas:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1204620722222649022}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 3
   m_RenderMode: 0
   m_Camera: {fileID: 0}
@@ -1628,10 +1628,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   _stack: {fileID: 0}
-  _pauseState: {fileID: 11400000, guid: 3029483e43a1c5a4e94100700962da7f, type: 2}
-  _playerInput: {fileID: 0}
-  _pauseAction: {fileID: -4958776791114779791, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
-  _resumeButton: {fileID: 0}
+  _state: {fileID: 11400000, guid: 3029483e43a1c5a4e94100700962da7f, type: 2}
+  _action: {fileID: -4958776791114779791, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
 --- !u!1 &1288130367956329864
 GameObject:
   m_ObjectHideFlags: 0
@@ -2825,7 +2823,6 @@ GameObject:
   - component: {fileID: 2100974880688725373}
   - component: {fileID: 4023004386480090554}
   - component: {fileID: 5428993426613415017}
-  - component: {fileID: 4486256144521198653}
   m_Layer: 5
   m_Name: Items
   m_TagString: Untagged
@@ -2889,21 +2886,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LoadoutView
   _inventoryItems: {fileID: 11400000, guid: 6001e6b1416f52845822eb0c5f3d799c, type: 2}
-  _isPopulated: 1
---- !u!114 &4486256144521198653
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2870856076710592596}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: df5a9779e06097e45a3e70104cc4dd12, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::InventoryContent
-  _inventorySlotPrefab: {fileID: 8049433891560130444, guid: cdd44a8bc061d9a4eb6ccd2e54b4f196, type: 3}
-  _parent: {fileID: 4223665171452222209}
+  _populator: {fileID: 2573888013514326025}
 --- !u!1 &2938345748141871025
 GameObject:
   m_ObjectHideFlags: 0
@@ -4590,6 +4573,7 @@ GameObject:
   - component: {fileID: 339448994052990251}
   - component: {fileID: 6158688771640721329}
   - component: {fileID: 5817083994860871298}
+  - component: {fileID: 2573888013514326025}
   m_Layer: 5
   m_Name: Content
   m_TagString: Untagged
@@ -4654,6 +4638,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.ContentSizeFitter
   m_HorizontalFit: 0
   m_VerticalFit: 2
+--- !u!114 &2573888013514326025
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4223665171452222209}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa8cc8a00f8013c4f88bae994af3ac9c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Recalled.UI::PrefabPopulator
+  _prefab: {fileID: 4557468664403226936, guid: cdd44a8bc061d9a4eb6ccd2e54b4f196, type: 3}
+  _parent: {fileID: 339448994052990251}
 --- !u!1 &4405131892048501857
 GameObject:
   m_ObjectHideFlags: 0
@@ -8273,7 +8271,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LoadoutView
   _inventoryItems: {fileID: 11400000, guid: 657c61cca6a98b649bce1f984d1003cb, type: 2}
-  _isPopulated: 0
+  _populator: {fileID: 0}
 --- !u!1 &8130319545939869730
 GameObject:
   m_ObjectHideFlags: 0

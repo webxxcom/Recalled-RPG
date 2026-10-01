@@ -14,17 +14,21 @@ public class ProjectileScript : MonoBehaviour
     EntityController _owner;
     Rigidbody2D _rigidbody2D;
 
-    public void Initialize(EntityController owner, Vector3 destination, bool flipX)
+    private void Awake()
     {
         _rigidbody2D = GetComponent<Rigidbody2D>();
-        _owner = owner;
+    }
 
-        Vector3 pos = (Vector2)transform.position + new Vector2(_offset.x * (flipX ? -1 : 1), _offset.y);
+    public void Initialize(EntityController owner, Vector2 destination, bool flipX)
+    {
+        _owner = owner;
+        Vector2 pos = transform.position + new Vector3(_offset.x * (flipX ? -1 : 1), _offset.y);
 
         _direction = (destination - pos).normalized;
         transform.SetPositionAndRotation(
             pos,
             Quaternion.FromToRotation(Vector3.right, _direction));
+        Destroy(gameObject, _timeToLive);
     }
 
     private void FixedUpdate()
@@ -40,14 +44,5 @@ public class ProjectileScript : MonoBehaviour
         if (collision.TryGetComponent(out HealthResource hp))
             hp.ApplyDamage(new(_dealtDamage, _knockbackPower, _owner, hp.Hurtbox));
         Destroy(gameObject);
-    }
-
-    float _elapsedLivingTime;
-    private void Update()
-    {
-        if (_elapsedLivingTime < _timeToLive)
-            _elapsedLivingTime += Time.deltaTime;
-        else
-            Destroy(gameObject);
     }
 }

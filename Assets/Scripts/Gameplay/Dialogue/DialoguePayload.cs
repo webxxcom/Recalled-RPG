@@ -2,9 +2,15 @@ using Recalled.Dialogue;
 
 namespace Recalled.Gameplay
 {
-    public struct DialoguePayload
+    public readonly struct DialoguePayload
     {
-        public DialogueDefinition dialogueDefinition;
-        public SpeakerSO speaker;
+        public readonly DialogueSource DialogueDefinition;
+        public readonly SpeakerSO Speaker;
+
+        public DialoguePayload(DialogueSource dialogueDefinition, SpeakerSO speaker)
+        {
+            DialogueDefinition = dialogueDefinition;
+            Speaker = speaker;
+        }
     }
 }

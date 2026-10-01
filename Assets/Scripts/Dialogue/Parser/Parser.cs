@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using Node = Recalled.Dialogue.DialogueGraph.Node;
 
 namespace Recalled.Dialogue
 {
@@ -9,22 +10,22 @@ namespace Recalled.Dialogue
     {
         static EmotionSO[] AllEmotions;
 
-        static Dictionary<int, DialogueGraph.Node> ParseNodes(DialogueDTO.Line[] lines)
+        static Dictionary<int, Node> ParseNodes(DialogueDTO.Line[] lines)
         {
-            Dictionary<int, DialogueGraph.Node> res = new();
+            Dictionary<int, Node> res = new(); // Create map of shallow nodes which are to be initialized
             foreach (var line in lines)
             {
                 Line modelLine = new(line.text, AllEmotions.FirstOrDefault(e => e.Name == line.emotion));
-                var node = new DialogueGraph.Node(modelLine).EndNode();
+                var node = new Node(modelLine);
 
                 res.Add(line.id, node);
             }
             return res;
         }
 
-        static DialogueGraph.Node.Choice[] ParseChoices(DialogueDTO.Choice[] choices, Dictionary<int, DialogueGraph.Node> nodes)
+        static Node.Choice[] ParseChoices(DialogueDTO.Choice[] choices, Dictionary<int, Node> nodes)
         {
-            var res = new DialogueGraph.Node.Choice[choices.Length];
+            var res = new Node.Choice[choices.Length];
             for (int i = 0; i < choices.Length; ++i)
             {
                 if (nodes.TryGetValue(choices[i].next, out var val))
@@ -33,31 +34,30 @@ namespace Recalled.Dialogue
             return res;
         }
 
-        public static DialogueGraph Parse(DialogueDefinition definition)
+        public static DialogueGraph Parse(DialogueSource definition)
         {
             AllEmotions = Resources.FindObjectsOfTypeAll<EmotionSO>();
-            DialogueGraph model = new();
             DialogueDTO dto = JsonUtility.FromJson<DialogueDTO>(definition.TextData);
 
-            model.speaker = Resources.FindObjectsOfTypeAll<SpeakerSO>().FirstOrDefault(ds => ds.Name.Equals(dto.speaker, StringComparison.OrdinalIgnoreCase));
-            if (model.speaker == null)
+            SpeakerSO speaker = Resources.FindObjectsOfTypeAll<SpeakerSO>().FirstOrDefault(ds => ds.Name.Equals(dto.speaker, StringComparison.OrdinalIgnoreCase));
+            if (speaker == null)
             {
                 //speaker is absent
             }
 
-            model.startingEmotion = AllEmotions.FirstOrDefault(e => e.Name == dto.emotion);
-            if (model.startingEmotion == null)
+            EmotionSO startingEmotion = AllEmotions.FirstOrDefault(e => e.Name == dto.emotion);
+            if (startingEmotion == null)
             {
                 // invalid emotion name
             }
 
-            Dictionary<int, DialogueGraph.Node> nodeMap = ParseNodes(dto.lines);
+            Dictionary<int, Node> nodeMap = ParseNodes(dto.lines);
             if (nodeMap.Count == 0)
             {
                 // dialogue is empty?
             }
 
-            model.StartNode = nodeMap.Values.First();
+            Node startNode = nodeMap.Values.First();
             foreach (var line in dto.lines)
             {
                 if (line.choices != null) nodeMap[line.id].AddChoices(ParseChoices(line.choices, nodeMap));
@@ -65,9 +65,8 @@ namespace Recalled.Dialogue
                 else if (line.end == 1) nodeMap[line.id].EndNode();
                 else { /* Invalid line state */}
             }
-            model.Lines = nodeMap.Values.ToList();
 
-            return model;
+            return new(speaker, startingEmotion, startNode, nodeMap.Values.ToList());
         }
     }
 }

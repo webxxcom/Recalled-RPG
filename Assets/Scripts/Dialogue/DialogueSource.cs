@@ -2,8 +2,8 @@
 
 namespace Recalled.Dialogue
 {
-    [CreateAssetMenu(menuName = "Dialogue/Definition")]
-    public class DialogueDefinition : ScriptableObject
+    [CreateAssetMenu(menuName = "Dialogue/Source")]
+    public class DialogueSource : ScriptableObject
     {
         [SerializeField] TextAsset _textFile;
 

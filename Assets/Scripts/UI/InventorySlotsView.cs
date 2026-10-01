@@ -1,41 +1,21 @@
+using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class InventorySlotsView : MonoBehaviour
 {
     [SerializeField] InventoryItemsListSO _inventoryItems;
-    [SerializeField] bool _isPopulated;
+    [SerializeField] PrefabPopulator _populator;
 
-    /// <summary>View can be populated with the slots by slots creator</summary>
     IReadOnlyList<InventorySlot> _slots;
-    public IReadOnlyList<InventorySlot> Slots
-    {
-        get => _slots;
-        set
-        {
-            _slots = value;
-            RefreshView();
-        }
-    }
-    public IReadOnlyList<ItemInstance> Items => _inventoryItems.Items;
-
     ItemCategory _currentFilter = ItemCategory.Any;
-    public ItemCategory Filter
-    {
-        get => _currentFilter;
-        set
-        {
-            if (value == _currentFilter)
-                return;
-
-            _currentFilter = value;
-            RefreshView();
-        }
-    }
 
     private void Awake()
     {
-        if (!_isPopulated) _slots = GetComponentsInChildren<InventorySlot>();
+        _slots = _populator != null
+            ? _populator.Populate(_inventoryItems.Items.Count).Select(go => go.GetComponent<InventorySlot>()).ToArray()
+            : GetComponentsInChildren<InventorySlot>();
     }
 
     private void OnEnable()
@@ -50,19 +30,28 @@ public class InventorySlotsView : MonoBehaviour
         _inventoryItems.ItemsChanged -= RefreshView;
     }
 
-    public void RefreshView()
+    public void Filter(ItemCategory filter)
     {
-        if (Slots == null)
+        if (filter == _currentFilter)
             return;
 
+        _currentFilter = filter;
+        RefreshView();
+    }
+
+    public void RefreshView()
+    {
+        if (_slots == null)
+            throw new InvalidOperationException();
+
         var items = _inventoryItems.Items;
-        for (int i = 0; i < Slots.Count; i++)
+        for (int i = 0; i < _slots.Count; i++)
         {
             if (i < items.Count && !items[i].IsEmpty
-                && (Filter == ItemCategory.Any || items[i].Definition.Category == Filter))
-                Slots[i].SetItem(items[i]);
+                && (_currentFilter == ItemCategory.Any || items[i].Definition.Category == _currentFilter))
+                _slots[i].SetItem(items[i]);
             else
-                Slots[i].RemoveItem();
+                _slots[i].RemoveItem();
         }
     }
 }

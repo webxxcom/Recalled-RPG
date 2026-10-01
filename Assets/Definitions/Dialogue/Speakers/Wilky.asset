@@ -10,7 +10,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: aa595142e6e24be42ac95695ed059d48, type: 3}
-  m_Name: Sheep
+  m_Name: Wilky
   m_EditorClassIdentifier: Recalled.Dialogue::Recalled.Dialogue.DialogueSpeaker
-  _name: sheep
-  _faceset: {fileID: 5546671543968653177, guid: 5bbe00a126e726a4eaa535fe991a37a4, type: 3}
+  _name: wilky

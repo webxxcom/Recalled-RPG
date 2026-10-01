@@ -5,9 +5,10 @@ namespace Recalled.Dialogue
     public class Conversation
     {
         public bool HasStarted { get; private set; }
-        public event Action<LineStartedPayload> LineStarted;
         readonly DialogueGraph _data;
         DialogueGraph.Node _currentNode;
+
+        public event Action<LineStartedPayload> LineStarted;
 
         internal Conversation(DialogueGraph graph)
         {
@@ -15,14 +16,12 @@ namespace Recalled.Dialogue
                 throw new ArgumentNullException($"{nameof(graph)} can't be null");
 
             _data = graph;
-
             _currentNode = _data.StartNode;
         }
 
-        public Conversation(DialogueDefinition definition)
+        public Conversation(DialogueSource definition)
         {
             _data = Parser.Parse(definition);
-
             _currentNode = _data.StartNode;
         }
 

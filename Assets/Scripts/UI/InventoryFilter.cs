@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.EventSystems;
 
 [RequireComponent(typeof(Toggleable))]
 public class InventoryFilter : MonoBehaviour
@@ -27,10 +26,10 @@ public class InventoryFilter : MonoBehaviour
 
     void OnActivated()
     {
-        _view.Filter = _category;
+        _view.Filter(_category);
     }
     void OnDeactivated()
     {
-        _view.Filter = ItemCategory.Any;
+        _view.Filter(ItemCategory.Any);
     }
 }

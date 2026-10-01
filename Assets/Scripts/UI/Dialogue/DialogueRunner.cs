@@ -3,7 +3,6 @@ using Recalled.Gameplay;
 using Recalled.UI.Dialogue;
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -15,20 +14,18 @@ namespace Recalled.UI
     {
         [SerializeField] SpeakerDialogueController _speaker;
         [SerializeField] DialogueEventChannel _dialogueChannel;
-        [SerializeField] ChoiceButton _choiceButtonPrefab;
-        [SerializeField] Transform _buttonParent;
         [SerializeField] InputActionReference _skipAction;
         [SerializeField] EmotionRegistry _emotions;
         [SerializeField] SpeakerRegistry _speakers;
         [SerializeField] CanvasBobbleEffect _continueButton;
+        [SerializeField] PrefabPopulator _playerButtons;
 
-        readonly List<ChoiceButton> _createdButtons = new();
         ScreenController _screenContoller;
         Conversation _conversation;
 
         private void Awake()
         {
-            if (_speaker == null || _dialogueChannel == null || _choiceButtonPrefab == null || _buttonParent == null || _skipAction == null)
+            if (_speaker == null || _dialogueChannel == null || _playerButtons == null || _skipAction == null)
             {
                 Debug.LogError($"{gameObject.name}: missing references");
                 enabled = false;
@@ -48,11 +45,11 @@ namespace Recalled.UI
         Coroutine _dialogueCoroutine;
         void OnDialogueChannel(DialoguePayload payload)
         {
-            if (_dialogueCoroutine != null)
+            if (_conversation != null)
                 return; // Sorry pal but we have our current dialogue
 
-            _conversation = new(payload.dialogueDefinition);
-            _speaker.Init(_speakers.SpriteMap[payload.speaker]);
+            _conversation = new(payload.DialogueDefinition);
+            _speaker.Init(_speakers.SpriteMap[payload.Speaker]);
             _conversation.LineStarted += OnLineStarted;
 
             _screenContoller.Activate();
@@ -81,24 +78,30 @@ namespace Recalled.UI
                 yield return UserChoosing(payload.Choices);
             else if (payload.Type == Line.Types.Continue)
                 yield return ContinueToNextLine();
+
+            _dialogueCoroutine = null;
         }
 
         void OnLineStarted(LineStartedPayload payload)
         {
-            StartCoroutine(Run(payload));
+            if (_dialogueCoroutine != null)
+                StopCoroutine(_dialogueCoroutine);
+
+            _dialogueCoroutine = StartCoroutine(Run(payload));
         }
 
         IEnumerator UserChoosing(IReadOnlyList<string> choices)
         {
             int pressedInd = -1;
+
+            _playerButtons.Populate(choices.Count);
             for (int i = 0; i < choices.Count; ++i)
             {
                 var choice = choices[i];
 
-                ChoiceButton butt = Instantiate(_choiceButtonPrefab, _buttonParent);
+                var butt = _playerButtons.Created[i].GetComponent<ChoiceButton>();
                 butt.Init(choice, i);
                 butt.Button.onClick.AddListener(() => pressedInd = butt.Index);
-                _createdButtons.Add(butt);
 
                 Canvas.ForceUpdateCanvases();
             }
@@ -106,12 +109,8 @@ namespace Recalled.UI
             // Wait when user chooses smth
             yield return new WaitUntil(() => pressedInd != -1);
 
-            //Remove buttons then
-            foreach (var butt in _createdButtons)
-                Destroy(butt.gameObject);
-            _createdButtons.Clear();
-
-            // Proceed with conversation
+            //Remove buttons and choose the option
+            _playerButtons.DestroyAll();
             _conversation.ChooseOption(pressedInd);
         }
 
@@ -128,7 +127,7 @@ namespace Recalled.UI
         {
             yield return WaitForInputAction();
             _screenContoller.Deactivate();
-            _dialogueCoroutine = null;
+            _conversation = null;
         }
 
         IEnumerator WaitForInputAction()
