@@ -15,21 +15,20 @@ namespace Recalled.Dialogue
             foreach (var line in lines)
             {
                 Line modelLine = new(line.text, AllEmotions.FirstOrDefault(e => e.Name == line.emotion));
-                DialogueGraph.Node node = new(modelLine, null);
+                var node = new DialogueGraph.Node(modelLine).EndNode();
 
                 res.Add(line.id, node);
             }
             return res;
         }
 
-        static DialogueGraph.Node[] ParseChoices(DialogueDTO.Choice[] choices, Dictionary<int, DialogueGraph.Node> nodes)
+        static DialogueGraph.Node.Choice[] ParseChoices(DialogueDTO.Choice[] choices, Dictionary<int, DialogueGraph.Node> nodes)
         {
-            DialogueGraph.Node[] res = new DialogueGraph.Node[choices.Length];
+            var res = new DialogueGraph.Node.Choice[choices.Length];
             for (int i = 0; i < choices.Length; ++i)
             {
                 if (nodes.TryGetValue(choices[i].next, out var val))
-                    res[i] = new DialogueGraph.Node(new(choices[i].text, null), val);
-                // choice.next may have invalid line id
+                    res[i] = new(choices[i].text, val);
             }
             return res;
         }
@@ -58,23 +57,13 @@ namespace Recalled.Dialogue
                 // dialogue is empty?
             }
 
-            model.StartLine = nodeMap.Values.First();
+            model.StartNode = nodeMap.Values.First();
             foreach (var line in dto.lines)
             {
-                switch (line.Type)
-                {
-                    case DialogueDTO.Line.Types.Choices:
-                        nodeMap[line.id].AddNext(ParseChoices(line.choices, nodeMap));
-                        break;
-                    case DialogueDTO.Line.Types.Continue:
-                        nodeMap[line.id].AddNext(nodeMap[line.next]);
-                        break;
-                    case DialogueDTO.Line.Types.End:
-                        nodeMap[line.id].EndNode();
-                        break;
-                    default:
-                        throw new InvalidLineStateException($"Unexpected error occured in {nameof(DialogueDTO.Line)}");
-                }
+                if (line.choices != null) nodeMap[line.id].AddChoices(ParseChoices(line.choices, nodeMap));
+                else if (line.next != 0) nodeMap[line.id].LinkNext(nodeMap[line.next]);
+                else if (line.end == 1) nodeMap[line.id].EndNode();
+                else { /* Invalid line state */}
             }
             model.Lines = nodeMap.Values.ToList();
 

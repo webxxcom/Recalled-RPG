@@ -1,44 +1,29 @@
-﻿[System.Serializable]
-internal struct DialogueDTO
+﻿namespace Recalled.Dialogue
 {
     [System.Serializable]
-    public struct Line
+    internal struct DialogueDTO
     {
-        public int id;
-        public string text;
-        public string emotion;
-
-        public Choice[] choices;
-        public int next;
-        public int end;
-
-        public readonly Types Type
+        [System.Serializable]
+        public struct Line
         {
-            get
-            {
-                if (choices != null)
-                    return Types.Choices;
-                else if (next != 0)
-                    return Types.Continue;
-                else if (end != 0)
-                    return Types.End;
+            public int id;
+            public string text;
+            public string emotion;
 
-                throw new InvalidLineStateException($"Node is not properly defined {id}");
-            }
+            public Choice[] choices;
+            public int next;
+            public int end;
         }
 
-        public enum Types { Continue, End, Choices }
+        [System.Serializable]
+        public struct Choice
+        {
+            public string text;
+
+            public int next;
+        }
+        public string speaker;
+        public Line[] lines;
+        public string emotion;
     }
-
-    [System.Serializable]
-    public struct Choice
-    {
-        public string text;
-
-        public int next;
-    }
-
-    public string speaker;
-    public Line[] lines;
-    public string emotion;
 }

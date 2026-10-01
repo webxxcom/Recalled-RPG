@@ -25,11 +25,17 @@ internal class SpeakerDialogueController : MonoBehaviour
         _facesetImage.sprite = faceset;
     }
 
+    private void OnDisable()
+    {
+        _emotionImage.enabled = true;
+    }
+
     public IEnumerator Speak(string text, InputAction skipAction, Sprite emotionSprite)
     {
         _audioSource.Play();
         _emotionImage.sprite = emotionSprite;
         _emotionImage.preserveAspect = true;
+        _emotionImage.enabled = true;
 
         // Typewrite until skip action
         yield return TypeWriter.TypeWriteWithSkip(_text, _delayTime, text, skipAction);

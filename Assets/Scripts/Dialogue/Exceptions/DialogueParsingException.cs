@@ -1,12 +1,15 @@
 ﻿using System;
 
-public class DialogueParsingException : Exception
+namespace Recalled.Dialogue
 {
-    public DialogueParsingException()
+    public class DialogueParsingException : Exception
     {
-    }
+        public DialogueParsingException()
+        {
+        }
 
-    public DialogueParsingException(string message) : base(message)
-    {
+        public DialogueParsingException(string message) : base(message)
+        {
+        }
     }
 }

@@ -2,13 +2,20 @@
 {
     public readonly struct Line
     {
-        public readonly string text;
-        public readonly EmotionSO emotion;
+        public readonly string Text;
+        public readonly EmotionSO Emotion;
 
         internal Line(string text, EmotionSO emotion)
         {
-            this.text = text;
-            this.emotion = emotion;
+            Text = text;
+            Emotion = emotion;
+        }
+
+        public enum Types
+        {
+            Continue,
+            End,
+            Choices
         }
     }
 }

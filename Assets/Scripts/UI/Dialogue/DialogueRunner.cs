@@ -3,6 +3,7 @@ using Recalled.Gameplay;
 using Recalled.UI.Dialogue;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -52,6 +53,7 @@ namespace Recalled.UI
 
             _conversation = new(payload.dialogueDefinition);
             _speaker.Init(_speakers.SpriteMap[payload.speaker]);
+            _conversation.LineStarted += OnLineStarted;
 
             _screenContoller.Activate();
             _isDirty = true;
@@ -62,55 +64,47 @@ namespace Recalled.UI
             if (_isDirty)
             {
                 _isDirty = false;
-                _dialogueCoroutine = StartCoroutine(Run());
+                _conversation.Begin();
             }
         }
 
-        IEnumerator Run()
+        IEnumerator Run(LineStartedPayload payload)
         {
-            while (_conversation != null)
-            {
-                // Wait until finished talking
-                yield return _speaker.Speak(_conversation.CurrentNode.Line.text, _skipAction.action,
-                    _emotions.SpriteMap[_conversation.CurrentNode.Line.emotion]);
+            // Wait until finished talking
+            yield return _speaker.Speak(payload.Line.Text, _skipAction.action,
+                _emotions.SpriteMap[payload.Line.Emotion]);
 
-                // What to do next?
-                DialogueGraph.Node line = _conversation.CurrentNode;
-                switch (line.Type)
-                {   
-                    case DialogueGraph.Node.Types.Choice:
-                        yield return UserChoosing(line.Next);
-                        break;
-                    case DialogueGraph.Node.Types.End:
-                        FinishDialogue();
-                        break;
-                    case DialogueGraph.Node.Types.Continue:
-                        ContinueToNextLine();
-                        break;
-                }
-
-                yield return WaitForInputAction();
-                _continueButton.gameObject.SetActive(false);
-            }
-            yield return WaitForInputAction();
-            _screenContoller.Deactivate();
-            _dialogueCoroutine = null;
+            // Decide what to do depending on the payload
+            if (payload.Type == Line.Types.End)
+                yield return FinishDialogue();
+            else if (payload.Type == Line.Types.Choices)
+                yield return UserChoosing(payload.Choices);
+            else if (payload.Type == Line.Types.Continue)
+                yield return ContinueToNextLine();
         }
 
-        ConsumableValue<DialogueGraph.Node> _choice = default;
-        IEnumerator UserChoosing(DialogueGraph.Node[] choices)
+        void OnLineStarted(LineStartedPayload payload)
         {
-            foreach (var choice in choices)
+            StartCoroutine(Run(payload));
+        }
+
+        IEnumerator UserChoosing(IReadOnlyList<string> choices)
+        {
+            int pressedInd = -1;
+            for (int i = 0; i < choices.Count; ++i)
             {
+                var choice = choices[i];
+
                 ChoiceButton butt = Instantiate(_choiceButtonPrefab, _buttonParent);
-
-                butt.Init(choice.Line.text, () => _choice.Value = choice.Next[0]);
+                butt.Init(choice, i);
+                butt.Button.onClick.AddListener(() => pressedInd = butt.Index);
                 _createdButtons.Add(butt);
+
                 Canvas.ForceUpdateCanvases();
             }
 
             // Wait when user chooses smth
-            yield return new WaitUntil(() => _choice.Value != null);
+            yield return new WaitUntil(() => pressedInd != -1);
 
             //Remove buttons then
             foreach (var butt in _createdButtons)
@@ -118,18 +112,23 @@ namespace Recalled.UI
             _createdButtons.Clear();
 
             // Proceed with conversation
-            _conversation.ProceedTo(_choice.Consume());
+            _conversation.ChooseOption(pressedInd);
         }
 
-        void ContinueToNextLine()
+        IEnumerator ContinueToNextLine()
         {
             _continueButton.gameObject.SetActive(true);
-            _conversation.ProceedTo(_conversation.CurrentNode.Next[0]);
+
+            yield return WaitForInputAction();
+            _conversation.Advance();
+            _continueButton.gameObject.SetActive(false);
         }
 
-        void FinishDialogue()
+        IEnumerator FinishDialogue()
         {
-            _conversation = null;
+            yield return WaitForInputAction();
+            _screenContoller.Deactivate();
+            _dialogueCoroutine = null;
         }
 
         IEnumerator WaitForInputAction()

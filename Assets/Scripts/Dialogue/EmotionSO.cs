@@ -1,9 +1,12 @@
 ﻿using UnityEngine;
 
-[CreateAssetMenu(menuName = "Dialogue/Emotions/Definition")]
-public class EmotionSO : ScriptableObject
+namespace Recalled.Dialogue
 {
-    [SerializeField] string _name;
+    [CreateAssetMenu(menuName = "Dialogue/Emotions/Definition")]
+    public class EmotionSO : ScriptableObject
+    {
+        [SerializeField] string _name;
 
-    public string Name => _name;
+        public string Name => _name;
+    }
 }

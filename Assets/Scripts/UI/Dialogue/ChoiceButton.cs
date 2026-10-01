@@ -1,12 +1,15 @@
+using System;
 using TMPro;
 using UnityEngine;
-using UnityEngine.Events;
 using UnityEngine.UI;
 
 [RequireComponent(typeof(Button))]
 internal class ChoiceButton : MonoBehaviour
 {
     [SerializeField] TMP_Text _tmpText;
+
+    public int Index { get; private set; }
+    public Button Button => _button;
 
     Button _button;
 
@@ -15,11 +18,9 @@ internal class ChoiceButton : MonoBehaviour
         _button = GetComponent<Button>();
     }
 
-    public void Init(string text, UnityAction action)
+    public void Init(string text, int ind)
     {
         _tmpText.text = text;
-
-        // No unsubscribing is safe because button and the component have the same lifespan
-        _button.onClick.AddListener(action);
+        Index = ind;
     }
 }

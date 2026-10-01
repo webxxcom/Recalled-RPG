@@ -1,49 +1,93 @@
-﻿using JetBrains.Annotations;
+﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Recalled.Dialogue
 {
-    public class DialogueGraph
+    internal class DialogueGraph
     {
         public class Node
         {
-            public Line Line { get; private set; }
-            public Node[] Next { get; private set; }
+            public readonly struct Choice
+            {
+                public readonly string Text;
+                public readonly Node Next;
 
-            public Node(in Line line, Node next)
+                public Choice(string text, Node next)
+                {
+                    Text = text;
+                    Next = next;
+                }
+            }
+
+            public readonly Line Line;
+
+            public Node Next { get; private set; }
+            public IReadOnlyList<Choice> Choices => _choices;
+
+            bool _isInitialized;
+            Choice[] _choices;
+
+            public Node(in Line line)
             {
                 Line = line;
-                AddNext(next);
+                _choices = Array.Empty<Choice>();
             }
 
-            public void AddNext(Node[] nodes)
+            public Node AddChoices(Choice[] choices)
             {
-                Next = nodes;
+                if (choices == null || choices.Length == 0 || choices.Any(c => c.Next == null || c.Text == null))
+                    throw new ArgumentException($"{nameof(Choices)} can't be null or empty for {nameof(Line.Types.Choices)}");
+                if (_isInitialized)
+                    throw new InvalidOperationException("Trying to re-initialize already initalized Node");
+
+                _choices = (Choice[])choices.Clone();
+                _isInitialized = true;
+                return this;
             }
-            public void AddNext(Node node)
+            public Node LinkNext(Node next)
             {
-                Next = new Node[1] { node };
+                if (_isInitialized)
+                    throw new InvalidOperationException($"Trying to re-initialize already initalized Node");
+
+                Next = next ?? throw new ArgumentNullException($"{nameof(next)}");
+                _isInitialized = true;
+                return this;
             }
-            public void EndNode()
+            public Node EndNode()
             {
-                Next = new Node[0];
+                if (_isInitialized)
+                    throw new InvalidOperationException("Trying to re-initialize already initalized Node");
+
+                Next = null;
+                _isInitialized = true;
+                return this;
             }
 
-            public Types Type
+            public Line.Types Type
             {
                 get
                 {
-                    if (Next.Length == 0) return Types.End;
-                    else if (Next.Length == 1) return Types.Continue;
-                    else return Types.Choice;
+                    if (!_isInitialized)
+                        throw new InvalidOperationException("Uninitialized node has no type");
+
+                    if (Next != null) return Line.Types.Continue;
+                    else if (Next == null && Choices.Count != 0) return Line.Types.Choices;
+                    else return Line.Types.End;
                 }
             }
-            public enum Types { Continue, Choice, End }
+        }
+
+        public DialogueGraph() { }
+
+        public DialogueGraph(Node startNode)
+        {
+            StartNode = startNode;
         }
 
         public SpeakerSO speaker;
         public EmotionSO startingEmotion;
-        public Node StartLine;
+        public Node StartNode;
         public IReadOnlyList<Node> Lines;
     }
 }

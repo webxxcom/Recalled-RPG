@@ -1686,8 +1686,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5fc81b36b07f0104dac395947ac3e4e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Recalled.Gameplay::CanvasBobbleEffect
-  _frequency: 0.26
-  _amplitude: 4.09
+  _frequency: 6
+  _amplitude: 3
   _direction: 0
   _useUnscaledTime: 1
   _startAwake: 0
