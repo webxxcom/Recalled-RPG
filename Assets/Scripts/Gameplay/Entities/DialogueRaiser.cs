@@ -5,7 +5,7 @@ using UnityEngine;
 namespace Recalled.Gameplay
 {
     [SelectionBase]
-    public class NpcController : MonoBehaviour, IInteractable
+    public class DialogueRaiser : MonoBehaviour, IInteractable
     {
         [SerializeField] DialogueSource _data;
         [SerializeField] SpeakerSO _speaker;

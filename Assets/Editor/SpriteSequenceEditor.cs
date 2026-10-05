@@ -100,11 +100,11 @@ public class SpriteSequenceEditor : Editor
             index = 0;
 
         EditorGUI.BeginChangeCheck();
-        index = EditorGUILayout.Popup("Clip", index, clipNames);
+        index = EditorGUILayout.Popup("Sequence", index, clipNames);
 
         if (EditorGUI.EndChangeCheck() || sequence.ClipName != clipNames[index])
         {
-            Undo.RecordObject(sequence, "TrySet Sprite Sequence Clip");
+            Undo.RecordObject(sequence, "TrySet Sprite Sequence Sequence");
             sequence.ClipName = clipNames[index];
             EditorUtility.SetDirty(sequence);
         }

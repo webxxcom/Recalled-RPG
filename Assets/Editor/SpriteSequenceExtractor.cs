@@ -145,7 +145,7 @@ public static class SpriteSequenceExtractor
 
         if (spriteBinding == null)
         {
-            error = $"Clip '{clip.name}' has no sprite curve.";
+            error = $"Sequence '{clip.name}' has no sprite curve.";
             return false;
         }
 
@@ -155,7 +155,7 @@ public static class SpriteSequenceExtractor
             // GameObjects, giving one curve per layer. A single Image can only
             // show one sprite, so the rest are dropped.
             Debug.LogWarning(
-                $"Clip '{clip.name}' animates {count} sprite curves. " +
+                $"Sequence '{clip.name}' animates {count} sprite curves. " +
                 $"Using '{spriteBinding.Value.path}' and ignoring the rest.");
         }
 
@@ -163,7 +163,7 @@ public static class SpriteSequenceExtractor
 
         if (keyframes == null || keyframes.Length == 0)
         {
-            error = $"Clip '{clip.name}' has an empty sprite curve.";
+            error = $"Sequence '{clip.name}' has an empty sprite curve.";
             return false;
         }
 
