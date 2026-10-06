@@ -1,7 +1,11 @@
+using Recalled.Core;
 using UnityEngine;
 
-[RequireComponent(typeof(Door))]
-public class DoorSetRegistor : AutoSetRegistor<Door>
+namespace Recalled.Gameplay
 {
-    protected override Door Data => GetComponent<Door>();
+    [RequireComponent(typeof(Door))]
+    public class DoorSetRegistor : AutoSetRegistor<Door>
+    {
+        protected override Door Data => GetComponent<Door>();
+    }
 }

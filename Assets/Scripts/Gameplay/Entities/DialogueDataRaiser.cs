@@ -1,14 +1,14 @@
 ﻿using Recalled.Dialogue;
-using System;
 using UnityEngine;
 
 namespace Recalled.Gameplay
 {
     [SelectionBase]
-    public class DialogueRaiser : MonoBehaviour, IInteractable
+    public class DialogueDataRaiser : MonoBehaviour, IInteractionReactor, IApproachReactor
     {
         [SerializeField] DialogueSource _data;
         [SerializeField] SpeakerSO _speaker;
+        [SerializeField] IdleSpriteAnimator _popupAnimator;
 
         [Header("Raises")]
         [SerializeField] DialogueEventChannel _dialogueEventChannel;
@@ -22,13 +22,23 @@ namespace Recalled.Gameplay
             }
         }
 
-        public event Action OnInteract;
-
-        public void Interact()
+        public void Raise()
         {
             _dialogueEventChannel.Invoke(new(_data, _speaker));
+        }
 
-            OnInteract?.Invoke();
+        public void ReactToInteraction(IInteractable _)
+        {
+            Raise();
+        }
+
+        public void ReactToApproach(IApproachable approachable)
+        {
+        }
+
+        public void ReactToRetreat(IApproachable approachable)
+        {
+            _popupAnimator.Stop();
         }
     }
 }

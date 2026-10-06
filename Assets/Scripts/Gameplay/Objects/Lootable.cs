@@ -5,21 +5,25 @@ namespace Recalled.Gameplay
 {
     public class Lootable : MonoBehaviour
     {
-        [SerializeField] InventorySO _inventory;
+        public readonly struct LootedItem
+        {
+            public readonly ItemDefinition Definition;
+            public readonly int Count;
+
+            public LootedItem(ItemDefinition definition, int count)
+            {
+                Definition = definition;
+                Count = count;
+            }
+        }
+
         [SerializeField] LootTable _lootTable;
 
         public UnityEvent Looted;
 
-        public bool LootItem()
+        public LootedItem LootItem()
         {
-            ItemInstance item = _lootTable.GetItem().CreateInstance();
-
-            if (_inventory.GeneralItems.Add(item))
-            {
-                Looted.Invoke();
-                return true;
-            }
-            return false;
+            return new(_lootTable.GetItem(), 1);
         }
     }
 }

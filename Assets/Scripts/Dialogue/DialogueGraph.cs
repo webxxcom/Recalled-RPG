@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+
 namespace Recalled.Dialogue
 {
     internal partial class DialogueGraph

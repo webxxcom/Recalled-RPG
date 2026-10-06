@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2837147310599983559}
   - component: {fileID: 8793400504350302726}
-  - component: {fileID: 953613749794059843}
+  - component: {fileID: 5119348269230900774}
   m_Layer: 11
   m_Name: Approach
   m_TagString: Untagged
@@ -93,7 +93,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 0
   m_SpriteSortPoint: 0
   m_BlendShapeWeights: []
---- !u!114 &953613749794059843
+--- !u!114 &5119348269230900774
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -102,9 +102,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 229623896150444390}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b9af04c520db53943bc7bf1c730d22ab, type: 3}
+  m_Script: {fileID: 11500000, guid: e3eb72c225ee75f4488fcbe1eb31a1ec, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: '::'
+  m_EditorClassIdentifier: Recalled.Gameplay::Recalled.Gameplay.IdleSpriteAnimator
   _spriteRenderer: {fileID: 8793400504350302726}
 --- !u!1 &1459502085907806261
 GameObject:
@@ -117,11 +117,13 @@ GameObject:
   - component: {fileID: 2714024224261537696}
   - component: {fileID: 1999128151587467108}
   - component: {fileID: 3688771516497709855}
-  - component: {fileID: 1375917583171785032}
   - component: {fileID: 8077595561589778331}
+  - component: {fileID: 1375917583171785032}
+  - component: {fileID: 122599450834821112}
+  - component: {fileID: 8248612097254598417}
   m_Layer: 11
   m_Name: Armory
-  m_TagString: Enemy
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -139,8 +141,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 7677081541585368778}
   - {fileID: 2837147310599983559}
+  - {fileID: 7677081541585368778}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!50 &1999128151587467108
@@ -207,6 +209,19 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0.12}
   m_Size: {x: 0.91, y: 0.27}
   m_Direction: 1
+--- !u!114 &8077595561589778331
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1459502085907806261}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b175eb53c58a2814aaa6940aa57d827d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Recalled.Gameplay::AutomaticToggler
+  _behaviour: {fileID: 0}
 --- !u!114 &1375917583171785032
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -221,8 +236,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::NpcController
   _data: {fileID: 11400000, guid: 85a4c3da0eafb774988cf3f1db737068, type: 2}
   _speaker: {fileID: 11400000, guid: 95bb0e85a16945d49a930d5ff3f9f97c, type: 2}
+  _animator: {fileID: 0}
   _dialogueEventChannel: {fileID: 11400000, guid: 3d6d91bce485a9c4fb1dd8da51988aef, type: 2}
---- !u!114 &8077595561589778331
+--- !u!114 &122599450834821112
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -231,10 +247,21 @@ MonoBehaviour:
   m_GameObject: {fileID: 1459502085907806261}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b175eb53c58a2814aaa6940aa57d827d, type: 3}
+  m_Script: {fileID: 11500000, guid: fe0d96a9e5702b4479960017d6eeb593, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Recalled.Gameplay::AutomaticToggler
-  _behaviour: {fileID: 0}
+  m_EditorClassIdentifier: '::'
+--- !u!114 &8248612097254598417
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1459502085907806261}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8190d7234b7cca040a1e9c2324fde1c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
 --- !u!1001 &567450406362220999
 PrefabInstance:
   m_ObjectHideFlags: 0

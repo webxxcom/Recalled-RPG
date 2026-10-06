@@ -2,7 +2,6 @@ using UnityEngine;
 
 namespace Recalled.Gameplay
 {
-
     [RequireComponent(typeof(Collider2D))]
     [RequireComponent(typeof(AudioSource))]
     [RequireComponent(typeof(Lootable))]
@@ -31,7 +30,8 @@ namespace Recalled.Gameplay
 
             if (collision.CompareTag("Player"))
             {
-                if (!_lootable.LootItem())
+                var looted = _lootable.LootItem();
+                if (!_inventory.GeneralItems.Add(new (looted.Definition, looted.Count)))
                     return;
 
                 _isCollected = true;

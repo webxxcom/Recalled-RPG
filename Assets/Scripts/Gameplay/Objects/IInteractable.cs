@@ -1,8 +1,12 @@
 ﻿using System;
 
-public interface IInteractable
+namespace Recalled.Gameplay
 {
-    public event Action OnInteract;
+    public interface IInteractable
+    {
+        public event Action Interacted;
+        public bool CanBeInteracted { get; }
 
-    void Interact();
+        void Interact();
+    }
 }

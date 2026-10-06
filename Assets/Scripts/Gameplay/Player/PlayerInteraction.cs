@@ -1,30 +1,36 @@
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-[RequireComponent(typeof(Collider2D))]
-public class PlayerInteraction : MonoBehaviour
+namespace Recalled.Gameplay
 {
-    readonly HashSet<IInteractable> _interactables = new(16);
-
-    void OnInteract(InputValue _) => _interactables.FirstOrDefault()?.Interact();
-
-    private void OnTriggerEnter2D(Collider2D collision)
+    [RequireComponent(typeof(Collider2D))]
+    public class PlayerInteraction : MonoBehaviour
     {
-        if (collision.TryGetComponent(out IInteractable interactable))
-            _interactables.Add(interactable);
+        readonly List<IInteractable> _interactables = new(16);
 
-        if (collision.TryGetComponent<BehaviorToggler>(out var popup))
-            popup.Show();
-    }
+        void OnInteract(InputValue _)
+        {
+            if (_interactables.Count != 0)
+                _interactables[0].Interact();
+        }
 
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        if (collision.TryGetComponent(out IInteractable interactable))
-            _interactables.Remove(interactable);
+        private void OnTriggerEnter2D(Collider2D collision)
+        {
+            if (collision.TryGetComponent<IInteractable>(out var interactable))
+                _interactables.Add(interactable);
 
-        if (collision.TryGetComponent<BehaviorToggler>(out var popup))
-            popup.Hide();
+            if (collision.TryGetComponent<IApproachable>(out var approachable))
+                approachable.Approaching();
+        }
+
+        private void OnTriggerExit2D(Collider2D collision)
+        {
+            if (collision.TryGetComponent<IInteractable>(out var interactable))
+                _interactables.Remove(interactable);
+
+            if (collision.TryGetComponent<IApproachable>(out var approachable))
+                approachable.Retreating();
+        }
     }
 }

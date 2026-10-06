@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: WilkyDialogue
   m_EditorClassIdentifier: Recalled.Dialogue::Recalled.Dialogue.DialogueDefinition
   _textFile: {fileID: 4900000, guid: ab88bb0d484124849abc78aee5af8b16, type: 3}
+  _speaker: {fileID: 11400000, guid: 95bb0e85a16945d49a930d5ff3f9f97c, type: 2}

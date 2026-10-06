@@ -1,6 +1,9 @@
 using UnityEngine;
 
-public class TransformSetRegistor : AutoSetRegistor<Transform>
+namespace Recalled.Core
 {
-    protected override Transform Data => transform;
+    public sealed class TransformSetRegistor : AutoSetRegistor<Transform>
+    {
+        protected override Transform Data => transform;
+    }
 }

@@ -1,37 +1,42 @@
 using System;
 using UnityEngine;
 
-[RequireComponent(typeof(Collider2D))]
-public class Door : MonoBehaviour, IInteractable
+namespace Recalled.Gameplay
 {
-    Collider2D _collider2D;
-    bool _isOpen;
-    bool IsOpen
+    [RequireComponent(typeof(Collider2D))]
+    public class Door : MonoBehaviour, IInteractable
     {
-        get => _isOpen;
-        set
+        Collider2D _collider2D;
+        bool _isOpen;
+        bool IsOpen
         {
-            if (_isOpen == value)
-                return;
+            get => _isOpen;
+            set
+            {
+                if (_isOpen == value)
+                    return;
 
-            OnInteract?.Invoke();
-            _isOpen = value;
-            _collider2D.enabled = !value;
+                Interacted?.Invoke();
+                _isOpen = value;
+                _collider2D.enabled = !value;
+            }
         }
+
+        public bool CanBeInteracted => true;
+
+        public event Action Interacted;
+
+        void Awake()
+        {
+            _collider2D = GetComponent<Collider2D>();
+            _isOpen = !_collider2D.enabled;
+        }
+
+        public void Open()
+            => IsOpen = true;
+        public void Close()
+            => IsOpen = false;
+        public void Interact()
+            => IsOpen = !IsOpen;
     }
-
-    public event Action OnInteract;
-
-    void Awake()
-    {
-        _collider2D = GetComponent<Collider2D>();
-        _isOpen = !_collider2D.enabled;
-    }
-
-    public void Open()
-        => IsOpen = true;
-    public void Close()
-        => IsOpen = false;
-    public void Interact()
-        => IsOpen = !IsOpen;
 }

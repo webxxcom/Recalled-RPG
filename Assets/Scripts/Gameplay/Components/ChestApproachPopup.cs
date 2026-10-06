@@ -11,9 +11,9 @@ namespace Recalled.Gameplay
         private void Awake()
             => _chest = GetComponent<Chest>();
         private void OnEnable()
-            => _chest.OnInteract += StopOnInteracted;
+            => _chest.Interacted += StopOnInteracted;
         private void OnDisable()
-            => _chest.OnInteract -= StopOnInteracted;
+            => _chest.Interacted -= StopOnInteracted;
 
         void StopOnInteracted()
         {
@@ -23,7 +23,7 @@ namespace Recalled.Gameplay
 
         public override void Show()
         {
-            if (_chest.PlayerCanInteract())
+            if (_chest.CanBeInteracted)
                 base.Show();
         }
     }

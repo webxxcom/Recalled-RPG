@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Recalled.UI
+namespace Recalled.Gameplay
 {
     public class IdleSpriteAnimator : MonoBehaviour
     {
