@@ -22,7 +22,7 @@ namespace Recalled.UI
             foreach (var reactor in _reactors)
                 reactor.ReactToInteraction(this);
 
-            Interacted.Invoke();
+            Interacted?.Invoke();
         }
     }
 }

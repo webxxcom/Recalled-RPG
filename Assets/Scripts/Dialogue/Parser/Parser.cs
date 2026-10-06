@@ -6,7 +6,7 @@ using Node = Recalled.Dialogue.DialogueGraph.Node;
 
 namespace Recalled.Dialogue
 {
-    internal static class Parser
+    public static class Parser
     {
         static EmotionSO[] AllEmotions;
 
@@ -34,10 +34,10 @@ namespace Recalled.Dialogue
             return res;
         }
 
-        public static DialogueGraph Parse(DialogueSource definition)
+        public static DialogueGraph Parse(string text)
         {
             AllEmotions = Resources.FindObjectsOfTypeAll<EmotionSO>();
-            DialogueDTO dto = JsonUtility.FromJson<DialogueDTO>(definition.TextData);
+            DialogueDTO dto = JsonUtility.FromJson<DialogueDTO>(text);
 
             SpeakerSO speaker = Resources.FindObjectsOfTypeAll<SpeakerSO>().FirstOrDefault(ds => ds.Name.Equals(dto.speaker, StringComparison.OrdinalIgnoreCase));
             if (speaker == null)

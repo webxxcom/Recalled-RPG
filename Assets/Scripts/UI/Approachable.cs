@@ -9,7 +9,7 @@ namespace Recalled.Gameplay
 
         private void Awake()
         {
-            _reactors = GetComponentsInChildren<IApproachReactor>();
+            _reactors = GetComponentsInChildren<IApproachReactor>(true);
         }
 
         public event Action<IApproachable> Approached;
@@ -25,6 +25,9 @@ namespace Recalled.Gameplay
 
         public void Retreating()
         {
+            foreach (var reactor in _reactors)
+                reactor.ReactToRetreat(this);
+
             Retreated?.Invoke(this);
         }
     }

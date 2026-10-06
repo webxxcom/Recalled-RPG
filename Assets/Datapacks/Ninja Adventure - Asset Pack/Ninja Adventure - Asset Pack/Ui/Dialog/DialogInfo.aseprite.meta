@@ -129,7 +129,7 @@ ScriptedImporter:
   animatedSpriteImportData:
   - name: Frame_0
     originalName: 
-    pivot: {x: 0.5263158, y: 0}
+    pivot: {x: 0.5263158, y: -1.0666667}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     customData: 
@@ -150,7 +150,7 @@ ScriptedImporter:
     uvTransform: {x: 4, y: 4}
   - name: Frame_1
     originalName: 
-    pivot: {x: 0.5263158, y: 0}
+    pivot: {x: 0.5263158, y: -1.0666667}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     customData: 
@@ -171,7 +171,7 @@ ScriptedImporter:
     uvTransform: {x: 4, y: 27}
   - name: Frame_2
     originalName: 
-    pivot: {x: 0.5263158, y: 0}
+    pivot: {x: 0.5263158, y: -1.0666667}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     customData: 
@@ -192,7 +192,7 @@ ScriptedImporter:
     uvTransform: {x: 31, y: 4}
   - name: Frame_3
     originalName: 
-    pivot: {x: 0.5263158, y: 0}
+    pivot: {x: 0.5263158, y: -1.0666667}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     customData: 
@@ -230,8 +230,8 @@ ScriptedImporter:
       frameIndex: 0
       additiveSortOrder: 0
       cellRect:
-        x: 0
-        y: 0
+        x: 6
+        y: 16
         width: 20
         height: 16
       spriteId: 4a5ed904634a9034fb19a5d1400ef7e8
@@ -239,8 +239,8 @@ ScriptedImporter:
       frameIndex: 1
       additiveSortOrder: 0
       cellRect:
-        x: 0
-        y: 0
+        x: 6
+        y: 16
         width: 20
         height: 16
       spriteId: de8f9ff96deff2c469d08d195e7b5c0f
@@ -248,8 +248,8 @@ ScriptedImporter:
       frameIndex: 2
       additiveSortOrder: 0
       cellRect:
-        x: 0
-        y: 0
+        x: 6
+        y: 16
         width: 20
         height: 16
       spriteId: 2bfe52e32e5c85b42bf94a1a486e5e72
@@ -257,10 +257,10 @@ ScriptedImporter:
       frameIndex: 3
       additiveSortOrder: 0
       cellRect:
-        x: 0
-        y: 0
-        width: 20
-        height: 16
+        x: 6
+        y: 16
+        width: 19
+        height: 15
       spriteId: dabc4c3e0e4dfbc4783ef6e053b14be3
     linkedCells: []
     tileCells: []
@@ -295,4 +295,4 @@ ScriptedImporter:
   generatePhysicsShape: 0
   secondarySpriteTextures: []
   previousTextureSize: {x: 64, y: 64}
-  canvasSize: {x: 20, y: 16}
+  canvasSize: {x: 32, y: 32}

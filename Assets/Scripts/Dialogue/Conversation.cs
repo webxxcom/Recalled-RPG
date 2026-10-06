@@ -10,18 +10,12 @@ namespace Recalled.Dialogue
 
         public event Action<LineStartedPayload> LineStarted;
 
-        internal Conversation(DialogueGraph graph)
+        public Conversation(DialogueGraph graph)
         {
             if (graph is null)
                 throw new ArgumentNullException($"{nameof(graph)} can't be null");
 
             _data = graph;
-            _currentNode = _data.StartNode;
-        }
-
-        public Conversation(DialogueSource definition)
-        {
-            _data = Parser.Parse(definition);
             _currentNode = _data.StartNode;
         }
 

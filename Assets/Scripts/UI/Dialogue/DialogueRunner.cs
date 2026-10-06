@@ -43,13 +43,13 @@ namespace Recalled.UI
 
         bool _isDirty;
         Coroutine _dialogueCoroutine;
-        void OnDialogueChannel(DialoguePayload payload)
+        void OnDialogueChannel(DialogueSource dialogueSource)
         {
             if (_conversation != null)
                 return; // Sorry pal but we have our current dialogue
 
-            _conversation = new(payload.DialogueDefinition);
-            _speaker.Init(_speakers.SpriteMap[payload.Speaker]);
+            _conversation = new(dialogueSource.Graph);
+            _speaker.Init(_speakers.SpriteMap[dialogueSource.Graph.Speaker]);
             _conversation.LineStarted += OnLineStarted;
 
             _screenContoller.Activate();

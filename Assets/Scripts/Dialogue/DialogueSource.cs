@@ -7,6 +7,7 @@ namespace Recalled.Dialogue
     {
         [SerializeField] TextAsset _textFile;
 
-        public string TextData => _textFile.text;
+        DialogueGraph _graph;
+        public DialogueGraph Graph => _graph ??= Parser.Parse(_textFile.text);
     }
 }

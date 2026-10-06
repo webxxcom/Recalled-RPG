@@ -4,27 +4,31 @@ using UnityEngine;
 namespace Recalled.Gameplay
 {
     [SelectionBase]
-    public class DialogueDataRaiser : MonoBehaviour, IInteractionReactor, IApproachReactor
+    public class NpcController : MonoBehaviour, IInteractionReactor, IApproachReactor
     {
         [SerializeField] DialogueSource _data;
-        [SerializeField] SpeakerSO _speaker;
-        [SerializeField] IdleSpriteAnimator _popupAnimator;
+        [SerializeField] GameObject _dialogInfoPopup;
 
         [Header("Raises")]
         [SerializeField] DialogueEventChannel _dialogueEventChannel;
 
         void Awake()
         {
-            if (_data == null || _speaker == null)
+            if (_data == null)
             {
                 Debug.LogError($"{gameObject.name}: missing some references");
                 enabled = false;
             }
         }
 
+        private void OnEnable()
+        {
+            if (_dialogInfoPopup.activeInHierarchy) _dialogInfoPopup.SetActive(false);
+        }
+
         public void Raise()
         {
-            _dialogueEventChannel.Invoke(new(_data, _speaker));
+            _dialogueEventChannel.Invoke(_data);
         }
 
         public void ReactToInteraction(IInteractable _)
@@ -32,13 +36,14 @@ namespace Recalled.Gameplay
             Raise();
         }
 
-        public void ReactToApproach(IApproachable approachable)
+        public void ReactToApproach(IApproachable _)
         {
+            _dialogInfoPopup.SetActive(true);
         }
 
-        public void ReactToRetreat(IApproachable approachable)
+        public void ReactToRetreat(IApproachable _)
         {
-            _popupAnimator.Stop();
+            _dialogInfoPopup.SetActive(false);
         }
     }
 }

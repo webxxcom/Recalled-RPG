@@ -4,9 +4,9 @@ using System.Linq;
 
 namespace Recalled.Dialogue
 {
-    internal partial class DialogueGraph
+    public partial class DialogueGraph
     {
-        public class Node
+        internal class Node
         {
             public readonly struct Choice
             {

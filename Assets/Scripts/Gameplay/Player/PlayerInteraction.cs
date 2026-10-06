@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -10,10 +11,7 @@ namespace Recalled.Gameplay
         readonly List<IInteractable> _interactables = new(16);
 
         void OnInteract(InputValue _)
-        {
-            if (_interactables.Count != 0)
-                _interactables[0].Interact();
-        }
+            => _interactables.FirstOrDefault()?.Interact();
 
         private void OnTriggerEnter2D(Collider2D collision)
         {
