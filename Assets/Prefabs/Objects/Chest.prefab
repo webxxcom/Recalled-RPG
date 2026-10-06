@@ -18,6 +18,7 @@ GameObject:
   - component: {fileID: 1889618957864744957}
   - component: {fileID: 1395027961293807298}
   - component: {fileID: 2083957519114522692}
+  - component: {fileID: 504635112985072468}
   m_Layer: 11
   m_Name: Chest
   m_TagString: Untagged
@@ -334,6 +335,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Recalled.Gameplay::Recalled.Gameplay.ChestApproachPopup
   _popup: {fileID: 6593031560779016836}
+--- !u!114 &504635112985072468
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5508140426223554905}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c188fef6f57ebd3418addda2f20540dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Recalled.Gameplay::Recalled.Gameplay.ReactorSound
+  _clip: {fileID: 8300000, guid: b7747f86b7869eb469e16b909b56c031, type: 3}
+  _mixerGroup: {fileID: 2485437016345203308, guid: 690e8d8c0ae056542bcef00037ba2c5a, type: 2}
+  AudioClipRequestChannel: {fileID: 11400000, guid: 67b85b404b05c124ea5e6d5550c770de, type: 2}
 --- !u!1 &6593031560779016836
 GameObject:
   m_ObjectHideFlags: 0

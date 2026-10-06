@@ -2,41 +2,32 @@ using UnityEngine;
 
 namespace Recalled.Gameplay
 {
+    [DisallowMultipleComponent]
     [RequireComponent(typeof(Collider2D))]
-    [RequireComponent(typeof(AudioSource))]
-    [RequireComponent(typeof(Lootable))]
     public class Collectible : MonoBehaviour
     {
-        [SerializeField] AudioClip _pickUpSound;
+        [SerializeField] ItemInstance _looted;
         [SerializeField] InventorySO _inventory;
 
-        bool _isCollected;
-        Animator animator;
-        AudioSource _audioSource;
-        Lootable _lootable;
+        IReactor[] _reactors;
 
         private void Awake()
         {
-            _audioSource = GetComponent<AudioSource>();
-            _lootable = GetComponent<Lootable>();
-
-            TryGetComponent(out animator);
+            _reactors = GetComponentsInChildren<IReactor>();
         }
 
         private void OnTriggerEnter2D(Collider2D collision)
         {
-            if (_isCollected)
-                return;
-
             if (collision.CompareTag("Player"))
             {
-                var looted = _lootable.LootItem();
-                if (!_inventory.GeneralItems.Add(new (looted.Definition, looted.Count)))
+                if (!_inventory.GeneralItems.Add(_looted))
                     return;
 
-                _isCollected = true;
-                if (animator) animator.SetTrigger(AnimatorParameters.CollectedHash);
-                _audioSource.PlayOneShot(_pickUpSound);
+                foreach (var reactor in _reactors)
+                    reactor.React();
+
+                // First let reactors react and then destroy
+                Destroy(gameObject);
             }
         }
     }

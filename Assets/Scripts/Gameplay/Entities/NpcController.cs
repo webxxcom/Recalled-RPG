@@ -4,7 +4,7 @@ using UnityEngine;
 namespace Recalled.Gameplay
 {
     [SelectionBase]
-    public class NpcController : MonoBehaviour, IInteractionReactor, IApproachReactor
+    public class NpcController : MonoBehaviour, IReactor, IApproachReactor
     {
         [SerializeField] DialogueSource _data;
         [SerializeField] GameObject _dialogInfoPopup;
@@ -31,7 +31,7 @@ namespace Recalled.Gameplay
             _dialogueEventChannel.Invoke(_data);
         }
 
-        public void ReactToInteraction(Interactable _)
+        public void React()
         {
             Raise();
         }

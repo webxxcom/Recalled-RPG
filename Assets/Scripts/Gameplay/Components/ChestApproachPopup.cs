@@ -3,7 +3,7 @@ using UnityEngine;
 namespace Recalled.Gameplay
 {
     [RequireComponent(typeof(Chest))]
-    public sealed class ChestApproachPopup : MonoBehaviour, IApproachReactor, IInteractionReactor
+    public sealed class ChestApproachPopup : MonoBehaviour, IApproachReactor, IReactor
     {
         [SerializeField] GameObject _popup;
         Chest _chest;
@@ -26,7 +26,7 @@ namespace Recalled.Gameplay
             if (enabled) _popup.SetActive(false);
         }
 
-        public void ReactToInteraction(Interactable interactable)
+        public void React()
         {
             if (_chest.State == Chest.States.Opened)
             {

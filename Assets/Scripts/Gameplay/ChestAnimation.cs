@@ -4,7 +4,7 @@ using static Recalled.Gameplay.Chest.States;
 namespace Recalled.Gameplay
 {
     [RequireComponent(typeof(Chest))]
-    public class ChestAnimation : MonoBehaviour, IInteractionReactor
+    public class ChestAnimation : MonoBehaviour, IReactor
     {
         [SerializeField] Animator _animator;
         Chest _chest;
@@ -14,7 +14,7 @@ namespace Recalled.Gameplay
             _chest = GetComponent<Chest>();
         }
 
-        public void ReactToInteraction(Interactable _)
+        public void React()
         {
             if (_chest.State == Opened)
             {

@@ -8,9 +8,9 @@ namespace Recalled.Gameplay
     [DisallowMultipleComponent]
     public class Interactable : MonoBehaviour
     {
-        IInteractionReactor[] _reactors;
+        IReactor[] _reactors;
 
-        IEnumerable<IInteractionReactor> ActiveReactors
+        IEnumerable<IReactor> ActiveReactors
             => _reactors.Where(r => r.enabled);
 
         public virtual bool CanBeInteracted => true;
@@ -18,13 +18,13 @@ namespace Recalled.Gameplay
 
         protected virtual void Awake()
         {
-            _reactors = GetComponentsInChildren<IInteractionReactor>();
+            _reactors = GetComponentsInChildren<IReactor>();
         }
 
         public virtual void Interact()
         {
             foreach (var reactor in ActiveReactors)
-                reactor.ReactToInteraction(this);
+                reactor.React();
 
             Interacted?.Invoke();
         }
