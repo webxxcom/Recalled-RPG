@@ -2,7 +2,9 @@ namespace Recalled.Gameplay
 {
     public interface IApproachReactor
     {
-        void ReactToApproach(IApproachable approachable);
-        void ReactToRetreat(IApproachable approachable);
+        public bool enabled { get; }
+
+        void ReactToApproach(Approachable approachable);
+        void ReactToRetreat(Approachable approachable);
     }
 }

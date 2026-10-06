@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 [System.Serializable]
@@ -10,37 +11,26 @@ public class LootTable
         [SerializeField] ItemDefinition _item;
         [SerializeField] int _weight;
 
-        public int GetWeight() => _weight;
-        public ItemDefinition GetItemDefinition() => _item;
+        public int Weight => _weight;
+        public ItemDefinition ItemDefinition => _item;
     }
 
     [SerializeField] List<LootItem> _loots;
 
-    int TotalWeight
-    {
-        get
-        {
-            int total = 0;
-            foreach (var item in _loots)
-            {
-                total += item.GetWeight();
-            }
-            return total;
-        }
-    }
+    int TotalWeight => _loots.Sum(i => i.Weight);
 
     public ItemDefinition GetItem()
     {
         float expectedWeight = Random.Range(0, TotalWeight);
 
         int totalWeight = 0;
-        foreach (var item in _loots)
+        foreach (var loot in _loots)
         {
-            totalWeight += item.GetWeight();
+            totalWeight += loot.Weight;
             if (totalWeight >= expectedWeight)
-                return item.GetItemDefinition();
+                return loot.ItemDefinition;
         }
-        Debug.LogError("Unexpected error while getting Loot");
+        Debug.LogWarning("Loot table has no entries");
         return null;
     }
 }

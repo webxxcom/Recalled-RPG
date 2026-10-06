@@ -4,7 +4,7 @@ using UnityEngine;
 namespace Recalled.Gameplay
 {
     [RequireComponent(typeof(Collider2D))]
-    public class Door : MonoBehaviour, IInteractable
+    public class Door : MonoBehaviour // TODO Interactable
     {
         Collider2D _collider2D;
         bool _isOpen;

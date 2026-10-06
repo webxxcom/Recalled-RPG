@@ -6,7 +6,7 @@ public class InteractableAnimation : MonoBehaviour, IInteractionReactor
 {
     [SerializeField] Animator _animator;
 
-    public void ReactToInteraction(IInteractable _)
+    public void ReactToInteraction(Interactable _)
     {
         _animator.SetTrigger(AnimatorParameters.InteractHash);
     }

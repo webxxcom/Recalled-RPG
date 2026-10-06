@@ -1,47 +1,50 @@
-using System;
 using UnityEngine;
 
 namespace Recalled.Gameplay
 {
     [RequireComponent(typeof(Lootable))]
-    public class Chest : MonoBehaviour, IInteractable
+    public sealed class Chest : Interactable
     {
         [SerializeField] ItemDefinition _requiredKey;
         [SerializeField] InventorySO _inventory;
 
         Lootable _lootable;
 
-        public bool CanBeInteracted
+        public enum States
+        {
+            Opened,
+            Rejected,
+            Closed
+        }
+        public States State { get; private set; } = States.Closed;
+
+        public override bool CanBeInteracted
             => enabled && (_requiredKey == null || _inventory.GeneralItems.Has(_requiredKey));
 
-        public event Action Interacted;
-
-        void Awake()
+        protected override void Awake()
         {
+            base.Awake();
+
             _lootable = GetComponent<Lootable>();
         }
 
-        public void Interact()
+        public override void Interact()
         {
             if (!CanBeInteracted)
                 return;
 
             var looted = _lootable.LootItem();
             if (_inventory.GeneralItems.Add(new(looted.Definition, looted.Count)))
+            {
+                // Successful interaction only if item can be added
+                State = States.Opened;
                 _inventory.GeneralItems.Remove(_requiredKey);
+                enabled = false;
+            }
+            else State = States.Rejected;
 
-            Interacted?.Invoke();
-            enabled = false;
-        }
-
-        public void ReactToApproach(IApproachable approachable)
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public void ReactToRetreat(IApproachable approachable)
-        {
-            throw new System.NotImplementedException();
+            // Even if interaction is not successful reactors check the Chest.State
+            base.Interact();
         }
     }
 }

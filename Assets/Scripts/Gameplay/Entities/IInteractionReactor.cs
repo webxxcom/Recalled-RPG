@@ -2,6 +2,7 @@
 {
     public interface IInteractionReactor
     {
-        public void ReactToInteraction(IInteractable interactable);
+        public bool enabled { get; }
+        public void ReactToInteraction(Interactable interactable);
     }
 }

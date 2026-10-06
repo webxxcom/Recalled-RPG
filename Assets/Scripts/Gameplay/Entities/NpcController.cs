@@ -31,17 +31,17 @@ namespace Recalled.Gameplay
             _dialogueEventChannel.Invoke(_data);
         }
 
-        public void ReactToInteraction(IInteractable _)
+        public void ReactToInteraction(Interactable _)
         {
             Raise();
         }
 
-        public void ReactToApproach(IApproachable _)
+        public void ReactToApproach(Approachable _)
         {
             _dialogInfoPopup.SetActive(true);
         }
 
-        public void ReactToRetreat(IApproachable _)
+        public void ReactToRetreat(Approachable _)
         {
             _dialogInfoPopup.SetActive(false);
         }

@@ -1064,7 +1064,6 @@ GameObject:
   - component: {fileID: 1946405126258931634}
   - component: {fileID: 6965059885485376103}
   - component: {fileID: 4216735124580396676}
-  - component: {fileID: 747868403972809608}
   - component: {fileID: 4738697937426192600}
   - component: {fileID: 985022146461206873}
   m_Layer: 6
@@ -1186,20 +1185,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::DamageKnockback
   _health: {fileID: 5848999282206741749}
   _externalVelocity: {fileID: 1313544978890093267}
---- !u!114 &747868403972809608
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3947751842682473356}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8d29df752c8094b44899dc0bc9293e06, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::DamageNumberPopup
-  _health: {fileID: 5848999282206741749}
-  _damagePopup: {fileID: 7535224943969880707, guid: 385f75b1c0c81584c85f5375d9fc8db4, type: 3}
 --- !u!114 &4738697937426192600
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1628,7 +1613,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 5
-  m_LinearDamping: 1
+  m_LinearDamping: 3
   m_AngularDamping: 0
   m_GravityScale: 0
   m_Material: {fileID: 0}
@@ -2452,7 +2437,12 @@ MonoBehaviour:
   _topBar: {fileID: 370142447445774477}
   _bottomBar: {fileID: 8180292811091545600}
   _animationSpeed: 1
-  _canvasGroup: {fileID: 3505502132724376593}
+  ProgressStarted:
+    m_PersistentCalls:
+      m_Calls: []
+  ProgressEnded:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &7782828945365421310
 GameObject:
   m_ObjectHideFlags: 0

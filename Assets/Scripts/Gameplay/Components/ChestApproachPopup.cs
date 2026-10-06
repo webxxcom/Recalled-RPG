@@ -1,30 +1,38 @@
 using UnityEngine;
 
-
 namespace Recalled.Gameplay
 {
     [RequireComponent(typeof(Chest))]
-    public sealed class ChestApproachPopup : BehaviorToggler
+    public sealed class ChestApproachPopup : MonoBehaviour, IApproachReactor, IInteractionReactor
     {
+        [SerializeField] GameObject _popup;
         Chest _chest;
 
         private void Awake()
             => _chest = GetComponent<Chest>();
-        private void OnEnable()
-            => _chest.Interacted += StopOnInteracted;
-        private void OnDisable()
-            => _chest.Interacted -= StopOnInteracted;
 
-        void StopOnInteracted()
+        private void OnEnable()
         {
-            enabled = false;
-            Destroy(_behaviour.gameObject);
+            _popup.SetActive(false);
         }
 
-        public override void Show()
+        public void ReactToApproach(Approachable approachable)
         {
-            if (_chest.CanBeInteracted)
-                base.Show();
+            if (_chest.CanBeInteracted) _popup.SetActive(true);
+        }
+
+        public void ReactToRetreat(Approachable approachable)
+        {
+            if (enabled) _popup.SetActive(false);
+        }
+
+        public void ReactToInteraction(Interactable interactable)
+        {
+            if (_chest.State == Chest.States.Opened)
+            {
+                Destroy(_popup);
+                enabled = false;
+            }
         }
     }
 }

@@ -1,5 +1,5 @@
-﻿using UnityEngine;
-using UnityEngine.Events;
+﻿using System;
+using UnityEngine;
 
 namespace Recalled.Gameplay
 {
@@ -19,10 +19,11 @@ namespace Recalled.Gameplay
 
         [SerializeField] LootTable _lootTable;
 
-        public UnityEvent Looted;
+        public event Action Looted;
 
         public LootedItem LootItem()
         {
+            Looted?.Invoke();
             return new(_lootTable.GetItem(), 1);
         }
     }
