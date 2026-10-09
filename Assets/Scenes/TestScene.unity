@@ -179,11 +179,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1978171857540762701, guid: 204b88dbe0aa4b842817d3019a99f7b9, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 264.62924
+      value: 254.25513
       objectReference: {fileID: 0}
     - target: {fileID: 1978171857540762701, guid: 204b88dbe0aa4b842817d3019a99f7b9, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -160.20468
+      value: -167.63313
       objectReference: {fileID: 0}
     - target: {fileID: 2660291057807698806, guid: 204b88dbe0aa4b842817d3019a99f7b9, type: 3}
       propertyPath: m_Name
@@ -459,18 +459,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3984505625043390223, guid: 9712ac222a009084bbe930edfec485ae, type: 3}
+      propertyPath: _definition
+      value: 
+      objectReference: {fileID: 11400000, guid: 34c7a720b0e1804408665a3950b33fdc, type: 2}
     - target: {fileID: 6374237541316188582, guid: 9712ac222a009084bbe930edfec485ae, type: 3}
       propertyPath: m_Name
       value: Key
       objectReference: {fileID: 0}
-    - target: {fileID: 6781162461317831680, guid: 9712ac222a009084bbe930edfec485ae, type: 3}
-      propertyPath: _clip
-      value: 
-      objectReference: {fileID: 8300000, guid: d87a13c46e73db545bb4e8a550eeca94, type: 3}
-    - target: {fileID: 6781162461317831680, guid: 9712ac222a009084bbe930edfec485ae, type: 3}
-      propertyPath: AudioClipRequestChannel
-      value: 
-      objectReference: {fileID: 11400000, guid: 67b85b404b05c124ea5e6d5550c770de, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -666,6 +662,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3035446050279745726, guid: ef7a4d2f735b5c342b5d27fda3be7ed5, type: 3}
+      propertyPath: m_Radius
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 6805291076679127406, guid: ef7a4d2f735b5c342b5d27fda3be7ed5, type: 3}
       propertyPath: m_LocalPosition.x
       value: 2.09
@@ -1940,10 +1940,6 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3513828680334018968, guid: 05c21f723d3cdbc4ab0a31fbd70cd0f7, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 3537635031214153171, guid: 05c21f723d3cdbc4ab0a31fbd70cd0f7, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -2592,7 +2588,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2950508437654071488, guid: db28618c0b0800e40a25e1129fe22195, type: 3}
       propertyPath: orthographic size
-      value: 9.21875
+      value: 10.03125
       objectReference: {fileID: 0}
     - target: {fileID: 2950508437654071488, guid: db28618c0b0800e40a25e1129fe22195, type: 3}
       propertyPath: m_BackGroundColor.b

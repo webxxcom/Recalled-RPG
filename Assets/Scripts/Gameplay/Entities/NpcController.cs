@@ -1,4 +1,4 @@
-﻿using Recalled.Dialogue;
+﻿using Recalled.Systems.Dialogue;
 using UnityEngine;
 
 namespace Recalled.Gameplay

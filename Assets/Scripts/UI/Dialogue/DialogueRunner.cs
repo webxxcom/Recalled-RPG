@@ -1,5 +1,5 @@
-using Recalled.Dialogue;
 using Recalled.Gameplay;
+using Recalled.Systems.Dialogue;
 using Recalled.UI.Dialogue;
 using System.Collections;
 using System.Collections.Generic;

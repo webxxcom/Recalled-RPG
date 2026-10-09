@@ -1,16 +1,14 @@
-using System.Linq;
+using Recalled.Gameplay;
+using Recalled.Systems.Inventory;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
-using UnityEngine.UI;
 
 public class InventoryPage : MonoBehaviour
 {
     [SerializeField] InputActionReference _quickSlotRemove;
     [SerializeField] InputActionReference _quickSlotAdd;
-    [SerializeField] QuickSlotsSO _quickSlots;
-    [SerializeField] BagSO _generalItems;
-    [SerializeField] InventorySO _inventory;
+    [SerializeField] InventoryVariable _inventory;
     [SerializeField] Highlighter _highlighter;
 
     private void OnEnable()
@@ -33,20 +31,20 @@ public class InventoryPage : MonoBehaviour
         if (EventSystem.current.currentSelectedGameObject == null)
             return;
 
-        var slot = EventSystem.current.currentSelectedGameObject.GetComponent<InventorySlot>();
-        if (slot.Item.Definition.Category != ItemCategory.Consumable)
+        var slot = EventSystem.current.currentSelectedGameObject.GetComponent<InventorySlotView>();
+        if (slot.Slot.Item.Definition.Category != ItemCategory.Consumable)
             return;
 
         var vec2 = context.ReadValue<Vector2>();
 
-        if (_quickSlots.Set(vec2, slot.Item, out var replaced))
-        {
-            _generalItems.Remove(slot.Item);
+        //if (_quickSlots.Set(vec2, slot.Item, out var replaced))
+        //{
+        //    _generalItems.Remove(slot.Item);
 
-            SetCurrentSelected();
-        }
-        if (!replaced.IsEmpty)
-            _generalItems.Add(replaced);
+        //    SetCurrentSelected();
+        //}
+        //if (!replaced.IsEmpty)
+        //    _generalItems.Add(replaced);
     }
 
     void OnQuickSlotRemove(InputAction.CallbackContext context)
@@ -54,20 +52,13 @@ public class InventoryPage : MonoBehaviour
         if (EventSystem.current.currentSelectedGameObject == null)
             return;
 
-        var slot = EventSystem.current.currentSelectedGameObject.GetComponent<InventorySlot>();
+        var slot = EventSystem.current.currentSelectedGameObject.GetComponent<InventorySlotView>();
 
-        if (_generalItems.Add(slot.Item))
-        {
-            _quickSlots.UnSet(slot.Item);
+        //if (_generalItems.Add(slot.Item))
+        //{
+        //    _quickSlots.UnSet(slot.Item);
 
-            SetCurrentSelected();
-        }
-    }
-
-    void SetCurrentSelected()
-    {
-        // so dumb, i can't
-        EventSystem.current.SetSelectedGameObject(
-            Selectable.allSelectablesArray.FirstOrDefault(s => s.navigation.mode != Navigation.Mode.None).gameObject);
+        //    SetCurrentSelected();
+        //}
     }
 }

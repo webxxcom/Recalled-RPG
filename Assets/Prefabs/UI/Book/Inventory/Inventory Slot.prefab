@@ -149,7 +149,7 @@ GameObject:
   - component: {fileID: 4983638471441083789}
   - component: {fileID: 4950864960583323954}
   - component: {fileID: 105848617603548013}
-  - component: {fileID: 8049433891560130444}
+  - component: {fileID: 7971419879087760421}
   m_Layer: 5
   m_Name: Inventory Slot
   m_TagString: Untagged
@@ -257,7 +257,7 @@ MonoBehaviour:
     m_DisabledTrigger: Disabled
   m_Interactable: 1
   m_TargetGraphic: {fileID: 4950864960583323954}
---- !u!114 &8049433891560130444
+--- !u!114 &7971419879087760421
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -266,9 +266,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 4557468664403226936}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f8deec23847860249a6e4b7e3a71a701, type: 3}
+  m_Script: {fileID: 11500000, guid: 8734bf5dc84b4734588349630946b1d7, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::InventorySlot
+  m_EditorClassIdentifier: Recalled.UI::InventorySlotView
   _icon: {fileID: 2961957319624750623}
   _selectable: {fileID: 105848617603548013}
   _countText: {fileID: 7624080843687399839}

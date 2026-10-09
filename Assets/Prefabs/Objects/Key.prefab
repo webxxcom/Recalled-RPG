@@ -264,10 +264,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 239a3a9d19c972c4792c29ba441782a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CollectibleScript
-  _looted:
-    _definition: {fileID: 11400000, guid: eaf1831fb346c5a47aeae7be05e9301e, type: 2}
-    _count: 1
-  _inventory: {fileID: 11400000, guid: c1a2f0f5e6e68d343a75a6474e974407, type: 2}
+  _definition: {fileID: 11400000, guid: 34c7a720b0e1804408665a3950b33fdc, type: 2}
+  _count: 1
 --- !u!114 &6781162461317831680
 MonoBehaviour:
   m_ObjectHideFlags: 0

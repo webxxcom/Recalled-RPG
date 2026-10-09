@@ -292,7 +292,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ChestScript
   _requiredKey: {fileID: 0}
-  _inventory: {fileID: 11400000, guid: c1a2f0f5e6e68d343a75a6474e974407, type: 2}
 --- !u!114 &1889618957864744957
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -307,7 +306,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Recalled.Gameplay::Recalled.Gameplay.Lootable
   _lootTable:
     _loots:
-    - _item: {fileID: 11400000, guid: 27c11f398eced9b43914af4ea06a153d, type: 2}
+    - _item: {fileID: 11400000, guid: 3ab233bcb14d04847b07c29f2bfee65a, type: 2}
       _weight: 1
 --- !u!114 &1395027961293807298
 MonoBehaviour:

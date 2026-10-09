@@ -19,7 +19,7 @@ namespace Recalled.Gameplay
             AudioClipRequested.RemoveListener(HandleClipRequest);
         }
 
-        void PlayClipWith(in AudioClipRequest request, AudioSource template)
+        void PlayRequestWith(in AudioClipRequest request, AudioSource template)
         {
             var audioSource = Instantiate(template, request.Position, Quaternion.identity);
             audioSource.clip = request.Clip;
@@ -32,7 +32,7 @@ namespace Recalled.Gameplay
         void HandleClipRequest(AudioClipRequest request)
         {
             if (_mixerGroupToAudioSource.TryGetValue(request.MixerGroup, out var res))
-                PlayClipWith(request, res);
+                PlayRequestWith(request, res);
             else
                 Debug.LogError($"Didn't find the AudioSource for {request.MixerGroup} mixer group");
         }

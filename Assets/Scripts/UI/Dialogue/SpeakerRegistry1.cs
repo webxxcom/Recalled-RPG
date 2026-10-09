@@ -1,4 +1,4 @@
-﻿using Recalled.Dialogue;
+﻿using Recalled.Systems.Dialogue;
 using System;
 using System.Collections.Generic;
 using System.Linq;

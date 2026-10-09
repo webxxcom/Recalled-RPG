@@ -1,3 +1,4 @@
+using Recalled.Systems.Inventory;
 using UnityEngine;
 
 namespace Recalled.Gameplay
@@ -6,7 +7,6 @@ namespace Recalled.Gameplay
     public sealed class Chest : Interactable
     {
         [SerializeField] ItemDefinition _requiredKey;
-        [SerializeField] InventorySO _inventory;
 
         Lootable _lootable;
 
@@ -19,7 +19,7 @@ namespace Recalled.Gameplay
         public States State { get; private set; } = States.Closed;
 
         public override bool CanBeInteracted
-            => enabled && (_requiredKey == null || _inventory.GeneralItems.Has(_requiredKey));
+            => enabled && (_requiredKey == null);// || _inventory.GeneralItems.Has(_requiredKey));
 
         protected override void Awake()
         {
@@ -28,23 +28,24 @@ namespace Recalled.Gameplay
             _lootable = GetComponent<Lootable>();
         }
 
-        public override void Interact()
+        public override void Interact(InteractionProcessor interactor)
         {
             if (!CanBeInteracted)
                 return;
 
             var looted = _lootable.LootItem();
-            if (_inventory.GeneralItems.Add(new(looted.Definition, looted.Count)))
+            var inventory = interactor.GetComponentInParent<InventoryHolder>().Inventory;
+            if (_requiredKey == null || inventory.Take(_requiredKey, 1))
             {
                 // Successful interaction only if item can be added
+                inventory.Add(looted);
                 State = States.Opened;
-                _inventory.GeneralItems.Remove(_requiredKey);
                 enabled = false;
             }
             else State = States.Rejected;
 
-            // Even if interaction is not successful reactors check the Chest.State
-            base.Interact();
+            //Even if interaction is not successful reactors check the Chest.State
+            base.Interact(interactor);
         }
     }
 }

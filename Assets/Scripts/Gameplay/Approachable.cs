@@ -20,7 +20,7 @@ namespace Recalled.Gameplay
         public event Action<Approachable> Approached;
         public event Action<Approachable> Retreated;
 
-        public void Approaching()
+        public void Revealed()
         {
             foreach (var reactor in ActiveReactors)
                 reactor.ReactToApproach(this);
@@ -28,7 +28,7 @@ namespace Recalled.Gameplay
             Approached?.Invoke(this);
         }
 
-        public void Retreating()
+        public void Hidden()
         {
             foreach (var reactor in ActiveReactors)
                 reactor.ReactToRetreat(this);

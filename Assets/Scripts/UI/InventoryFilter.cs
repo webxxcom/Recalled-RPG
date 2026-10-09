@@ -1,3 +1,4 @@
+using Recalled.Systems.Inventory;
 using UnityEngine;
 
 [RequireComponent(typeof(Toggleable))]

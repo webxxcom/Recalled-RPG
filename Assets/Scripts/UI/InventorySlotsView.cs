@@ -1,3 +1,5 @@
+using Recalled.Gameplay;
+using Recalled.Systems.Inventory;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -5,29 +7,31 @@ using UnityEngine;
 
 public class InventorySlotsView : MonoBehaviour
 {
-    [SerializeField] InventoryItemsListSO _inventoryItems;
+    [SerializeField] InventoryVariable _inventoryVariable;
     [SerializeField] PrefabPopulator _populator;
 
-    IReadOnlyList<InventorySlot> _slots;
+    ItemSlotsArray _inventory;
+    IReadOnlyList<InventorySlotView> _slotsView;
     ItemCategory _currentFilter = ItemCategory.Any;
-
-    private void Awake()
-    {
-        _slots = _populator != null
-            ? _populator.Populate(_inventoryItems.Items.Count).Select(go => go.GetComponent<InventorySlot>()).ToArray()
-            : GetComponentsInChildren<InventorySlot>();
-    }
 
     private void OnEnable()
     {
-        _inventoryItems.ItemsChanged += RefreshView;
-
-        RefreshView();
+        _inventoryVariable.ValueChanged += OnInventorySet;
     }
 
     private void OnDisable()
     {
-        _inventoryItems.ItemsChanged -= RefreshView;
+        _inventoryVariable.ValueChanged -= OnInventorySet;
+    }
+
+    void OnInventorySet(ItemSlotsArray inventory)
+    {
+        if (_inventory != null) _inventory.SlotsChanged -= RefreshView;
+
+        _inventory = inventory;
+        _inventory.SlotsChanged += RefreshView;
+
+        RefreshView();
     }
 
     public void Filter(ItemCategory filter)
@@ -41,17 +45,18 @@ public class InventorySlotsView : MonoBehaviour
 
     public void RefreshView()
     {
-        if (_slots == null)
-            throw new InvalidOperationException();
-
-        var items = _inventoryItems.Items;
-        for (int i = 0; i < _slots.Count; i++)
+        // Lazy init
+        _slotsView ??= _populator != null
+            ? _populator.Populate(_inventoryVariable.Value.Count).Select(go => go.GetComponent<InventorySlotView>()).ToArray()
+            : GetComponentsInChildren<InventorySlotView>();
+        
+        for (int i = 0; i < _inventoryVariable.Value.Count; i++)
         {
-            if (i < items.Count && !items[i].IsEmpty
-                && (_currentFilter == ItemCategory.Any || items[i].Definition.Category == _currentFilter))
-                _slots[i].SetItem(items[i]);
+            var slot = _inventoryVariable.Value[i];
+            if (!slot.IsEmpty && (_currentFilter == ItemCategory.Any || slot.Item.Definition.Category == _currentFilter))
+                _slotsView[i].SetSlot(slot);
             else
-                _slots[i].RemoveItem();
+                _slotsView[i].RemoveSlot();
         }
     }
 }

@@ -1,3 +1,4 @@
+using Recalled.Systems.Inventory;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -5,28 +6,21 @@ public class InventoryCell : MonoBehaviour
 {
     [SerializeField] Image _icon;
 
-    public ItemInstance Item { get; private set; }
-    public bool HasItem => Item != null;
+    public ItemSlotsArray.Slot Slot { get; private set; }
 
-    public virtual bool SetItem(ItemInstance item)
+    public virtual void SetSlot(ItemSlotsArray.Slot slot)
     {
-        if (item == null || item.IsEmpty) return false;
+        if (slot == null) return;
 
-        Item = item;
-        _icon.sprite = Item.Definition.Icon;
+        Slot = slot;
+        _icon.sprite = Slot.Item.Definition.Icon;
         _icon.preserveAspect = true;
         _icon.enabled = true;
-        return true;
     }
 
-    public virtual ItemInstance RemoveItem()
+    public virtual void RemoveSlot()
     {
-        if (Item == null) return null;
-
-        var old = Item;
-        Item = null;
+        Slot = null;
         _icon.enabled = false;
-        
-        return old;
     }
 }

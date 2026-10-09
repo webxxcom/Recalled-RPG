@@ -1,4 +1,4 @@
-using Recalled.Dialogue;
+using Recalled.Systems.Dialogue;
 
 namespace Recalled.Gameplay
 {

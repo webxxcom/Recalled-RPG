@@ -21,7 +21,7 @@ namespace Recalled.Gameplay
             _reactors = GetComponentsInChildren<IReactor>();
         }
 
-        public virtual void Interact()
+        public virtual void Interact(InteractionProcessor interactor)
         {
             foreach (var reactor in ActiveReactors)
                 reactor.React();

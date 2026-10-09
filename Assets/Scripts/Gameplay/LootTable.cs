@@ -1,36 +1,40 @@
+using Recalled.Systems.Inventory;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-[System.Serializable]
-public class LootTable
+namespace Recalled.Gameplay
 {
     [System.Serializable]
-    public class LootItem
+    public class LootTable
     {
-        [SerializeField] ItemDefinition _item;
-        [SerializeField] int _weight;
-
-        public int Weight => _weight;
-        public ItemDefinition ItemDefinition => _item;
-    }
-
-    [SerializeField] List<LootItem> _loots;
-
-    int TotalWeight => _loots.Sum(i => i.Weight);
-
-    public ItemDefinition GetItem()
-    {
-        float expectedWeight = Random.Range(0, TotalWeight);
-
-        int totalWeight = 0;
-        foreach (var loot in _loots)
+        [System.Serializable]
+        public class LootItem
         {
-            totalWeight += loot.Weight;
-            if (totalWeight >= expectedWeight)
-                return loot.ItemDefinition;
+            [SerializeField] ItemDefinition _item;
+            [SerializeField] int _weight;
+
+            public int Weight => _weight;
+            public ItemDefinition ItemDefinition => _item;
         }
-        Debug.LogWarning("Loot table has no entries");
-        return null;
+
+        [SerializeField] List<LootItem> _loots;
+
+        int TotalWeight => _loots.Sum(i => i.Weight);
+
+        public ItemDefinition GetItem()
+        {
+            float expectedWeight = Random.Range(0, TotalWeight);
+
+            int totalWeight = 0;
+            foreach (var loot in _loots)
+            {
+                totalWeight += loot.Weight;
+                if (totalWeight >= expectedWeight)
+                    return loot.ItemDefinition;
+            }
+            Debug.LogWarning("Loot table has no entries");
+            return null;
+        }
     }
 }

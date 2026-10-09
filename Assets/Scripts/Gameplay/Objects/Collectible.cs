@@ -1,3 +1,4 @@
+using Recalled.Systems.Inventory;
 using UnityEngine;
 
 namespace Recalled.Gameplay
@@ -6,8 +7,8 @@ namespace Recalled.Gameplay
     [RequireComponent(typeof(Collider2D))]
     public class Collectible : MonoBehaviour
     {
-        [SerializeField] ItemInstance _looted;
-        [SerializeField] InventorySO _inventory;
+        [SerializeField] ItemDefinition _definition;
+        [SerializeField] int _count = 1;
 
         IReactor[] _reactors;
 
@@ -20,7 +21,10 @@ namespace Recalled.Gameplay
         {
             if (collision.CompareTag("Player"))
             {
-                if (!_inventory.GeneralItems.Add(_looted))
+                if (!TryGetComponent<InventoryHolder>(out var holder))
+                    return;
+
+                if (holder.Inventory.Add(_definition, _count) != 0)
                     return;
 
                 foreach (var reactor in _reactors)

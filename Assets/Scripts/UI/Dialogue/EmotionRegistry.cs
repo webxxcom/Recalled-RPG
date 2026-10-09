@@ -3,7 +3,7 @@ using System.Collections.Immutable;
 using System.Linq;
 using UnityEngine;
 
-namespace Recalled.Dialogue
+namespace Recalled.Systems.Dialogue
 {
     [CreateAssetMenu(menuName = "Dialogue/Emotions/Registry")]
     public class EmotionRegistry : ScriptableObject
