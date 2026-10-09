@@ -1,7 +1,7 @@
+using NUnit.Framework;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using NUnit.Framework;
 using UnityEngine;
 
 namespace Recalled.Systems.Inventory.Tests
@@ -419,7 +419,7 @@ namespace Recalled.Systems.Inventory.Tests
             var slots = new ItemSlotsArray(Capacity);
             var raised = CountSlotsChanged(slots);
 
-            Assert.That(() => slots.Add((ItemInstance)null), Throws.InstanceOf<ArgumentNullException>());
+            Assert.That(() => slots.Add(null), Throws.InstanceOf<ArgumentNullException>());
             Assert.That(EmptySlotCount(slots), Is.EqualTo(Capacity));
             Assert.That(raised(), Is.EqualTo(0));
         }

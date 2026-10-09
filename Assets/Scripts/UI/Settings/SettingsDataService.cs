@@ -13,7 +13,7 @@ public class SettingsDataService
         public float sfxVolume;
         public bool showDamageNumbers;
         public float shakeIntensity;
-    } 
+    }
 
     static readonly string FILENAME = "settings.json";
     static readonly string DIRECTORY = Application.persistentDataPath;

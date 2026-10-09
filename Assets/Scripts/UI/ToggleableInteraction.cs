@@ -4,7 +4,7 @@ using UnityEngine.EventSystems;
 [RequireComponent(typeof(UISpriteAnimator))]
 [RequireComponent(typeof(Toggleable))]
 public sealed class ToggleableInteraction : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
-{ 
+{
     [SerializeField] bool _playHovering;
     UISpriteAnimator _animator;
     Toggleable _toggleable;

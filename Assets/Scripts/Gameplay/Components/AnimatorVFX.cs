@@ -11,7 +11,7 @@ public class AnimatorVFX : MonoBehaviour
     private void Start()
     {
         var angleZ = Mathf.Abs(transform.rotation.eulerAngles.z);
-        if (angleZ < 270 && angleZ > 90)
+        if (angleZ is < 270 and > 90)
             _spriteRenderer.flipY = true;
     }
 }

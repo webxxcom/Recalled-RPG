@@ -1,6 +1,6 @@
+using NUnit.Framework;
 using System;
 using System.Collections.Generic;
-using NUnit.Framework;
 using UnityEngine;
 
 namespace Recalled.Systems.Inventory.Tests

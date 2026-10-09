@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
@@ -16,7 +15,7 @@ public class ControlsSettingsMenu : Toggleable
     readonly List<ControlBindItem> _controlBinds = new();
     const string controlsSaveFile = "Controls/inputBinds.json";
 
-     void Awake()
+    void Awake()
     {
         _bindMap = _currentInput.FindActionMap("Player");
         _currentInput.LoadBindingOverridesFromJson(File.ReadAllText(controlsSaveFile));

@@ -1,6 +1,5 @@
 using Recalled.Gameplay;
 using Recalled.Systems.Inventory;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -49,7 +48,7 @@ public class InventorySlotsView : MonoBehaviour
         _slotsView ??= _populator != null
             ? _populator.Populate(_inventoryVariable.Value.Count).Select(go => go.GetComponent<InventorySlotView>()).ToArray()
             : GetComponentsInChildren<InventorySlotView>();
-        
+
         for (int i = 0; i < _inventoryVariable.Value.Count; i++)
         {
             var slot = _inventoryVariable.Value[i];

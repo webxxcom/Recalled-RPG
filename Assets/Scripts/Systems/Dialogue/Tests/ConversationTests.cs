@@ -20,7 +20,7 @@ namespace Recalled.Systems.Dialogue.Tests
         [Test]
         public void Constructor_NullGraph_ThrowsArgumentNull()
         {
-            Assert.That(() => new Conversation((DialogueGraph)null), Throws.ArgumentNullException);
+            Assert.That(() => new Conversation(null), Throws.ArgumentNullException);
         }
 
         [Test]

@@ -12,7 +12,7 @@ public class AvailableInputDevicesSO : ScriptableObject
         InputDeviceSO inputDevice = _devices.FirstOrDefault(d => d.SchemeName.ToLower().Contains(scheme.ToLower()));
         if (inputDevice != null)
             return inputDevice;
-        
+
         Debug.LogError($"Scheme {scheme} was not found");
         return _devices[0];
     }

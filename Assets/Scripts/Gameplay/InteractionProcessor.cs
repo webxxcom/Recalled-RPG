@@ -1,6 +1,4 @@
-using System;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -19,7 +17,7 @@ namespace Recalled.Gameplay
                 if (collider.TryGetComponent<Interactable>(out var interactable))
                     interactable.Interact(this);
         }
-        
+
 
         private void OnTriggerEnter2D(Collider2D collision)
         {

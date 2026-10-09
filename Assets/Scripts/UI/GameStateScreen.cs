@@ -5,7 +5,7 @@ public sealed class GameStateScreen : MonoBehaviour
     [SerializeField] GameStateStack _stack;
     [SerializeField] Toggleable _screen;
     [SerializeField] GameStateSO _state;
-    
+
     bool _started;
 
     void Awake()
