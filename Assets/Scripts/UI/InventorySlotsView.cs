@@ -13,12 +13,12 @@ public class InventorySlotsView : MonoBehaviour
     IReadOnlyList<InventorySlotView> _slotsView;
     ItemCategory _currentFilter = ItemCategory.Any;
 
-    private void OnEnable()
+    private void Awake()
     {
         _inventoryVariable.ValueChanged += OnInventorySet;
     }
 
-    private void OnDisable()
+    private void OnDestroy()
     {
         _inventoryVariable.ValueChanged -= OnInventorySet;
     }

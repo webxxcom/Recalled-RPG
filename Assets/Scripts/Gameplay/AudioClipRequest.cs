@@ -11,7 +11,7 @@ namespace Recalled.Gameplay
 
         public AudioClipRequest(SoundCue audioAsset, Vector2 position)
         {
-            if (audioAsset)
+            if (audioAsset == null)
                 throw new ArgumentNullException();
 
             AudioAsset = audioAsset;

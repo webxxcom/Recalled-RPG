@@ -1,5 +1,6 @@
 ﻿using Recalled.Systems.Dialogue;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Recalled.Gameplay
 {
@@ -9,6 +10,9 @@ namespace Recalled.Gameplay
     {
         [SerializeField] DialogueSource _data;
         [SerializeField] GameObject _dialogInfoPopup;
+
+        [Header("Edge event kind, fired each interaction")]
+        [SerializeField] UnityEvent _interacted;
 
         [Header("Raises")]
         [SerializeField] DialogueEventChannel _dialogueEventChannel;
@@ -29,16 +33,17 @@ namespace Recalled.Gameplay
         {
             if (_dialogInfoPopup.activeInHierarchy) _dialogInfoPopup.SetActive(false);
 
-            _interactable.RequestInteraction += Raise;
+            _interactable.RequestInteraction += Interact;
         }
 
         private void OnDisable()
         {
-            _interactable.RequestInteraction -= Raise;
+            _interactable.RequestInteraction -= Interact;
         }
 
-        public void Raise(InteractionProcessor _)
+        public void Interact(InteractionProcessor _)
         {
+            _interacted.Invoke();
             _dialogueEventChannel.Invoke(_data);
         }
 

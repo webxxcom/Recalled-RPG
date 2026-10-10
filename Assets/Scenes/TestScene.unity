@@ -413,70 +413,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Chest
       objectReference: {fileID: 0}
-    - target: {fileID: 6960329525283874740, guid: 500a443843846f94098eeab5c4647204, type: 3}
-      propertyPath: _opened.m_PersistentCalls.m_Calls.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6960329525283874740, guid: 500a443843846f94098eeab5c4647204, type: 3}
-      propertyPath: _rejected.m_PersistentCalls.m_Calls.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6960329525283874740, guid: 500a443843846f94098eeab5c4647204, type: 3}
-      propertyPath: _opened.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 6960329525283874740, guid: 500a443843846f94098eeab5c4647204, type: 3}
-      propertyPath: _opened.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 1046445066}
-    - target: {fileID: 6960329525283874740, guid: 500a443843846f94098eeab5c4647204, type: 3}
-      propertyPath: _rejected.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 6960329525283874740, guid: 500a443843846f94098eeab5c4647204, type: 3}
-      propertyPath: _rejected.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 1046445066}
-    - target: {fileID: 6960329525283874740, guid: 500a443843846f94098eeab5c4647204, type: 3}
-      propertyPath: _opened.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 6960329525283874740, guid: 500a443843846f94098eeab5c4647204, type: 3}
-      propertyPath: _opened.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: Dispatch
-      objectReference: {fileID: 0}
-    - target: {fileID: 6960329525283874740, guid: 500a443843846f94098eeab5c4647204, type: 3}
-      propertyPath: _rejected.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 6960329525283874740, guid: 500a443843846f94098eeab5c4647204, type: 3}
-      propertyPath: _rejected.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: Dispatch
-      objectReference: {fileID: 0}
-    - target: {fileID: 6960329525283874740, guid: 500a443843846f94098eeab5c4647204, type: 3}
-      propertyPath: _opened.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: Recalled.Gameplay.RequestClipDispatcher, Recalled.Gameplay
-      objectReference: {fileID: 0}
-    - target: {fileID: 6960329525283874740, guid: 500a443843846f94098eeab5c4647204, type: 3}
-      propertyPath: _rejected.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: Recalled.Gameplay.RequestClipDispatcher, Recalled.Gameplay
-      objectReference: {fileID: 0}
-    - target: {fileID: 6960329525283874740, guid: 500a443843846f94098eeab5c4647204, type: 3}
-      propertyPath: _opened.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
-      value: 
-      objectReference: {fileID: 11400000, guid: 22769199b4ff90e4088431db22455695, type: 2}
-    - target: {fileID: 6960329525283874740, guid: 500a443843846f94098eeab5c4647204, type: 3}
-      propertyPath: _rejected.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
-      value: 
-      objectReference: {fileID: 11400000, guid: 36ad7f464dc732a4391c7a63769cbbee, type: 2}
-    - target: {fileID: 6960329525283874740, guid: 500a443843846f94098eeab5c4647204, type: 3}
-      propertyPath: _opened.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: Recalled.Core.AudioAsset, Recalled.Core
-      objectReference: {fileID: 0}
-    - target: {fileID: 6960329525283874740, guid: 500a443843846f94098eeab5c4647204, type: 3}
-      propertyPath: _rejected.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: Recalled.Core.AudioAsset, Recalled.Core
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1060,7 +996,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c188fef6f57ebd3418addda2f20540dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Recalled.Gameplay::Recalled.Gameplay.RequestClipDispatcher
-  AudioClipRequestChannel: {fileID: 11400000, guid: 67b85b404b05c124ea5e6d5550c770de, type: 2}
+  _audioClipRequestChannel: {fileID: 0}
 --- !u!1001 &1045915139
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1153,17 +1089,6 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 1041330192}
   m_SourcePrefab: {fileID: 100100000, guid: 9feb83c85b3394b4ab6729af3eb1438d, type: 3}
---- !u!114 &1046445066 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 504635112985072468, guid: 500a443843846f94098eeab5c4647204, type: 3}
-  m_PrefabInstance: {fileID: 367329295}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c188fef6f57ebd3418addda2f20540dd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Recalled.Gameplay::Recalled.Gameplay.ReactorSound
 --- !u!1 &1137712248
 GameObject:
   m_ObjectHideFlags: 0

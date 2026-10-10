@@ -30,7 +30,6 @@ public class CanvasBobbleEffect : MonoBehaviour
 
     private void Start()
     {
-        Canvas.ForceUpdateCanvases();
         _basePosition = _transform.position;
 
         if (!_startAwake) _uiElement.enabled = false;

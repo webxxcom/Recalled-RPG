@@ -217,10 +217,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ChestScript
   _requiredKey: {fileID: 0}
   _lootTable:
-    _loots:
-    - _item: {fileID: 11400000, guid: 3aeea00b91451b84dae2342f27dda5b9, type: 2}
-      _count: 0
-      _weight: 111
+    _loots: []
   _animator: {fileID: 7782096850613656250}
   _opened:
     m_PersistentCalls:
@@ -231,7 +228,7 @@ MonoBehaviour:
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 11400000, guid: 22769199b4ff90e4088431db22455695, type: 2}
-          m_ObjectArgumentAssemblyTypeName: Recalled.Core.AudioAsset, Recalled.Core
+          m_ObjectArgumentAssemblyTypeName: Recalled.Core.SoundCue, Recalled.Core
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -246,7 +243,7 @@ MonoBehaviour:
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 11400000, guid: 36ad7f464dc732a4391c7a63769cbbee, type: 2}
-          m_ObjectArgumentAssemblyTypeName: Recalled.Core.AudioAsset, Recalled.Core
+          m_ObjectArgumentAssemblyTypeName: Recalled.Core.SoundCue, Recalled.Core
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -292,7 +289,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c188fef6f57ebd3418addda2f20540dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Recalled.Gameplay::Recalled.Gameplay.ReactorSound
-  AudioClipRequestChannel: {fileID: 11400000, guid: 67b85b404b05c124ea5e6d5550c770de, type: 2}
+  _audioClipRequestChannel: {fileID: 11400000, guid: 67b85b404b05c124ea5e6d5550c770de, type: 2}
 --- !u!58 &6408188746821413493
 CircleCollider2D:
   m_ObjectHideFlags: 0
