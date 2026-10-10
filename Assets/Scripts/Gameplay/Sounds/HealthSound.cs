@@ -1,35 +1,38 @@
 using UnityEngine;
 
-public class HealthSound : EntitySound
+namespace Recalled.Gameplay
 {
-    [SerializeField] AudioClip _hurtSound;
-    [SerializeField] AudioClip _healingSound;
-    [SerializeField] AudioClip _deathSound;
-    [SerializeField] HealthResource _healthProvider;
-
-    void OnEnable()
+    public class HealthSound : EntitySound
     {
-        _healthProvider.Died += HandleDeathSound;
-        _healthProvider.ValueChanged += HandleHurtHealingSound;
-    }
+        [SerializeField] AudioClip _hurtSound;
+        [SerializeField] AudioClip _healingSound;
+        [SerializeField] AudioClip _deathSound;
+        [SerializeField] HealthResource _healthProvider;
 
-    void OnDisable()
-    {
-        _healthProvider.Died += HandleDeathSound;
-        _healthProvider.ValueChanged += HandleHurtHealingSound;
-    }
+        void OnEnable()
+        {
+            _healthProvider.Died += HandleDeathSound;
+            _healthProvider.ValueChanged += HandleHurtHealingSound;
+        }
 
-    public void HandleDeathSound(DamageInfo _)
-    {
-        _audioSource.PlayOneShot(_deathSound);
-    }
+        void OnDisable()
+        {
+            _healthProvider.Died += HandleDeathSound;
+            _healthProvider.ValueChanged += HandleHurtHealingSound;
+        }
 
-    public void HandleHurtHealingSound(int oldVal, int newVal)
-    {
-        int amount = oldVal - newVal;
-        if (amount > 0)
-            _audioSource.PlayOneShot(_hurtSound);
-        else if (amount < 0)
-            _audioSource.PlayOneShot(_healingSound);
+        public void HandleDeathSound(DamageInfo _)
+        {
+            _audioSource.PlayOneShot(_deathSound);
+        }
+
+        public void HandleHurtHealingSound(int oldVal, int newVal)
+        {
+            int amount = oldVal - newVal;
+            if (amount > 0)
+                _audioSource.PlayOneShot(_hurtSound);
+            else if (amount < 0)
+                _audioSource.PlayOneShot(_healingSound);
+        }
     }
 }

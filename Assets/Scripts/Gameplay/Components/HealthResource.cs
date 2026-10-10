@@ -1,52 +1,56 @@
+using Recalled.Core;
 using System;
 using UnityEngine;
 using UnityEngine.Events;
 
-[DisallowMultipleComponent]
-[RequireComponent(typeof(Collider2D))]
-public class HealthResource : ValueResource
+namespace Recalled.Gameplay
 {
-    public Collider2D Hurtbox { get; private set; }
-    float _invincibilityTimer;
-
-    public event Action<DamageInfo> HpChanged;
-    public UnityEvent<DamageInfo> HpChangedUnty;
-    public event Action<DamageInfo> Died;
-    public event Action<DamageInfo> OnMax;
-
-    protected override void Awake()
+    [DisallowMultipleComponent]
+    [RequireComponent(typeof(Collider2D))]
+    public class HealthResource : ValueResource
     {
-        base.Awake();
+        public Collider2D Hurtbox { get; private set; }
+        float _invincibilityTimer;
 
-        Hurtbox = GetComponent<Collider2D>();
-    }
+        public event Action<DamageInfo> HpChanged;
+        public UnityEvent<DamageInfo> HpChangedUnty;
+        public event Action<DamageInfo> Died;
+        public event Action<DamageInfo> OnMax;
 
-    public bool IsInvincible => _invincibilityTimer > 0f;
-    public bool IsDead => CurrentValue <= 0;
-
-    public void ApplyDamage(DamageInfo damageInfo)
-    {
-        if (IsInvincible)
-            return;
-
-        HpChanged?.Invoke(damageInfo);
-        HpChangedUnty?.Invoke(damageInfo);
-        int applied = Consume(damageInfo.Amount);
-        if (applied != 0)
+        protected override void Awake()
         {
-            if (IsDead)
-                Died?.Invoke(damageInfo);
-            if (CurrentValue == MaxValue)
-                OnMax?.Invoke(damageInfo);
+            base.Awake();
+
+            Hurtbox = GetComponent<Collider2D>();
         }
-    }
 
-    public void GrantInvincibility(float time)
-        => _invincibilityTimer = Mathf.Max(_invincibilityTimer, time);
+        public bool IsInvincible => _invincibilityTimer > 0f;
+        public bool IsDead => CurrentValue <= 0;
 
-    private void Update()
-    {
-        if (_invincibilityTimer > 0f)
-            _invincibilityTimer -= Time.deltaTime;
+        public void ApplyDamage(DamageInfo damageInfo)
+        {
+            if (IsInvincible)
+                return;
+
+            HpChanged?.Invoke(damageInfo);
+            HpChangedUnty?.Invoke(damageInfo);
+            int applied = Consume(damageInfo.Amount);
+            if (applied != 0)
+            {
+                if (IsDead)
+                    Died?.Invoke(damageInfo);
+                if (CurrentValue == MaxValue)
+                    OnMax?.Invoke(damageInfo);
+            }
+        }
+
+        public void GrantInvincibility(float time)
+            => _invincibilityTimer = Mathf.Max(_invincibilityTimer, time);
+
+        private void Update()
+        {
+            if (_invincibilityTimer > 0f)
+                _invincibilityTimer -= Time.deltaTime;
+        }
     }
 }

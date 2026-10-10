@@ -2,42 +2,41 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
 
-[RequireComponent(typeof(Light2D))]
-public class StageClearenceLight : MonoBehaviour
+namespace Recalled.Gameplay
 {
-    [Tooltip("Normalized intensity 0-1 where 0 is no light at all and 1 is base intensity")]
-    [SerializeField] AnimationCurve _intensityOverTime;
-    [SerializeField] float _duration;
-
-    Light2D _light;
-    float _baseIntensity;
-
-    private void Awake()
+    [RequireComponent(typeof(Light2D))]
+    public sealed class StageClearenceLight : MonoBehaviour
     {
-        _light = GetComponent<Light2D>();
-    }
+        [Tooltip("Normalized intensity 0-1 where 0 is no light at all and 1 is base intensity")]
+        [SerializeField] AnimationCurve _intensityOverTime;
+        [SerializeField] float _duration;
 
-    private void Start()
-    {
-        _baseIntensity = _light.intensity;
-        _light.intensity = 0;
-    }
+        Light2D _light;
+        float _baseIntensity;
 
-    IEnumerator ProcessLightIntensityOverTime()
-    {
-        float elapsed = 0;
-        while (elapsed < _duration)
+        private void Awake() => _light = GetComponent<Light2D>();
+        private void Start()
         {
-            _light.intensity = _baseIntensity * _intensityOverTime.Evaluate(elapsed);
-
-            elapsed += Time.deltaTime;
-            yield return null;
+            _baseIntensity = _light.intensity;
+            _light.intensity = 0;
         }
-    }
 
-    public void Activate()
-    {
-        StopAllCoroutines();
-        StartCoroutine(ProcessLightIntensityOverTime());
+        IEnumerator ProcessLightIntensityOverTime()
+        {
+            float elapsed = 0;
+            while (elapsed < _duration)
+            {
+                _light.intensity = _baseIntensity * _intensityOverTime.Evaluate(elapsed);
+
+                elapsed += Time.deltaTime;
+                yield return null;
+            }
+        }
+
+        public void Activate()
+        {
+            StopAllCoroutines();
+            StartCoroutine(ProcessLightIntensityOverTime());
+        }
     }
 }

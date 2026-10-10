@@ -1,9 +1,10 @@
+using Recalled.Gameplay;
 using System;
 using UnityEngine;
 
 namespace Recalled.UI
 {
-    public class DamageNumberPopup : HealthReactor
+    public class DamagePopupSpawner : MonoBehaviour
     {
         [SerializeField] PopupWorldText _damagePopup;
 
@@ -13,9 +14,9 @@ namespace Recalled.UI
                 throw new ArgumentNullException();
         }
 
-        protected override void OnHpChanged(DamageInfo di)
+        public void Spawn(DamageInfo di)
         {
-            Instantiate(_damagePopup, _health.Hurtbox.bounds.center, Quaternion.identity)
+            Instantiate(_damagePopup, di.Target.Hurtbox.bounds.center, Quaternion.identity)
                 .Init(di.Amount.ToString());
         }
     }

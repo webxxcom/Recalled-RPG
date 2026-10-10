@@ -1,9 +1,14 @@
 using UnityEngine;
 
-public class DamageParticles : HealthReactor
+namespace Recalled.Gameplay
 {
-    [SerializeField] ParticleSystem _particles;
+    public sealed class DamageParticles : MonoBehaviour
+    {
+        [SerializeField] ParticleSystem _particles;
 
-    protected override void OnHpChanged(DamageInfo di)
-        => Instantiate(_particles, _health.Hurtbox.bounds.center, Quaternion.FromToRotation(Vector3.right, di.Direction));
+        public void Spawn(DamageInfo di)
+        {
+            Instantiate(_particles, di.Target.Hurtbox.bounds.center, Quaternion.FromToRotation(Vector3.right, di.Direction));
+        }
+    }
 }

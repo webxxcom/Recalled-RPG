@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 6885743430467850160}
   - component: {fileID: 2486069124411795992}
   - component: {fileID: 8482076990832578042}
+  - component: {fileID: 6924303021497496187}
   m_Layer: 6
   m_Name: Hurtbox
   m_TagString: Untagged
@@ -84,10 +85,46 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HealthResource
   _config: {fileID: 11400000, guid: 864889a04087d4d448a4d01d160d960a, type: 2}
-  _maxValue: 0
-  _currentValue: {fileID: 0}
-  _isInfinite: 1
-  _combatData: {fileID: 0}
+  _intVariable: {fileID: 0}
+  HpChangedUnty:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6924303021497496187}
+        m_TargetAssemblyTypeName: Recalled.Gameplay.RequestClipDispatcher, Recalled.Gameplay
+        m_MethodName: Dispatch
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 11400000, guid: b1b9b3314918ff644a6871843b671c83, type: 2}
+          m_ObjectArgumentAssemblyTypeName: Recalled.Core.SoundCue, Recalled.Core
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 8482076990832578042}
+        m_TargetAssemblyTypeName: Recalled.UI.DamageNumberPopup, Recalled.UI
+        m_MethodName: Spawn
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 8080906468532238491}
+        m_TargetAssemblyTypeName: TrainingDummyController, Recalled.Gameplay
+        m_MethodName: HpChanged
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &8482076990832578042
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -100,8 +137,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06a5d00c831032e4c97582bed1cc234e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Recalled.UI::Recalled.UI.DamageNumberPopup
-  _health: {fileID: 2486069124411795992}
   _damagePopup: {fileID: 7535224943969880707, guid: 385f75b1c0c81584c85f5375d9fc8db4, type: 3}
+--- !u!114 &6924303021497496187
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 175039996589242903}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c188fef6f57ebd3418addda2f20540dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Recalled.Gameplay::Recalled.Gameplay.RequestClipDispatcher
+  _audioClipRequestChannel: {fileID: 11400000, guid: 67b85b404b05c124ea5e6d5550c770de, type: 2}
 --- !u!1 &8822795234151242890
 GameObject:
   m_ObjectHideFlags: 0
@@ -214,7 +263,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c0fd3485b931c74881c5170f6f28592, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  _health: {fileID: 2486069124411795992}
   _animator: {fileID: 3784235917605943660}
 --- !u!1001 &2638589704726934692
 PrefabInstance:

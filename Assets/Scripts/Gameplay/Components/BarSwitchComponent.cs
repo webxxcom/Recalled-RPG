@@ -1,24 +1,28 @@
+using Recalled.Core;
 using UnityEngine;
 
-public class BarSwitchComponent : MonoBehaviour
+namespace Recalled.Gameplay
 {
-    [SerializeField] GameObject _aliveBar;
-    [SerializeField] GameObject _deadBar;
-    [SerializeField] ValueResource _healthProvider;
-
-    void ToggleBars(int _)
+    public class BarSwitchComponent : MonoBehaviour
     {
-        _aliveBar.SetActive(!_aliveBar.activeInHierarchy);
-        _deadBar.SetActive(!_deadBar.activeInHierarchy);
-    }
+        [SerializeField] GameObject _aliveBar;
+        [SerializeField] GameObject _deadBar;
+        [SerializeField] ValueResource _healthProvider;
 
-    private void OnEnable()
-    {
-        _healthProvider.MinValueReached += ToggleBars;
-    }
+        void ToggleBars(int _)
+        {
+            _aliveBar.SetActive(!_aliveBar.activeInHierarchy);
+            _deadBar.SetActive(!_deadBar.activeInHierarchy);
+        }
 
-    private void OnDisable()
-    {
-        _healthProvider.MinValueReached -= ToggleBars;
+        private void OnEnable()
+        {
+            _healthProvider.MinValueReached += ToggleBars;
+        }
+
+        private void OnDisable()
+        {
+            _healthProvider.MinValueReached -= ToggleBars;
+        }
     }
 }

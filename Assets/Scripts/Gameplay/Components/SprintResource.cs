@@ -1,44 +1,48 @@
+using Recalled.Core;
 using UnityEngine;
 
-[DisallowMultipleComponent]
-public class SprintingResource : ValueResource
+namespace Recalled.Gameplay
 {
-    [SerializeField] int _usage;
-    [SerializeField] int _restore;
-    [SerializeField] float _speedMultiplier;
-    [SerializeField] Movementable _movementBase;
-
-    public float SpeedMultiplier => _speedMultiplier;
-
-    bool _isActive;
-
-    public bool IsActive
+    [DisallowMultipleComponent]
+    public class SprintingResource : ValueResource
     {
-        get => _isActive;
-        set
-        {
-            if (_isActive != value)
-            {
-                if (value)
-                    _movementBase.AddSpeedCoef(_speedMultiplier);
-                else
-                    _movementBase.RemoveSpeedCoef(_speedMultiplier);
+        [SerializeField] int _usage;
+        [SerializeField] int _restore;
+        [SerializeField] float _speedMultiplier;
+        [SerializeField] Movementable _movementBase;
 
-                _isActive = value;
+        public float SpeedMultiplier => _speedMultiplier;
+
+        bool _isActive;
+
+        public bool IsActive
+        {
+            get => _isActive;
+            set
+            {
+                if (_isActive != value)
+                {
+                    if (value)
+                        _movementBase.AddSpeedCoef(_speedMultiplier);
+                    else
+                        _movementBase.RemoveSpeedCoef(_speedMultiplier);
+
+                    _isActive = value;
+                }
             }
         }
-    }
 
-    public void Toggle(bool isActive)
-        => IsActive = isActive;
+        public void Toggle(bool isActive)
+            => IsActive = isActive;
 
-    private void FixedUpdate()
-    {
-        if (IsActive)
+        private void FixedUpdate()
         {
-            if (Consume(_usage) == 0)
-                IsActive = false;
+            if (IsActive)
+            {
+                if (Consume(_usage) == 0)
+                    IsActive = false;
+            }
+            else Replenish(_restore);
         }
-        else Replenish(_restore);
     }
 }

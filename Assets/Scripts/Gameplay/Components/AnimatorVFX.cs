@@ -3,6 +3,8 @@ using UnityEngine;
 [RequireComponent(typeof(SpriteRenderer))]
 public class AnimatorVFX : MonoBehaviour
 {
+    [SerializeField] AnimationClip _clip;
+
     SpriteRenderer _spriteRenderer;
 
     private void Awake()

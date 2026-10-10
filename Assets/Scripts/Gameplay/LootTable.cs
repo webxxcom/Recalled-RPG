@@ -23,6 +23,7 @@ namespace Recalled.Gameplay
         [SerializeField] List<LootItem> _loots;
 
         int TotalWeight => _loots.Sum(i => i.Weight);
+        public bool IsValid => _loots.Any();
 
         public ItemInstance GetItem()
         {
@@ -38,5 +39,6 @@ namespace Recalled.Gameplay
             Debug.LogWarning("Loot table has no entries");
             return null;
         }
+
     }
 }

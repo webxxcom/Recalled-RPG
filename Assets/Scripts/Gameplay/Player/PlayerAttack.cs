@@ -1,22 +1,25 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-[RequireComponent(typeof(Collider2D))]
-public class PlayerAttack : EntityAttack
+namespace Recalled.Gameplay
 {
-    [SerializeField] MeleeAttackSO _meleeAttackData;
-
-    void OnAttack(InputValue value)
+    [RequireComponent(typeof(Collider2D))]
+    public sealed class PlayerAttack : EntityAttack
     {
-        if (!value.isPressed || _timeSinceLastAttack < _meleeAttackData.ReloadTime)
-            return;
+        [SerializeField] MeleeAttackSO _meleeAttackData;
 
-        _timeSinceLastAttack = 0;
-        Attack(_attackStrategies[0], new());
-    }
+        void OnAttack(InputValue value)
+        {
+            if (!value.isPressed || _timeSinceLastAttack < _meleeAttackData.ReloadTime)
+                return;
 
-    private void Update()
-    {
-        _timeSinceLastAttack += Time.deltaTime;
+            _timeSinceLastAttack = 0;
+            Attack(_attackStrategies[0], new());
+        }
+
+        private void Update()
+        {
+            _timeSinceLastAttack += Time.deltaTime;
+        }
     }
 }

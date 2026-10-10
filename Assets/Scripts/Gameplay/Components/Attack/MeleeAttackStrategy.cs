@@ -1,54 +1,57 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(CapsuleCollider2D))]
-public class MeleeAttackStrategy : AttackStrategy
+namespace Recalled.Gameplay
 {
-    [SerializeField] MeleeAttackSO _meleeAttackData;
-
-    public override AttackSO AttackData => _meleeAttackData;
-    public override int AnimatorHash => AnimatorParameters.MeleeHash;
-
-    protected override bool WithinAttackRange(AttackContext attackContext)
+    [RequireComponent(typeof(CapsuleCollider2D))]
+    public class MeleeAttackStrategy : AttackStrategy
     {
-        return _hitbox.IsTouching(attackContext.Target.GetComponent<Collider2D>());
-    }
+        [SerializeField] MeleeAttackSO _meleeAttackData;
 
-    CapsuleCollider2D _hitbox;
+        public override AttackSO AttackData => _meleeAttackData;
+        public override int AnimatorHash => AnimatorParameters.MeleeHash;
 
-    private void Awake()
-    {
-        _hitbox = GetComponent<CapsuleCollider2D>();
-    }
-
-    readonly List<Collider2D> _processedTargets = new();
-    readonly List<Collider2D> _hits = new(10);
-
-    public override void StartExecuting(AttackContext _)
-    {
-        _elapsedSinceAttack = 0;
-    }
-
-    public override void ProcessState(float normalizedTime, AttackContext _)
-    {
-        if (normalizedTime < _meleeAttackData.ImpactTime || normalizedTime > _meleeAttackData.RecoveryTime || !enabled)
-            return;
-
-        _meleeAttackData.HitboxOverTime(_hitbox, normalizedTime);
-        _hits.Clear();
-        _hitbox.Overlap(_hits);
-        foreach (var hit in _hits)
+        protected override bool WithinAttackRange(AttackContext attackContext)
         {
-            if (_processedTargets.Contains(hit) || hit.CompareTag(_hitbox.tag))
-                continue;
-
-            _processedTargets.Add(hit);
-            _meleeAttackData.ApplyAttack(transform.parent.gameObject, hit);
+            return _hitbox.IsTouching(attackContext.Target.GetComponent<Collider2D>());
         }
-    }
 
-    public override void FinishExecuting(AttackContext _)
-    {
-        _processedTargets.Clear();
+        CapsuleCollider2D _hitbox;
+
+        private void Awake()
+        {
+            _hitbox = GetComponent<CapsuleCollider2D>();
+        }
+
+        readonly List<Collider2D> _processedTargets = new();
+        readonly List<Collider2D> _hits = new(10);
+
+        public override void StartExecuting(AttackContext _)
+        {
+            _elapsedSinceAttack = 0;
+        }
+
+        public override void ProcessState(float normalizedTime, AttackContext _)
+        {
+            if (normalizedTime < _meleeAttackData.ImpactTime || normalizedTime > _meleeAttackData.RecoveryTime || !enabled)
+                return;
+
+            _meleeAttackData.HitboxOverTime(_hitbox, normalizedTime);
+            _hits.Clear();
+            _hitbox.Overlap(_hits);
+            foreach (var hit in _hits)
+            {
+                if (_processedTargets.Contains(hit) || hit.CompareTag(_hitbox.tag))
+                    continue;
+
+                _processedTargets.Add(hit);
+                _meleeAttackData.ApplyAttack(transform.parent.gameObject, hit);
+            }
+        }
+
+        public override void FinishExecuting(AttackContext _)
+        {
+            _processedTargets.Clear();
+        }
     }
 }

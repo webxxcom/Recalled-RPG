@@ -1,4 +1,5 @@
 using Recalled.Systems.Inventory;
+using System;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -24,7 +25,13 @@ namespace Recalled.Gameplay
         public enum States { Opened, Closed }
         public States State { get; private set; } = States.Closed;
 
-        void Awake() => _interactable = GetComponent<Interactable>();
+        void Awake()
+        {
+            if (!_lootTable.IsValid)
+                throw new ArgumentException("Loot table is not valid");
+
+            _interactable = GetComponent<Interactable>();
+        }
         void OnEnable() => _interactable.RequestInteraction += Interact;
         void OnDisable() => _interactable.RequestInteraction -= Interact;
         void Start() => ApplyLevels();

@@ -197,9 +197,9 @@ GameObject:
   - component: {fileID: 4202473506490510331}
   - component: {fileID: 8594877766703153062}
   - component: {fileID: 6084795570454335282}
-  - component: {fileID: 1683125966879550413}
   - component: {fileID: 7792045196547008148}
   - component: {fileID: 5781126296770748758}
+  - component: {fileID: 1195640530942918373}
   m_Layer: 6
   m_Name: Hurtbox
   m_TagString: Player
@@ -256,8 +256,8 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -0.01, y: 0.55}
-  m_Size: {x: 0.7, y: 1.4}
+  m_Offset: {x: -0.03132665, y: 0.5663086}
+  m_Size: {x: 0.6021488, y: 1.3272388}
   m_Direction: 0
 --- !u!114 &4202473506490510331
 MonoBehaviour:
@@ -272,7 +272,82 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HealthResource
   _config: {fileID: 11400000, guid: caa89fe73ce9c384c967b866d6283b80, type: 2}
-  _intVariable: {fileID: 0}
+  _intVariable: {fileID: 11400000, guid: 060557ec0ac49624abeae20083c92407, type: 2}
+  HpChangedUnty:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5781126296770748758}
+        m_TargetAssemblyTypeName: Recalled.UI.DamageNumberPopup, Recalled.UI
+        m_MethodName: Spawn
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 7792045196547008148}
+        m_TargetAssemblyTypeName: BlinkingProvider, Recalled.Gameplay
+        m_MethodName: Blink
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 4202473506490510331}
+        m_TargetAssemblyTypeName: HealthResource, Recalled.Gameplay
+        m_MethodName: GrantInvincibility
+        m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 1
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 6084795570454335282}
+        m_TargetAssemblyTypeName: DamageKnockbackApplier, Recalled.Gameplay
+        m_MethodName: Apply
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 1
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 8594877766703153062}
+        m_TargetAssemblyTypeName: DamageParticles, Recalled.Gameplay
+        m_MethodName: Spawn
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 1
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1195640530942918373}
+        m_TargetAssemblyTypeName: Recalled.Gameplay.AnimateDeath, Recalled.Gameplay
+        m_MethodName: CheckAndExecute
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 1
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &8594877766703153062
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -285,7 +360,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0768de9f67a9c2a4289cb86fd00daa87, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  _health: {fileID: 4202473506490510331}
   _particles: {fileID: 2466567890511269386, guid: 80ca15d7024dd724e95d1d3bfd987aba, type: 3}
 --- !u!114 &6084795570454335282
 MonoBehaviour:
@@ -299,22 +373,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3b3c0a778eeb5c41a3ebf29b5bc137b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  _health: {fileID: 4202473506490510331}
-  _externalVelocity: {fileID: 1255662501661695068}
---- !u!114 &1683125966879550413
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1515305421710409048}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 943e5b8ebd6bccc4cbf8959f2ae8d07d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: '::'
-  _health: {fileID: 4202473506490510331}
-  _duration: 1
 --- !u!114 &7792045196547008148
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -327,7 +385,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6b13a084ea28e24882900f1260c62a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DamageBlinking
-  _health: {fileID: 4202473506490510331}
   _duration: 1
   _blinkInterval: 0.1
   _spriteRendererGroup: {fileID: 4980500249380923839}
@@ -343,8 +400,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06a5d00c831032e4c97582bed1cc234e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Recalled.UI::Recalled.UI.DamageNumberPopup
-  _health: {fileID: 4202473506490510331}
   _damagePopup: {fileID: 7535224943969880707, guid: 385f75b1c0c81584c85f5375d9fc8db4, type: 3}
+--- !u!114 &1195640530942918373
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1515305421710409048}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a921302f7a41f3468ca0d18ff689b06, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Recalled.Gameplay::Recalled.Gameplay.AnimateDeath
+  _animator: {fileID: 3750387735865093422}
+  _timeout: 1
 --- !u!1 &1822602623840076642
 GameObject:
   m_ObjectHideFlags: 0
@@ -1225,7 +1295,7 @@ Transform:
   m_GameObject: {fileID: 6900335706858698086}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1630,8 +1700,6 @@ MonoBehaviour:
   _walkingSpeed: 2
   _externalVelocity: {fileID: 1255662501661695068}
   _animationController: {fileID: 5525736473637658669}
-  _playerSprinting: {fileID: 2708507066674380346}
-  _playerDash: {fileID: 6443777087678772007}
 --- !u!114 &7101408821228708346
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1680,7 +1748,7 @@ MonoBehaviour:
   _consumeSprntNorm: 0.2
   _force: 10
   _invincibilityDuration: 1
-  _vfx: {fileID: 3972245231873520521, guid: 178e4fbad5d09b24eb7efa71e5f00356, type: 3}
+  _vfx: {fileID: 1309974262764781659, guid: 178e4fbad5d09b24eb7efa71e5f00356, type: 3}
 --- !u!114 &1255662501661695068
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1707,8 +1775,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87d248c24243bac47879c3b79f1e01c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  _currentInputDevice: {fileID: 11400000, guid: 8116cefb92c0bfa498ed98723bb495e2, type: 2}
   _devices: {fileID: 11400000, guid: 99a9f4f6ecea88248a32e08c318dfd8c, type: 2}
+  _currentInputDevice: {fileID: 11400000, guid: 8116cefb92c0bfa498ed98723bb495e2, type: 2}
 --- !u!114 &797185126300389965
 MonoBehaviour:
   m_ObjectHideFlags: 0

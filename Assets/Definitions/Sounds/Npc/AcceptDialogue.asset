@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6b1cec965ff6f44c90715075605b2dc, type: 3}
   m_Name: AcceptDialogue
   m_EditorClassIdentifier: Recalled.Core::Recalled.Core.SoundCue
-  _clip: {fileID: 8300000, guid: 04f7c7ce88fc5a44fa8d724c891f8460, type: 3}
+  _clip: {fileID: 8300000, guid: 437a3352b05d09c47bd680201302ad41, type: 3}
   _mixerGroup: {fileID: -7715994481459056151, guid: 690e8d8c0ae056542bcef00037ba2c5a, type: 2}
