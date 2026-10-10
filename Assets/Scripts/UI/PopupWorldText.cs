@@ -25,10 +25,10 @@ namespace Recalled.UI
 
         void Start()
         {
-            StartCoroutine(Animate());
+            StartCoroutine(MovePosition());
         }
 
-        private IEnumerator Animate()
+        private IEnumerator MovePosition()
         {
             Vector3 startPosition = transform.position;
 

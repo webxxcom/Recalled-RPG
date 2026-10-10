@@ -272,10 +272,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HealthResource
   _config: {fileID: 11400000, guid: caa89fe73ce9c384c967b866d6283b80, type: 2}
-  _maxValue: 100
-  _currentValue: {fileID: 11400000, guid: 060557ec0ac49624abeae20083c92407, type: 2}
-  _isInfinite: 0
-  _combatData: {fileID: 11400000, guid: dae60ef3747aed242a63d444fce3392e, type: 2}
+  _intVariable: {fileID: 0}
 --- !u!114 &8594877766703153062
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -360,7 +357,7 @@ GameObject:
   - component: {fileID: 7249592558409531431}
   - component: {fileID: 6510005132233857990}
   - component: {fileID: 8385557649447130205}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Locomotion
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -519,7 +516,7 @@ GameObject:
   - component: {fileID: 2180246301040257168}
   - component: {fileID: 3562612961479935422}
   - component: {fileID: 1216693112717136754}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Reaction
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -741,7 +738,7 @@ MonoBehaviour:
   _animator: {fileID: 3750387735865093422}
   _attackStrategies:
   - {fileID: 1017372488747182917}
-  _playerCombatData: {fileID: 11400000, guid: dae60ef3747aed242a63d444fce3392e, type: 2}
+  _meleeAttackData: {fileID: 11400000, guid: 3874b33b6ce54b849af454eb61ed5ea4, type: 2}
 --- !u!114 &1017372488747182917
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -872,7 +869,7 @@ GameObject:
   - component: {fileID: 4467288444128628235}
   - component: {fileID: 6643250292987981962}
   - component: {fileID: 7008521823602905474}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Action
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1107,7 +1104,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6329567971803542181}
   - component: {fileID: 4902678074048869375}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1296,7 +1293,7 @@ GameObject:
   - component: {fileID: 3750387735865093422}
   - component: {fileID: 4980500249380923839}
   - component: {fileID: 5525736473637658669}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Renderer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1635,7 +1632,6 @@ MonoBehaviour:
   _animationController: {fileID: 5525736473637658669}
   _playerSprinting: {fileID: 2708507066674380346}
   _playerDash: {fileID: 6443777087678772007}
-  _playerCombat: {fileID: 11400000, guid: dae60ef3747aed242a63d444fce3392e, type: 2}
 --- !u!114 &7101408821228708346
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1648,6 +1644,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13e28ac1af5e01f4da013d12e70509a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
+  _animator: {fileID: 3750387735865093422}
   OnHpChangedChannel: {fileID: 11400000, guid: 4eb2943eb5950f54eba48d5bad32d3cd, type: 2}
   OnDeathChannel: {fileID: 11400000, guid: 1b2ce962ee3da3c4ca0eb1ac1d6feff8, type: 2}
 --- !u!114 &2708507066674380346
@@ -1663,12 +1660,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   _config: {fileID: 11400000, guid: 76f4a1503ab62c04986250e1c1ff5811, type: 2}
-  _maxValue: 1000
-  _currentValue: {fileID: 11400000, guid: 152dda9ce74a4254aaee34009d4ca0b7, type: 2}
-  _isInfinite: 1
+  _intVariable: {fileID: 0}
   _usage: 4
   _restore: 3
   _speedMultiplier: 1.8
+  _movementBase: {fileID: 7162682655650916106}
 --- !u!114 &6443777087678772007
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1920,7 +1916,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2897182995258291296}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Sound
   m_TagString: Untagged
   m_Icon: {fileID: 0}

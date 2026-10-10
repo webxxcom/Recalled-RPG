@@ -12,7 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8db6b3e690d80494d970b0bc41e28ca0, type: 3}
   m_Name: InfiniteHP
   m_EditorClassIdentifier: Assembly-CSharp::ValueProviderConfig
-  <MaximumValue>k__BackingField: 0
-  <CurrentValue>k__BackingField: 0
-  <IsStatic>k__BackingField: 0
-  <IsInfinite>k__BackingField: 1
+  _maximumValue: 0
+  _initValue: 0
+  _isInfinite: 1

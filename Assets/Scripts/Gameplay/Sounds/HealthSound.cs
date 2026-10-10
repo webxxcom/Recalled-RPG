@@ -9,17 +9,17 @@ public class HealthSound : EntitySound
 
     void OnEnable()
     {
-        _healthProvider.OnMinValue += HandleDeathSound;
-        _healthProvider.OnValueChanged += HandleHurtHealingSound;
+        _healthProvider.Died += HandleDeathSound;
+        _healthProvider.ValueChanged += HandleHurtHealingSound;
     }
 
     void OnDisable()
     {
-        _healthProvider.OnMinValue += HandleDeathSound;
-        _healthProvider.OnValueChanged += HandleHurtHealingSound;
+        _healthProvider.Died += HandleDeathSound;
+        _healthProvider.ValueChanged += HandleHurtHealingSound;
     }
 
-    public void HandleDeathSound(int _)
+    public void HandleDeathSound(DamageInfo _)
     {
         _audioSource.PlayOneShot(_deathSound);
     }

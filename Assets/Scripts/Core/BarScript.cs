@@ -18,20 +18,15 @@ public class BarScript : MonoBehaviour
 
     void OnValueChanged(int _, int newValue) => Set(newValue);
 
-    public void Init(ValueResource valueResource)
-    {
-        _valueResource = valueResource;
-    }
-
     private void OnEnable()
     {
         Set(_valueResource.CurrentValue);
 
-        _valueResource.OnValueChanged += OnValueChanged;
+        _valueResource.ValueChanged += OnValueChanged;
     }
 
     private void OnDisable()
-        => _valueResource.OnValueChanged -= OnValueChanged;
+        => _valueResource.ValueChanged -= OnValueChanged;
 
     IEnumerator ProgressBars(float delta)
     {

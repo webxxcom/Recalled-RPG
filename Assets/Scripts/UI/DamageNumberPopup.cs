@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 namespace Recalled.UI
@@ -9,13 +10,10 @@ namespace Recalled.UI
         private void Awake()
         {
             if (_damagePopup == null)
-            {
-                Debug.Log($"{gameObject.name} doesn't have {nameof(_damagePopup)} assigned");
-                enabled = false;
-            }
+                throw new ArgumentNullException();
         }
 
-        protected override void OnHpChange(DamageInfo di)
+        protected override void OnHpChanged(DamageInfo di)
         {
             Instantiate(_damagePopup, _health.Hurtbox.bounds.center, Quaternion.identity)
                 .Init(di.Amount.ToString());

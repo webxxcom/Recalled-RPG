@@ -5,27 +5,27 @@ public abstract class ValueResource : MonoBehaviour
 {
     [SerializeField] ValueProviderConfig _config;
 
-    [SerializeField] int _maxValue;
-    [Tooltip("SetField the value variable in the config")]
-    [SerializeField] IntVariable _currentValue;
-    [SerializeField] bool _isInfinite;
+    [Tooltip("Optional Runtime Variable, mostly for player and bosses")]
+    [SerializeField] IntVariable _intVariable;
 
-    public int MaxValue => _maxValue;
-    public int CurrentValue => _currentValue.Value;
+    public int MinValue => 0;
+    public int MaxValue { get; private set; }
+    public int CurrentValue { get; private set; }
+    public bool IsInfinite { get; private set; }
 
     /// <summary> (oldVal, newVal) after the change </summary>
-    public event Action<int, int> OnValueChanged;
-    public event Action<int> OnMinValue;
-    public event Action<int> OnMaxValue;
+    public event Action<int, int> ValueChanged;
+    public event Action<int> MinValueReached;
+    public event Action<int> MaxValueReached;
 
     protected virtual void Awake()
     {
-        //TODO ???
-        //_maxValue = _config.MaximumValue;
-        //_currentValue = _config.CurrentValue;
-        //_isStatic = _config.IsStatic;
+        MaxValue = _config.MaximumValue;
+        CurrentValue = _config.InitValue;
+        IsInfinite = _config.IsInfinite;
 
-        _currentValue.Value = MaxValue;
+        if (_intVariable)
+            _intVariable.Value = CurrentValue;
     }
 
     /// <returns>The delta actually applied, after clamping</returns>
@@ -34,40 +34,25 @@ public abstract class ValueResource : MonoBehaviour
         if (delta == 0)
             return 0;
 
-        int oldVal = _currentValue.Value;
-        int newVal = Mathf.Clamp(_currentValue.Value + delta, 0, _maxValue);
-        if (!_isInfinite)
-            _currentValue.Value = newVal;
+        int oldVal = CurrentValue;
+        int newVal = Mathf.Clamp(CurrentValue + delta, MinValue, MaxValue);
+        if (!IsInfinite)
+            CurrentValue = newVal;
+        if (_intVariable)
+            _intVariable.Value = CurrentValue;
 
         int applied = oldVal - newVal;
         if (applied == 0)
             return 0;
 
-        OnValueChanged?.Invoke(oldVal, newVal);
+        ValueChanged?.Invoke(oldVal, newVal);
 
         if (oldVal != 0 && newVal == 0)
-            OnMinValue?.Invoke(oldVal);
-        else if (oldVal != MaxValue && newVal == _maxValue)
-            OnMaxValue?.Invoke(oldVal);
+            MinValueReached?.Invoke(oldVal);
+        else if (oldVal != MaxValue && newVal == MaxValue)
+            MaxValueReached?.Invoke(oldVal);
 
         return applied;
     }
     public int Consume(int amount) => Replenish(-amount);
-
-#if UNITY_EDITOR
-    private void OnValidate()
-    {
-        if (_config != null)
-        {
-            if (_config.CurrentValue == null) // CurrentValue is absent - it's not set in the config - create it
-                _currentValue = ScriptableObject.CreateInstance<IntVariable>();
-            else // The Variable is set for bosses and Player
-                _currentValue = _config.CurrentValue;
-
-            _maxValue = _config.MaximumValue;
-            _currentValue.Value = _maxValue;
-            _isInfinite = _config.IsInfinite;
-        }
-    }
-#endif
 }

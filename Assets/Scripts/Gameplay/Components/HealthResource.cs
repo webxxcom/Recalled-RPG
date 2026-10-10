@@ -5,12 +5,10 @@ using UnityEngine;
 [RequireComponent(typeof(Collider2D))]
 public class HealthResource : ValueResource
 {
-    [SerializeField] PlayerCombatData _combatData;
     public Collider2D Hurtbox { get; private set; }
     float _invincibilityTimer;
 
-    public event Action<DamageInfo> HpChangeApplied;
-    public event Action<DamageInfo> OnHpChange;
+    public event Action<DamageInfo> HpChanged;
     public event Action<DamageInfo> Died;
     public event Action<DamageInfo> OnMax;
 
@@ -29,15 +27,8 @@ public class HealthResource : ValueResource
         if (IsInvincible)
             return;
 
-        if (_combatData) damageInfo.Amount = Mathf.RoundToInt(damageInfo.Amount / _combatData.Protection);
-        OnHpChange?.Invoke(damageInfo);
+        HpChanged?.Invoke(damageInfo);
         int applied = Consume(damageInfo.Amount);
-        if (applied == 0)
-            return;
-
-        damageInfo.Amount = applied;
-        HpChangeApplied?.Invoke(damageInfo);
-
         if (applied != 0)
         {
             if (IsDead)

@@ -138,6 +138,7 @@ GameObject:
   - component: {fileID: 7583836377103258956}
   - component: {fileID: 3170156976089449772}
   - component: {fileID: 6857402134471802808}
+  - component: {fileID: 7805430521979695223}
   m_Layer: 6
   m_Name: Hurtbox
   m_TagString: Untagged
@@ -213,7 +214,6 @@ MonoBehaviour:
   _maxValue: 0
   _currentValue: {fileID: 0}
   _isInfinite: 0
-  _combatData: {fileID: 0}
 --- !u!114 &6857402134471802808
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -228,6 +228,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::DamageDeath
   _health: {fileID: 3170156976089449772}
   _animator: {fileID: 2098798121662283207}
+  _timeout: 1
+--- !u!114 &7805430521979695223
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1091221079858403888}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 943e5b8ebd6bccc4cbf8959f2ae8d07d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Recalled.Gameplay::DamageInvincibility
+  _health: {fileID: 3170156976089449772}
+  _duration: 1
 --- !u!1 &1117856209460169703
 GameObject:
   m_ObjectHideFlags: 0
@@ -551,6 +566,7 @@ GameObject:
   - component: {fileID: 7259310995907860303}
   - component: {fileID: 2098798121662283207}
   - component: {fileID: 3837447365200627457}
+  - component: {fileID: 7946856242328243118}
   m_Layer: 0
   m_Name: Renderer
   m_TagString: Untagged
@@ -630,6 +646,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7699cbe8594eeaf4090d45b836375986, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
+--- !u!114 &7946856242328243118
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2221273252237950207}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 60fbbcdaabffcd74a8547c3b82891592, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Recalled.Gameplay::AnimationController
+  _isXFlippable: 0
 --- !u!1 &2326538357031669412
 GameObject:
   m_ObjectHideFlags: 0
@@ -777,7 +806,12 @@ MonoBehaviour:
   _topBar: {fileID: 5481063633301190332}
   _bottomBar: {fileID: 8272922677400892947}
   _animationSpeed: 1
-  _canvasGroup: {fileID: 1691631697996506798}
+  ProgressStarted:
+    m_PersistentCalls:
+      m_Calls: []
+  ProgressEnded:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &3022819972273681099
 GameObject:
   m_ObjectHideFlags: 0
@@ -1674,10 +1708,9 @@ GameObject:
   - component: {fileID: 2849718130295577124}
   - component: {fileID: 7555395542361720920}
   - component: {fileID: 8546835627664851573}
-  - component: {fileID: 2623673398461338202}
   - component: {fileID: 3040367189287070848}
-  - component: {fileID: 9090072530132137595}
   - component: {fileID: 8743054104706632675}
+  - component: {fileID: 6178311786871483018}
   m_Layer: 9
   m_Name: Vampire
   m_TagString: Untagged
@@ -1769,18 +1802,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &2623673398461338202
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6824792419597319425}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 92c716f82cffa184fb97b7f38151d5b1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::EntityController
 --- !u!114 &3040367189287070848
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1793,25 +1814,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12f15cd53b201564699615c7995e984f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EntityMovementComponent
-  _walkingSpeed: 0
-  _externalVelocity: {fileID: 0}
-  _animationController: {fileID: 0}
-  _rigidbody2D: {fileID: 8546835627664851573}
+  _walkingSpeed: 1
+  _externalVelocity: {fileID: 6178311786871483018}
+  _animationController: {fileID: 7946856242328243118}
   _movementAIConfig: {fileID: 11400000, guid: 72187b7b600538c4188fb4aa064706ac, type: 2}
---- !u!114 &9090072530132137595
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6824792419597319425}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ef7af567f829480489cb925839780c3f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::InvincibilityProvider
-  _duration: 1
-  _healthProvider: {fileID: 0}
 --- !u!114 &8743054104706632675
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1825,6 +1831,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   _gameSet: {fileID: 11400000, guid: bbac75fc2fc9c7c4eac897c9723139fb, type: 2}
+--- !u!114 &6178311786871483018
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6824792419597319425}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de202badedf79b547a6adbee14277b17, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Recalled.Gameplay::ExternalVelocity
+  decayRate: 8
+  restThreshold: 0.05
 --- !u!1 &7703140342093038302
 GameObject:
   m_ObjectHideFlags: 0
@@ -2315,5 +2335,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d449da01801937e4a91336c9da272024, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  <Offset>k__BackingField: 0.5
-  <Speed>k__BackingField: 1.58
+  _offset: 0
+  _speed: 1.5

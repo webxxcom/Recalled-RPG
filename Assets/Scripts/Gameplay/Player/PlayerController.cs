@@ -2,8 +2,14 @@ using UnityEngine;
 
 namespace Recalled.Gameplay
 {
-    public class PlayerController : EntityController
+    public class PlayerController : MonoBehaviour
     {
+        [SerializeField] Animator _animator;
+
+        [Header("Broadcasts to")]
+        [SerializeField] DamageInfoGameEvent OnHpChangedChannel;
+        [SerializeField] DamageInfoGameEvent OnDeathChannel;
+
         bool _isArmed;
         public bool IsArmed
         {
@@ -11,20 +17,13 @@ namespace Recalled.Gameplay
             private set
             {
                 _isArmed = value;
-                Animator.SetBool(AnimatorParameters.IsArmedHash, value);
+                _animator.SetBool(AnimatorParameters.IsArmedHash, value);
             }
         }
-
-        [Header("Broadcasts to")]
-        [SerializeField] DamageInfoGameEvent OnHpChangedChannel;
-        [SerializeField] DamageInfoGameEvent OnDeathChannel;
-
         HealthResource _healthProvider;
 
-        protected override void Awake()
+        void Awake()
         {
-            base.Awake();
-
             _healthProvider = GetComponentInChildren<HealthResource>();
 
             IsArmed = true;
@@ -32,13 +31,13 @@ namespace Recalled.Gameplay
 
         void OnEnable()
         {
-            _healthProvider.HpChangeApplied += OnHpChangedGameEvent;
+            _healthProvider.HpChanged += OnHpChangedGameEvent;
             _healthProvider.Died += OnDiedGameEvent;
         }
 
         void OnDisable()
         {
-            _healthProvider.HpChangeApplied -= OnHpChangedGameEvent;
+            _healthProvider.HpChanged -= OnHpChangedGameEvent;
             _healthProvider.Died -= OnDiedGameEvent;
         }
 

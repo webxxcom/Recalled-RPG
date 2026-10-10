@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4647231223192459453}
   - component: {fileID: 6885743430467850160}
   - component: {fileID: 2486069124411795992}
-  - component: {fileID: 1916765318523927302}
+  - component: {fileID: 8482076990832578042}
   m_Layer: 6
   m_Name: Hurtbox
   m_TagString: Untagged
@@ -88,7 +88,7 @@ MonoBehaviour:
   _currentValue: {fileID: 0}
   _isInfinite: 1
   _combatData: {fileID: 0}
---- !u!114 &1916765318523927302
+--- !u!114 &8482076990832578042
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -97,9 +97,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 175039996589242903}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8d29df752c8094b44899dc0bc9293e06, type: 3}
+  m_Script: {fileID: 11500000, guid: 06a5d00c831032e4c97582bed1cc234e, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::DamageNumberPopup
+  m_EditorClassIdentifier: Recalled.UI::Recalled.UI.DamageNumberPopup
   _health: {fileID: 2486069124411795992}
   _damagePopup: {fileID: 7535224943969880707, guid: 385f75b1c0c81584c85f5375d9fc8db4, type: 3}
 --- !u!1 &8822795234151242890

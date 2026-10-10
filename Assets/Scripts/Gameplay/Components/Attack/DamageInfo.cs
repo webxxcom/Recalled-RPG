@@ -1,16 +1,20 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
-public class DamageInfo
+public readonly struct DamageInfo
 {
-    public float KnockbackPower { get; private set; }
-    public int Amount { get; set; }
-    public EntityController Source { get; private set; }
-    public Collider2D Hurtbox { get; private set; }
-    public Vector2 Direction { get; private set; }
+    public readonly float KnockbackPower;
+    public readonly int Amount;
+    public readonly GameObject Source;
+    public readonly Collider2D Hurtbox;
+    public readonly Vector2 Direction;
 
-    public DamageInfo(int quantity, float knockbackPower, EntityController source, Collider2D hurtbox)
+    public DamageInfo(float knockbackPower, int amount, GameObject source, Collider2D hurtbox)
     {
-        Amount = quantity;
+        if (source == null || hurtbox == null)
+            throw new ArgumentNullException();
+
+        Amount = amount;
         KnockbackPower = knockbackPower;
         Source = source;
         Hurtbox = hurtbox;

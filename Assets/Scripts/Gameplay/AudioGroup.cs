@@ -4,7 +4,7 @@ using UnityEngine.Audio;
 
 namespace Recalled.Gameplay
 {
-    public class AudioGroup : MonoBehaviour
+    public sealed class AudioGroup : MonoBehaviour
     {
         [SerializeField] Dictionary<AudioMixerGroup, AudioSource> _mixerGroupToAudioSource;
         [SerializeField] AudioClipRequestGameEvent AudioClipRequested;
@@ -23,7 +23,6 @@ namespace Recalled.Gameplay
         {
             var audioSource = Instantiate(template, request.Position, Quaternion.identity);
             audioSource.clip = request.Clip;
-            audioSource.outputAudioMixerGroup = request.MixerGroup;
             audioSource.Play();
 
             Destroy(audioSource.gameObject, request.Clip.length);

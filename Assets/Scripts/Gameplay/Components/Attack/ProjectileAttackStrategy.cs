@@ -3,38 +3,26 @@
 class ProjectileAttackStrategy : AttackStrategy
 {
     [SerializeField] ProjectileAttackDataSO _projectileAttackData;
+    [SerializeField] AnimationController _animationController;
+
     public override AttackSO AttackData => _projectileAttackData;
     public override int AnimatorHash => AnimatorParameters.ShootHash;
 
-    AttackContext _attackContext;
-    protected override bool WithinAttackRange(AttackContext attackContext)
-    {
-        _attackContext = attackContext;
-
-        return (attackContext.Target.GetComponent<Collider2D>().bounds.center - transform.position).sqrMagnitude
-            <= _projectileAttackData.Range * _projectileAttackData.Range;
-    }
-
-    [SerializeField] AnimationController _animationController;
-
-    EntityController _entityController;
     bool _completed;
 
-    private void Awake()
+    protected override bool WithinAttackRange(AttackContext attackContext)
     {
-        _entityController = GetComponentInParent<EntityController>();
+        return (attackContext.Target.GetComponent<Collider2D>().bounds.center - transform.position).sqrMagnitude
+            <= _projectileAttackData.Range * _projectileAttackData.Range;
     }
 
     public override void ProcessState(float normalizedTime, AttackContext attackContext)
     {
         if (normalizedTime >= _projectileAttackData.NormalizedSpawnPoint && !_completed)
         {
-            GameObject projectile = Instantiate(
-                _projectileAttackData.ProjectilePrefab, _entityController.transform.position, Quaternion.identity);
-
-            // TODO trashy init
-            projectile.GetComponent<ProjectileScript>().Initialize(
-                _entityController,
+            Instantiate(_projectileAttackData.ProjectilePrefab, transform.parent.position, Quaternion.identity)
+                .Initialize(
+                transform.parent.gameObject,
                 attackContext.Target.transform.position,
                 _animationController.FlippedX);
 
@@ -42,15 +30,14 @@ class ProjectileAttackStrategy : AttackStrategy
         }
     }
 
-    public override void StartExecuting(AttackContext attackContext)
+    public override void StartExecuting(AttackContext _)
     {
         _completed = false;
         _elapsedSinceAttack = 0;
     }
 
-    public override void FinishExecuting(AttackContext attackContext)
+    public override void FinishExecuting(AttackContext _)
     {
-        _attackContext = null;
     }
 
 #if UNITY_EDITOR
@@ -60,13 +47,4 @@ class ProjectileAttackStrategy : AttackStrategy
             _animationController = transform.parent.GetComponentInChildren<AnimationController>();
     }
 #endif
-
-    void OnDrawGizmos()
-    {
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, _projectileAttackData.Range);
-
-        if (_attackContext != null)
-            Gizmos.DrawLine(_attackContext.Target.GetComponent<Collider2D>().bounds.center, transform.position);
-    }
 }

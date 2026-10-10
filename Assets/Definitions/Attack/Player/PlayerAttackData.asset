@@ -14,10 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::AttackData
   <ReloadTime>k__BackingField: 0.8
   <SpeedMultiplier>k__BackingField: 0.7
-  <DealtDamage>k__BackingField: 10
-  <KnockbackPower>k__BackingField: 1.6
-  <ImpactTime>k__BackingField: 0.3
-  <RecoveryTime>k__BackingField: 0.8
-  <Curves>k__BackingField: {fileID: 0}
-  <Effects>k__BackingField: []
-  _combatData: {fileID: 11400000, guid: dae60ef3747aed242a63d444fce3392e, type: 2}
+  _dealtDamage: 10
+  _knockbackPower: 1.6
+  _impactTime: 0.3
+  _recoveryTime: 0.8
+  _curves: {fileID: 0}

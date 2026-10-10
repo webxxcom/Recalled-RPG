@@ -7,21 +7,18 @@ public abstract class HealthReactor : MonoBehaviour
 
     private void OnEnable()
     {
-        _health.Died += OnDeath;
-        _health.HpChangeApplied += OnHpChangeApplied;
-        _health.OnHpChange += OnHpChange;
+        _health.Died += OnDied;
+        _health.HpChanged += OnHpChanged;
     }
 
     private void OnDisable()
     {
-        _health.Died -= OnDeath;
-        _health.HpChangeApplied -= OnHpChangeApplied;
-        _health.OnHpChange -= OnHpChange;
+        _health.Died -= OnDied;
+        _health.HpChanged -= OnHpChanged;
     }
 
-    protected virtual void OnHpChange(DamageInfo di) { }
-    protected virtual void OnHpChangeApplied(DamageInfo di) { }
-    protected virtual void OnDeath(DamageInfo di) { }
+    protected virtual void OnHpChanged(DamageInfo di) { }
+    protected virtual void OnDied(DamageInfo di) { }
 
 #if UNITY_EDITOR
     private void OnValidate()

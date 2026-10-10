@@ -21,10 +21,11 @@ namespace Recalled.Gameplay
         {
             if (collision.CompareTag("Player"))
             {
-                if (!TryGetComponent<InventoryHolder>(out var holder))
+                if (!collision.TryGetComponent<InventoryHolder>(out var holder))
                     return;
 
-                if (holder.Inventory.Add(_definition, _count) != 0)
+                _count = holder.Inventory.Add(_definition, _count);
+                if (_count != 0)
                     return;
 
                 foreach (var reactor in _reactors)

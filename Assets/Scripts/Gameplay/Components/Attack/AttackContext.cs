@@ -1,11 +1,15 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
-public class AttackContext
+public readonly struct AttackContext
 {
-    public GameObject Target { get; private set; }
+    public readonly GameObject Target;
 
     public AttackContext(GameObject target)
     {
+        if (target == null)
+            throw new ArgumentNullException();
+
         Target = target;
     }
 }

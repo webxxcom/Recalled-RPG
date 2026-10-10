@@ -1,16 +1,15 @@
 using UnityEngine;
 
 [DisallowMultipleComponent]
-[RequireComponent(typeof(PlayerMovement))]
 public class SprintingResource : ValueResource
 {
     [SerializeField] int _usage;
     [SerializeField] int _restore;
     [SerializeField] float _speedMultiplier;
+    [SerializeField] MovementBase _movementBase;
 
     public float SpeedMultiplier => _speedMultiplier;
 
-    MovementBase _movementBase;
     bool _isActive;
 
     public bool IsActive
@@ -28,13 +27,6 @@ public class SprintingResource : ValueResource
                 _isActive = value;
             }
         }
-    }
-
-    protected override void Awake()
-    {
-        base.Awake();
-
-        _movementBase = GetComponent<PlayerMovement>();
     }
 
     public void Toggle(bool isActive)

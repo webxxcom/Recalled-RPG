@@ -13,16 +13,16 @@ public abstract class EntityAttack : MonoBehaviour
     public event Action OnAttackStarted;
     public event Action OnAttackFinished;
 
-    bool IsActive => gameObject.activeInHierarchy;
+    bool IsActive => enabled;
 
     private void OnDisable()
     {
         // If entity dies during attack execution it should stop doing an attack
-        gameObject.SetActive(false);
+        _animator.ResetControllerState();
     }
 
-    protected AttackStrategy _currentAttack;
-    protected AttackContext _attackContext;
+    AttackStrategy _currentAttack;
+    AttackContext _attackContext;
     protected void Attack(AttackStrategy attackStrategy, AttackContext attackContext)
     {
         _currentAttack = attackStrategy;

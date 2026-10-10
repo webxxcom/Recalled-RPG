@@ -1140,7 +1140,6 @@ MonoBehaviour:
   _maxValue: 1
   _currentValue: {fileID: 0}
   _isInfinite: 0
-  _combatData: {fileID: 0}
 --- !u!114 &1946405126258931634
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1568,7 +1567,6 @@ GameObject:
   - component: {fileID: 8526230742337842442}
   - component: {fileID: 181632092390176455}
   - component: {fileID: 709522701639608767}
-  - component: {fileID: 8962501645842732508}
   - component: {fileID: 8023279021401798368}
   - component: {fileID: 1313544978890093267}
   - component: {fileID: 1217682329630351431}
@@ -1673,18 +1671,6 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.952098, y: 0.3849249}
   m_EdgeRadius: 0
---- !u!114 &8962501645842732508
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6097617918995308611}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 92c716f82cffa184fb97b7f38151d5b1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::EntityController
 --- !u!114 &8023279021401798368
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -5,7 +5,6 @@ public class PlayerMovement : MovementBase
 {
     [SerializeField] SprintingResource _playerSprinting;
     [SerializeField] Dash _playerDash;
-    [SerializeField] PlayerCombatData _playerCombat;
 
     public bool IsSprinting => _playerSprinting.IsActive;
 
@@ -22,6 +21,6 @@ public class PlayerMovement : MovementBase
             return Vector2.zero;
 
         Vector2 finalMovement = MovementIntention;
-        return finalMovement / _playerCombat.Weight;
+        return finalMovement;
     }
 }

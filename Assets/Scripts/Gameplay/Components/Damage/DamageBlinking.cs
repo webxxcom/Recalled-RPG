@@ -7,7 +7,7 @@ public class DamageBlinking : HealthReactor
     [SerializeField] float _blinkInterval;
     [SerializeField] SpriteRendererGroup _spriteRendererGroup;
 
-    protected override void OnHpChangeApplied(DamageInfo di)
+    protected override void OnHpChanged(DamageInfo di)
     {
         StopAllCoroutines();
         StartCoroutine(BlinkCoroutine());

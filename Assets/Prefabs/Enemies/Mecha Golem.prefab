@@ -641,7 +641,6 @@ GameObject:
   - component: {fileID: 6671079316108765482}
   - component: {fileID: 1057046407010063622}
   - component: {fileID: 3450256923772632459}
-  - component: {fileID: 9770824318507940}
   - component: {fileID: 8203840206680997478}
   - component: {fileID: 1467756139214560341}
   m_Layer: 6
@@ -719,7 +718,6 @@ MonoBehaviour:
   _maxValue: 100
   _currentValue: {fileID: 0}
   _isInfinite: 0
-  _combatData: {fileID: 0}
 --- !u!114 &6671079316108765482
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -764,20 +762,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::DamageKnockback
   _health: {fileID: 6667067657998920285}
   _externalVelocity: {fileID: 111680106745748001}
---- !u!114 &9770824318507940
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3947751842682473356}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8d29df752c8094b44899dc0bc9293e06, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::DamageNumberPopup
-  _health: {fileID: 6667067657998920285}
-  _damagePopup: {fileID: 7535224943969880707, guid: 385f75b1c0c81584c85f5375d9fc8db4, type: 3}
 --- !u!114 &8203840206680997478
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -806,6 +790,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::DamageDeath
   _health: {fileID: 6667067657998920285}
   _animator: {fileID: 3120718460063332462}
+  _timeout: 1
 --- !u!1 &3960565711026088696
 GameObject:
   m_ObjectHideFlags: 0
@@ -1465,9 +1450,7 @@ GameObject:
   - component: {fileID: 8526230742337842442}
   - component: {fileID: 181632092390176455}
   - component: {fileID: 1807106667663726009}
-  - component: {fileID: 1660891897344240565}
   - component: {fileID: 8023279021401798368}
-  - component: {fileID: 6414543018664610763}
   - component: {fileID: 111680106745748001}
   m_Layer: 11
   m_Name: Mecha Golem
@@ -1559,18 +1542,6 @@ CapsuleCollider2D:
   m_Offset: {x: -0.039137486, y: 0.51635027}
   m_Size: {x: 1.0782783, y: 0.5514564}
   m_Direction: 1
---- !u!114 &1660891897344240565
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6097617918995308611}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4b14ec2e384508046bdd3a5fa666f0d7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::GolemBossController
 --- !u!114 &8023279021401798368
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1586,22 +1557,7 @@ MonoBehaviour:
   _walkingSpeed: 2
   _externalVelocity: {fileID: 111680106745748001}
   _animationController: {fileID: 7604555208834313663}
-  _rigidbody2D: {fileID: 181632092390176455}
   _movementAIConfig: {fileID: 11400000, guid: 6c63a963ffe57f440a8942a4099ac0ad, type: 2}
---- !u!114 &6414543018664610763
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6097617918995308611}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ef7af567f829480489cb925839780c3f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::InvincibilityProvider
-  _duration: 1
-  _healthProvider: {fileID: 6667067657998920285}
 --- !u!114 &111680106745748001
 MonoBehaviour:
   m_ObjectHideFlags: 0

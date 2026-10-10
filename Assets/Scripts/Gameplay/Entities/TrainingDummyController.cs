@@ -23,8 +23,8 @@ public class TrainingDummyController : MonoBehaviour
         }
     }
 
-    private void OnEnable() => _health.OnHpChange += HpChanged;
-    private void OnDisable() => _health.OnHpChange -= HpChanged;
+    private void OnEnable() => _health.HpChanged += HpChanged;
+    private void OnDisable() => _health.HpChanged -= HpChanged;
 
 #if UNITY_EDITOR
     private void OnValidate()

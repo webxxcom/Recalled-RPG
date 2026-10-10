@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.Audio;
 
@@ -11,6 +12,9 @@ namespace Recalled.Gameplay
 
         public AudioClipRequest(AudioClip clip, AudioMixerGroup group, Vector2 position)
         {
+            if (clip == null || group == null)
+                throw new ArgumentNullException();
+
             Clip = clip;
             MixerGroup = group;
             Position = position;

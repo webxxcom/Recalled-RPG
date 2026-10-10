@@ -11,7 +11,7 @@ public class ProjectileScript : MonoBehaviour
     [SerializeField] Vector2 _offset;
 
     Vector3 _direction;
-    EntityController _owner;
+    GameObject _owner;
     Rigidbody2D _rigidbody2D;
 
     private void Awake()
@@ -19,7 +19,7 @@ public class ProjectileScript : MonoBehaviour
         _rigidbody2D = GetComponent<Rigidbody2D>();
     }
 
-    public void Initialize(EntityController owner, Vector2 destination, bool flipX)
+    public void Initialize(GameObject owner, Vector2 destination, bool flipX)
     {
         _owner = owner;
         Vector2 pos = transform.position + new Vector3(_offset.x * (flipX ? -1 : 1), _offset.y);
@@ -41,8 +41,8 @@ public class ProjectileScript : MonoBehaviour
         if (collision.CompareTag(_owner.tag))
             return;
 
-        if (collision.TryGetComponent(out HealthResource hp))
-            hp.ApplyDamage(new(_dealtDamage, _knockbackPower, _owner, hp.Hurtbox));
+        if (collision.TryGetComponent<HealthResource>(out var hp))
+            hp.ApplyDamage(new(_knockbackPower, _dealtDamage, _owner, hp.Hurtbox));
         Destroy(gameObject);
     }
 }

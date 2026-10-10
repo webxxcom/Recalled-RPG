@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8db6b3e690d80494d970b0bc41e28ca0, type: 3}
   m_Name: PlayerSprintingConfig
   m_EditorClassIdentifier: Assembly-CSharp::ValueProviderConfig
-  <MaximumValue>k__BackingField: 1000
-  <CurrentValue>k__BackingField: {fileID: 11400000, guid: 152dda9ce74a4254aaee34009d4ca0b7, type: 2}
-  <IsInfinite>k__BackingField: 1
+  _maximumValue: 100
+  _initValue: 100
+  _isInfinite: 0

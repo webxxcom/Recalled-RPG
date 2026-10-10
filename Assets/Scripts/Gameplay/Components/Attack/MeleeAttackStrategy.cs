@@ -5,6 +5,7 @@ using UnityEngine;
 public class MeleeAttackStrategy : AttackStrategy
 {
     [SerializeField] MeleeAttackSO _meleeAttackData;
+
     public override AttackSO AttackData => _meleeAttackData;
     public override int AnimatorHash => AnimatorParameters.MeleeHash;
 
@@ -14,23 +15,21 @@ public class MeleeAttackStrategy : AttackStrategy
     }
 
     CapsuleCollider2D _hitbox;
-    EntityController _entityController;
 
     private void Awake()
     {
         _hitbox = GetComponent<CapsuleCollider2D>();
-        _entityController = GetComponentInParent<EntityController>();
     }
 
     readonly List<Collider2D> _processedTargets = new();
     readonly List<Collider2D> _hits = new(10);
 
-    public override void StartExecuting(AttackContext attackContext)
+    public override void StartExecuting(AttackContext _)
     {
         _elapsedSinceAttack = 0;
     }
 
-    public override void ProcessState(float normalizedTime, AttackContext attackContext)
+    public override void ProcessState(float normalizedTime, AttackContext _)
     {
         if (normalizedTime < _meleeAttackData.ImpactTime || normalizedTime > _meleeAttackData.RecoveryTime || !enabled)
             return;
@@ -38,18 +37,17 @@ public class MeleeAttackStrategy : AttackStrategy
         _meleeAttackData.HitboxOverTime(_hitbox, normalizedTime);
         _hits.Clear();
         _hitbox.Overlap(_hits);
-        foreach (Collider2D hit in _hits)
+        foreach (var hit in _hits)
         {
             if (_processedTargets.Contains(hit) || hit.CompareTag(_hitbox.tag))
                 continue;
 
             _processedTargets.Add(hit);
-
-            _meleeAttackData.ApplyAttack(_entityController, hit);
+            _meleeAttackData.ApplyAttack(transform.parent.gameObject, hit);
         }
     }
 
-    public override void FinishExecuting(AttackContext attackContext)
+    public override void FinishExecuting(AttackContext _)
     {
         _processedTargets.Clear();
     }

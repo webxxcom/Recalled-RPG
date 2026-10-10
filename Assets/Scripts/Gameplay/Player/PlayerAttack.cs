@@ -4,17 +4,15 @@ using UnityEngine.InputSystem;
 [RequireComponent(typeof(Collider2D))]
 public class PlayerAttack : EntityAttack
 {
-    [SerializeField] PlayerCombatData _playerCombatData;
+    [SerializeField] MeleeAttackSO _meleeAttackData;
 
     void OnAttack(InputValue value)
     {
-        //TODO player attack strategy
-        if (value.isPressed && _timeSinceLastAttack >= _playerCombatData.ReloadTime)
-        {
-            _timeSinceLastAttack = 0;
+        if (!value.isPressed || _timeSinceLastAttack < _meleeAttackData.ReloadTime)
+            return;
 
-            Attack(_attackStrategies[0], new(null));
-        }
+        _timeSinceLastAttack = 0;
+        Attack(_attackStrategies[0], new());
     }
 
     private void Update()
