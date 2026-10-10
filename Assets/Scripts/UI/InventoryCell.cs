@@ -6,21 +6,19 @@ public class InventoryCell : MonoBehaviour
 {
     [SerializeField] Image _icon;
 
-    public ItemSlotsArray.Slot Slot { get; private set; }
+    public ItemInstance ItemInstance { get; private set; }
 
-    public virtual void SetSlot(ItemSlotsArray.Slot slot)
+    public virtual void SetItem(ItemInstance instance)
     {
-        if (slot == null) return;
-
-        Slot = slot;
-        _icon.sprite = Slot.Item.Definition.Icon;
+        ItemInstance = instance;
+        _icon.sprite = ItemInstance.Definition.Icon;
         _icon.preserveAspect = true;
         _icon.enabled = true;
     }
 
-    public virtual void RemoveSlot()
+    public virtual void RemoveItem()
     {
-        Slot = null;
+        ItemInstance = null;
         _icon.enabled = false;
     }
 }

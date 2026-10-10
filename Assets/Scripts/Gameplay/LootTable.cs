@@ -9,20 +9,22 @@ namespace Recalled.Gameplay
     public class LootTable
     {
         [System.Serializable]
-        public class LootItem
+        class LootItem
         {
             [SerializeField] ItemDefinition _item;
+            [SerializeField] int _count;
             [SerializeField] int _weight;
 
-            public int Weight => _weight;
             public ItemDefinition ItemDefinition => _item;
+            public int Count => _count;
+            public int Weight => _weight;
         }
 
         [SerializeField] List<LootItem> _loots;
 
         int TotalWeight => _loots.Sum(i => i.Weight);
 
-        public ItemDefinition GetItem()
+        public ItemInstance GetItem()
         {
             float expectedWeight = Random.Range(0, TotalWeight);
 
@@ -31,7 +33,7 @@ namespace Recalled.Gameplay
             {
                 totalWeight += loot.Weight;
                 if (totalWeight >= expectedWeight)
-                    return loot.ItemDefinition;
+                    return loot.ItemDefinition.CreateInstance(loot.Count);
             }
             Debug.LogWarning("Loot table has no entries");
             return null;

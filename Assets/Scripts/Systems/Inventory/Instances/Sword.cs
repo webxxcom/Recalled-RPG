@@ -1,4 +1,6 @@
-﻿namespace Recalled.Systems.Inventory
+﻿using System;
+
+namespace Recalled.Systems.Inventory
 {
     public class Sword : ItemInstance
     {
@@ -15,6 +17,11 @@
                     $"Weight: {Definition.Weight}";
             }
         }
-        public Sword(ItemDefinition itemDefinition) : base(itemDefinition, 1) { }
+        public Sword(ItemDefinition itemDefinition) : base(itemDefinition) { }
+
+        internal override ItemInstance Copy()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

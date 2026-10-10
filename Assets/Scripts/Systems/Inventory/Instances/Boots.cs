@@ -1,4 +1,6 @@
-﻿namespace Recalled.Systems.Inventory
+﻿using System;
+
+namespace Recalled.Systems.Inventory
 {
     public class Boots : ItemInstance
     {
@@ -14,7 +16,11 @@
                     $"Protection: {Definition.Protection}";
             }
         }
-        public Boots(ItemDefinition itemDefinition)
-            : base(itemDefinition, 1) { }
+        public Boots(ItemDefinition itemDefinition) : base(itemDefinition) { }
+
+        internal override ItemInstance Copy()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

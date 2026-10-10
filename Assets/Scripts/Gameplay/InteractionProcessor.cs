@@ -14,10 +14,15 @@ namespace Recalled.Gameplay
         void OnInteract(InputValue _)
         {
             foreach (var collider in _overlaps)
+            {
                 if (collider.TryGetComponent<Interactable>(out var interactable))
+                {
                     interactable.Interact(this);
+                    _overlaps.Remove(collider);
+                    break;
+                }
+            }
         }
-
 
         private void OnTriggerEnter2D(Collider2D collision)
         {

@@ -53,9 +53,9 @@ public class InventorySlotsView : MonoBehaviour
         {
             var slot = _inventoryVariable.Value[i];
             if (!slot.IsEmpty && (_currentFilter == ItemCategory.Any || slot.Item.Definition.Category == _currentFilter))
-                _slotsView[i].SetSlot(slot);
+                _slotsView[i].SetItem(slot.Item);
             else
-                _slotsView[i].RemoveSlot();
+                _slotsView[i].RemoveItem();
         }
     }
 }

@@ -3,6 +3,6 @@
   <Project Path="Recalled.Core.csproj" />
   <Project Path="Recalled.UI.csproj" />
   <Project Path="Recalled.Systems.csproj" />
-  <Project Path="Assembly-CSharp-Editor.csproj" />
   <Project Path="Recalled.Systems.Tests.EditMode.csproj" />
+  <Project Path="Assembly-CSharp-Editor.csproj" />
 </Solution>

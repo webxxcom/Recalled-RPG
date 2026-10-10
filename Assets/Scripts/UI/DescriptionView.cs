@@ -19,15 +19,15 @@ public class DescriptionView : MonoBehaviour
         _currentSelected.ValueChanged -= OnCellSelected;
     }
 
-    public void Show(ItemSlotsArray.Slot slot)
+    public void Show(ItemInstance instance)
     {
-        _cell.SetSlot(slot);
-        _header.text = slot.Item.Definition.Name;
-        _description.text = slot.Item.Description;
+        _cell.SetItem(instance);
+        _header.text = instance.Definition.Name;
+        _description.text = instance.Description;
     }
 
     void OnCellSelected(GameObject game)
     {
-        if (game != null) Show(game.GetComponent<InventorySlotView>().Slot);
+        if (game != null) Show(game.GetComponent<InventorySlotView>().ItemInstance);
     }
 }

@@ -459,10 +459,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3984505625043390223, guid: 9712ac222a009084bbe930edfec485ae, type: 3}
-      propertyPath: _definition
-      value: 
-      objectReference: {fileID: 11400000, guid: 34c7a720b0e1804408665a3950b33fdc, type: 2}
     - target: {fileID: 6374237541316188582, guid: 9712ac222a009084bbe930edfec485ae, type: 3}
       propertyPath: m_Name
       value: Key
@@ -662,10 +658,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 3035446050279745726, guid: ef7a4d2f735b5c342b5d27fda3be7ed5, type: 3}
-      propertyPath: m_Radius
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 6805291076679127406, guid: ef7a4d2f735b5c342b5d27fda3be7ed5, type: 3}
       propertyPath: m_LocalPosition.x
       value: 2.09
@@ -909,6 +901,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1889618957864744957, guid: 500a443843846f94098eeab5c4647204, type: 3}
+      propertyPath: _lootTable._loots.Array.data[0]._item
+      value: 
+      objectReference: {fileID: 11400000, guid: 3ab233bcb14d04847b07c29f2bfee65a, type: 2}
+    - target: {fileID: 1889618957864744957, guid: 500a443843846f94098eeab5c4647204, type: 3}
+      propertyPath: _lootTable._loots.Array.data[0]._count
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1889618957864744957, guid: 500a443843846f94098eeab5c4647204, type: 3}
+      propertyPath: _lootTable._loots.Array.data[0]._item._count
+      value: 1111111111
+      objectReference: {fileID: 0}
+    - target: {fileID: 1889618957864744957, guid: 500a443843846f94098eeab5c4647204, type: 3}
+      propertyPath: _lootTable._loots.Array.data[0]._item._definition
+      value: 
+      objectReference: {fileID: 11400000, guid: eaf1831fb346c5a47aeae7be05e9301e, type: 2}
     - target: {fileID: 5508140426223554905, guid: 500a443843846f94098eeab5c4647204, type: 3}
       propertyPath: m_Name
       value: Chest

@@ -307,6 +307,7 @@ MonoBehaviour:
   _lootTable:
     _loots:
     - _item: {fileID: 11400000, guid: 3ab233bcb14d04847b07c29f2bfee65a, type: 2}
+      _count: 0
       _weight: 1
 --- !u!114 &1395027961293807298
 MonoBehaviour:
@@ -428,7 +429,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: -563998149
   m_SortingLayer: 2
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_MaskInteraction: 0
   m_Sprite: {fileID: 21300000, guid: 84f6d6fdffbaaa14481c380f2bdd3b6f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

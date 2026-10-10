@@ -13,7 +13,7 @@ namespace Recalled.Gameplay
         public ItemInstance LootItem()
         {
             Looted?.Invoke();
-            return new(_lootTable.GetItem(), 1);
+            return _lootTable.GetItem();
         }
     }
 }

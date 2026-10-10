@@ -7,13 +7,15 @@ namespace Recalled.Systems.Inventory
 {
     public sealed class ItemSlotsArray : IReadOnlyList<ItemSlotsArray.Slot>
     {
-        public class Slot
+        public readonly struct Slot
         {
-            public ItemInstance Item { get; private set; }
+            public readonly ItemInstance Item;
+            public readonly bool IsEmpty => Item == null;
 
-            public bool IsEmpty => Item == null;
-            public void SetEmpty() { Item = null; }
-            public void SetItem(ItemInstance instance) { Item = instance; }
+            internal Slot(ItemInstance instance)
+            {
+                Item = instance ?? throw new ArgumentNullException();
+            }
         }
 
         readonly Slot[] _slots;
@@ -28,8 +30,6 @@ namespace Recalled.Systems.Inventory
                 throw new ArgumentException();
 
             _slots = new Slot[capacity];
-            for (int i = 0; i < _slots.Length; i++)
-                _slots[i] = new();
         }
 
         public ItemSlotsArray(int capacity, ItemInstance[] loadout)
@@ -40,13 +40,8 @@ namespace Recalled.Systems.Inventory
                 throw new ArgumentException();
 
             _slots = new Slot[capacity];
-            for (int i = 0; i < _slots.Length; i++)
-            {
-                _slots[i] = new();
-
-                if (i < loadout.Length)
-                    _slots[i].SetItem(loadout[i]);
-            }
+            for (int i = 0; i < loadout.Length; i++)
+                _slots[i] = new(loadout[i].Copy());
         }
 
         public int Add(ItemDefinition definition, int count)
@@ -68,12 +63,15 @@ namespace Recalled.Systems.Inventory
                 }
             }
 
-            foreach (var slot in _slots.Where(s => s.IsEmpty))
+            for (int i = 0; i < _slots.Length; i++)
             {
+                if (!_slots[i].IsEmpty)
+                    continue;
+
                 var instance = definition.CreateInstance();
                 remainder = instance.SetStock(remainder);
 
-                slot.SetItem(instance);
+                _slots[i] = new(instance);
                 if (remainder <= 0)
                     break;
             }
@@ -84,10 +82,12 @@ namespace Recalled.Systems.Inventory
 
         int AddStockable(ItemDefinition definition, int count)
         {
-            foreach (var slot in _slots.Where(s => !s.IsEmpty && s.Item.Definition == definition))
+            for (int i = 0; i < _slots.Length; i++)
             {
-                count = slot.Item.AppendStock(count);
+                if (_slots[i].IsEmpty || _slots[i].Item.Definition != definition)
+                    continue;
 
+                count = _slots[i].Item.AppendStock(count);
                 if (count <= 0) break;
             }
             return count;
@@ -95,7 +95,7 @@ namespace Recalled.Systems.Inventory
 
         public bool Add(ItemInstance instance)
         {
-            if (instance == null || _slots.FirstOrDefault(s => s.Item == instance) != null)
+            if (instance == null || _slots.Any(s => s.Item == instance))
                 throw new ArgumentNullException();
 
             int initCount = instance.Count;
@@ -110,15 +110,19 @@ namespace Recalled.Systems.Inventory
                 instance.SetStock(remainder);
             }
 
-            var slot = _slots.FirstOrDefault(s => s.IsEmpty);
-            if (slot != null)
+            for (int i = 0; i < _slots.Length; i++)
             {
-                slot.SetItem(instance);
+                if (!_slots[i].IsEmpty)
+                    continue;
+
+                _slots[i] = new(instance);
                 SlotsChanged?.Invoke();
                 return true;
             }
 
-            if (instance.Count != initCount) SlotsChanged?.Invoke();
+            if (instance.Count != initCount)
+                SlotsChanged?.Invoke();
+
             return false;
         }
 
@@ -133,7 +137,7 @@ namespace Recalled.Systems.Inventory
                 if (_slots[i].Item != itemInstance)
                     continue;
 
-                _slots[i].SetEmpty();
+                _slots[i] = default;
                 SlotsChanged?.Invoke();
                 return true;
             }
@@ -156,13 +160,13 @@ namespace Recalled.Systems.Inventory
 
                 int newCount = item.Count - count;
                 if (newCount == 0)
-                    _slots[i].SetEmpty();
+                    _slots[i] = default;
                 if (newCount < 0)
                 {
                     if (!TakeRecursively(definition, -newCount, i + 1))
                         return false;
 
-                    _slots[i].SetEmpty();
+                    _slots[i] = default;
                 }
                 else
                     item.SetStock(newCount);

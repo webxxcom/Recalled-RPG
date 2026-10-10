@@ -9,26 +9,26 @@ public sealed class InventorySlotView : InventoryCell
     [SerializeField] Selectable _selectable;
     [SerializeField] TextMeshProUGUI _countText;
 
-    public override void SetSlot(ItemSlotsArray.Slot slot)
+    public override void SetItem(ItemInstance instance)
     {
-        base.SetSlot(slot);
+        base.SetItem(instance);
 
         _selectable.enabled = true;
-        if (slot.Item.Definition.IsStackable)
+        if (instance.Definition.IsStackable)
         {
             _countText.enabled = true;
-            _countText.text = slot.Item.Count.ToString();
+            _countText.text = instance.Count.ToString();
         }
         else
             _countText.enabled = false;
     }
 
-    public override void RemoveSlot()
+    public override void RemoveItem()
     {
         _selectable.enabled = false;
         _countText.enabled = false;
 
-        base.RemoveSlot();
+        base.RemoveItem();
     }
 
 #if UNITY_EDITOR

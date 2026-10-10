@@ -1,4 +1,6 @@
-﻿namespace Recalled.Systems.Inventory
+﻿using System;
+
+namespace Recalled.Systems.Inventory
 {
     public class Armor : ItemInstance
     {
@@ -15,6 +17,11 @@
             }
         }
 
-        public Armor(ItemDefinition itemDefinition) : base(itemDefinition, 1) { }
+        public Armor(ItemDefinition itemDefinition) : base(itemDefinition) { }
+
+        internal override ItemInstance Copy()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

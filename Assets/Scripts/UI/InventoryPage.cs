@@ -32,7 +32,7 @@ public class InventoryPage : MonoBehaviour
             return;
 
         var slot = EventSystem.current.currentSelectedGameObject.GetComponent<InventorySlotView>();
-        if (slot.Slot.Item.Definition.Category != ItemCategory.Consumable)
+        if (slot.ItemInstance.Definition.Category != ItemCategory.Consumable)
             return;
 
         var vec2 = context.ReadValue<Vector2>();
