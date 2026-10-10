@@ -7,7 +7,7 @@ AnimationClip:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: ChestOpening
-  serializedVersion: 7
+  serializedVersion: 8
   m_Legacy: 0
   m_Compressed: 0
   m_UseHighQualityCurve: 1
@@ -51,6 +51,7 @@ AnimationClip:
       isPPtrCurve: 1
       isIntCurve: 0
       isSerializeReferenceCurve: 0
+      metaData: 0
     pptrCurveMapping:
     - {fileID: -880180870, guid: 674cef6bc0752dc408194ddd49e30b88, type: 3}
     - {fileID: 373633513, guid: 674cef6bc0752dc408194ddd49e30b88, type: 3}
@@ -62,7 +63,7 @@ AnimationClip:
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 0.48999998
+    m_StopTime: 0.48999995
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0

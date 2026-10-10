@@ -4,7 +4,7 @@ public class EntityMovementSound : EntitySound
 {
     [SerializeField] AudioClip _walkingSound;
     [SerializeField] float _delayBetween;
-    [SerializeField] MovementBase _movementBase;
+    [SerializeField] Movementable _movementBase;
 
     bool _isPlaying;
 

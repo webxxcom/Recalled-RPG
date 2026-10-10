@@ -22,18 +22,18 @@ namespace Recalled.Gameplay
         void PlayRequestWith(in AudioClipRequest request, AudioSource template)
         {
             var audioSource = Instantiate(template, request.Position, Quaternion.identity);
-            audioSource.clip = request.Clip;
+            audioSource.clip = request.AudioAsset.Clip;
             audioSource.Play();
 
-            Destroy(audioSource.gameObject, request.Clip.length);
+            Destroy(audioSource.gameObject, request.AudioAsset.Clip.length);
         }
 
         void HandleClipRequest(AudioClipRequest request)
         {
-            if (_mixerGroupToAudioSource.TryGetValue(request.MixerGroup, out var res))
+            if (_mixerGroupToAudioSource.TryGetValue(request.AudioAsset.AudioMixerGroup, out var res))
                 PlayRequestWith(request, res);
             else
-                Debug.LogError($"Didn't find the AudioSource for {request.MixerGroup} mixer group");
+                Debug.LogError($"Didn't find the AudioSource for {request.AudioAsset.AudioMixerGroup} mixer group");
         }
     }
 }

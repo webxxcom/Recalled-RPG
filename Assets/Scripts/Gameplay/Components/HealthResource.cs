@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.Events;
 
 [DisallowMultipleComponent]
 [RequireComponent(typeof(Collider2D))]
@@ -9,6 +10,7 @@ public class HealthResource : ValueResource
     float _invincibilityTimer;
 
     public event Action<DamageInfo> HpChanged;
+    public UnityEvent<DamageInfo> HpChangedUnty;
     public event Action<DamageInfo> Died;
     public event Action<DamageInfo> OnMax;
 
@@ -28,6 +30,7 @@ public class HealthResource : ValueResource
             return;
 
         HpChanged?.Invoke(damageInfo);
+        HpChangedUnty?.Invoke(damageInfo);
         int applied = Consume(damageInfo.Amount);
         if (applied != 0)
         {

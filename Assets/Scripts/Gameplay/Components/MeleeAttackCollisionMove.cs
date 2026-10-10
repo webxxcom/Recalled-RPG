@@ -3,7 +3,7 @@ using UnityEngine;
 [RequireComponent(typeof(Collider2D))]
 public class MeleeAttackCollisionMove : MonoBehaviour
 {
-    [SerializeField] MovementBase _movementBase;
+    [SerializeField] Movementable _movementBase;
     [SerializeField] Collider2D _hitbox;
 
     private void OnEnable()
@@ -21,7 +21,7 @@ public class MeleeAttackCollisionMove : MonoBehaviour
     private void OnValidate()
     {
         if (_movementBase == null)
-            _movementBase = GetComponentInParent<MovementBase>();
+            _movementBase = GetComponentInParent<Movementable>();
         if (_hitbox == null)
             _hitbox = GetComponent<Collider2D>();
     }

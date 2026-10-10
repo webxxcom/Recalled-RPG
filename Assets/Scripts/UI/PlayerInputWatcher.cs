@@ -4,8 +4,10 @@ using UnityEngine.InputSystem;
 [RequireComponent(typeof(PlayerInput))]
 public class PlayerInputWatcher : MonoBehaviour
 {
-    [SerializeField] InputDeviceRuntimeVariable _currentInputDevice;
     [SerializeField] AvailableInputDevicesSO _devices;
+
+    [Header("Sets Value to")]
+    [SerializeField] InputDeviceRuntimeVariable _currentInputDevice;
 
     void OnControlsChanged(PlayerInput playerInput)
     {

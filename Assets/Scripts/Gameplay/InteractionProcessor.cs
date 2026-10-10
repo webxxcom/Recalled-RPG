@@ -27,17 +27,11 @@ namespace Recalled.Gameplay
         private void OnTriggerEnter2D(Collider2D collision)
         {
             _overlaps.Add(collision);
-
-            if (collision.TryGetComponent<Approachable>(out var approachable))
-                approachable.Revealed();
         }
 
         private void OnTriggerExit2D(Collider2D collision)
         {
             _overlaps.Remove(collision);
-
-            if (collision.TryGetComponent<Approachable>(out var approachable))
-                approachable.Hidden();
         }
 
         private void OnDrawGizmos()

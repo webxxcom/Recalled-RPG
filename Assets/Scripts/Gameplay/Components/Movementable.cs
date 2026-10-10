@@ -2,7 +2,7 @@
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
-public abstract class MovementBase : MonoBehaviour
+public abstract class Movementable : MonoBehaviour
 {
     [SerializeField] float _walkingSpeed;
 
@@ -48,7 +48,7 @@ public abstract class MovementBase : MonoBehaviour
         MovementIntention = Vector2.zero;
     }
 
-    protected abstract Vector2 GetMovementIntention();
+    protected virtual Vector2 GetMovementIntention() => MovementIntention;
     public Vector2 GetFinalMovement()
     {
         float speedCoeficient = _speedAggregator.Get();

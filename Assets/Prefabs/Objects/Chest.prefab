@@ -13,11 +13,11 @@ GameObject:
   - component: {fileID: 5690167406442073076}
   - component: {fileID: 7782096850613656250}
   - component: {fileID: 8790835656728566700}
+  - component: {fileID: 3920353064923654166}
   - component: {fileID: 6960329525283874740}
-  - component: {fileID: 1889618957864744957}
-  - component: {fileID: 1395027961293807298}
   - component: {fileID: 2083957519114522692}
   - component: {fileID: 504635112985072468}
+  - component: {fileID: 6408188746821413493}
   m_Layer: 11
   m_Name: Chest
   m_TagString: Untagged
@@ -157,7 +157,7 @@ Animator:
   m_GameObject: {fileID: 5508140426223554905}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 22100000, guid: 1393fcd1cd2dbf34698ad23f5a9b1978, type: 2}
+  m_Controller: {fileID: 9100000, guid: 960f03b714fa79241a1634edcc8e7f21, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -181,6 +181,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c27360c2bf0492c4dad6adb95455d5ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Recalled.Gameplay::Recalled.Gameplay.Approachable
+  _detectionZone: {fileID: 6408188746821413493}
+  _trackedLayers:
+    serializedVersion: 2
+    m_Bits: 256
+  Approached:
+    m_PersistentCalls:
+      m_Calls: []
+  Retreated:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &3920353064923654166
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5508140426223554905}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07a3ce2474497ac4cb5b600bfb75e0fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Recalled.Gameplay::Recalled.Gameplay.Interactable
 --- !u!114 &6960329525283874740
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -194,36 +216,57 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ChestScript
   _requiredKey: {fileID: 0}
---- !u!114 &1889618957864744957
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5508140426223554905}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ec5ce20bdf26d345b4ae81aef904296, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Recalled.Gameplay::Recalled.Gameplay.Lootable
   _lootTable:
     _loots:
-    - _item: {fileID: 11400000, guid: 3ab233bcb14d04847b07c29f2bfee65a, type: 2}
+    - _item: {fileID: 11400000, guid: 3aeea00b91451b84dae2342f27dda5b9, type: 2}
       _count: 0
-      _weight: 1
---- !u!114 &1395027961293807298
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5508140426223554905}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0771b89ae2c8c494b96a55bae484486d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: '::'
+      _weight: 111
   _animator: {fileID: 7782096850613656250}
+  _opened:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 504635112985072468}
+        m_TargetAssemblyTypeName: Recalled.Gameplay.RequestClipDispatcher, Recalled.Gameplay
+        m_MethodName: Dispatch
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 11400000, guid: 22769199b4ff90e4088431db22455695, type: 2}
+          m_ObjectArgumentAssemblyTypeName: Recalled.Core.AudioAsset, Recalled.Core
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  _rejected:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 504635112985072468}
+        m_TargetAssemblyTypeName: Recalled.Gameplay.RequestClipDispatcher, Recalled.Gameplay
+        m_MethodName: Dispatch
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 11400000, guid: 36ad7f464dc732a4391c7a63769cbbee, type: 2}
+          m_ObjectArgumentAssemblyTypeName: Recalled.Core.AudioAsset, Recalled.Core
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  _openableChanged:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2083957519114522692}
+        m_TargetAssemblyTypeName: Recalled.Gameplay.ApproachPopup, Recalled.Gameplay
+        m_MethodName: set_enabled
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2083957519114522692
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -249,9 +292,43 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c188fef6f57ebd3418addda2f20540dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Recalled.Gameplay::Recalled.Gameplay.ReactorSound
-  _clip: {fileID: 8300000, guid: b7747f86b7869eb469e16b909b56c031, type: 3}
-  _mixerGroup: {fileID: 2485437016345203308, guid: 690e8d8c0ae056542bcef00037ba2c5a, type: 2}
   AudioClipRequestChannel: {fileID: 11400000, guid: 67b85b404b05c124ea5e6d5550c770de, type: 2}
+--- !u!58 &6408188746821413493
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5508140426223554905}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_Radius: 1.68
 --- !u!1 &6593031560779016836
 GameObject:
   m_ObjectHideFlags: 0
@@ -262,7 +339,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7981899685571569528}
   - component: {fileID: 4405982558092406565}
-  m_Layer: 11
+  m_Layer: 0
   m_Name: Marker
   m_TagString: Untagged
   m_Icon: {fileID: 0}

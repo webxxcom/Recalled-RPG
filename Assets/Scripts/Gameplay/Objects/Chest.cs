@@ -1,51 +1,70 @@
 using Recalled.Systems.Inventory;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Recalled.Gameplay
 {
-    [RequireComponent(typeof(Lootable))]
-    public sealed class Chest : Interactable
+    [RequireComponent(typeof(Interactable))]
+    public sealed class Chest : MonoBehaviour
     {
         [SerializeField] ItemDefinition _requiredKey;
+        [SerializeField] LootTable _lootTable;
+        [SerializeField] Animator _animator;
 
-        Lootable _lootable;
+        [Header("Edges: fire once, on the change, never on load")]
+        [SerializeField] UnityEvent _opened;
+        [SerializeField] UnityEvent _rejected;
 
-        public enum States
-        {
-            Opened,
-            Rejected,
-            Closed
-        }
+        [Header("Levels: current state, sent at start and on every change")]
+        // true while the chest can still be opened, e.g. bind ApproachPopup.enabled (dynamic bool).
+        [SerializeField] UnityEvent<bool> _openableChanged;
+
+        Interactable _interactable;
+
+        public enum States { Opened, Closed }
         public States State { get; private set; } = States.Closed;
 
-        public override bool CanBeInteracted
-            => enabled && (_requiredKey == null);// || _inventory.GeneralItems.Has(_requiredKey));
+        void Awake() => _interactable = GetComponent<Interactable>();
+        void OnEnable() => _interactable.RequestInteraction += Interact;
+        void OnDisable() => _interactable.RequestInteraction -= Interact;
+        void Start() => ApplyLevels();
 
-        protected override void Awake()
+        public void Interact(InteractionProcessor interactor)
         {
-            base.Awake();
-
-            _lootable = GetComponent<Lootable>();
-        }
-
-        public override void Interact(InteractionProcessor interactor)
-        {
-            if (!CanBeInteracted)
+            if (State == States.Opened)
                 return;
 
-            var looted = _lootable.LootItem();
             var inventory = interactor.GetComponentInParent<InventoryHolder>().Inventory;
-            if (_requiredKey == null || inventory.Take(_requiredKey, 1))
-            {
-                // Successful interaction only if item can be added
-                inventory.Add(looted);
-                State = States.Opened;
-                enabled = false;
-            }
-            else State = States.Rejected;
+            var loot = _lootTable.GetItem();
 
-            //Even if interaction is not successful reactors check the Chest.State
-            base.Interact(interactor);
+            bool hasKey = _requiredKey == null || inventory.Take(_requiredKey, 1);
+            if (!hasKey)
+            {
+                _rejected.Invoke();
+                return;
+            }
+            
+            inventory.Add(loot);
+
+            State = States.Opened;
+            ApplyLevels();
+            _opened.Invoke();
+        }
+
+        public void SetState(States state)
+        {
+            State = state;
+            ApplyLevels();
+        }
+
+        void ApplyLevels()
+        {
+            bool open = State == States.Opened;
+
+            if (_animator != null)
+                _animator.SetBool(AnimatorParameters.IsOpenHash, open);
+
+            _openableChanged.Invoke(!open);
         }
     }
 }

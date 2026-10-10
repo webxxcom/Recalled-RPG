@@ -1,26 +1,25 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PlayerMovement : MovementBase
+[RequireComponent(typeof(SprintingResource))]
+[RequireComponent(typeof(Dash))]
+public sealed class PlayerMovement : Movementable
 {
-    [SerializeField] SprintingResource _playerSprinting;
-    [SerializeField] Dash _playerDash;
+    SprintingResource _sprintingResource;
+    Dash _dash;
 
-    public bool IsSprinting => _playerSprinting.IsActive;
+    public bool IsSprinting => _sprintingResource.IsActive;
+
+    private void Awake()
+    {
+        _sprintingResource = GetComponent<SprintingResource>();
+        _dash = GetComponent<Dash>();
+    }
 
     void OnMove(InputValue value)
         => MovementIntention = value.Get<Vector2>();
     void OnDash(InputValue _)
-        => _playerDash.TryDash(FacingDirection);
+        => _dash.TryDash(FacingDirection);
     void OnSprint(InputValue value)
-        => _playerSprinting.Toggle(value.isPressed);
-
-    protected override Vector2 GetMovementIntention()
-    {
-        if (!IsWalking)
-            return Vector2.zero;
-
-        Vector2 finalMovement = MovementIntention;
-        return finalMovement;
-    }
+        => _sprintingResource.Toggle(value.isPressed);
 }

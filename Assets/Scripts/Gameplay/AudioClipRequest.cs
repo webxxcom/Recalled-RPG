@@ -1,22 +1,20 @@
+using Recalled.Core;
 using System;
 using UnityEngine;
-using UnityEngine.Audio;
 
 namespace Recalled.Gameplay
 {
     public readonly struct AudioClipRequest
     {
-        public readonly AudioClip Clip;
-        public readonly AudioMixerGroup MixerGroup;
+        public readonly SoundCue AudioAsset;
         public readonly Vector2 Position;
 
-        public AudioClipRequest(AudioClip clip, AudioMixerGroup group, Vector2 position)
+        public AudioClipRequest(SoundCue audioAsset, Vector2 position)
         {
-            if (clip == null || group == null)
+            if (audioAsset)
                 throw new ArgumentNullException();
 
-            Clip = clip;
-            MixerGroup = group;
+            AudioAsset = audioAsset;
             Position = position;
         }
     }

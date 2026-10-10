@@ -6,27 +6,23 @@ using UnityEngine;
 namespace Recalled.Gameplay
 {
     [DisallowMultipleComponent]
-    public class Interactable : MonoBehaviour
+    public sealed class Interactable : MonoBehaviour
     {
         IReactor[] _reactors;
 
         IEnumerable<IReactor> ActiveReactors
             => _reactors.Where(r => r.enabled);
 
-        public virtual bool CanBeInteracted => true;
-        public event Action Interacted;
+        public Action<InteractionProcessor> RequestInteraction;
 
-        protected virtual void Awake()
+        void Awake()
         {
             _reactors = GetComponentsInChildren<IReactor>();
         }
 
-        public virtual void Interact(InteractionProcessor interactor)
+        public void Interact(InteractionProcessor interactor)
         {
-            foreach (var reactor in ActiveReactors)
-                reactor.React();
-
-            Interacted?.Invoke();
+            RequestInteraction?.Invoke(interactor);
         }
     }
 }

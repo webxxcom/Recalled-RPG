@@ -4,13 +4,16 @@ using UnityEngine;
 namespace Recalled.Gameplay
 {
     [SelectionBase]
-    public class NpcController : MonoBehaviour, IReactor, IApproachReactor
+    [RequireComponent(typeof(Interactable))]
+    public class NpcController : MonoBehaviour, IApproachReactor
     {
         [SerializeField] DialogueSource _data;
         [SerializeField] GameObject _dialogInfoPopup;
 
         [Header("Raises")]
         [SerializeField] DialogueEventChannel _dialogueEventChannel;
+
+        Interactable _interactable;
 
         void Awake()
         {
@@ -19,21 +22,24 @@ namespace Recalled.Gameplay
                 Debug.LogError($"{gameObject.name}: missing some references");
                 enabled = false;
             }
+            _interactable = GetComponent<Interactable>();
         }
 
         private void OnEnable()
         {
             if (_dialogInfoPopup.activeInHierarchy) _dialogInfoPopup.SetActive(false);
+
+            _interactable.RequestInteraction += Raise;
         }
 
-        public void Raise()
+        private void OnDisable()
+        {
+            _interactable.RequestInteraction -= Raise;
+        }
+
+        public void Raise(InteractionProcessor _)
         {
             _dialogueEventChannel.Invoke(_data);
-        }
-
-        public void React()
-        {
-            Raise();
         }
 
         public void ReactToApproach(Approachable _)

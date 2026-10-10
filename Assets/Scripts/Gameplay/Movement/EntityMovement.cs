@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class EntityMovement : MovementBase
+public class EntityMovement : Movementable
 {
     [Header("Config")]
     [SerializeField] MovementAIConfig _movementAIConfig;

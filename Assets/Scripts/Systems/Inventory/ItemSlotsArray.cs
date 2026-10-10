@@ -147,7 +147,7 @@ namespace Recalled.Systems.Inventory
         public bool Remove(ItemDefinition itemDefinition)
             => Take(itemDefinition, 1);
 
-        bool TakeRecursively(ItemDefinition definition, int count, int i)
+        bool TakeRecursively(ItemDefinition definition, int count, int i = 0)
         {
             for (; i < _slots.Length; ++i)
             {
@@ -184,7 +184,7 @@ namespace Recalled.Systems.Inventory
             if (count <= 0)
                 throw new ArgumentException();
 
-            if (TakeRecursively(definition, count, 0))
+            if (TakeRecursively(definition, count))
             {
                 SlotsChanged?.Invoke();
                 return true;

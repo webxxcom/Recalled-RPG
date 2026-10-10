@@ -14,4 +14,5 @@ public static class AnimatorParameters
     public static readonly int MeleeHash = Animator.StringToHash("Melee");
     public static readonly int CollectedHash = Animator.StringToHash("Collected");
     public static readonly int IsArmedHash = Animator.StringToHash("IsArmed");
+    public static readonly int IsOpenHash = Animator.StringToHash("IsOpen");
 }

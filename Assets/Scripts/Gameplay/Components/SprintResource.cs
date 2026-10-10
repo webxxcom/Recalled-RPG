@@ -6,7 +6,7 @@ public class SprintingResource : ValueResource
     [SerializeField] int _usage;
     [SerializeField] int _restore;
     [SerializeField] float _speedMultiplier;
-    [SerializeField] MovementBase _movementBase;
+    [SerializeField] Movementable _movementBase;
 
     public float SpeedMultiplier => _speedMultiplier;
 
