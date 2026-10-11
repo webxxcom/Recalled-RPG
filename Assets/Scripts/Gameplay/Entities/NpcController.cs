@@ -6,7 +6,7 @@ namespace Recalled.Gameplay
 {
     [SelectionBase]
     [RequireComponent(typeof(Interactable))]
-    public class NpcController : MonoBehaviour, IApproachReactor
+    public class NpcController : MonoBehaviour, IZoneReactor
     {
         [SerializeField] DialogueSource _data;
         [SerializeField] GameObject _dialogInfoPopup;
@@ -16,6 +16,8 @@ namespace Recalled.Gameplay
 
         [Header("Raises")]
         [SerializeField] DialogueEventChannel _dialogueEventChannel;
+
+        public bool IsLevel => true;
 
         Interactable _interactable;
 
@@ -47,12 +49,12 @@ namespace Recalled.Gameplay
             _dialogueEventChannel.Invoke(_data);
         }
 
-        public void ReactToApproach(Approachable _)
+        public void Present(Zone _)
         {
             _dialogInfoPopup.SetActive(true);
         }
 
-        public void ReactToRetreat(Approachable _)
+        public void Absent(Zone _)
         {
             _dialogInfoPopup.SetActive(false);
         }

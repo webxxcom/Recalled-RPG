@@ -17,7 +17,7 @@ namespace Recalled.UI
         [SerializeField] InputActionReference _skipAction;
         [SerializeField] EmotionRegistry _emotions;
         [SerializeField] SpeakerRegistry _speakers;
-        [SerializeField] CanvasBobbleEffect _continueButton;
+        [SerializeField] BobbleEffect _continueButton;
         [SerializeField] PrefabPopulator _playerButtons;
 
         ScreenController _screenContoller;

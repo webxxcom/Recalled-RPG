@@ -6,12 +6,14 @@ using UnityEngine;
 namespace Recalled.Gameplay
 {
     [DisallowMultipleComponent]
+    [RequireComponent(typeof(Focusable))]
     public sealed class Interactable : MonoBehaviour
     {
         IReactor[] _reactors;
 
         IEnumerable<IReactor> ActiveReactors
             => _reactors.Where(r => r.enabled);
+
 
         public Action<InteractionProcessor> RequestInteraction;
 

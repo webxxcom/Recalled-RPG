@@ -1,7 +1,6 @@
 using Recalled.Systems.Inventory;
 using System;
 using UnityEngine;
-using UnityEngine.Events;
 
 namespace Recalled.Gameplay
 {
@@ -10,22 +9,16 @@ namespace Recalled.Gameplay
     {
         [SerializeField] ItemDefinition _requiredKey;
         [SerializeField] LootTable _lootTable;
+
+        // Animator is the tied to the chest because opening means opening the lid
         [SerializeField] Animator _animator;
-
-        [Header("Edges: fire once, on the change, never on load")]
-        [SerializeField] UnityEvent _opened;
-        [SerializeField] UnityEvent _rejected;
-
-        [Header("Levels: current state, sent at start and on every change")]
-        // true while the chest can still be opened, e.g. bind ApproachPopup.enabled (dynamic bool).
-        [SerializeField] UnityEvent<bool> _openableChanged;
 
         Interactable _interactable;
 
         public enum States { Opened, Closed }
         public States State { get; private set; } = States.Closed;
 
-        void Awake()
+        void Awake()    
         {
             if (!_lootTable.IsValid)
                 throw new ArgumentException("Loot table is not valid");
@@ -36,26 +29,32 @@ namespace Recalled.Gameplay
         void OnDisable() => _interactable.RequestInteraction -= Interact;
         void Start() => ApplyLevels();
 
+        bool _wasOpened;
+
         public void Interact(InteractionProcessor interactor)
         {
-            if (State == States.Opened)
-                return;
-
-            var inventory = interactor.GetComponentInParent<InventoryHolder>().Inventory;
-            var loot = _lootTable.GetItem();
-
-            bool hasKey = _requiredKey == null || inventory.Take(_requiredKey, 1);
-            if (!hasKey)
+            if (!_wasOpened)
             {
-                _rejected.Invoke();
-                return;
-            }
-            
-            inventory.Add(loot);
+                var inventory = interactor.GetComponentInParent<InventoryHolder>().Inventory;
+                var loot = _lootTable.GetItem();
 
-            State = States.Opened;
-            ApplyLevels();
-            _opened.Invoke();
+                bool hasKey = _requiredKey == null || inventory.Take(_requiredKey, 1);
+                if (!hasKey)
+                {
+                    return;
+                }
+
+                inventory.Add(loot);
+            }
+            _wasOpened = true;
+
+            ToggleState();
+        }
+
+        void ToggleState()
+        {
+            if (State == States.Opened) SetState(States.Closed);
+            else SetState(States.Opened);
         }
 
         public void SetState(States state)
@@ -70,8 +69,6 @@ namespace Recalled.Gameplay
 
             if (_animator != null)
                 _animator.SetBool(AnimatorParameters.IsOpenHash, open);
-
-            _openableChanged.Invoke(!open);
         }
     }
 }
