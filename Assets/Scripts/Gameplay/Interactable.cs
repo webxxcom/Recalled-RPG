@@ -1,25 +1,27 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 
 namespace Recalled.Gameplay
 {
     [DisallowMultipleComponent]
     [RequireComponent(typeof(Focusable))]
+    [RequireComponent(typeof(Collider2D))]
     public sealed class Interactable : MonoBehaviour
     {
-        IReactor[] _reactors;
-
-        IEnumerable<IReactor> ActiveReactors
-            => _reactors.Where(r => r.enabled);
-
-
         public Action<InteractionProcessor> RequestInteraction;
 
-        void Awake()
+        Collider2D _collider;
+
+        private void Awake()
         {
-            _reactors = GetComponentsInChildren<IReactor>();
+            _collider = GetComponent<Collider2D>();
+
+            var interactableMask = LayerMask.NameToLayer("Interactable");
+            if (interactableMask == -1)
+                throw new ArgumentException();
+
+            _collider.includeLayers |= (1 << interactableMask);
+
         }
 
         public void Interact(InteractionProcessor interactor)

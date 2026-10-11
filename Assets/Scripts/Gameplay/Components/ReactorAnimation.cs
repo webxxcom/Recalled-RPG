@@ -2,7 +2,7 @@ using Recalled.Gameplay;
 using UnityEngine;
 
 [RequireComponent(typeof(Animator))]
-public class ReactorAnimation : MonoBehaviour, IReactor
+public class ReactorAnimation : MonoBehaviour
 {
     [SerializeField] Animator _animator;
 

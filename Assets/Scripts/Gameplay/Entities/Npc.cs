@@ -6,18 +6,15 @@ namespace Recalled.Gameplay
 {
     [SelectionBase]
     [RequireComponent(typeof(Interactable))]
-    public class NpcController : MonoBehaviour, IZoneReactor
+    public class Npc : MonoBehaviour
     {
         [SerializeField] DialogueSource _data;
-        [SerializeField] GameObject _dialogInfoPopup;
 
         [Header("Edge event kind, fired each interaction")]
-        [SerializeField] UnityEvent _interacted;
+        [SerializeField] UnityEvent _dialogueStarted;
 
         [Header("Raises")]
         [SerializeField] DialogueEventChannel _dialogueEventChannel;
-
-        public bool IsLevel => true;
 
         Interactable _interactable;
 
@@ -33,8 +30,6 @@ namespace Recalled.Gameplay
 
         private void OnEnable()
         {
-            if (_dialogInfoPopup.activeInHierarchy) _dialogInfoPopup.SetActive(false);
-
             _interactable.RequestInteraction += Interact;
         }
 
@@ -45,18 +40,8 @@ namespace Recalled.Gameplay
 
         public void Interact(InteractionProcessor _)
         {
-            _interacted.Invoke();
+            _dialogueStarted.Invoke();
             _dialogueEventChannel.Invoke(_data);
-        }
-
-        public void Present(Zone _)
-        {
-            _dialogInfoPopup.SetActive(true);
-        }
-
-        public void Absent(Zone _)
-        {
-            _dialogInfoPopup.SetActive(false);
         }
     }
 }

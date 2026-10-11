@@ -1,5 +1,6 @@
 using Recalled.Systems.Inventory;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Recalled.Gameplay
 {
@@ -9,13 +10,7 @@ namespace Recalled.Gameplay
     {
         [SerializeField] ItemDefinition _definition;
         [SerializeField] int _count = 1;
-
-        IReactor[] _reactors;
-
-        private void Awake()
-        {
-            _reactors = GetComponentsInChildren<IReactor>();
-        }
+        [SerializeField] UnityEvent _collected;
 
         private void OnTriggerEnter2D(Collider2D collision)
         {
@@ -25,13 +20,11 @@ namespace Recalled.Gameplay
                     return;
 
                 _count = holder.Inventory.Add(_definition, _count);
+                _collected?.Invoke();
+
                 if (_count != 0)
                     return;
 
-                foreach (var reactor in _reactors)
-                    reactor.React();
-
-                // First let reactors react and then destroy
                 Destroy(gameObject);
             }
         }

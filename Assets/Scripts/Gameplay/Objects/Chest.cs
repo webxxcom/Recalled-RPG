@@ -1,6 +1,7 @@
 using Recalled.Systems.Inventory;
 using System;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Recalled.Gameplay
 {
@@ -10,6 +11,10 @@ namespace Recalled.Gameplay
         [SerializeField] ItemDefinition _requiredKey;
         [SerializeField] LootTable _lootTable;
 
+        [Header("Edge events")]
+        [SerializeField] UnityEvent _openClose;
+        [SerializeField] UnityEvent _rejected;
+
         // Animator is the tied to the chest because opening means opening the lid
         [SerializeField] Animator _animator;
 
@@ -18,7 +23,7 @@ namespace Recalled.Gameplay
         public enum States { Opened, Closed }
         public States State { get; private set; } = States.Closed;
 
-        void Awake()    
+        void Awake()
         {
             if (!_lootTable.IsValid)
                 throw new ArgumentException("Loot table is not valid");
@@ -30,7 +35,6 @@ namespace Recalled.Gameplay
         void Start() => ApplyLevels();
 
         bool _wasOpened;
-
         public void Interact(InteractionProcessor interactor)
         {
             if (!_wasOpened)
@@ -41,13 +45,14 @@ namespace Recalled.Gameplay
                 bool hasKey = _requiredKey == null || inventory.Take(_requiredKey, 1);
                 if (!hasKey)
                 {
+                    _rejected.Invoke();
                     return;
                 }
 
                 inventory.Add(loot);
             }
-            _wasOpened = true;
 
+            _openClose.Invoke();
             ToggleState();
         }
 
@@ -67,6 +72,8 @@ namespace Recalled.Gameplay
         {
             bool open = State == States.Opened;
 
+            if (!_wasOpened) 
+                _wasOpened = open;
             if (_animator != null)
                 _animator.SetBool(AnimatorParameters.IsOpenHash, open);
         }

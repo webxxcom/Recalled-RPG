@@ -3,7 +3,7 @@ using UnityEngine;
 namespace Recalled.Gameplay
 {
     [SelectionBase, DisallowMultipleComponent]
-    public class TrainingDummyController : MonoBehaviour
+    public class TrainingDummyAnimation : MonoBehaviour
     {
         private static readonly int DamageHardHash = Animator.StringToHash("HurtHard");
         private static readonly int DamageMidHash = Animator.StringToHash("HurtMid");

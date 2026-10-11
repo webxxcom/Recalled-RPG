@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 2486069124411795992}
   - component: {fileID: 8482076990832578042}
   - component: {fileID: 6924303021497496187}
+  - component: {fileID: 1886725608859973883}
   m_Layer: 6
   m_Name: Hurtbox
   m_TagString: Untagged
@@ -113,8 +114,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 8080906468532238491}
-        m_TargetAssemblyTypeName: TrainingDummyController, Recalled.Gameplay
+      - m_Target: {fileID: 1886725608859973883}
+        m_TargetAssemblyTypeName: Recalled.Gameplay.TrainingDummyAnimation, Recalled.Gameplay
         m_MethodName: HpChanged
         m_Mode: 0
         m_Arguments:
@@ -151,6 +152,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Recalled.Gameplay::Recalled.Gameplay.RequestClipDispatcher
   _audioClipRequestChannel: {fileID: 11400000, guid: 67b85b404b05c124ea5e6d5550c770de, type: 2}
+--- !u!114 &1886725608859973883
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 175039996589242903}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c0fd3485b931c74881c5170f6f28592, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Recalled.Gameplay::Recalled.Gameplay.TrainingDummyAnimation
+  _animator: {fileID: 3784235917605943660}
 --- !u!1 &8822795234151242890
 GameObject:
   m_ObjectHideFlags: 0
@@ -162,7 +176,6 @@ GameObject:
   - component: {fileID: 7308363247229969624}
   - component: {fileID: 1997348381863260962}
   - component: {fileID: 1614906266074812132}
-  - component: {fileID: 8080906468532238491}
   m_Layer: 11
   m_Name: Training Dummy
   m_TagString: Untagged
@@ -251,19 +264,6 @@ CapsuleCollider2D:
   m_Offset: {x: 0.6425835, y: 0.12457359}
   m_Size: {x: 0.5619152, y: 0.34902158}
   m_Direction: 1
---- !u!114 &8080906468532238491
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8822795234151242890}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1c0fd3485b931c74881c5170f6f28592, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: '::'
-  _animator: {fileID: 3784235917605943660}
 --- !u!1001 &2638589704726934692
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -168,6 +168,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CollectibleScript
   _definition: {fileID: 11400000, guid: 34c7a720b0e1804408665a3950b33fdc, type: 2}
   _count: 1
+  _collected:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6781162461317831680}
+        m_TargetAssemblyTypeName: Recalled.Gameplay.RequestClipDispatcher, Recalled.Gameplay
+        m_MethodName: Dispatch
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 11400000, guid: d411e56883fafe74191b00fa24215ca7, type: 2}
+          m_ObjectArgumentAssemblyTypeName: Recalled.Core.SoundCue, Recalled.Core
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &6781162461317831680
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -180,6 +195,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c188fef6f57ebd3418addda2f20540dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  _clip: {fileID: 8300000, guid: d87a13c46e73db545bb4e8a550eeca94, type: 3}
-  _mixerGroup: {fileID: 2485437016345203308, guid: 690e8d8c0ae056542bcef00037ba2c5a, type: 2}
-  AudioClipRequestChannel: {fileID: 11400000, guid: 67b85b404b05c124ea5e6d5550c770de, type: 2}
+  _audioClipRequestChannel: {fileID: 11400000, guid: 67b85b404b05c124ea5e6d5550c770de, type: 2}

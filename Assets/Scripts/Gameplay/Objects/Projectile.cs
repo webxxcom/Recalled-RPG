@@ -4,7 +4,7 @@ namespace Recalled.Gameplay
 {
     [RequireComponent(typeof(Rigidbody2D))]
     [RequireComponent(typeof(Collider2D))]
-    public class ProjectileScript : MonoBehaviour
+    public class Projectile : MonoBehaviour
     {
         [SerializeField] float _advancingSpeed;
         [SerializeField] int _dealtDamage;
