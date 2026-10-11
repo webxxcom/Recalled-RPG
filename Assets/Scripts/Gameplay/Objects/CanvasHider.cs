@@ -1,47 +1,50 @@
 using System.Collections;
 using UnityEngine;
 
-[RequireComponent(typeof(CanvasGroup))]
-public class CanvasHider : MonoBehaviour
+namespace Recalled.Gameplay
 {
-    [SerializeField] float _offset;
-    [SerializeField] float _speed = 1.5f;
-
-    CanvasGroup _canvasGroup;
-
-    private void Awake()
+    [RequireComponent(typeof(CanvasGroup))]
+    public sealed class CanvasHider : MonoBehaviour
     {
-        _canvasGroup = GetComponent<CanvasGroup>();
-        _canvasGroup.alpha = 0;
-    }
+        [SerializeField] float _offset;
+        [SerializeField] float _speed = 1.5f;
 
-    Coroutine _hideCoroutine;
-    IEnumerator WaitAndHideCanvas()
-    {
-        while (_canvasGroup.alpha < 0.95f)
+        CanvasGroup _canvasGroup;
+
+        private void Awake()
         {
-            _canvasGroup.alpha += Time.deltaTime * 10;
-
-            yield return null;
+            _canvasGroup = GetComponent<CanvasGroup>();
+            _canvasGroup.alpha = 0;
         }
-        _canvasGroup.alpha = 1;
 
-        yield return new WaitForSeconds(_offset);
-
-        while (_canvasGroup.alpha > 0.1f)
+        Coroutine _hideCoroutine;
+        IEnumerator WaitAndHideCanvas()
         {
-            _canvasGroup.alpha = Mathf.Lerp(_canvasGroup.alpha, 0, Time.deltaTime * _speed);
+            while (_canvasGroup.alpha < 0.95f)
+            {
+                _canvasGroup.alpha += Time.deltaTime * 10;
 
-            yield return null;
+                yield return null;
+            }
+            _canvasGroup.alpha = 1;
+
+            yield return new WaitForSeconds(_offset);
+
+            while (_canvasGroup.alpha > 0.1f)
+            {
+                _canvasGroup.alpha = Mathf.Lerp(_canvasGroup.alpha, 0, Time.deltaTime * _speed);
+
+                yield return null;
+            }
+            _canvasGroup.alpha = 0;
         }
-        _canvasGroup.alpha = 0;
-    }
 
-    public void ShowCanvas()
-    {
-        if (_hideCoroutine != null)
-            StopCoroutine(_hideCoroutine);
+        public void ShowCanvas()
+        {
+            if (_hideCoroutine != null)
+                StopCoroutine(_hideCoroutine);
 
-        _hideCoroutine = StartCoroutine(WaitAndHideCanvas());
+            _hideCoroutine = StartCoroutine(WaitAndHideCanvas());
+        }
     }
 }

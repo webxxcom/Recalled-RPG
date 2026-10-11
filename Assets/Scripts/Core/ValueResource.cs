@@ -17,8 +17,6 @@ namespace Recalled.Core
 
         /// <summary> (oldVal, newVal) after the change </summary>
         public event Action<int, int> ValueChanged;
-        public event Action<int> MinValueReached;
-        public event Action<int> MaxValueReached;
 
         protected virtual void Awake()
         {
@@ -48,11 +46,6 @@ namespace Recalled.Core
                 return 0;
 
             ValueChanged?.Invoke(oldVal, newVal);
-
-            if (oldVal != 0 && newVal == 0)
-                MinValueReached?.Invoke(oldVal);
-            else if (oldVal != MaxValue && newVal == MaxValue)
-                MaxValueReached?.Invoke(oldVal);
 
             return applied;
         }

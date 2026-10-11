@@ -1,4 +1,3 @@
-using Recalled.Core;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
@@ -23,8 +22,6 @@ namespace Recalled.Core
 
         private void OnEnable()
         {
-            Set(_valueResource.CurrentValue);
-
             _valueResource.ValueChanged += OnValueChanged;
         }
 

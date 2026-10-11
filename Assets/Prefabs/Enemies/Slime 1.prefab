@@ -1029,7 +1029,6 @@ GameObject:
   m_Component:
   - component: {fileID: 109880808415225223}
   - component: {fileID: 3542581605157556199}
-  - component: {fileID: 7028777596942941840}
   - component: {fileID: 3505502132724376593}
   - component: {fileID: 892592156849737773}
   - component: {fileID: 2390632386251594846}
@@ -1086,29 +1085,6 @@ Canvas:
   m_SortingLayerID: -973895595
   m_SortingOrder: 0
   m_TargetDisplay: 0
---- !u!114 &7028777596942941840
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3943966092059488795}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.CanvasScaler
-  m_UiScaleMode: 0
-  m_ReferencePixelsPerUnit: 100
-  m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
-  m_ScreenMatchMode: 0
-  m_MatchWidthOrHeight: 0
-  m_PhysicalUnit: 3
-  m_FallbackScreenDPI: 96
-  m_DefaultSpriteDPI: 96
-  m_DynamicPixelsPerUnit: 16
-  m_PresetInfoIsWorld: 1
 --- !u!225 &3505502132724376593
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -1161,11 +1137,6 @@ GameObject:
   - component: {fileID: 7085225572803684528}
   - component: {fileID: 8293097748507972211}
   - component: {fileID: 3686550405581697464}
-  - component: {fileID: 7596529023633342233}
-  - component: {fileID: 6875922575204947163}
-  - component: {fileID: 7862802822524356559}
-  - component: {fileID: 2339780574607546230}
-  - component: {fileID: 7765137045458581782}
   m_Layer: 6
   m_Name: Hurtbox
   m_TagString: Untagged
@@ -1237,82 +1208,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HealthResource
   _config: {fileID: 11400000, guid: 2e463e3769a329247a9da0cbb5b94970, type: 2}
-  _maxValue: 1
-  _currentValue: {fileID: 0}
-  _isInfinite: 0
---- !u!114 &7596529023633342233
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3947751842682473356}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e6b13a084ea28e24882900f1260c62a9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::DamageBlinking
-  _health: {fileID: 3686550405581697464}
-  _duration: 1
-  _blinkInterval: 0.1
-  _spriteRendererGroup: {fileID: 7500885327404439899}
---- !u!114 &6875922575204947163
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3947751842682473356}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 943e5b8ebd6bccc4cbf8959f2ae8d07d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::DamageInvincibility
-  _health: {fileID: 3686550405581697464}
-  _duration: 1
---- !u!114 &7862802822524356559
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3947751842682473356}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b3b3c0a778eeb5c41a3ebf29b5bc137b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::DamageKnockback
-  _health: {fileID: 3686550405581697464}
-  _externalVelocity: {fileID: 4598033842935235403}
---- !u!114 &2339780574607546230
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3947751842682473356}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0768de9f67a9c2a4289cb86fd00daa87, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::DamageParticles
-  _health: {fileID: 3686550405581697464}
-  _particles: {fileID: 2466567890511269386, guid: 80ca15d7024dd724e95d1d3bfd987aba, type: 3}
---- !u!114 &7765137045458581782
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3947751842682473356}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7a921302f7a41f3468ca0d18ff689b06, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: '::'
-  _health: {fileID: 3686550405581697464}
-  _animator: {fileID: 3120718460063332462}
-  _timeout: 1
+  _intVariable: {fileID: 0}
+  HpChangedUnty:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &4117085876247267688
 GameObject:
   m_ObjectHideFlags: 0
