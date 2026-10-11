@@ -8,10 +8,10 @@ namespace Recalled.Gameplay
         public readonly float KnockbackPower;
         public readonly int Amount;
         public readonly GameObject Source;
-        public readonly HealthResource Target;
+        public readonly Health Target;
         public readonly Vector2 Direction;
 
-        public DamageInfo(float knockbackPower, int amount, GameObject source, HealthResource health)
+        public DamageInfo(float knockbackPower, int amount, GameObject source, Health health)
         {
             if (source == null || health == null)
                 throw new ArgumentNullException();
@@ -20,8 +20,7 @@ namespace Recalled.Gameplay
             KnockbackPower = knockbackPower;
             Source = source;
             Target = health;
-            Direction =
-                (Target.Hurtbox.bounds.center - source.GetComponentInChildren<HealthResource>().Hurtbox.bounds.center).normalized;
+            Direction = (Target.Center - source.GetComponent<Health>().Center).normalized;
         }
     }
 }

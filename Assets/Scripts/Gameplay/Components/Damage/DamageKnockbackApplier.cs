@@ -4,10 +4,9 @@ namespace Recalled.Gameplay
 {
     public class DamageKnockbackApplier : MonoBehaviour
     {
-        public void Apply(DamageInfo di)
+        public void Apply(in DamageInfo di)
         {
-            di.Target.transform.parent
-                .GetComponent<ExternalVelocity>().Add(di.Direction * di.KnockbackPower);
+            di.Target.GetComponent<ExternalVelocity>().Add(di.Direction * di.KnockbackPower);
         }
     }
 }

@@ -5,15 +5,21 @@ namespace Recalled.Gameplay
     public sealed class AnimateDeath : MonoBehaviour
     {
         [SerializeField] Animator _animator;
-        [SerializeField] float _timeout = 1;
+        [SerializeField] Health _health;
 
-        public void CheckAndExecute(DamageInfo di)
+        private void Awake()
         {
-            if (!di.Target.IsDead)
-                return;
-            
-            _animator.SetTrigger(AnimatorParameters.DieHash);
-            Destroy(transform.parent.gameObject, _timeout);
+            if (_animator == null || _health == null)
+                throw new MissingReferenceException();
         }
+
+        void OnEnable() => _health.Died += Animate;
+        void OnDisable() => _health.Died -= Animate;
+        void Animate(DamageInfo _)
+        {
+            _animator.SetTrigger(AnimatorParameters.DieHash);
+        }
+
+        public void Destroy() => Destroy(transform.parent.gameObject);
     }
 }

@@ -2,7 +2,27 @@ fileFormatVersion: 2
 guid: 1ced46854e1db93499286457dbc182d9
 ScriptedImporter:
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:AnimationClip
+      assembly: UnityEngine.AnimationModule
+      name: DBack
+    second: {fileID: 7400000, guid: 4665776ce56ac1541af1a91372e16136, type: 2}
+  - first:
+      type: UnityEngine:AnimationClip
+      assembly: UnityEngine.AnimationModule
+      name: DFront
+    second: {fileID: 7400000, guid: d4d54476423f56e4e8b5db75ca39b47c, type: 2}
+  - first:
+      type: UnityEngine:AnimationClip
+      assembly: UnityEngine.AnimationModule
+      name: DLeft
+    second: {fileID: 7400000, guid: e8f6dd5fc9ee00b4ba2cfb56821c4134, type: 2}
+  - first:
+      type: UnityEngine:AnimationClip
+      assembly: UnityEngine.AnimationModule
+      name: DRight
+    second: {fileID: 7400000, guid: 955b778919283e9408a76d50a41ea110, type: 2}
   serializedVersion: 2
   userData: 
   assetBundleName: 
@@ -86,7 +106,7 @@ ScriptedImporter:
     generateAnimationClips: 1
     addSortingGroup: 1
     addShadowCasters: 0
-    generateIndividualEvents: 1
+    generateIndividualEvents: 0
     generateSpriteAtlas: 1
   asepriteImporterSettings:
     fileImportMode: 1
@@ -101,9 +121,9 @@ ScriptedImporter:
     generateAnimationClips: 1
     addSortingGroup: 1
     addShadowCasters: 0
-    generateIndividualEvents: 1
+    generateIndividualEvents: 0
     generateSpriteAtlas: 1
-  platformSettingsDirtyTick: 639261188945630707
+  platformSettingsDirtyTick: 639273552947131504
   singleSpriteImportData:
   - name: 
     originalName: 

@@ -4,18 +4,18 @@ using UnityEngine.InputSystem;
 namespace Recalled.Gameplay
 {
 
-    [RequireComponent(typeof(SprintingResource))]
+    [RequireComponent(typeof(Sprint))]
     [RequireComponent(typeof(Dash))]
     public sealed class PlayerMovement : Movementable
     {
-        SprintingResource _sprintingResource;
+        Sprint _sprintingResource;
         Dash _dash;
 
         public bool IsSprinting => _sprintingResource.IsActive;
 
         private void Awake()
         {
-            _sprintingResource = GetComponent<SprintingResource>();
+            _sprintingResource = GetComponent<Sprint>();
             _dash = GetComponent<Dash>();
         }
 
@@ -24,6 +24,6 @@ namespace Recalled.Gameplay
         void OnDash(InputValue _)
             => _dash.TryDash(FacingDirection);
         void OnSprint(InputValue value)
-            => _sprintingResource.Toggle(value.isPressed);
+            => _sprintingResource.IsActive = value.isPressed;
     }
 }

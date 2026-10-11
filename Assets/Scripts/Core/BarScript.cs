@@ -7,51 +7,41 @@ namespace Recalled.Core
 {
     public sealed class BarScript : MonoBehaviour
     {
-        [SerializeField] ValueResource _valueResource;
         [SerializeField] Image _topBar;
         [SerializeField, Tooltip("Optional")] Image _bottomBar;
         [SerializeField] float _animationSpeed;
 
+        float _currentValue;
+
         public UnityEvent ProgressStarted;
         public UnityEvent ProgressEnded;
 
-        public float Value => _valueResource.CurrentValue;
-        public float MaxValue => _valueResource.MaxValue;
-
-        void OnValueChanged(int _, int newValue) => Set(newValue);
-
-        private void OnEnable()
-        {
-            _valueResource.ValueChanged += OnValueChanged;
-        }
-
-        private void OnDisable()
-            => _valueResource.ValueChanged -= OnValueChanged;
+        void Awake() => Set(1);
 
         IEnumerator ProgressBars(float delta)
         {
-            var targetValue = Value / MaxValue;
             var suddenBar = delta <= 0 ? _topBar : _bottomBar;
             var smoothBar = delta <= 0 ? _bottomBar : _topBar;
 
             ProgressStarted.Invoke();
-            if (suddenBar) suddenBar.fillAmount = targetValue;
-            while (Mathf.Abs(targetValue - smoothBar.fillAmount) > 0.01f)
+            if (suddenBar) suddenBar.fillAmount = _currentValue;
+            while (Mathf.Abs(_currentValue - smoothBar.fillAmount) > 0.01f)
             {
                 smoothBar.fillAmount
-                    = Mathf.Lerp(smoothBar.fillAmount, targetValue, Time.deltaTime * _animationSpeed);
+                    = Mathf.Lerp(smoothBar.fillAmount, _currentValue, Time.deltaTime * _animationSpeed);
                 yield return null;
             }
-            smoothBar.fillAmount = targetValue;
+            smoothBar.fillAmount = _currentValue;
             ProgressEnded.Invoke();
         }
 
-        public void Set(float value)
+        public void Set(float ratio)
         {
-            float prevValue = Value;
+            float prevValue = _currentValue;
+            _currentValue = ratio;
 
             StopAllCoroutines();
-            StartCoroutine(ProgressBars(value - prevValue));
+            StartCoroutine(ProgressBars(_currentValue - prevValue));
         }
     }
 }

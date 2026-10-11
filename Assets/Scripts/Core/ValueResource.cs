@@ -3,13 +3,8 @@ using UnityEngine;
 
 namespace Recalled.Core
 {
-    public abstract class ValueResource : MonoBehaviour
+    public sealed class ValueResource
     {
-        [SerializeField] ValueProviderConfig _config;
-
-        [Tooltip("Optional Runtime Variable, mostly for player and bosses")]
-        [SerializeField] IntVariable _intVariable;
-
         public int MinValue => 0;
         public int MaxValue { get; private set; }
         public int CurrentValue { get; private set; }
@@ -18,15 +13,15 @@ namespace Recalled.Core
         /// <summary> (oldVal, newVal) after the change </summary>
         public event Action<int, int> ValueChanged;
 
-        protected virtual void Awake()
+        public ValueResource(int currentValue, int maxValue, bool isInfinite)
         {
-            MaxValue = _config.MaximumValue;
-            CurrentValue = _config.InitValue;
-            IsInfinite = _config.IsInfinite;
-
-            if (_intVariable)
-                _intVariable.Value = CurrentValue;
+            CurrentValue = currentValue;
+            MaxValue = maxValue;
+            IsInfinite = isInfinite;
         }
+
+        public ValueResource(ValueProviderConfig config)
+            : this(config.InitValue, config.MaximumValue, config.IsInfinite) { }
 
         /// <returns>The delta actually applied, after clamping</returns>
         public int Replenish(int delta)
@@ -38,8 +33,6 @@ namespace Recalled.Core
             int newVal = Mathf.Clamp(CurrentValue + delta, MinValue, MaxValue);
             if (!IsInfinite)
                 CurrentValue = newVal;
-            if (_intVariable)
-                _intVariable.Value = CurrentValue;
 
             int applied = oldVal - newVal;
             if (applied == 0)
@@ -50,5 +43,7 @@ namespace Recalled.Core
             return applied;
         }
         public int Consume(int amount) => Replenish(-amount);
+
+        public bool Has(int amount) => IsInfinite || CurrentValue <= amount;
     }
 }

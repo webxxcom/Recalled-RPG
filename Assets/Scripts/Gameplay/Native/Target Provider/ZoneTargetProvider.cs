@@ -11,7 +11,7 @@ namespace Recalled.Gameplay
         void SetTarget(GameObject gameObject)
         {
             CurrentTarget = gameObject != null
-                ? gameObject.GetComponentInChildren<HealthResource>().gameObject
+                ? gameObject.GetComponent<Health>().gameObject
                 : null;
         }
 

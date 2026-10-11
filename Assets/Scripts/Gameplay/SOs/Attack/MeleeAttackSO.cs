@@ -16,7 +16,7 @@ namespace Recalled.Gameplay
 
         public void ApplyAttack(GameObject source, Collider2D collider2D)
         {
-            if (!collider2D.TryGetComponent<HealthResource>(out var health))
+            if (!collider2D.transform.parent.TryGetComponent<Health>(out var health))
                 return;
 
             DamageInfo di = new(_knockbackPower, _dealtDamage, source, health);

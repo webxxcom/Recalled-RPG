@@ -43,7 +43,7 @@ namespace Recalled.Gameplay
             if (collision.CompareTag(_owner.tag))
                 return;
 
-            if (collision.TryGetComponent<HealthResource>(out var hp))
+            if (collision.TryGetComponent<Health>(out var hp))
                 hp.ApplyDamage(new(_knockbackPower, _dealtDamage, _owner, hp));
             Destroy(gameObject);
         }

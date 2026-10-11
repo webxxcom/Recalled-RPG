@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6b1cec965ff6f44c90715075605b2dc, type: 3}
   m_Name: ChestClose
   m_EditorClassIdentifier: Recalled.Core::Recalled.Core.AudioAsset
-  _clip: {fileID: 0}
+  _clip: {fileID: 8300000, guid: 883d1dbeb0f103f4d999608a711cd58f, type: 3}
   _mixerGroup: {fileID: 2485437016345203308, guid: 690e8d8c0ae056542bcef00037ba2c5a, type: 2}

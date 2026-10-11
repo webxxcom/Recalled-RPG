@@ -2,6 +2,7 @@ using UnityEngine;
 
 namespace Recalled.Gameplay
 {
+    [RequireComponent(typeof(Health))]
     public class PlayerController : MonoBehaviour
     {
         [SerializeField] Animator _animator;
@@ -20,11 +21,11 @@ namespace Recalled.Gameplay
                 _animator.SetBool(AnimatorParameters.IsArmedHash, value);
             }
         }
-        HealthResource _healthProvider;
+        Health _healthProvider;
 
         void Awake()
         {
-            _healthProvider = GetComponentInChildren<HealthResource>();
+            _healthProvider = GetComponent<Health>();
 
             IsArmed = true;
         }

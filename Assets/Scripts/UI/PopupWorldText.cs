@@ -5,7 +5,7 @@ using UnityEngine;
 namespace Recalled.UI
 {
     [RequireComponent(typeof(TMP_Text))]
-    public class PopupWorldText : MonoBehaviour
+    public sealed class PopupWorldText : MonoBehaviour
     {
         [SerializeField] float _duration;
         [SerializeField] Vector2 _direction;

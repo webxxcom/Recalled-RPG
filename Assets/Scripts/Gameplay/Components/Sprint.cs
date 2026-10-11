@@ -1,0 +1,70 @@
+using Recalled.Core;
+using UnityEngine;
+
+namespace Recalled.Gameplay
+{
+    [DisallowMultipleComponent]
+    public sealed class Sprint : MonoBehaviour
+    {
+        [SerializeField] ValueProviderConfig _config;
+        [SerializeField] IntVariable _intVariable;
+        [SerializeField] int _usage;
+        [SerializeField] int _restore;
+        [SerializeField] float _speedMultiplier;
+        [SerializeField] Movementable _movementBase;
+
+        ValueResource _valueResource;
+        bool _isActive;
+
+        public bool IsActive
+        {
+            get => _isActive;
+            set
+            {
+                if (_isActive == value)
+                    return;
+
+                if (value)
+                    _movementBase.AddSpeedCoef(_speedMultiplier);
+                else
+                    _movementBase.RemoveSpeedCoef(_speedMultiplier);
+
+                _isActive = value;
+            }
+        }
+
+        private void Awake()
+        {
+            _valueResource = new(_config);
+        }
+
+        private void OnEnable()
+        {
+            if (_intVariable) _valueResource.ValueChanged += SetVariableValue;
+        }
+        private void OnDisable()
+        {
+            if (_intVariable) _valueResource.ValueChanged -= SetVariableValue;
+        }
+        void SetVariableValue(int _, int newVal) => _intVariable.Value = newVal;
+
+        public bool AskFor(int amount)
+        {
+            if (!_valueResource.Has(amount))
+                return false;
+
+            _valueResource.Consume(amount);
+            return true;
+        }
+
+        private void FixedUpdate()
+        {
+            if (IsActive)
+            {
+                if (_valueResource.Consume(_usage) == 0)
+                    IsActive = false;
+            }
+            else _valueResource.Replenish(_restore);
+        }
+    }
+}
