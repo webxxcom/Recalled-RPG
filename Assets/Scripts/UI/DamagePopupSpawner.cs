@@ -15,9 +15,6 @@ namespace Recalled.UI
         }
 
         public void Spawn(DamageInfo di)
-        {
-            Instantiate(_damagePopup, di.Target.Hurtbox.bounds.center, Quaternion.identity)
-                .Init(di.Amount.ToString());
-        }
+            => Instantiate(_damagePopup).Init(di.Target.Hurtbox.bounds.center, di.Amount.ToString());
     }
 }

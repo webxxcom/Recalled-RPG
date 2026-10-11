@@ -697,38 +697,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 4202473506490510331, guid: ef7a4d2f735b5c342b5d27fda3be7ed5, type: 3}
-      propertyPath: _intVariable
-      value: 
-      objectReference: {fileID: 11400000, guid: 060557ec0ac49624abeae20083c92407, type: 2}
-    - target: {fileID: 4202473506490510331, guid: ef7a4d2f735b5c342b5d27fda3be7ed5, type: 3}
-      propertyPath: HpChangedUnty.m_PersistentCalls.m_Calls.Array.size
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 4202473506490510331, guid: ef7a4d2f735b5c342b5d27fda3be7ed5, type: 3}
-      propertyPath: HpChangedUnty.m_PersistentCalls.m_Calls.Array.data[5].m_Target
-      value: 
-      objectReference: {fileID: 709040213}
-    - target: {fileID: 4202473506490510331, guid: ef7a4d2f735b5c342b5d27fda3be7ed5, type: 3}
-      propertyPath: HpChangedUnty.m_PersistentCalls.m_Calls.Array.data[5].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 4202473506490510331, guid: ef7a4d2f735b5c342b5d27fda3be7ed5, type: 3}
-      propertyPath: HpChangedUnty.m_PersistentCalls.m_Calls.Array.data[5].m_MethodName
-      value: CheckAndExecute
-      objectReference: {fileID: 0}
-    - target: {fileID: 4202473506490510331, guid: ef7a4d2f735b5c342b5d27fda3be7ed5, type: 3}
-      propertyPath: HpChangedUnty.m_PersistentCalls.m_Calls.Array.data[5].m_TargetAssemblyTypeName
-      value: Recalled.Gameplay.AnimateDeath, Recalled.Gameplay
-      objectReference: {fileID: 0}
-    - target: {fileID: 4202473506490510331, guid: ef7a4d2f735b5c342b5d27fda3be7ed5, type: 3}
-      propertyPath: HpChangedUnty.m_PersistentCalls.m_Calls.Array.data[5].m_Arguments.m_FloatArgument
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4202473506490510331, guid: ef7a4d2f735b5c342b5d27fda3be7ed5, type: 3}
-      propertyPath: HpChangedUnty.m_PersistentCalls.m_Calls.Array.data[5].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
     - target: {fileID: 6805291076679127406, guid: ef7a4d2f735b5c342b5d27fda3be7ed5, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.577
@@ -784,10 +752,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 1515305421710409048, guid: ef7a4d2f735b5c342b5d27fda3be7ed5, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 709040213}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ef7a4d2f735b5c342b5d27fda3be7ed5, type: 3}
 --- !u!1 &668010209 stripped
 GameObject:
@@ -805,25 +770,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Unity.InputSystem::UnityEngine.InputSystem.PlayerInput
---- !u!1 &709040204 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1515305421710409048, guid: ef7a4d2f735b5c342b5d27fda3be7ed5, type: 3}
-  m_PrefabInstance: {fileID: 668010208}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &709040213
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 709040204}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7a921302f7a41f3468ca0d18ff689b06, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Recalled.Gameplay::Recalled.Gameplay.AnimateDeath
-  _animator: {fileID: 1769580059}
-  _timeout: 1
 --- !u!1001 &1045915139
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1162,11 +1108,6 @@ PrefabInstance:
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 5483117024435693952, guid: f0f1c602fa75d304ab2370c186e3c571, type: 3}
   m_PrefabInstance: {fileID: 1613743445}
-  m_PrefabAsset: {fileID: 0}
---- !u!95 &1769580059 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 3750387735865093422, guid: ef7a4d2f735b5c342b5d27fda3be7ed5, type: 3}
-  m_PrefabInstance: {fileID: 668010208}
   m_PrefabAsset: {fileID: 0}
 --- !u!114 &2002416767
 MonoBehaviour:

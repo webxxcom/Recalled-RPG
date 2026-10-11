@@ -13,19 +13,13 @@ namespace Recalled.UI
 
         TMP_Text _tmpText;
 
-        public void Init(string text)
+        void Awake() => _tmpText = GetComponent<TMP_Text>();
+        void Start() => StartCoroutine(MovePosition());
+
+        public void Init(Vector2 pos, string text)
         {
+            transform.position = pos;
             _tmpText.text = text;
-        }
-
-        void Awake()
-        {
-            _tmpText = GetComponent<TMP_Text>();
-        }
-
-        void Start()
-        {
-            StartCoroutine(MovePosition());
         }
 
         private IEnumerator MovePosition()
