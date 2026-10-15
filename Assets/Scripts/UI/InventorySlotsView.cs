@@ -15,12 +15,12 @@ public class InventorySlotsView : MonoBehaviour
 
     private void Awake()
     {
-        _inventoryVariable.ValueChanged += OnInventorySet;
+        _inventoryVariable.Subscribe(OnInventorySet);
     }
 
     private void OnDestroy()
     {
-        _inventoryVariable.ValueChanged -= OnInventorySet;
+        _inventoryVariable.Unsubscribe(OnInventorySet);
     }
 
     void OnInventorySet(ItemSlotsArray inventory)
@@ -28,9 +28,12 @@ public class InventorySlotsView : MonoBehaviour
         if (_inventory != null) _inventory.SlotsChanged -= RefreshView;
 
         _inventory = inventory;
-        _inventory.SlotsChanged += RefreshView;
+        if (_inventory != null)
+        {
+            _inventory.SlotsChanged += RefreshView;
 
-        RefreshView();
+            RefreshView();
+        }
     }
 
     public void Filter(ItemCategory filter)

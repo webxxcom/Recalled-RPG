@@ -12,11 +12,11 @@ public class DescriptionView : MonoBehaviour
 
     private void OnEnable()
     {
-        _currentSelected.ValueChanged += OnCellSelected;
+        _currentSelected.Subscribe(OnCellSelected);
     }
     private void OnDisable()
     {
-        _currentSelected.ValueChanged -= OnCellSelected;
+        _currentSelected.Unsubscribe(OnCellSelected);
     }
 
     public void Show(ItemInstance instance)

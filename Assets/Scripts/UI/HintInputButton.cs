@@ -50,16 +50,14 @@ public class HintInputButton : MonoBehaviour
     {
         _inputAction.action.started += OnPress;
         _inputAction.action.canceled += OnRelease;
-        _currentInputDevice.ValueChanged += SetHintSprite;
-
-        SetHintSprite(_currentInputDevice.Value);
+        _currentInputDevice.Subscribe(SetHintSprite);
     }
 
     private void OnDisable()
     {
         _inputAction.action.started -= OnPress;
         _inputAction.action.canceled -= OnRelease;
-        _currentInputDevice.ValueChanged -= SetHintSprite;
+        _currentInputDevice.Unsubscribe(SetHintSprite);
     }
 
     void UpdateGraphics()

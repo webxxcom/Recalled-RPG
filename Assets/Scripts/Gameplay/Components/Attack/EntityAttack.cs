@@ -8,7 +8,7 @@ public abstract class EntityAttack : MonoBehaviour
     [SerializeField] protected Animator _animator;
     [SerializeField] protected List<AttackStrategy> _attackStrategies;
 
-    protected float _timeSinceLastAttack;
+    protected float _elapsedLastAttack;
 
     public event Action OnAttackStarted;
     public event Action OnAttackFinished;

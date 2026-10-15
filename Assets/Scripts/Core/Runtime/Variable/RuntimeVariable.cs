@@ -4,6 +4,7 @@ using UnityEngine;
 public abstract class RuntimeVariable<T> : ScriptableObject
 {
     [SerializeField] T _value;
+    [SerializeField, HideInInspector] bool _wasInit = false;
 
     public T Value
     {
@@ -14,11 +15,25 @@ public abstract class RuntimeVariable<T> : ScriptableObject
                 return;
 
             _value = value;
+            _wasInit = true;
             ValueChanged?.Invoke(_value);
         }
     }
 
-    public event Action<T> ValueChanged;
+    event Action<T> ValueChanged;
+
+    public void Subscribe(Action<T> action)
+    {
+        if (_wasInit)
+            action.Invoke(Value);
+
+        ValueChanged += action;
+    }
+
+    public void Unsubscribe(Action<T> action)
+    {
+        ValueChanged -= action;
+    }
 
 #if UNITY_EDITOR
     [SerializeField, HideInInspector] T _prev;

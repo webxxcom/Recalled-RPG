@@ -14,7 +14,10 @@ public class EnemyAttack : EntityAttack
 
     void Update()
     {
-        if (_timeSinceLastAttack > _intervalBetweenStates && _targetProviderInstance.HasTarget && gameObject.activeInHierarchy)
+        if (_elapsedLastAttack < _intervalBetweenStates)
+            return;
+
+        if (_targetProviderInstance.HasTarget)
         {
             foreach (var attackStrategy in _attackStrategies)
             {
@@ -22,11 +25,11 @@ public class EnemyAttack : EntityAttack
                 if (attackStrategy.CanAttack(attackContext))
                 {
                     Attack(attackStrategy, attackContext);
-                    _timeSinceLastAttack = 0;
+                    _elapsedLastAttack = 0;
                     break;
                 }
             }
         }
-        _timeSinceLastAttack += Time.deltaTime;
+        _elapsedLastAttack += Time.deltaTime;
     }
 }

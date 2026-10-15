@@ -19,13 +19,11 @@ public class Highlighter : MonoBehaviour
 
     private void OnEnable()
     {
-        _currentSelected.ValueChanged += SetTo;
-
-        SetTo(_currentSelected.Value);
+        _currentSelected.Subscribe(ShowAt);
     }
     private void OnDisable()
     {
-        _currentSelected.ValueChanged -= SetTo;
+        _currentSelected.Unsubscribe(ShowAt);
     }
 
     void Show(GameObject game)
@@ -47,15 +45,9 @@ public class Highlighter : MonoBehaviour
         _animator.Stop();
     }
 
-    public void SetTo(GameObject game)
+    public void ShowAt(GameObject game)
     {
         if (game == null) Hide();
         else Show(game);
-    }
-
-    private void Update()
-    {
-        if (_currentSelected.Value != null)
-            transform.position = _currentSelected.Value.transform.position;
     }
 }

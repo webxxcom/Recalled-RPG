@@ -10,16 +10,16 @@ namespace Recalled.Gameplay
 
         void OnAttack(InputValue value)
         {
-            if (!value.isPressed || _timeSinceLastAttack < _meleeAttackData.ReloadTime)
+            if (!value.isPressed || _elapsedLastAttack < _meleeAttackData.ReloadTime)
                 return;
 
-            _timeSinceLastAttack = 0;
+            _elapsedLastAttack = 0;
             Attack(_attackStrategies[0], new());
         }
 
         private void Update()
         {
-            _timeSinceLastAttack += Time.deltaTime;
+            _elapsedLastAttack += Time.deltaTime;
         }
     }
 }
