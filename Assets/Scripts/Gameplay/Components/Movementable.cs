@@ -13,7 +13,7 @@ public abstract class Movementable : MonoBehaviour
 
     [Header("Uses")]
     [SerializeField] ExternalVelocity _externalVelocity;
-    [SerializeField] AnimationController _animationController;
+    [SerializeField] EntityAnimationController _animationController;
 
     Rigidbody2D _rigidbody2D;
     readonly SpeedAggregator _speedAggregator = new();
@@ -91,7 +91,7 @@ public abstract class Movementable : MonoBehaviour
         if (_rigidbody2D == null)
             _rigidbody2D = GetComponent<Rigidbody2D>();
         if (_animationController == null)
-            _animationController = GetComponentInChildren<AnimationController>();
+            _animationController = GetComponentInChildren<EntityAnimationController>();
     }
 #endif
 }

@@ -5,7 +5,7 @@ using UnityEngine;
 [RequireComponent(typeof(AttackStrategy))]
 public abstract class EntityAttack : MonoBehaviour
 {
-    [SerializeField] protected Animator _animator;
+    [SerializeField] protected EntityAnimationController _animationController;
     [SerializeField] protected List<AttackStrategy> _attackStrategies;
 
     protected float _elapsedLastAttack;
@@ -15,12 +15,6 @@ public abstract class EntityAttack : MonoBehaviour
 
     bool IsActive => enabled;
 
-    private void OnDisable()
-    {
-        // If entity dies during attack execution it should stop doing an attack
-        _animator.ResetControllerState();
-    }
-
     AttackStrategy _currentAttack;
     AttackContext _attackContext;
     protected void Attack(AttackStrategy attackStrategy, AttackContext attackContext)
@@ -28,7 +22,7 @@ public abstract class EntityAttack : MonoBehaviour
         _currentAttack = attackStrategy;
         _attackContext = attackContext;
 
-        _animator.SetTrigger(attackStrategy.AnimatorHash);
+        _animationController.PlayAttack(attackStrategy.AnimatorHash);
     }
 
     public void StartAttack()

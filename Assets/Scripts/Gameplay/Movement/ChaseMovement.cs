@@ -9,7 +9,6 @@ public class ChaseMovement : MovementStrategy
     {
         Vector2 diff = target.transform.position - origin.transform.position;
 
-
         bool flee = !Mathf.Approximately(_delta, 0);
         float maxDist = _distanceToTarget + _delta;
         float minDist = _distanceToTarget - _delta;

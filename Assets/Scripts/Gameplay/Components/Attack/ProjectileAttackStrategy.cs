@@ -5,7 +5,7 @@ namespace Recalled.Gameplay
     public sealed class ProjectileAttackStrategy : AttackStrategy
     {
         [SerializeField] ProjectileAttackDataSO _projectileAttackData;
-        [SerializeField] AnimationController _animationController;
+        [SerializeField] EntityAnimationController _animationController;
 
         public override AttackSO AttackData => _projectileAttackData;
         public override int AnimatorHash => AnimatorParameters.ShootHash;
@@ -46,7 +46,7 @@ namespace Recalled.Gameplay
         private void OnValidate()
         {
             if (_animationController == null)
-                _animationController = transform.parent.GetComponentInChildren<AnimationController>();
+                _animationController = transform.parent.GetComponentInChildren<EntityAnimationController>();
         }
 #endif
     }

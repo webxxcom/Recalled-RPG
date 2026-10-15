@@ -13,7 +13,7 @@ namespace Recalled.Gameplay
 
         protected override bool WithinAttackRange(AttackContext attackContext)
         {
-            return _hitbox.IsTouching(attackContext.Target.GetComponent<Collider2D>());
+            return _hitbox.IsTouching(attackContext.Target.GetComponent<Health>().Hurtbox);
         }
 
         CapsuleCollider2D _hitbox;

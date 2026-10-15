@@ -7,7 +7,7 @@ public class PlayerAttackStateMachine : StateMachineBehaviour
     public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         if (!_entityAttack)
-            _entityAttack = animator.transform.parent.GetComponentInChildren<EntityAttack>();
+            _entityAttack = animator.transform.parent.parent.GetComponentInChildren<EntityAttack>();
 
         _entityAttack.StartAttack();
     }

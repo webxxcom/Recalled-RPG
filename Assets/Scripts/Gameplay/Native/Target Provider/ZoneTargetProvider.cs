@@ -21,8 +21,9 @@ namespace Recalled.Gameplay
 
             OnTargetEnteredZone = zoneTargetProviderSO.OnTargetEnteredZone;
             OnTargetLeftZone = zoneTargetProviderSO.OnTargetLeftZone;
-            if (OnTargetEnteredZone) OnTargetEnteredZone.AddListener(SetTarget);
-            if (OnTargetLeftZone) OnTargetLeftZone.AddListener(SetTarget);
+
+            OnTargetEnteredZone.AddListener(SetTarget);
+            OnTargetLeftZone.AddListener(SetTarget);
 
             return this;
         }

@@ -7,10 +7,6 @@ namespace Recalled.Gameplay
     {
         [SerializeField] Animator _animator;
 
-        [Header("Broadcasts to")]
-        [SerializeField] DamageInfoGameEvent OnHpChangedChannel;
-        [SerializeField] DamageInfoGameEvent OnDeathChannel;
-
         bool _isArmed;
         public bool IsArmed
         {
@@ -29,20 +25,5 @@ namespace Recalled.Gameplay
 
             IsArmed = true;
         }
-
-        void OnEnable()
-        {
-            _healthProvider.HpChanged += OnHpChangedGameEvent;
-            _healthProvider.Died += OnDiedGameEvent;
-        }
-
-        void OnDisable()
-        {
-            _healthProvider.HpChanged -= OnHpChangedGameEvent;
-            _healthProvider.Died -= OnDiedGameEvent;
-        }
-
-        void OnHpChangedGameEvent(DamageInfo damageInfo) => OnHpChangedChannel.Invoke(damageInfo);
-        void OnDiedGameEvent(DamageInfo damageInfo) => OnDeathChannel.Invoke(damageInfo);
     }
 }

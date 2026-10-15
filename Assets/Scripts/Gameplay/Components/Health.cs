@@ -16,6 +16,7 @@ namespace Recalled.Gameplay
         [SerializeField] IntVariable _intVariable;
 
         public Vector2 Center => _hurtbox.bounds.center;
+        public Collider2D Hurtbox => _hurtbox;
         public bool IsInvincible => _invincibilityTimestamp > Time.time;
         public bool IsFull => _valueResource.CurrentValue >= _valueResource.MaxValue;
         public bool IsDead => _valueResource.CurrentValue <= _valueResource.MinValue;

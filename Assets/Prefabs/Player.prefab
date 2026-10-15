@@ -326,7 +326,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a921302f7a41f3468ca0d18ff689b06, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Recalled.Gameplay::Recalled.Gameplay.AnimateDeath
-  _animator: {fileID: 3750387735865093422}
+  _animationController: {fileID: 4782641299976584344}
   _health: {fileID: 7919439482791280018}
 --- !u!114 &5772442080917162637
 MonoBehaviour:
@@ -429,7 +429,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d3dd6f5182aeea4f99d8a6d956c5a23, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  _animator: {fileID: 3750387735865093422}
+  _animationController: {fileID: 4782641299976584344}
   _attackStrategies:
   - {fileID: 1017372488747182917}
   _meleeAttackData: {fileID: 11400000, guid: 3874b33b6ce54b849af454eb61ed5ea4, type: 2}
@@ -552,6 +552,65 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
   m_BlendShapeWeights: []
+--- !u!1 &3157915067656198569
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8957107533325475224}
+  - component: {fileID: 3161427623952439946}
+  - component: {fileID: 4782641299976584344}
+  m_Layer: 8
+  m_Name: Visual
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8957107533325475224
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3157915067656198569}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 8298965540342904238}
+  m_Father: {fileID: 6805291076679127406}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3161427623952439946
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3157915067656198569}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a58d0540b9594354d9853ea3961c0b0c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Recalled.Gameplay::Recalled.Gameplay.VisualRoot
+--- !u!114 &4782641299976584344
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3157915067656198569}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 904c2a547050d404788546b4152ec308, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Recalled.Gameplay::EntityAnimationController
+  _isXFlippable: 0
 --- !u!1 &4729381507060339331
 GameObject:
   m_ObjectHideFlags: 0
@@ -842,7 +901,6 @@ GameObject:
   - component: {fileID: 7606323976608832147}
   - component: {fileID: 3750387735865093422}
   - component: {fileID: 4980500249380923839}
-  - component: {fileID: 5525736473637658669}
   m_Layer: 0
   m_Name: Renderer
   m_TagString: Untagged
@@ -858,7 +916,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7130390927852763233}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -870,7 +928,7 @@ Transform:
   - {fileID: 8691904150841974042}
   - {fileID: 6455793909872300381}
   - {fileID: 3228332550756886279}
-  m_Father: {fileID: 6805291076679127406}
+  m_Father: {fileID: 8957107533325475224}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!210 &7606323976608832147
 SortingGroup:
@@ -919,19 +977,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7699cbe8594eeaf4090d45b836375986, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SpriteRendererGroup
---- !u!114 &5525736473637658669
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7130390927852763233}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 60fbbcdaabffcd74a8547c3b82891592, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::AnimationController
-  _isXFlippable: 0
 --- !u!1 &7496814900927814349
 GameObject:
   m_ObjectHideFlags: 0
@@ -1069,7 +1114,7 @@ Transform:
   - {fileID: 1589811766139957309}
   - {fileID: 4874625822767206472}
   - {fileID: 6329567971803542181}
-  - {fileID: 8298965540342904238}
+  - {fileID: 8957107533325475224}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &8487839362322834453
@@ -1180,7 +1225,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMovementComponent
   _walkingSpeed: 2
   _externalVelocity: {fileID: 1255662501661695068}
-  _animationController: {fileID: 5525736473637658669}
+  _animationController: {fileID: 4782641299976584344}
 --- !u!114 &7101408821228708346
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1194,8 +1239,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   _animator: {fileID: 3750387735865093422}
-  OnHpChangedChannel: {fileID: 11400000, guid: 4eb2943eb5950f54eba48d5bad32d3cd, type: 2}
-  OnDeathChannel: {fileID: 11400000, guid: 1b2ce962ee3da3c4ca0eb1ac1d6feff8, type: 2}
 --- !u!114 &2708507066674380346
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1228,7 +1271,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   _consume: 0
   _force: 10
-  _invincibilityDuration: 1
+  _invincibilityDuration: 0.5
+  _reload: 0.8
   _vfx: {fileID: 1309974262764781659, guid: 178e4fbad5d09b24eb7efa71e5f00356, type: 3}
   _dashed:
     m_PersistentCalls:
@@ -1238,7 +1282,7 @@ MonoBehaviour:
         m_MethodName: Dispatch
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 11400000, guid: 05445f814741eaf4bae0c7e59086921c, type: 2}
+          m_ObjectArgument: {fileID: 11400000, guid: 151901927137ada4c8eb75146a910522, type: 2}
           m_ObjectArgumentAssemblyTypeName: Recalled.Core.SoundCue, Recalled.Core
           m_IntArgument: 0
           m_FloatArgument: 0
