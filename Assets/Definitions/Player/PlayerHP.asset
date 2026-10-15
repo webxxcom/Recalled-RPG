@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b31892992fe58d84984d3831904b384a, type: 3}
   m_Name: PlayerHP
   m_EditorClassIdentifier: Assembly-CSharp::IntVariable
-  _value: 100
-  _prev: 100
+  _initialValue: 100
+  _runtimeValue: 11

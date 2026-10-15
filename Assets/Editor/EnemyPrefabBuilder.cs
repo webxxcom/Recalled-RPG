@@ -2,8 +2,9 @@
 using UnityEditor;
 using UnityEditor.SceneManagement;
 using UnityEngine;
+using Recalled.Gameplay;
 
-namespace Recalled.Gameplay.Editor
+namespace RecalledEditor
 {
     /// <summary>
     /// Edit-time composition: for each EnemyDefinition, produce a prefab VARIANT of its base prefab

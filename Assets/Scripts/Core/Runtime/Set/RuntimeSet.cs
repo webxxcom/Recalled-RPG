@@ -8,14 +8,14 @@ public class RuntimeSet<T> : ScriptableObject
 
     public IReadOnlyCollection<T> Items => _items;
 
-    public event Action OnChanged;
+    public event Action Changed;
 
     public void Add(T obj)
     {
         if (!_items.Add(obj))
             return;
 
-        OnChanged?.Invoke();
+        Changed?.Invoke();
     }
 
     public void Remove(T obj)
@@ -23,6 +23,6 @@ public class RuntimeSet<T> : ScriptableObject
         if (!_items.Remove(obj))
             return;
 
-        OnChanged?.Invoke();
+        Changed?.Invoke();
     }
 }

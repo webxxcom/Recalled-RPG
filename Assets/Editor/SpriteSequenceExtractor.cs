@@ -1,172 +1,176 @@
+using Recalled.Core;
 using System.Collections.Generic;
 using System.IO;
 using UnityEditor;
 using UnityEngine;
 
-/// <summary>
-/// Pulls sprite keyframes out of an Aseprite-generated AnimationClip.
-///
-/// Shared by the SpriteSequence inspector button and the refresh
-/// postprocessor, so manual extraction and automatic refresh can't diverge.
-/// </summary>
-public static class SpriteSequenceExtractor
+namespace RecalledEditor
 {
-    private const string SpriteProperty = "m_Sprite";
-
-    public static bool IsAsepritePath(string path)
-    {
-        if (string.IsNullOrEmpty(path))
-            return false;
-
-        string extension = Path.GetExtension(path).ToLowerInvariant();
-        return extension == ".aseprite" || extension == ".ase";
-    }
-
     /// <summary>
-    /// Names of every clip the importer generated for this file. These are the
-    /// Aseprite tag names, or "&lt;name&gt;_Clip" when the file has no tags.
+    /// Pulls sprite keyframes out of an Aseprite-generated AnimationClip.
+    ///
+    /// Shared by the SpriteSequence inspector button and the refresh
+    /// postprocessor, so manual extraction and automatic refresh can't diverge.
     /// </summary>
-    public static string[] GetClipNames(string asepritePath)
+    public static class SpriteSequenceExtractor
     {
-        var names = new List<string>();
+        private const string SpriteProperty = "m_Sprite";
 
-        foreach (AnimationClip clip in LoadClips(asepritePath))
-            names.Add(clip.name);
-
-        return names.ToArray();
-    }
-
-    /// <summary>
-    /// Extracts frames for one clip. Returns false with a reason in
-    /// <paramref name="error"/> rather than throwing, so callers can report it.
-    /// </summary>
-    public static bool TryExtract(
-        string asepritePath,
-        string clipName,
-        out List<SpriteSequence.Frame> frames,
-        out float length,
-        out string error)
-    {
-        frames = null;
-        length = 0f;
-        error = null;
-
-        if (!IsAsepritePath(asepritePath))
+        public static bool IsAsepritePath(string path)
         {
-            error = "Source is not an .aseprite file.";
-            return false;
+            if (string.IsNullOrEmpty(path))
+                return false;
+
+            string extension = Path.GetExtension(path).ToLowerInvariant();
+            return extension == ".aseprite" || extension == ".ase";
         }
 
-        List<AnimationClip> clips = LoadClips(asepritePath);
-
-        if (clips.Count == 0)
+        /// <summary>
+        /// Names of every clip the importer generated for this file. These are the
+        /// Aseprite tag names, or "&lt;name&gt;_Clip" when the file has no tags.
+        /// </summary>
+        public static string[] GetClipNames(string asepritePath)
         {
-            // Not necessarily a mistake: the importer skips clip generation for
-            // single-frame files and for import modes other than AnimatedSprite.
-            error = "No animation clips in this file. Check the import mode is " +
-                    "Animated Sprite and the file has more than one frame.";
-            return false;
+            var names = new List<string>();
+
+            foreach (AnimationClip clip in LoadClips(asepritePath))
+                names.Add(clip.name);
+
+            return names.ToArray();
         }
 
-        AnimationClip target = null;
-
-        foreach (AnimationClip clip in clips)
+        /// <summary>
+        /// Extracts frames for one clip. Returns false with a reason in
+        /// <paramref name="error"/> rather than throwing, so callers can report it.
+        /// </summary>
+        public static bool TryExtract(
+            string asepritePath,
+            string clipName,
+            out List<SpriteSequence.Frame> frames,
+            out float length,
+            out string error)
         {
-            if (clip.name == clipName)
+            frames = null;
+            length = 0f;
+            error = null;
+
+            if (!IsAsepritePath(asepritePath))
             {
-                target = clip;
-                break;
+                error = "Source is not an .aseprite file.";
+                return false;
             }
-        }
 
-        if (target == null)
-        {
-            error = $"No clip named '{clipName}'. Available: {string.Join(", ", GetClipNames(asepritePath))}";
-            return false;
-        }
+            List<AnimationClip> clips = LoadClips(asepritePath);
 
-        if (!TryReadSpriteCurve(target, out ObjectReferenceKeyframe[] keyframes, out error))
-            return false;
-
-        frames = new List<SpriteSequence.Frame>(keyframes.Length);
-
-        foreach (ObjectReferenceKeyframe keyframe in keyframes)
-        {
-            frames.Add(new SpriteSequence.Frame
+            if (clips.Count == 0)
             {
-                Time = keyframe.time,
-                Sprite = keyframe.value as Sprite
-            });
+                // Not necessarily a mistake: the importer skips clip generation for
+                // single-frame files and for import modes other than AnimatedSprite.
+                error = "No animation clips in this file. Check the import mode is " +
+                        "Animated Sprite and the file has more than one frame.";
+                return false;
+            }
+
+            AnimationClip target = null;
+
+            foreach (AnimationClip clip in clips)
+            {
+                if (clip.name == clipName)
+                {
+                    target = clip;
+                    break;
+                }
+            }
+
+            if (target == null)
+            {
+                error = $"No clip named '{clipName}'. Available: {string.Join(", ", GetClipNames(asepritePath))}";
+                return false;
+            }
+
+            if (!TryReadSpriteCurve(target, out ObjectReferenceKeyframe[] keyframes, out error))
+                return false;
+
+            frames = new List<SpriteSequence.Frame>(keyframes.Length);
+
+            foreach (ObjectReferenceKeyframe keyframe in keyframes)
+            {
+                frames.Add(new SpriteSequence.Frame
+                {
+                    Time = keyframe.time,
+                    Sprite = keyframe.value as Sprite
+                });
+            }
+
+            length = target.length;
+            return true;
         }
 
-        length = target.length;
-        return true;
-    }
+        private static List<AnimationClip> LoadClips(string asepritePath)
+        {
+            var clips = new List<AnimationClip>();
 
-    private static List<AnimationClip> LoadClips(string asepritePath)
-    {
-        var clips = new List<AnimationClip>();
+            if (!IsAsepritePath(asepritePath))
+                return clips;
 
-        if (!IsAsepritePath(asepritePath))
+            foreach (Object asset in AssetDatabase.LoadAllAssetsAtPath(asepritePath))
+            {
+                if (asset is AnimationClip clip)
+                    clips.Add(clip);
+            }
+
             return clips;
-
-        foreach (Object asset in AssetDatabase.LoadAllAssetsAtPath(asepritePath))
-        {
-            if (asset is AnimationClip clip)
-                clips.Add(clip);
         }
 
-        return clips;
-    }
-
-    private static bool TryReadSpriteCurve(
-        AnimationClip clip,
-        out ObjectReferenceKeyframe[] keyframes,
-        out string error)
-    {
-        keyframes = null;
-        error = null;
-
-        EditorCurveBinding[] bindings = AnimationUtility.GetObjectReferenceCurveBindings(clip);
-
-        EditorCurveBinding? spriteBinding = null;
-        int count = 0;
-
-        foreach (EditorCurveBinding binding in bindings)
+        private static bool TryReadSpriteCurve(
+            AnimationClip clip,
+            out ObjectReferenceKeyframe[] keyframes,
+            out string error)
         {
-            if (binding.propertyName != SpriteProperty)
-                continue;
+            keyframes = null;
+            error = null;
 
-            count++;
+            EditorCurveBinding[] bindings = AnimationUtility.GetObjectReferenceCurveBindings(clip);
+
+            EditorCurveBinding? spriteBinding = null;
+            int count = 0;
+
+            foreach (EditorCurveBinding binding in bindings)
+            {
+                if (binding.propertyName != SpriteProperty)
+                    continue;
+
+                count++;
+
+                if (spriteBinding == null)
+                    spriteBinding = binding;
+            }
 
             if (spriteBinding == null)
-                spriteBinding = binding;
+            {
+                error = $"Sequence '{clip.name}' has no sprite curve.";
+                return false;
+            }
+
+            if (count > 1)
+            {
+                // Happens when the import mode splits Aseprite layers into separate
+                // GameObjects, giving one curve per layer. A single Image can only
+                // show one sprite, so the rest are dropped.
+                Debug.LogWarning(
+                    $"Sequence '{clip.name}' animates {count} sprite curves. " +
+                    $"Using '{spriteBinding.Value.path}' and ignoring the rest.");
+            }
+
+            keyframes = AnimationUtility.GetObjectReferenceCurve(clip, spriteBinding.Value);
+
+            if (keyframes == null || keyframes.Length == 0)
+            {
+                error = $"Sequence '{clip.name}' has an empty sprite curve.";
+                return false;
+            }
+
+            return true;
         }
-
-        if (spriteBinding == null)
-        {
-            error = $"Sequence '{clip.name}' has no sprite curve.";
-            return false;
-        }
-
-        if (count > 1)
-        {
-            // Happens when the import mode splits Aseprite layers into separate
-            // GameObjects, giving one curve per layer. A single Image can only
-            // show one sprite, so the rest are dropped.
-            Debug.LogWarning(
-                $"Sequence '{clip.name}' animates {count} sprite curves. " +
-                $"Using '{spriteBinding.Value.path}' and ignoring the rest.");
-        }
-
-        keyframes = AnimationUtility.GetObjectReferenceCurve(clip, spriteBinding.Value);
-
-        if (keyframes == null || keyframes.Length == 0)
-        {
-            error = $"Sequence '{clip.name}' has an empty sprite curve.";
-            return false;
-        }
-
-        return true;
     }
 }

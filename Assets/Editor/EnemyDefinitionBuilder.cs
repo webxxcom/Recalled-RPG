@@ -1,7 +1,8 @@
-﻿using UnityEditor;
+﻿using Recalled.Gameplay;
+using UnityEditor;
 using UnityEngine;
 
-namespace Recalled.Gameplay.Editor
+namespace RecalledEditor
 {
     [CustomEditor(typeof(EnemyDefinition))]
     public sealed class EnemyDefinitionEditor : UnityEditor.Editor

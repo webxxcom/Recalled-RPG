@@ -1,42 +1,46 @@
-using System;
+using NUnit.Framework;
+using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Recalled.Gameplay
 {
     [RequireComponent(typeof(Collider2D))]
-    public class Door : MonoBehaviour // TODO Interactable
+    public class Door : MonoBehaviour
     {
-        Collider2D _collider2D;
-        bool _isOpen;
-        bool IsOpen
+        [SerializeReference, SubclassSelector] List<ICondition> _openConditions;
+
+        [Header("Edge events")]
+        [SerializeField] UnityEvent _openClose;
+        [SerializeField] Animator _animator;
+
+        public enum States { Opened, Closed }
+        public States State { get; private set; } = States.Closed;
+
+        void ToggleState()
         {
-            get => _isOpen;
-            set
+            if (State == States.Opened) SetState(States.Closed);
+            else SetState(States.Opened);
+        }
+
+        public void SetState(States state)
+        {
+            foreach (var condition in _openConditions)
             {
-                if (_isOpen == value)
+                if (!condition.Check())
                     return;
-
-                Interacted?.Invoke();
-                _isOpen = value;
-                _collider2D.enabled = !value;
             }
+
+            State = state;
+            ApplyLevels();
         }
 
-        public bool CanBeInteracted => true;
-
-        public event Action Interacted;
-
-        void Awake()
+        void ApplyLevels()
         {
-            _collider2D = GetComponent<Collider2D>();
-            _isOpen = !_collider2D.enabled;
-        }
+            bool open = State == States.Opened;
 
-        public void Open()
-            => IsOpen = true;
-        public void Close()
-            => IsOpen = false;
-        public void Interact()
-            => IsOpen = !IsOpen;
+            if (_animator != null)
+                _animator.SetBool(AnimatorParameters.IsOpenHash, open);
+        }
     }
 }

@@ -5,5 +5,5 @@
   <Project Path="Recalled.Systems.csproj" />
   <Project Path="Assembly-CSharp.csproj" />
   <Project Path="Recalled.Systems.Tests.EditMode.csproj" />
-  <Project Path="Assembly-CSharp-Editor.csproj" />
+  <Project Path="Recalled.Editor.csproj" />
 </Solution>

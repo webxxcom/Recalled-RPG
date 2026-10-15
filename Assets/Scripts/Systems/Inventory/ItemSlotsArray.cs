@@ -192,6 +192,18 @@ namespace Recalled.Systems.Inventory
             return false;
         }
 
+        public bool Has(ItemDefinition definition, int count)
+        {
+            if (definition == null)
+                throw new ArgumentNullException();
+            if (count <= 0)
+                throw new ArgumentException();
+
+            return _slots
+                .Where(s => !s.IsEmpty)
+                .Any(s => s.Item.Definition == definition && s.Item.Count >= count);
+        }
+
         public IEnumerator<Slot> GetEnumerator()
             => _slots.AsEnumerable().GetEnumerator();
         IEnumerator IEnumerable.GetEnumerator()

@@ -1,5 +1,6 @@
 using Recalled.Systems.Inventory;
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -10,6 +11,9 @@ namespace Recalled.Gameplay
     {
         [SerializeField] ItemDefinition _requiredKey;
         [SerializeField] LootTable _lootTable;
+
+        [SerializeReference, SubclassSelector]
+        List<IInteractionCondition> _conditions;
 
         [Header("Edge events")]
         [SerializeField] UnityEvent _openClose;
@@ -34,18 +38,23 @@ namespace Recalled.Gameplay
         void OnDisable() => _interactable.RequestInteraction -= Interact;
         void Start() => ApplyLevels();
 
-        bool _wasOpened;
+        bool _wasFirstOpened;
         public void Interact(InteractionProcessor interactor)
         {
-            if (!_wasOpened)
+            if (!_wasFirstOpened)
             {
+                foreach (var condition in _conditions)
+                {
+                    if (!condition.Check(interactor))
+                        return;
+                }
+
                 var inventory = interactor.GetComponentInParent<InventoryHolder>().Inventory;
                 var loot = _lootTable.GetItem();
 
                 bool hasKey = _requiredKey == null || inventory.Take(_requiredKey, 1);
                 if (!hasKey)
                 {
-                    _rejected.Invoke();
                     return;
                 }
 
@@ -72,8 +81,8 @@ namespace Recalled.Gameplay
         {
             bool open = State == States.Opened;
 
-            if (!_wasOpened) 
-                _wasOpened = open;
+            if (!_wasFirstOpened) 
+                _wasFirstOpened = open;
             if (_animator != null)
                 _animator.SetBool(AnimatorParameters.IsOpenHash, open);
         }
