@@ -42,7 +42,7 @@ public abstract class Movementable : MonoBehaviour
     public event Action OnMovementStopped;
     public event Action OnMovement;
 
-    private void Awake()
+    protected virtual void Awake()
     {
         _rigidbody2D = GetComponent<Rigidbody2D>();
         _externalVelocity = GetComponent<ExternalVelocity>();

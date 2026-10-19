@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 954913967747957096}
   - component: {fileID: 1375917583171785032}
   - component: {fileID: 5448745885082170099}
-  m_Layer: 12
+  m_Layer: 6
   m_Name: Wilky
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -79,7 +79,7 @@ CapsuleCollider2D:
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 4096
+    m_Bits: 4608
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 0

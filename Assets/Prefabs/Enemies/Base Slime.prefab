@@ -530,7 +530,7 @@ GameObject:
   - component: {fileID: 8706112860260292058}
   - component: {fileID: 7569261294313447324}
   - component: {fileID: 5300356461416596080}
-  m_Layer: 7
+  m_Layer: 8
   m_Name: Hitbox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -630,7 +630,7 @@ GameObject:
   - component: {fileID: 446145300477578164}
   - component: {fileID: 63700718590483873}
   - component: {fileID: 5554208230041242687}
-  m_Layer: 11
+  m_Layer: 2
   m_Name: Visual
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -851,7 +851,7 @@ GameObject:
   - component: {fileID: 6951205334633889729}
   - component: {fileID: 5052910027997962223}
   - component: {fileID: 6033523283697343394}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: Hurtbox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -999,7 +999,7 @@ GameObject:
   - component: {fileID: 8602899321701106981}
   - component: {fileID: 6520413568205409604}
   - component: {fileID: 1135605086327827}
-  m_Layer: 11
+  m_Layer: 6
   m_Name: Base Slime
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -1102,8 +1102,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EntityMovement
   _walkingSpeed: 1.6
-  _externalVelocity: {fileID: 3973905027260380328}
-  _animationController: {fileID: 5554208230041242687}
   _movementAIConfig: {fileID: 11400000, guid: 72187b7b600538c4188fb4aa064706ac, type: 2}
 --- !u!114 &3973905027260380328
 MonoBehaviour:

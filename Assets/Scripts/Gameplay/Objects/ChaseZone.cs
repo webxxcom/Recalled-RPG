@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class ChaseZone : MonoBehaviour
 {
-    [SerializeField] LayerMask _trackedLayers;
     public GameObject CurrentTarget => _targets.FirstOrDefault();
 
     [Header("Broadcasts to")]
@@ -15,7 +14,7 @@ public class ChaseZone : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if ((_trackedLayers.value & (1 << collision.gameObject.layer)) != 0)
+        if (collision.CompareTag("Player"))
         {
             _targets.Add(collision.gameObject);
 

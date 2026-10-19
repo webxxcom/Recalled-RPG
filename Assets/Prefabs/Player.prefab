@@ -200,7 +200,7 @@ GameObject:
   - component: {fileID: 5781126296770748758}
   - component: {fileID: 1195640530942918373}
   - component: {fileID: 5772442080917162637}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: Hurtbox
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -358,7 +358,7 @@ GameObject:
   - component: {fileID: 4452931388105062793}
   - component: {fileID: 1017372488747182917}
   - component: {fileID: 6527412316840103686}
-  m_Layer: 7
+  m_Layer: 8
   m_Name: Hitbox
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -396,7 +396,7 @@ CapsuleCollider2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 4023
+    m_Bits: 0
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
@@ -563,7 +563,7 @@ GameObject:
   - component: {fileID: 8957107533325475224}
   - component: {fileID: 3161427623952439946}
   - component: {fileID: 4782641299976584344}
-  m_Layer: 8
+  m_Layer: 2
   m_Name: Visual
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -818,7 +818,7 @@ GameObject:
   - component: {fileID: 4874625822767206472}
   - component: {fileID: 3035446050279745726}
   - component: {fileID: 6570495819832713759}
-  m_Layer: 12
+  m_Layer: 9
   m_Name: Interaction
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1082,7 +1082,6 @@ GameObject:
   - component: {fileID: 2409675021506303179}
   - component: {fileID: 6836397006442588245}
   - component: {fileID: 7162682655650916106}
-  - component: {fileID: 7101408821228708346}
   - component: {fileID: 2708507066674380346}
   - component: {fileID: 6443777087678772007}
   - component: {fileID: 1255662501661695068}
@@ -1090,7 +1089,7 @@ GameObject:
   - component: {fileID: 797185126300389965}
   - component: {fileID: 7919439482791280018}
   - component: {fileID: 6749094384683476667}
-  m_Layer: 8
+  m_Layer: 3
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 5721338939258241955, guid: 0000000000000000d000000000000000, type: 0}
@@ -1190,7 +1189,7 @@ CapsuleCollider2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 192
+    m_Bits: 0
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
@@ -1224,21 +1223,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMovementComponent
   _walkingSpeed: 2
-  _externalVelocity: {fileID: 1255662501661695068}
-  _animationController: {fileID: 4782641299976584344}
---- !u!114 &7101408821228708346
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7559287907167481913}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 13e28ac1af5e01f4da013d12e70509a1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: '::'
-  _animator: {fileID: 3750387735865093422}
 --- !u!114 &2708507066674380346
 MonoBehaviour:
   m_ObjectHideFlags: 0

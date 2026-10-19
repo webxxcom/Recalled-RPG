@@ -10,8 +10,10 @@ namespace Recalled.Gameplay
         Sprint _sprintingResource;
         Dash _dash;
 
-        private void Awake()
+        protected override void Awake()
         {
+            base.Awake();
+
             _sprintingResource = GetComponent<Sprint>();
             _dash = GetComponent<Dash>();
         }

@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 5952792727280755219}
   - component: {fileID: 7927662892311800274}
   - component: {fileID: 6191151826198387420}
-  m_Layer: 11
+  m_Layer: 6
   m_Name: Chest
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -224,6 +224,7 @@ MonoBehaviour:
     - _item: {fileID: 11400000, guid: 5c02a86e175a6ef47b5b688e53c34ba8, type: 2}
       _count: 0
       _weight: 0
+  _conditions: []
   _openClose:
     m_PersistentCalls:
       m_Calls:
@@ -255,6 +256,9 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   _animator: {fileID: 9218924371971108199}
+  references:
+    version: 2
+    RefIds: []
 --- !u!114 &6191151826198387420
 MonoBehaviour:
   m_ObjectHideFlags: 0

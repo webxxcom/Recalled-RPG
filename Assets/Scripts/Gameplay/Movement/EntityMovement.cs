@@ -11,10 +11,11 @@ public class EntityMovement : Movementable
     readonly List<MovementStrategy> _movementStrategies = new();
     readonly List<TargetProvider> _targetProviders = new();
 
-    void Awake()
+    protected override void Awake()
     {
-        _idleMovementStrategy = _movementAIConfig.IdleMovementStrategy.CreateInstance(gameObject);
+        base.Awake();
 
+        _idleMovementStrategy = _movementAIConfig.IdleMovementStrategy.CreateInstance(gameObject);
         foreach (var item in _movementAIConfig.MovementStrategies)
             _movementStrategies.Add(item.CreateInstance(gameObject));
         foreach (var item in _movementAIConfig.TargetProviders)
