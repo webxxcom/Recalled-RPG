@@ -30638,10 +30638,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 7559287907167481913, guid: ef7a4d2f735b5c342b5d27fda3be7ed5, type: 3}
-      propertyPath: m_Layer
-      value: 6
-      objectReference: {fileID: 0}
     - target: {fileID: 8487839362322834453, guid: ef7a4d2f735b5c342b5d27fda3be7ed5, type: 3}
       propertyPath: m_Camera
       value: 
@@ -30674,17 +30670,9 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1375917583171785032, guid: e9435db4719c6bc4d8539fbccaec89fa, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 1459502085907806261, guid: e9435db4719c6bc4d8539fbccaec89fa, type: 3}
       propertyPath: m_Name
       value: Wilky
-      objectReference: {fileID: 0}
-    - target: {fileID: 1459502085907806261, guid: e9435db4719c6bc4d8539fbccaec89fa, type: 3}
-      propertyPath: m_Layer
-      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2714024224261537696, guid: e9435db4719c6bc4d8539fbccaec89fa, type: 3}
       propertyPath: m_LocalPosition.x
