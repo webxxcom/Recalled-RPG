@@ -3,15 +3,12 @@ using UnityEngine.InputSystem;
 
 namespace Recalled.Gameplay
 {
-
     [RequireComponent(typeof(Sprint))]
     [RequireComponent(typeof(Dash))]
     public sealed class PlayerMovement : Movementable
     {
         Sprint _sprintingResource;
         Dash _dash;
-
-        public bool IsSprinting => _sprintingResource.IsActive;
 
         private void Awake()
         {

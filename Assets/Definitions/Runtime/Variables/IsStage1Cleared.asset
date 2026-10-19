@@ -12,6 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a17220fe22bcb64b8591ac4a75eb007, type: 3}
   m_Name: IsStage1Cleared
   m_EditorClassIdentifier: Recalled.Gameplay:Recalled.Gameplay:BoolRuntimeVariable
-  _value: 0
-  _wasInit: 1
-  _prev: 0
+  _initialValue: 0
+  _runtimeValue: 1
