@@ -1081,7 +1081,6 @@ GameObject:
   - component: {fileID: 3880424582953868097}
   - component: {fileID: 2029483265291670369}
   - component: {fileID: 3973905027260380328}
-  - component: {fileID: 8602899321701106981}
   - component: {fileID: 6520413568205409604}
   - component: {fileID: 1135605086327827}
   m_Layer: 6
@@ -1200,7 +1199,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b778ba954d65da44baa7db60bc2148d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Recalled.Gameplay::Recalled.Gameplay.Movement.MovementStateMachine
-  _firstState: {fileID: 0}
   _remainState: {fileID: 11400000, guid: 5fd2fb6c6b5eaf14dbfb35ed0a1ecdc2, type: 2}
   _defaultState: {fileID: 11400000, guid: 22099f125ca70894789adf82e5709686, type: 2}
 --- !u!114 &3973905027260380328
@@ -1217,19 +1215,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ExternalVelocity
   decayRate: 8
   restThreshold: 0.05
---- !u!114 &8602899321701106981
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8621769954802205494}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 49c0e912ff50ffc4eb7e7563db34a316, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: '::'
-  _gameSet: {fileID: 11400000, guid: bbac75fc2fc9c7c4eac897c9723139fb, type: 2}
 --- !u!114 &6520413568205409604
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1299,7 +1284,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 8602899321701106981}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: Recalled.Core.TransformSetRegistor, Recalled.Gameplay
         m_MethodName: set_enabled
         m_Mode: 6

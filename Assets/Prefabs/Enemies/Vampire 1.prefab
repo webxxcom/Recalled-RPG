@@ -20,6 +20,10 @@ PrefabInstance:
       propertyPath: _diedEvent.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: Recalled.Gameplay.Movement.Movementable, Recalled.Gameplay
       objectReference: {fileID: 0}
+    - target: {fileID: 7137728906189411847, guid: a36798c2fab103f4797ce026132d4fc6, type: 3}
+      propertyPath: m_Radius
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 7702727557298083819, guid: a36798c2fab103f4797ce026132d4fc6, type: 3}
       propertyPath: m_LocalPosition.x
       value: 5.5644693
@@ -136,20 +140,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0bc048cde5b999849b88803c68883291, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  _eyeSight: {fileID: 8511639185903405796}
   _losesInterestAfter: 2
   _minDistance: 1
---- !u!114 &8511639185903405796 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6108522331221076308, guid: a36798c2fab103f4797ce026132d4fc6, type: 3}
-  m_PrefabInstance: {fileID: 2511528701278577584}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2a4e4a04ef989984286b6330157a3613, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Recalled.Gameplay::Recalled.Gameplay.EyeSight
 --- !u!1001 &6085077625159226070
 PrefabInstance:
   m_ObjectHideFlags: 0

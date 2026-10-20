@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3a17220fe22bcb64b8591ac4a75eb007, type: 3}
-  m_Name: IsStage1Cleared
+  m_Name: Stage 2 State
   m_EditorClassIdentifier: Recalled.Gameplay:Recalled.Gameplay:BoolRuntimeVariable
   _initialValue: 0
   _runtimeValue: 1
