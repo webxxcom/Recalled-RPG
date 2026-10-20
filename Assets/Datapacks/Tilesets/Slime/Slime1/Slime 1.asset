@@ -14,3 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: Recalled.Gameplay::Recalled.Gameplay.EntityDefinition
   _basePrefab: {fileID: 8621769954802205494, guid: a36798c2fab103f4797ce026132d4fc6, type: 3}
   _visualPrefab: {fileID: 6250380783795264621, guid: 291d2043f17ccc845a1eb4e29fcf0369, type: 3}
+  _movementState: {fileID: 11400000, guid: d0d71c9b60552604eadb87b85882ccc9, type: 2}

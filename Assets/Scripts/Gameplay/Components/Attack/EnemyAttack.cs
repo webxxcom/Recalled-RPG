@@ -1,15 +1,14 @@
+using Recalled.Gameplay;
 using UnityEngine;
 
 public class EnemyAttack : EntityAttack
 {
-    [SerializeField] TargetProviderSO _targetProviderSO;
+    [SerializeField] ITargetProvider _targetProvider;
     [SerializeField] float _intervalBetweenStates;
-
-    TargetProvider _targetProviderInstance;
 
     private void Awake()
     {
-        _targetProviderInstance = _targetProviderSO.CreateInstance();
+        _targetProvider = transform.parent.GetComponent<ITargetProvider>();
     }
 
     void Update()
@@ -17,11 +16,11 @@ public class EnemyAttack : EntityAttack
         if (_elapsedLastAttack < _intervalBetweenStates)
             return;
 
-        if (_targetProviderInstance.HasTarget)
+        if (_targetProvider.HasTarget)
         {
             foreach (var attackStrategy in _attackStrategies)
             {
-                AttackContext attackContext = new(_targetProviderInstance.CurrentTarget);
+                AttackContext attackContext = new(_targetProvider.Target);
                 if (attackStrategy.CanAttack(attackContext))
                 {
                     Attack(attackStrategy, attackContext);

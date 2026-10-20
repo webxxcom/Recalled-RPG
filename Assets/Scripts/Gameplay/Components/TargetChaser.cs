@@ -2,13 +2,33 @@ using UnityEngine;
 
 namespace Recalled.Gameplay
 {
-    public class TargetChaser : MonoBehaviour, ITargetProvider
+    public class TargetChaser : MonoBehaviour, IChaser, ITargetProvider
     {
-        [SerializeField] EyeSight _eyeSight;
         [SerializeField] float _losesInterestAfter = 2f;
+        [SerializeField] float _minDistance = 1f;
+        EyeSight _eyeSight;
 
         public GameObject Target { get; private set; }
         public bool HasTarget => Target != null;
+        public Vector2 Direction
+        {
+            get
+            {
+                if (!HasTarget)
+                    return Vector2.zero;
+
+                var dist = Target.transform.position - transform.position;
+                if (_minDistance * _minDistance >= dist.sqrMagnitude)
+                    return Vector2.zero;
+
+                return dist.normalized;
+            }
+        }
+
+        private void Awake()
+        {
+            _eyeSight = GetComponentInChildren<EyeSight>();
+        }
 
         private void OnEnable()
         {
@@ -22,7 +42,7 @@ namespace Recalled.Gameplay
         float _elapsedLastSet;
         void UpdateTarget(GameObject target)
         {
-            if (Target != null) // have target -> don't change
+            if (Target != null || !target.CompareTag("Player")) // have target -> don't change
                 return;
 
             _elapsedLastSet = 0;

@@ -13,8 +13,6 @@ namespace Recalled.Gameplay
         CircleCollider2D _collider2D;
         readonly HashSet<GameObject> _overlaps = new();
 
-        public bool SeesAnyone => _overlaps.Count != 0;
-
         public event Action<GameObject> SawSomeone;
 
         private void Awake()

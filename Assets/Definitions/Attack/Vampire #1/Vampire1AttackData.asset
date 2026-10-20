@@ -12,12 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c4722edebc8adf4da39dab4a4b09768, type: 3}
   m_Name: Vampire1AttackData
   m_EditorClassIdentifier: Assembly-CSharp::AttackDataSO
-  <DealtDamage>k__BackingField: 10
   <ReloadTime>k__BackingField: 3
-  <KnockbackPower>k__BackingField: 0.8
-  <KnockbackOriginTransform>k__BackingField: {fileID: 0}
-  <ImpactTime>k__BackingField: 0.45
-  <RecoveryTime>k__BackingField: 0.6
   <SpeedMultiplier>k__BackingField: 0.7
-  <Curves>k__BackingField: {fileID: 0}
-  <Effects>k__BackingField: []
+  _dealtDamage: 10
+  _knockbackPower: 1.6
+  _impactTime: 0.3
+  _recoveryTime: 0.8
+  _curves: {fileID: 11400000, guid: 71703a58175740744a7e6f68f54697ed, type: 2}

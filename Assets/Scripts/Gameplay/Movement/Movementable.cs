@@ -1,102 +1,104 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
-[RequireComponent(typeof(Rigidbody2D))]
-[RequireComponent(typeof(ExternalVelocity))]
-public class Movementable : MonoBehaviour
+namespace Recalled.Gameplay.Movement
 {
-    [SerializeField] float _walkingSpeed;
-
-    public bool IsWalking => MovementIntention != Vector2.zero;
-    public Vector2 FacingDirection => MovementIntention != Vector2.zero ? MovementIntention : _lastMovement;
-    public float CurrentSpeed => _rigidbody2D.linearVelocity.magnitude;
-    Vector2 _movementIntention;
-    Vector2 _lastMovement;
-
-    Rigidbody2D _rigidbody2D;
-    ExternalVelocity _externalVelocity;
-    EntityAnimationController _animationController;
-    readonly SpeedAggregator _speedAggregator = new();
-
-    public Vector2 MovementIntention
+    [DisallowMultipleComponent]
+    [RequireComponent(typeof(Rigidbody2D))]
+    [RequireComponent(typeof(ExternalVelocity))]
+    public sealed class Movementable : MonoBehaviour
     {
-        get => _movementIntention;
-        protected set
+        [SerializeField] float _walkingSpeed;
+
+        public bool IsWalking => MovementIntention != Vector2.zero;
+        public Vector2 FacingDirection => MovementIntention != Vector2.zero ? MovementIntention : _lastMovement;
+        public float CurrentSpeed => _rigidbody2D.linearVelocity.magnitude;
+        Vector2 _movementIntention;
+        Vector2 _lastMovement;
+
+        Rigidbody2D _rigidbody2D;
+        ExternalVelocity _externalVelocity;
+        EntityAnimationController _animationController;
+        readonly SpeedAggregator _speedAggregator = new();
+
+        public Vector2 MovementIntention
         {
-            if (_movementIntention != Vector2.zero)
-                _lastMovement = _movementIntention;
+            get => _movementIntention;
+            private set
+            {
+                if (_movementIntention != Vector2.zero)
+                    _lastMovement = _movementIntention;
 
-            var _prevMov = _movementIntention;
-            if (_prevMov == Vector2.zero && value != Vector2.zero)
-                OnMovementStarted?.Invoke();
-            else if (_prevMov != Vector2.zero && value == Vector2.zero)
-                OnMovementStopped?.Invoke();
+                var _prevMov = _movementIntention;
+                if (_prevMov == Vector2.zero && value != Vector2.zero)
+                    OnMovementStarted?.Invoke();
+                else if (_prevMov != Vector2.zero && value == Vector2.zero)
+                    OnMovementStopped?.Invoke();
 
-            _movementIntention = value;
-            if (value != Vector2.zero)
-                OnMovement?.Invoke();
+                _movementIntention = value;
+                if (value != Vector2.zero)
+                    OnMovement?.Invoke();
+            }
         }
-    }
 
-    public event Action OnMovementStarted;
-    public event Action OnMovementStopped;
-    public event Action OnMovement;
+        public event System.Action OnMovementStarted;
+        public event System.Action OnMovementStopped;
+        public event System.Action OnMovement;
 
-    protected virtual void Awake()
-    {
-        _rigidbody2D = GetComponent<Rigidbody2D>();
-        _externalVelocity = GetComponent<ExternalVelocity>();
-        _animationController = GetComponentInChildren<EntityAnimationController>();
-    }
+        void Awake()
+        {
+            _rigidbody2D = GetComponent<Rigidbody2D>();
+            _externalVelocity = GetComponent<ExternalVelocity>();
+            _animationController = GetComponentInChildren<EntityAnimationController>();
+        }
 
-    private void OnDisable()
-    {
-        MovementIntention = Vector2.zero;
-    }
+        private void OnDisable()
+        {
+            MovementIntention = Vector2.zero;
+        }
 
-    protected virtual Vector2 GetMovementIntention() => MovementIntention;
-    public Vector2 GetFinalMovement()
-    {
-        float speedCoeficient = _speedAggregator.Get();
-        Vector2 externalVelocity = _externalVelocity != null ? _externalVelocity.TickAndGet(Time.fixedDeltaTime) : Vector2.zero;
-        Vector2 finalMovement = GetMovementIntention();
-        return (speedCoeficient * _walkingSpeed * finalMovement) + externalVelocity;
-    }
+        public Vector2 GetFinalMovement()
+        {
+            float speedCoeficient = _speedAggregator.Get();
+            Vector2 externalVelocity = _externalVelocity != null ? _externalVelocity.TickAndGet(Time.fixedDeltaTime) : Vector2.zero;
+            Vector2 finalMovement = MovementIntention;
+            return (speedCoeficient * _walkingSpeed * finalMovement) + externalVelocity;
+        }
 
-    public void SetDirection(Vector2 vec2)
-    {
-        if (!enabled)
-            return;
+        public void SetDirection(Vector2 vec2)
+        {
+            if (!enabled)
+                return;
 
-        MovementIntention = vec2; 
-    }
+            MovementIntention = vec2; 
+        }
 
-    private void FixedUpdate()
-    {
-        Vector2 finalMovement = GetFinalMovement();
+        private void FixedUpdate()
+        {
+            Vector2 finalMovement = GetFinalMovement();
 
-        if (finalMovement != Vector2.zero)
-            _rigidbody2D.linearVelocity = finalMovement;
-        else
-            _rigidbody2D.linearVelocity *= 0.9f;
+            if (finalMovement != Vector2.zero)
+                _rigidbody2D.linearVelocity = finalMovement;
+            else
+                _rigidbody2D.linearVelocity *= 0.9f;
 
-        _animationController.MoveAnimation(FacingDirection,
-            _rigidbody2D.linearVelocity.magnitude / 4f);
-    }
+            _animationController.MoveAnimation(FacingDirection,
+                _rigidbody2D.linearVelocity.magnitude / 4f);
+        }
 
-    void FullStop()
-    {
-        MovementIntention = Vector2.zero;
-        _rigidbody2D.linearVelocity = Vector2.zero;
-        _animationController.MoveAnimation(FacingDirection, 0);
-    }
+        void FullStop()
+        {
+            MovementIntention = Vector2.zero;
+            _rigidbody2D.linearVelocity = Vector2.zero;
+            _animationController.MoveAnimation(FacingDirection, 0);
+        }
 
-    public void AddSpeedCoef(float coef) => _speedAggregator.Add(coef);
-    public void RemoveSpeedCoef(float coef) => _speedAggregator.Remove(coef);
+        public void AddSpeedCoef(float coef) => _speedAggregator.Add(coef);
+        public void RemoveSpeedCoef(float coef) => _speedAggregator.Remove(coef);
 
-    private void Update()
-    {
-        if (Mathf.Approximately(Time.timeScale, 0))
-            FullStop();
+        private void Update()
+        {
+            if (Mathf.Approximately(Time.timeScale, 0))
+                FullStop();
+        }
     }
 }

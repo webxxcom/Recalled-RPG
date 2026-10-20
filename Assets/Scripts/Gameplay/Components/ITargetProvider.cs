@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace Recalled.Gameplay
 {
-    public interface ITargetProvider
+    interface ITargetProvider
     {
         GameObject Target { get; }
         bool HasTarget { get; }

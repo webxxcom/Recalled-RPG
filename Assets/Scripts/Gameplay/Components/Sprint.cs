@@ -1,9 +1,11 @@
 using Recalled.Core;
+using Recalled.Gameplay.Movement;
 using UnityEngine;
 
 namespace Recalled.Gameplay
 {
     [DisallowMultipleComponent]
+    [RequireComponent(typeof(Movementable))]
     public sealed class Sprint : MonoBehaviour
     {
         [SerializeField] ValueProviderConfig _config;
@@ -11,8 +13,8 @@ namespace Recalled.Gameplay
         [SerializeField] int _usage;
         [SerializeField] int _restore;
         [SerializeField] float _speedMultiplier;
-        [SerializeField] Movementable _movementBase;
 
+        Movementable _movementable;
         ValueResource _valueResource;
         bool _isActive;
 
@@ -25,9 +27,9 @@ namespace Recalled.Gameplay
                     return;
 
                 if (value)
-                    _movementBase.AddSpeedCoef(_speedMultiplier);
+                    _movementable.AddSpeedCoef(_speedMultiplier);
                 else
-                    _movementBase.RemoveSpeedCoef(_speedMultiplier);
+                    _movementable.RemoveSpeedCoef(_speedMultiplier);
 
                 _isActive = value;
             }
@@ -35,6 +37,7 @@ namespace Recalled.Gameplay
 
         private void Awake()
         {
+            _movementable = GetComponent<Movementable>();
             _valueResource = new(_config);
         }
 

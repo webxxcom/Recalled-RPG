@@ -7,13 +7,13 @@ namespace Recalled.Gameplay.Movement
     {
         public override void Act(MovementStateMachine stateMachine, Movementable movementable)
         {
-            if (!stateMachine.TryGetComponent<IPatrolRoute>(out var patrolRoute))
+            if (!stateMachine.TryGetComponent<IDirectionProvider>(out var patrolRoute))
             {
-                Debug.LogError($"{stateMachine.gameObject.name}: Doesn't have {nameof(IPatrolRoute)}");
+                Debug.LogError($"{stateMachine.gameObject.name}: Doesn't have {nameof(IDirectionProvider)}");
                 return;
             }
 
-            movementable.SetDirection(patrolRoute.GetDirection());
+            movementable.SetDirection(patrolRoute.Direction);
         }
     }
 }

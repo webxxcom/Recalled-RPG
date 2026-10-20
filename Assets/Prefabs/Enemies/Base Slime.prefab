@@ -518,6 +518,91 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!1 &4777596684267780317
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8107296642441664843}
+  - component: {fileID: 7137728906189411847}
+  - component: {fileID: 6108522331221076308}
+  m_Layer: 6
+  m_Name: Sight
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8107296642441664843
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4777596684267780317}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.625, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7702727557298083819}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!58 &7137728906189411847
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4777596684267780317}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_Radius: 4.5
+--- !u!114 &6108522331221076308
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4777596684267780317}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a4e4a04ef989984286b6330157a3613, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Recalled.Gameplay::Recalled.Gameplay.EyeSight
+  _drawGizmos: 1
+  _layerMask:
+    serializedVersion: 2
+    m_Bits: 1024
 --- !u!1 &4828995585038669771
 GameObject:
   m_ObjectHideFlags: 0
@@ -604,7 +689,6 @@ MonoBehaviour:
   _animationController: {fileID: 5554208230041242687}
   _attackStrategies:
   - {fileID: 5300356461416596080}
-  _targetProviderSO: {fileID: 11400000, guid: 24a57d199f458f14c8446c05d716dcaa, type: 2}
   _intervalBetweenStates: 0
 --- !u!114 &5300356461416596080
 MonoBehaviour:
@@ -994,7 +1078,8 @@ GameObject:
   - component: {fileID: 7702727557298083819}
   - component: {fileID: 5497186874251559514}
   - component: {fileID: 8194479732750696501}
-  - component: {fileID: 1587016986740982146}
+  - component: {fileID: 3880424582953868097}
+  - component: {fileID: 2029483265291670369}
   - component: {fileID: 3973905027260380328}
   - component: {fileID: 8602899321701106981}
   - component: {fileID: 6520413568205409604}
@@ -1022,6 +1107,7 @@ Transform:
   - {fileID: 8114386751203609592}
   - {fileID: 4630919594239315510}
   - {fileID: 1810816374901711412}
+  - {fileID: 8107296642441664843}
   - {fileID: 446145300477578164}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1089,7 +1175,7 @@ CapsuleCollider2D:
   m_Offset: {x: 0.083805546, y: 0.051474743}
   m_Size: {x: 0.85711724, y: 0.29794315}
   m_Direction: 1
---- !u!114 &1587016986740982146
+--- !u!114 &3880424582953868097
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1098,11 +1184,25 @@ MonoBehaviour:
   m_GameObject: {fileID: 8621769954802205494}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 12f15cd53b201564699615c7995e984f, type: 3}
+  m_Script: {fileID: 11500000, guid: 80671b5b445efbe4c84cbf7ca43fa800, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::EntityMovement
-  _walkingSpeed: 1.6
-  _movementAIConfig: {fileID: 11400000, guid: 72187b7b600538c4188fb4aa064706ac, type: 2}
+  m_EditorClassIdentifier: Recalled.Gameplay::Recalled.Gameplay.Movement.Movementable
+  _walkingSpeed: 1.8
+--- !u!114 &2029483265291670369
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8621769954802205494}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b778ba954d65da44baa7db60bc2148d0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Recalled.Gameplay::Recalled.Gameplay.Movement.MovementStateMachine
+  _firstState: {fileID: 0}
+  _remainState: {fileID: 11400000, guid: 5fd2fb6c6b5eaf14dbfb35ed0a1ecdc2, type: 2}
+  _defaultState: {fileID: 11400000, guid: 22099f125ca70894789adf82e5709686, type: 2}
 --- !u!114 &3973905027260380328
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1151,8 +1251,8 @@ MonoBehaviour:
   _diedEvent:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1587016986740982146}
-        m_TargetAssemblyTypeName: EntityMovement, Recalled.Gameplay
+      - m_Target: {fileID: 3880424582953868097}
+        m_TargetAssemblyTypeName: Recalled.Gameplay.Movement.Movementable, Recalled.Gameplay
         m_MethodName: set_enabled
         m_Mode: 6
         m_Arguments:

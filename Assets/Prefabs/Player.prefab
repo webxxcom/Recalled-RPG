@@ -458,8 +458,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99e545928541b874e8053cd626410a3b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  _movementBase: {fileID: 7162682655650916106}
-  _hitbox: {fileID: 7809330539225864080}
+  _movementBase: {fileID: 7505962688322566842}
 --- !u!1 &2880830138094642791
 GameObject:
   m_ObjectHideFlags: 0
@@ -890,6 +889,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Recalled.Gameplay::Recalled.Gameplay.EyeSight
   _drawGizmos: 0
+  _layerMask:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!114 &6570495819832713759
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1095,6 +1097,7 @@ GameObject:
   - component: {fileID: 8487839362322834453}
   - component: {fileID: 2409675021506303179}
   - component: {fileID: 6836397006442588245}
+  - component: {fileID: 7505962688322566842}
   - component: {fileID: 7162682655650916106}
   - component: {fileID: 2708507066674380346}
   - component: {fileID: 6443777087678772007}
@@ -1224,6 +1227,19 @@ CapsuleCollider2D:
   m_Offset: {x: -0.03, y: 0.06}
   m_Size: {x: 0.7548744, y: 0.3412516}
   m_Direction: 1
+--- !u!114 &7505962688322566842
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7559287907167481913}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80671b5b445efbe4c84cbf7ca43fa800, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Recalled.Gameplay::Movementable
+  _walkingSpeed: 2
 --- !u!114 &7162682655650916106
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1236,7 +1252,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aee9dd943d1e0d54a9d789a014f366f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMovementComponent
-  _walkingSpeed: 2
 --- !u!114 &2708507066674380346
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1254,7 +1269,6 @@ MonoBehaviour:
   _usage: 4
   _restore: 3
   _speedMultiplier: 1.8
-  _movementBase: {fileID: 7162682655650916106}
 --- !u!114 &6443777087678772007
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -7,17 +7,13 @@ namespace Recalled.Gameplay.Movement
     {
         public override void Act(MovementStateMachine stateMachine, Movementable movementable)
         {
-            if (!stateMachine.TryGetComponent<ITargetProvider>(out var targetProvider))
+            if (!stateMachine.TryGetComponent<IChaser>(out var targetProvider))
             {
-                Debug.LogError($"{stateMachine.gameObject.name}: Doesn't have {nameof(ITargetProvider)}");
+                Debug.LogError($"{stateMachine.gameObject.name}: Doesn't have {nameof(IChaser)}");
                 return;
             }
 
-            Vector2 dir = targetProvider.Target != null
-                ? Vector2.Normalize(targetProvider.Target.transform.position - stateMachine.transform.position)
-                : Vector2.zero;
-
-            movementable.SetDirection(dir);
+            movementable.SetDirection(targetProvider.Direction);
         }
     }
 }
