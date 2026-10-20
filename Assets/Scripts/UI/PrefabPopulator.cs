@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,21 +7,31 @@ public class PrefabPopulator : MonoBehaviour
     [SerializeField] GameObject _prefab;
     [SerializeField] Transform _parent;
 
-    public IReadOnlyList<GameObject> Created { get; private set; }
+    readonly List<GameObject> _created = new();
+    public IReadOnlyList<GameObject> Created => _created;
 
     public IReadOnlyList<GameObject> Populate(int count)
     {
-        var slots = new GameObject[count];
+        DestroyAll();
+
         for (int i = 0; i < count; i++)
-            slots[i] = Instantiate(_prefab, _parent);
-        Created = slots;
-        return Created;
+            _created.Add(Instantiate(_prefab, _parent));
+        return _created;
+    }
+
+    public GameObject Add()
+    {
+        _created.Add(_prefab);
+        return _created[^1];
     }
 
     public void DestroyAll()
     {
+        if (_created == null)
+            return;
+
         foreach (var item in Created)
             Destroy(item);
-        Created = null;
+        _created.Clear();
     }
 }

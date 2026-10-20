@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Recalled.Gameplay
 {
-    [CreateAssetMenu(menuName = "Dialogue/Event Channel")]
+    [CreateAssetMenu(menuName = "Runtime/Event Channels/Dialogue Source")]
     public class DialogueEventChannel : GameEventChannel<DialogueSource>
     {
     }

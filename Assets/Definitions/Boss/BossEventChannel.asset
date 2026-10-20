@@ -9,6 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e86be9c069d4bfe4da06a5cdef2963f2, type: 3}
-  m_Name: OnTargetEnteredZone
-  m_EditorClassIdentifier: Assembly-CSharp::GameobjectGameEvent
+  m_Script: {fileID: 11500000, guid: 900616bea2a6db3449f0d48b4aa35f48, type: 3}
+  m_Name: BossEventChannel
+  m_EditorClassIdentifier: Recalled.UI::Recalled.UI.IntVariableGameEvent
