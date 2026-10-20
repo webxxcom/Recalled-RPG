@@ -8,7 +8,7 @@ namespace Recalled.Core
     public sealed class BarScript : MonoBehaviour
     {
         [SerializeField] Image _topBar;
-        [SerializeField, Tooltip("Optional")] Image _bottomBar;
+        [SerializeField] Image _bottomBar;
         [SerializeField] float _animationSpeed;
 
         float _currentValue;
@@ -24,7 +24,7 @@ namespace Recalled.Core
             var smoothBar = delta <= 0 ? _bottomBar : _topBar;
 
             ProgressStarted.Invoke();
-            if (suddenBar) suddenBar.fillAmount = _currentValue;
+            suddenBar.fillAmount = _currentValue;
             while (Mathf.Abs(_currentValue - smoothBar.fillAmount) > 0.01f)
             {
                 smoothBar.fillAmount

@@ -14,14 +14,14 @@ public class PrefabPopulator : MonoBehaviour
     {
         DestroyAll();
 
-        for (int i = 0; i < count; i++)
-            _created.Add(Instantiate(_prefab, _parent));
+        for (int i = 0; i < count; i++) Add();
         return _created;
     }
 
     public GameObject Add()
     {
-        _created.Add(_prefab);
+        _created.Add(Instantiate(_prefab, _parent));
+
         return _created[^1];
     }
 

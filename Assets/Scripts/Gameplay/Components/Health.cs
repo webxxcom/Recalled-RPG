@@ -34,6 +34,8 @@ namespace Recalled.Gameplay
         void Awake()
         {
             _valueResource = new(_config.InitValue, _config.MaximumValue, _config.IsInfinite);
+
+            if (_intVariable != null) _intVariable.Value = _valueResource.CurrentValue;
         }
 
         public void ApplyDamage(DamageInfo damageInfo)

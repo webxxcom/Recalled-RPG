@@ -11,12 +11,14 @@ namespace Recalled.UI
         [SerializeField] BarScript _bar;
 
         IntVariable _healthVariable;
+        int _max;
 
         public void Init(IntVariable intVariable)
         {
             if (intVariable == null)
                 throw new ArgumentNullException();
 
+            _max = intVariable.Value;
             _healthVariable = intVariable;
             _healthVariable.Subscribe(OnValueChanged);
         }
@@ -30,7 +32,10 @@ namespace Recalled.UI
         void OnValueChanged(int value)
         {
             _text.text = _healthVariable.name;
-            _bar.Set(value);
+            _bar.Set(value / (float)_max);
+
+            if (value == 0)
+                Destroy(gameObject, 2);
         }
     }
 }
