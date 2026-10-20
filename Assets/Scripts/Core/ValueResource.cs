@@ -7,15 +7,16 @@ namespace Recalled.Core
     {
         public int MinValue => 0;
         public int MaxValue { get; private set; }
-        public int CurrentValue { get; private set; }
+        public int Current { get; private set; }
         public bool IsInfinite { get; private set; }
 
         /// <summary> (oldVal, newVal) after the change </summary>
         public event Action<int, int> ValueChanged;
+        public event Action<int, int> ValueApplied;
 
-        public ValueResource(int currentValue, int maxValue, bool isInfinite)
+        public ValueResource(int current, int maxValue, bool isInfinite)
         {
-            CurrentValue = currentValue;
+            Current = current;
             MaxValue = maxValue;
             IsInfinite = isInfinite;
         }
@@ -29,21 +30,22 @@ namespace Recalled.Core
             if (delta == 0)
                 return 0;
 
-            int oldVal = CurrentValue;
-            int newVal = Mathf.Clamp(CurrentValue + delta, MinValue, MaxValue);
+            int oldVal = Current;
+            int newVal = Mathf.Clamp(Current + delta, MinValue, MaxValue);
             if (!IsInfinite)
-                CurrentValue = newVal;
+                Current = newVal;
 
             int applied = oldVal - newVal;
             if (applied == 0)
                 return 0;
 
             ValueChanged?.Invoke(oldVal, newVal);
+            ValueApplied?.Invoke(oldVal, Current);
 
             return applied;
         }
         public int Consume(int amount) => Replenish(-amount);
 
-        public bool Has(int amount) => IsInfinite || CurrentValue <= amount;
+        public bool Has(int amount) => IsInfinite || Current <= amount;
     }
 }

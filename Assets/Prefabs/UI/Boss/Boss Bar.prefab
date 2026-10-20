@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4658989971234155441}
   - component: {fileID: 2823409226338083793}
   - component: {fileID: 1539807126411918822}
-  - component: {fileID: 3314463452818349787}
+  - component: {fileID: 1258991986938393525}
   m_Layer: 5
   m_Name: Boss Bar
   m_TagString: Untagged
@@ -105,7 +105,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.ContentSizeFitter
   m_HorizontalFit: 0
   m_VerticalFit: 2
---- !u!114 &3314463452818349787
+--- !u!114 &1258991986938393525
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -114,11 +114,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1626665157626396237}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 695c8c5ffb5caef4c8cf6d9a86bcf14e, type: 3}
+  m_Script: {fileID: 11500000, guid: 4e4068bb62415f842837de41edc899ad, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: '::'
-  _text: {fileID: 45676735980543205}
+  m_EditorClassIdentifier: Recalled.UI::Recalled.UI.BossBar
   _bar: {fileID: 1585970890552960458}
+  _text: {fileID: 45676735980543205}
 --- !u!1 &2748229636000036177
 GameObject:
   m_ObjectHideFlags: 0

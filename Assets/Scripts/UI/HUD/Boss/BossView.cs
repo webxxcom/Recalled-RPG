@@ -24,9 +24,9 @@ namespace Recalled.UI
 
         void AddBar(IntVariable variable)
         {
-            var bossBar = _populator.Add().GetComponent<BossBar>();
+            var variableBinder = _populator.Add().GetComponent<BossBar>();
             
-            bossBar.Init(variable);
+            variableBinder.Init(variable);
         }
     }
 }

@@ -18,9 +18,9 @@ namespace Recalled.Gameplay
         public Vector2 Center => _hurtbox.bounds.center;
         public Collider2D Hurtbox => _hurtbox;
         public bool IsInvincible => _invincibilityTimestamp > Time.time;
-        public bool IsFull => _valueResource.CurrentValue >= _valueResource.MaxValue;
-        public bool IsDead => _valueResource.CurrentValue <= _valueResource.MinValue;
-        public int Current => _valueResource.CurrentValue;
+        public bool IsFull => _valueResource.Current >= _valueResource.MaxValue;
+        public bool IsDead => _valueResource.Current <= _valueResource.MinValue;
+        public int Current => _valueResource.Current;
         public int MaxValue => _valueResource.MaxValue;
         float _invincibilityTimestamp;
         ValueResource _valueResource;
@@ -33,9 +33,9 @@ namespace Recalled.Gameplay
 
         void Awake()
         {
-            _valueResource = new(_config.InitValue, _config.MaximumValue, _config.IsInfinite);
+            _valueResource = new(_config);
 
-            if (_intVariable != null) _intVariable.Value = _valueResource.CurrentValue;
+            if (_intVariable != null) _intVariable.Value = _valueResource.Current;
         }
 
         public void ApplyDamage(DamageInfo damageInfo)
@@ -45,7 +45,7 @@ namespace Recalled.Gameplay
 
             int applied = _valueResource.Consume(damageInfo.Amount);
             if (_intVariable != null)
-                _intVariable.Value = _valueResource.CurrentValue;
+                _intVariable.Value = _valueResource.Current;
 
             HpChanged?.Invoke(damageInfo);
             _hpChangedEvent?.Invoke(damageInfo);

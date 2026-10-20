@@ -39,15 +39,17 @@ namespace Recalled.Gameplay
         {
             _movementable = GetComponent<Movementable>();
             _valueResource = new(_config);
+
+            if (_intVariable != null) _intVariable.Value = _valueResource.Current;
         }
 
         private void OnEnable()
         {
-            if (_intVariable) _valueResource.ValueChanged += SetVariableValue;
+            if (_intVariable) _valueResource.ValueApplied += SetVariableValue;
         }
         private void OnDisable()
         {
-            if (_intVariable) _valueResource.ValueChanged -= SetVariableValue;
+            if (_intVariable) _valueResource.ValueApplied -= SetVariableValue;
         }
         void SetVariableValue(int _, int newVal) => _intVariable.Value = newVal;
 
