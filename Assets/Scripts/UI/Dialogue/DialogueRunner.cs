@@ -9,7 +9,7 @@ using UnityEngine.InputSystem;
 namespace Recalled.UI
 {
     [RequireComponent(typeof(Toggleable))]
-    [RequireComponent(typeof(ScreenController))]
+    [RequireComponent(typeof(GameStateScreen))]
     public class DialogueRunner : MonoBehaviour
     {
         [SerializeField] SpeakerDialogueController _speaker;
@@ -20,7 +20,7 @@ namespace Recalled.UI
         [SerializeField] BobbleEffect _continueButton;
         [SerializeField] PrefabPopulator _playerButtons;
 
-        ScreenController _screenContoller;
+        GameStateScreen _gameScreen;
         Conversation _conversation;
 
         private void Awake()
@@ -31,7 +31,7 @@ namespace Recalled.UI
                 enabled = false;
             }
 
-            _screenContoller = GetComponent<ScreenController>();
+            _gameScreen = GetComponent<GameStateScreen>();
 
             _dialogueChannel.AddListener(OnDialogueChannel);
         }
@@ -52,7 +52,7 @@ namespace Recalled.UI
             _speaker.Init(_speakers.SpriteMap[dialogueSource.Graph.Speaker]);
             _conversation.LineStarted += OnLineStarted;
 
-            _screenContoller.Activate();
+            _gameScreen.Activate();
             _isDirty = true;
         }
 
@@ -126,7 +126,7 @@ namespace Recalled.UI
         IEnumerator FinishDialogue()
         {
             yield return WaitForInputAction();
-            _screenContoller.Deactivate();
+            _gameScreen.Deactivate();
             _conversation = null;
         }
 

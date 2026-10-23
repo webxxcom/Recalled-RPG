@@ -1,43 +1,46 @@
 using UnityEngine;
 
-public sealed class GameStateScreen : MonoBehaviour
+namespace Recalled.UI
 {
-    [SerializeField] GameStateStack _stack;
-    [SerializeField] Toggleable _screen;
-    [SerializeField] GameStateSO _state;
-
-    bool _started;
-
-    void Awake()
+    [RequireComponent(typeof(Toggleable))]
+    [RequireComponent(typeof(Canvas))]
+    public sealed class GameStateScreen : MonoBehaviour
     {
-        if (_stack == null || _screen == null)
+        [SerializeField] GameStateSO _state;
+
+        public bool IsActive => _handle != null;
+
+        GameStateHandle _handle;
+        ToggleableGroup _group;
+        Toggleable _toggleable;
+        GameStateStack _stack;
+        Canvas _canvas;
+
+        void Awake()
         {
-            Debug.LogError($"{nameof(GameStateScreen)}: missing references.", this);
-            enabled = false;
+            _stack = GetComponentInParent<GameStateStack>();
+            _group = GetComponentInParent<ToggleableGroup>();
+            _toggleable = GetComponent<Toggleable>();
+            _canvas = GetComponent<Canvas>();
+
+            _canvas.enabled = true;
         }
-    }
 
-    void OnEnable()
-    {
-        _stack.Changed += Sync;
+        public void Activate()
+        {
+            _handle = _stack.Push(_state);
 
-        if (_started) Sync();
-    }
-    void OnDisable()
-    {
-        _stack.Changed -= Sync;
-    }
+            if (_handle == null)
+                return;
 
-    void Start()
-    {
-        _started = true;
-        Sync();
-    }
+            _group.TryAddActive(_toggleable);
+        }
+        public void Deactivate()
+        {
+            _stack.Release(_handle);
+            _handle = null;
 
-    void Sync()
-    {
-        bool visible = _stack.CurrentState == _state;
-
-        ((IToggleable)_screen).SetIsActive(visible);
+            _group.TryRemoveActive(_toggleable);
+        }
     }
 }

@@ -1,18 +1,21 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UIScreenToggler : MonoBehaviour
+namespace Recalled.UI
 {
-    [SerializeField] Dictionary<VoidGameEvent, Toggleable> _dictionary;
+    public sealed class UIScreenToggler : MonoBehaviour
+    {
+        [SerializeField] Dictionary<VoidGameEvent, Toggleable> _dictionary;
 
-    private void OnEnable()
-    {
-        foreach (var pair in _dictionary)
-            pair.Key.AddListener(pair.Value.RequestToggle);
-    }
-    private void OnDisable()
-    {
-        foreach (var pair in _dictionary)
-            pair.Key.RemoveListener(pair.Value.RequestToggle);
+        private void OnEnable()
+        {
+            foreach (var pair in _dictionary)
+                pair.Key.AddListener(pair.Value.RequestToggle);
+        }
+        private void OnDisable()
+        {
+            foreach (var pair in _dictionary)
+                pair.Key.RemoveListener(pair.Value.RequestToggle);
+        }
     }
 }

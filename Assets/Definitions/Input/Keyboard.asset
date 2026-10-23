@@ -54,3 +54,11 @@ MonoBehaviour:
     _frames:
       Pressed: {fileID: 6464851886681190896, guid: 8ec24e7ae85c4dc4881f9e2cf7db9fba, type: 3}
       Released: {fileID: -7265340805825683727, guid: 8ec24e7ae85c4dc4881f9e2cf7db9fba, type: 3}
+  - _path: q
+    _frames:
+      Pressed: {fileID: 8958665349310118492, guid: 8ec24e7ae85c4dc4881f9e2cf7db9fba, type: 3}
+      Released: {fileID: -3616342388723923700, guid: 8ec24e7ae85c4dc4881f9e2cf7db9fba, type: 3}
+  - _path: e
+    _frames:
+      Pressed: {fileID: -5636659211455234566, guid: 8ec24e7ae85c4dc4881f9e2cf7db9fba, type: 3}
+      Released: {fileID: -3468430240258086507, guid: 8ec24e7ae85c4dc4881f9e2cf7db9fba, type: 3}

@@ -856,12 +856,34 @@
                 },
                 {
                     "name": "",
+                    "id": "f66cf016-5dff-4fbe-ae1d-3cd4da3f524b",
+                    "path": "<Keyboard>/q",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard&Mouse",
+                    "action": "Prev Tab",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "c3e8aead-8e7c-400b-8e7a-a579e6a66e21",
                     "path": "<Gamepad>/leftShoulder",
                     "interactions": "",
                     "processors": "",
                     "groups": ";Gamepad",
                     "action": "Prev Tab",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "0d40e812-1bf4-4a16-bd02-458694557efa",
+                    "path": "<Keyboard>/e",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard&Mouse",
+                    "action": "Next Tab",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },

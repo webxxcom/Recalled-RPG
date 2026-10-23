@@ -962,7 +962,6 @@ GameObject:
   m_Component:
   - component: {fileID: 5483117024435693952}
   - component: {fileID: 6591008581597008549}
-  - component: {fileID: 6003826005959968649}
   m_Layer: 5
   m_Name: HUD
   m_TagString: Untagged
@@ -1016,19 +1015,6 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
---- !u!114 &6003826005959968649
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8201910989504618622}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ccbf9b5ad9a2b374b92f768ea5e9ed8d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Toggleable
-  _hidesWhenInactive: 0
 --- !u!1 &8844188239557749939
 GameObject:
   m_ObjectHideFlags: 0

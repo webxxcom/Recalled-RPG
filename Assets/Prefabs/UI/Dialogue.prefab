@@ -529,7 +529,7 @@ GameObject:
   - component: {fileID: 5314762712846489740}
   - component: {fileID: 7757044491077471928}
   - component: {fileID: 7869397600377934748}
-  - component: {fileID: 1934459226839117811}
+  - component: {fileID: 5213339713572820897}
   - component: {fileID: 7815034603764567672}
   m_Layer: 5
   m_Name: Dialogue
@@ -567,7 +567,7 @@ Canvas:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2660291057807698806}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_RenderMode: 0
   m_Camera: {fileID: 0}
@@ -640,7 +640,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Toggleable
   _hidesWhenInactive: 1
---- !u!114 &1934459226839117811
+--- !u!114 &5213339713572820897
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -649,12 +649,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 2660291057807698806}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9ab1f1f1024f42447a28a377fc8fae06, type: 3}
+  m_Script: {fileID: 11500000, guid: 3f756d4f93855864e965c9ebb8275cba, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PauseController
-  _stack: {fileID: 0}
+  m_EditorClassIdentifier: Recalled.UI::GameStateScreen
   _state: {fileID: 11400000, guid: 8cae5a555b587004a85c422192e28695, type: 2}
-  _action: {fileID: 0}
 --- !u!114 &7815034603764567672
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -823,7 +821,6 @@ MonoBehaviour:
   _amplitude: 2.3
   _direction: 1
   _useUnscaledTime: 1
-  _startAwake: 1
 --- !u!1 &4665989738541649455
 GameObject:
   m_ObjectHideFlags: 0
@@ -973,7 +970,6 @@ MonoBehaviour:
   _amplitude: 2.3
   _direction: 1
   _useUnscaledTime: 1
-  _startAwake: 1
 --- !u!1 &4677315861791320974
 GameObject:
   m_ObjectHideFlags: 0
@@ -1010,7 +1006,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 264.62924, y: -160.20468}
+  m_AnchoredPosition: {x: 253.71854, y: -168.03484}
   m_SizeDelta: {x: 116.9442, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2778320893897245046
@@ -1677,4 +1673,3 @@ MonoBehaviour:
   _amplitude: 3
   _direction: 0
   _useUnscaledTime: 1
-  _startAwake: 0

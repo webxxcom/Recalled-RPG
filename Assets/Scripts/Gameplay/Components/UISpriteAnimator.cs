@@ -10,16 +10,10 @@ public class UISpriteAnimator : MonoBehaviour
     [SerializeField] Image _graphic;
     [SerializeField] Dictionary<string, SpriteSequence> _sequences;
     [SerializeField] bool _useUnscaledTime = true;
-    [SerializeField] bool _playOnAwake;
 
     public bool IsPlaying => _animator != null;
 
     GraphicAnimator _animator;
-
-    private void OnEnable()
-    {
-        if (_playOnAwake) Play(_sequences.First().Key);
-    }
 
     private void OnDisable()
     {

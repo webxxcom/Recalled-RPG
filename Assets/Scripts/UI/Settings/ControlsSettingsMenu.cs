@@ -4,70 +4,73 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
-public class ControlsSettingsMenu : Toggleable
+namespace Recalled.UI
 {
-    [SerializeField] InputActionAsset _currentInput;
-    [SerializeField] ControlBindItem _inputBindUIItem;
-    [SerializeField] GameObject _uiRoot;
-    [SerializeField] Button _saveButton;
-
-    InputActionMap _bindMap;
-    readonly List<ControlBindItem> _controlBinds = new();
-    const string controlsSaveFile = "Controls/inputBinds.json";
-
-    void Awake()
+    public class ControlsSettingsMenu : MonoBehaviour
     {
-        _bindMap = _currentInput.FindActionMap("Player");
-        _currentInput.LoadBindingOverridesFromJson(File.ReadAllText(controlsSaveFile));
-        InitControls();
-    }
+        [SerializeField] InputActionAsset _currentInput;
+        [SerializeField] ControlBindItem _inputBindUIItem;
+        [SerializeField] GameObject _uiRoot;
+        [SerializeField] Button _saveButton;
 
-    void OnEnable()
-    {
-        _saveButton.onClick.AddListener(OnSaveButtonClick);
-    }
+        InputActionMap _bindMap;
+        readonly List<ControlBindItem> _controlBinds = new();
+        const string controlsSaveFile = "Controls/inputBinds.json";
 
-    void OnDisable()
-    {
-        _saveButton.onClick.RemoveListener(OnSaveButtonClick);
-    }
-
-    void InitControls()
-    {
-        foreach (InputAction action in _bindMap)
+        void Awake()
         {
-            ControlBindItem cbi = Instantiate(_inputBindUIItem, _uiRoot.transform);
-            cbi.Init(action, this);
-
-            cbi.OnBindUpdate += UpdateControls;
-            _controlBinds.Add(cbi);
+            _bindMap = _currentInput.FindActionMap("Player");
+            _currentInput.LoadBindingOverridesFromJson(File.ReadAllText(controlsSaveFile));
+            InitControls();
         }
-    }
 
-    void UpdateControls()
-    {
-        _controlBinds.ForEach(cb => cb.UpdateDisplay());
-    }
+        void OnEnable()
+        {
+            _saveButton.onClick.AddListener(OnSaveButtonClick);
+        }
 
-    InputActionRebindingExtensions.RebindingOperation _currentRebinding;
+        void OnDisable()
+        {
+            _saveButton.onClick.RemoveListener(OnSaveButtonClick);
+        }
 
-    public void NotifyRebinding(InputActionRebindingExtensions.RebindingOperation oper)
-        => _currentRebinding = oper;
+        void InitControls()
+        {
+            foreach (InputAction action in _bindMap)
+            {
+                ControlBindItem cbi = Instantiate(_inputBindUIItem, _uiRoot.transform);
+                cbi.Init(action, this);
 
-    void Deactivate()
-    {
-        if (_currentRebinding != null && _currentRebinding.started)
-            _currentRebinding.Cancel();
+                cbi.OnBindUpdate += UpdateControls;
+                _controlBinds.Add(cbi);
+            }
+        }
 
-        _currentRebinding = null;
-    }
+        void UpdateControls()
+        {
+            _controlBinds.ForEach(cb => cb.UpdateDisplay());
+        }
 
-    void OnSaveButtonClick()
-    {
-        string directoryName = Path.GetDirectoryName(controlsSaveFile);
-        if (!Directory.Exists(directoryName))
-            Directory.CreateDirectory(directoryName);
+        InputActionRebindingExtensions.RebindingOperation _currentRebinding;
 
-        File.WriteAllTextAsync(controlsSaveFile, _currentInput.SaveBindingOverridesAsJson());
+        public void NotifyRebinding(InputActionRebindingExtensions.RebindingOperation oper)
+            => _currentRebinding = oper;
+
+        void Deactivate()
+        {
+            if (_currentRebinding != null && _currentRebinding.started)
+                _currentRebinding.Cancel();
+
+            _currentRebinding = null;
+        }
+
+        void OnSaveButtonClick()
+        {
+            string directoryName = Path.GetDirectoryName(controlsSaveFile);
+            if (!Directory.Exists(directoryName))
+                Directory.CreateDirectory(directoryName);
+
+            File.WriteAllTextAsync(controlsSaveFile, _currentInput.SaveBindingOverridesAsJson());
+        }
     }
 }

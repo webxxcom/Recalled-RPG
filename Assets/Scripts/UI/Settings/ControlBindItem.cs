@@ -4,70 +4,73 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
-public class ControlBindItem : MonoBehaviour
+namespace Recalled.UI
 {
-    [SerializeField] TextMeshProUGUI _header;
-    [SerializeField] TextMeshProUGUI _bind;
-    [SerializeField] Button _rebind;
-
-    public event Action OnBindUpdate;
-
-    ControlsSettingsMenu _section;
-    InputAction _inputAction;
-
-    private void OnEnable()
+    public class ControlBindItem : MonoBehaviour
     {
-        _rebind.onClick.AddListener(Rebind);
-    }
-    private void OnDisable()
-    {
-        _rebind.onClick.RemoveListener(Rebind);
-    }
+        [SerializeField] TextMeshProUGUI _header;
+        [SerializeField] TextMeshProUGUI _bind;
+        [SerializeField] Button _rebind;
 
-    public void Init(InputAction inputAction, ControlsSettingsMenu section)
-    {
-        _inputAction = inputAction;
-        _section = section;
+        public event Action OnBindUpdate;
 
-        UpdateDisplay();
-    }
+        ControlsSettingsMenu _section;
+        InputAction _inputAction;
 
-    public void UpdateDisplay()
-    {
-        _bind.text = GetBindingText(_inputAction.bindings[0]);
-        _header.text = _inputAction.name;
-    }
+        private void OnEnable()
+        {
+            _rebind.onClick.AddListener(Rebind);
+        }
+        private void OnDisable()
+        {
+            _rebind.onClick.RemoveListener(Rebind);
+        }
 
-    string GetBindingText(InputBinding binding)
-    {
-        string ret = binding.isComposite ? binding.name : binding.ToDisplayString();
+        public void Init(InputAction inputAction, ControlsSettingsMenu section)
+        {
+            _inputAction = inputAction;
+            _section = section;
 
-        return ret.Length != 0 ? ret : "(No Binding)";
-    }
+            UpdateDisplay();
+        }
 
-    void Rebind()
-    {
-        _inputAction.Disable();
+        public void UpdateDisplay()
+        {
+            _bind.text = GetBindingText(_inputAction.bindings[0]);
+            _header.text = _inputAction.name;
+        }
 
-        var oper = _inputAction.PerformInteractiveRebinding()
-            .WithTargetBinding(0)
-            .WithCancelingThrough(Keyboard.current.escapeKey.path)
-            .OnMatchWaitForAnother(0.1f);
+        string GetBindingText(InputBinding binding)
+        {
+            string ret = binding.isComposite ? binding.name : binding.ToDisplayString();
 
-        _section.NotifyRebinding(oper);
-        oper.Start();
-        oper.OnComplete(UnblockOnCompletion);
-        oper.OnCancel(OnRebindCancel);
-    }
+            return ret.Length != 0 ? ret : "(No Binding)";
+        }
 
-    void OnRebindCancel(InputActionRebindingExtensions.RebindingOperation oper)
-    {
-        oper.action.Enable();
-    }
+        void Rebind()
+        {
+            _inputAction.Disable();
 
-    void UnblockOnCompletion(InputActionRebindingExtensions.RebindingOperation oper)
-    {
-        oper.action.Enable();
-        OnBindUpdate?.Invoke();
+            var oper = _inputAction.PerformInteractiveRebinding()
+                .WithTargetBinding(0)
+                .WithCancelingThrough(Keyboard.current.escapeKey.path)
+                .OnMatchWaitForAnother(0.1f);
+
+            _section.NotifyRebinding(oper);
+            oper.Start();
+            oper.OnComplete(UnblockOnCompletion);
+            oper.OnCancel(OnRebindCancel);
+        }
+
+        void OnRebindCancel(InputActionRebindingExtensions.RebindingOperation oper)
+        {
+            oper.action.Enable();
+        }
+
+        void UnblockOnCompletion(InputActionRebindingExtensions.RebindingOperation oper)
+        {
+            oper.action.Enable();
+            OnBindUpdate?.Invoke();
+        }
     }
 }

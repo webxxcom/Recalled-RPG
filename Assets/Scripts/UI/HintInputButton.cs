@@ -27,10 +27,7 @@ public class HintInputButton : MonoBehaviour
     Image _graphic;
     StateFrames _frames;
 
-    private void Awake()
-    {
-        _graphic = GetComponent<Image>();
-    }
+    private void Awake() => _graphic = GetComponent<Image>();
 
     void UpdateGraphics(Sprite sprite)
     {
@@ -50,14 +47,14 @@ public class HintInputButton : MonoBehaviour
     {
         _inputAction.action.started += OnPress;
         _inputAction.action.canceled += OnRelease;
-        _currentInputDevice.Subscribe(SetHintSprite);
+        _currentInputDevice.Subscribe(OnInputDeviceChanged);
     }
 
     private void OnDisable()
     {
         _inputAction.action.started -= OnPress;
         _inputAction.action.canceled -= OnRelease;
-        _currentInputDevice.Unsubscribe(SetHintSprite);
+        _currentInputDevice.Unsubscribe(OnInputDeviceChanged);
     }
 
     void UpdateGraphics()
@@ -73,7 +70,7 @@ public class HintInputButton : MonoBehaviour
         }
     }
 
-    void SetHintSprite(InputDeviceSO inputDevice)
+    void OnInputDeviceChanged(InputDeviceSO inputDevice)
     {
         _frames = inputDevice.GetFramesForAction(_inputAction.action, _compositePartName);
 
