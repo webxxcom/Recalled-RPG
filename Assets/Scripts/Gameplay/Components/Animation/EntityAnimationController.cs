@@ -1,48 +1,51 @@
 using UnityEngine;
 
-public class EntityAnimationController : MonoBehaviour
+namespace Recalled.Gameplay
 {
-    [SerializeField] bool _isXFlippable;
-
-    public bool FlippedX { get; private set; }
-
-    protected Animator _animator;
-    protected SpriteRendererGroup _spriteRendererGroup;
-
-    private void Awake()
+    public sealed class EntityAnimationController : MonoBehaviour
     {
-        _animator = GetComponentInChildren<Animator>();
-        _spriteRendererGroup = GetComponentInChildren<SpriteRendererGroup>();
-    }
+        [SerializeField] bool _isXFlippable;
 
-    public void MoveAnimation(Vector2 direction, float speed)
-    {
-        _animator.SetFloat(AnimatorParameters.MoveXHash, direction.x);
-        _animator.SetFloat(AnimatorParameters.MoveYHash, direction.y);
-        _animator.SetFloat(AnimatorParameters.SpeedHash, !Mathf.Approximately(speed, 0) ? speed : 0f);
+        public bool FlippedX { get; private set; }
 
-        if (_isXFlippable)
+        Animator _animator;
+        SpriteRendererGroup _spriteRendererGroup;
+
+        private void Awake()
         {
-            if (direction.x > float.Epsilon)
+            _animator = GetComponentInChildren<Animator>();
+            _spriteRendererGroup = GetComponentInChildren<SpriteRendererGroup>();
+        }
+
+        public void MoveAnimation(Vector2 direction, float speed)
+        {
+            _animator.SetFloat(AnimatorParameters.MoveXHash, direction.x);
+            _animator.SetFloat(AnimatorParameters.MoveYHash, direction.y);
+            _animator.SetFloat(AnimatorParameters.SpeedHash, !Mathf.Approximately(speed, 0) ? speed : 0f);
+
+            if (_isXFlippable)
             {
-                _spriteRendererGroup.SetFlipX(false);
-                FlippedX = false;
-            }
-            else if (direction.y < -float.Epsilon)
-            {
-                _spriteRendererGroup.SetFlipX(true);
-                FlippedX = true;
+                if (direction.x > float.Epsilon)
+                {
+                    _spriteRendererGroup.SetFlipX(false);
+                    FlippedX = false;
+                }
+                else if (direction.y < -float.Epsilon)
+                {
+                    _spriteRendererGroup.SetFlipX(true);
+                    FlippedX = true;
+                }
             }
         }
-    }
 
-    public void PlayDeath()
-    {
-        _animator.SetTrigger(AnimatorParameters.DieHash);
-    }
+        public void PlayDeath()
+        {
+            _animator.SetTrigger(AnimatorParameters.DieHash);
+        }
 
-    public void PlayAttack(int hash)
-    {
-        _animator.SetTrigger(hash);
+        public void PlayAttack(int hash)
+        {
+            _animator.SetTrigger(hash);
+        }
     }
 }

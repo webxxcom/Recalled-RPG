@@ -1,10 +1,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Recalled.Gameplay
+namespace Recalled.Gameplay.Combat
 {
     [RequireComponent(typeof(CapsuleCollider2D))]
-    public class MeleeAttackStrategy : AttackStrategy
+    public sealed class MeleeAttackStrategy : AttackStrategy
     {
         [SerializeField] MeleeAttackSO _meleeAttackData;
 

@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-namespace Recalled.Gameplay
+namespace Recalled.Gameplay.Combat
 {
     [RequireComponent(typeof(Collider2D))]
     public sealed class PlayerAttack : EntityAttack

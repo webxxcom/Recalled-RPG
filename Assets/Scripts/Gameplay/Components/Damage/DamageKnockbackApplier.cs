@@ -1,8 +1,9 @@
+using Recalled.Gameplay.Combat;
 using UnityEngine;
 
 namespace Recalled.Gameplay
 {
-    public class DamageKnockbackApplier : MonoBehaviour
+    internal sealed class DamageKnockbackApplier : MonoBehaviour
     {
         public void Apply(in DamageInfo di)
         {

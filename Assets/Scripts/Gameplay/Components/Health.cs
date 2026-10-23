@@ -1,4 +1,5 @@
 using Recalled.Core;
+using Recalled.Gameplay.Combat;
 using System;
 using UnityEngine;
 using UnityEngine.Events;

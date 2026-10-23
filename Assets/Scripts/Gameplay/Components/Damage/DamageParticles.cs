@@ -1,8 +1,9 @@
+using Recalled.Gameplay.Combat;
 using UnityEngine;
 
 namespace Recalled.Gameplay
 {
-    public sealed class DamageParticles : MonoBehaviour
+    internal sealed class DamageParticles : MonoBehaviour
     {
         [SerializeField] ParticleSystem _particles;
         [SerializeField] Health _health;

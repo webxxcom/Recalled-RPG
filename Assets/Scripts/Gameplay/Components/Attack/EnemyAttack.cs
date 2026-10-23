@@ -1,34 +1,36 @@
-using Recalled.Gameplay;
 using UnityEngine;
 
-public class EnemyAttack : EntityAttack
+namespace Recalled.Gameplay.Combat
 {
-    [SerializeField] ITargetProvider _targetProvider;
-    [SerializeField] float _intervalBetweenStates;
-
-    private void Awake()
+    public class EnemyAttack : EntityAttack
     {
-        _targetProvider = transform.parent.GetComponent<ITargetProvider>();
-    }
+        [SerializeField] ITargetProvider _targetProvider;
+        [SerializeField] float _intervalBetweenStates;
 
-    void Update()
-    {
-        if (_elapsedLastAttack < _intervalBetweenStates)
-            return;
-
-        if (_targetProvider.HasTarget)
+        private void Awake()
         {
-            foreach (var attackStrategy in _attackStrategies)
+            _targetProvider = transform.parent.GetComponent<ITargetProvider>();
+        }
+
+        void Update()
+        {
+            if (_elapsedLastAttack < _intervalBetweenStates)
+                return;
+
+            if (_targetProvider.HasTarget)
             {
-                AttackContext attackContext = new(_targetProvider.Target);
-                if (attackStrategy.CanAttack(attackContext))
+                foreach (var attackStrategy in _attackStrategies)
                 {
-                    Attack(attackStrategy, attackContext);
-                    _elapsedLastAttack = 0;
-                    break;
+                    AttackContext attackContext = new(_targetProvider.Target);
+                    if (attackStrategy.CanAttack(attackContext))
+                    {
+                        Attack(attackStrategy, attackContext);
+                        _elapsedLastAttack = 0;
+                        break;
+                    }
                 }
             }
+            _elapsedLastAttack += Time.deltaTime;
         }
-        _elapsedLastAttack += Time.deltaTime;
     }
 }

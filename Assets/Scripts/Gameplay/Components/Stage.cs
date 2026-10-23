@@ -1,3 +1,4 @@
+using Recalled.Core;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -6,7 +7,7 @@ using UnityEngine.Events;
 namespace Recalled.Gameplay
 {
     [RequireComponent(typeof(Zone))]
-    public class Stage : MonoBehaviour
+    public sealed class Stage : MonoBehaviour
     {
         [SerializeField] UnityEvent _started;
         [SerializeField] UnityEvent _finished;

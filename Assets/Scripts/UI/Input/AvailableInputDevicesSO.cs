@@ -1,19 +1,24 @@
 using System.Linq;
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "UI/Available Input Devices")]
-public class AvailableInputDevicesSO : ScriptableObject
+namespace Recalled.UI
 {
-    [SerializeField] InputDeviceSO[] _devices;
-    [Header("Sets"), SerializeField] InputDeviceRuntimeVariable _currentInputDevice;
-
-    public InputDeviceSO FindForScheme(string scheme)
+    [CreateAssetMenu(menuName = "Input/Available Devices")]
+    public sealed class AvailableInputDevicesSO : ScriptableObject
     {
-        InputDeviceSO inputDevice = _devices.FirstOrDefault(d => d.SchemeName.ToLower().Contains(scheme.ToLower()));
-        if (inputDevice != null)
-            return inputDevice;
+        [SerializeField] InputDeviceSO[] _devices;
 
-        Debug.LogError($"Scheme {scheme} was not found");
-        return _devices[0];
+        [Header("Sets")]
+        [SerializeField] InputDeviceRuntimeVariable _currentInputDevice;
+
+        public InputDeviceSO FindForScheme(string scheme)
+        {
+            InputDeviceSO inputDevice = _devices.FirstOrDefault(d => d.SchemeName.ToLower().Contains(scheme.ToLower()));
+            if (inputDevice != null)
+                return inputDevice;
+
+            Debug.LogError($"Scheme {scheme} was not found");
+            return _devices[0];
+        }
     }
 }

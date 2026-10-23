@@ -1,9 +1,10 @@
+using Recalled.Gameplay.Combat;
 using UnityEngine;
 
 namespace Recalled.Gameplay
 {
     [SelectionBase, DisallowMultipleComponent]
-    public class TrainingDummyAnimation : MonoBehaviour
+    public sealed class TrainingDummyAnimation : MonoBehaviour
     {
         private static readonly int DamageHardHash = Animator.StringToHash("HurtHard");
         private static readonly int DamageMidHash = Animator.StringToHash("HurtMid");

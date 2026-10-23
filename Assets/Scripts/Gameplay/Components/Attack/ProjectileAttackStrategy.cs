@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Recalled.Gameplay
+namespace Recalled.Gameplay.Combat
 {
     public sealed class ProjectileAttackStrategy : AttackStrategy
     {

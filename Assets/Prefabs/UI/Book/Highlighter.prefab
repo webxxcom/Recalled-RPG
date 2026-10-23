@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4447589318728834186}
   - component: {fileID: 2471877029737482163}
-  - component: {fileID: 1960531945211277294}
   - component: {fileID: 3799477437508055257}
+  - component: {fileID: 3986091847555953949}
   m_Layer: 0
   m_Name: Highlighter
   m_TagString: Untagged
@@ -53,23 +53,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Highlighter
   _image: {fileID: 3453782123415535354}
   _currentSelected: {fileID: 11400000, guid: d4ee457ad6b9d184498cb5d9c591e923, type: 2}
---- !u!114 &1960531945211277294
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6897480540731357655}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7e8d2d234a74b5b4ebd9b5eee860c345, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::UISpriteAnimator
-  _graphic: {fileID: 3453782123415535354}
-  _sequences:
-  - key: Idle
-    value: {fileID: 11400000, guid: 6a4805ecfb03d684788f89f9dad5a10a, type: 2}
-  _useUnscaledTime: 1
 --- !u!114 &3799477437508055257
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -92,6 +75,23 @@ MonoBehaviour:
   m_LayoutPriority: 1
   m_MaxWidth: -1
   m_MaxHeight: -1
+--- !u!114 &3986091847555953949
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6897480540731357655}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 14d768848ab5c914a8579cb470985ea2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Recalled.UI::Recalled.UI.UISpriteAnimator
+  _graphic: {fileID: 3453782123415535354}
+  _sequences:
+  - key: Idle
+    value: {fileID: 11400000, guid: 6a4805ecfb03d684788f89f9dad5a10a, type: 2}
+  _useUnscaledTime: 1
 --- !u!1 &8669011803341495871
 GameObject:
   m_ObjectHideFlags: 0

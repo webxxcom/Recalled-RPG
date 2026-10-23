@@ -1,15 +1,18 @@
 ﻿using System;
 using UnityEngine;
 
-public readonly struct AttackContext
+namespace Recalled.Gameplay.Combat
 {
-    public readonly GameObject Target;
-
-    public AttackContext(GameObject target)
+    public readonly struct AttackContext
     {
-        if (target == null)
-            throw new ArgumentNullException();
+        public readonly GameObject Target;
 
-        Target = target;
+        public AttackContext(GameObject target)
+        {
+            if (target == null)
+                throw new ArgumentNullException();
+
+            Target = target;
+        }
     }
 }

@@ -13,8 +13,8 @@ GameObject:
   - component: {fileID: 6228940776163445273}
   - component: {fileID: 3224609862533463858}
   - component: {fileID: 3379468467864268875}
-  - component: {fileID: 6581012118574202166}
   - component: {fileID: 8938880861746175896}
+  - component: {fileID: 5155530650928844497}
   m_Layer: 5
   m_Name: Inventory Filter
   m_TagString: Untagged
@@ -92,6 +92,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 918332f15e6aae6439807ba72f3edbea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
+  _category: 0
+  _view: {fileID: 0}
 --- !u!114 &3379468467864268875
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -105,25 +107,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Toggleable
   _hidesWhenInactive: 0
---- !u!114 &6581012118574202166
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7605442357790132226}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7e8d2d234a74b5b4ebd9b5eee860c345, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::UISpriteAnimator
-  _graphic: {fileID: 6228940776163445273}
-  _sequences:
-  - key: Press
-    value: {fileID: 11400000, guid: 824514922c597194389efc07a5f566c3, type: 2}
-  - key: Hide
-    value: {fileID: 11400000, guid: 066249263ecbd4146aa6604118fd97a4, type: 2}
-  _useUnscaledTime: 1
 --- !u!114 &8938880861746175896
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -136,6 +119,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e812b7e7235f3d4fa1501c954bd5b11, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ToggleableInteraction
+--- !u!114 &5155530650928844497
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7605442357790132226}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 14d768848ab5c914a8579cb470985ea2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Recalled.UI::Recalled.UI.UISpriteAnimator
+  _graphic: {fileID: 6228940776163445273}
+  _sequences:
+  - key: Hide
+    value: {fileID: 11400000, guid: 824514922c597194389efc07a5f566c3, type: 2}
+  - key: Show
+    value: {fileID: 11400000, guid: 066249263ecbd4146aa6604118fd97a4, type: 2}
+  _useUnscaledTime: 1
 --- !u!1 &8043525217744588908
 GameObject:
   m_ObjectHideFlags: 0

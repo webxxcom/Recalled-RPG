@@ -1,8 +1,9 @@
+using Recalled.Gameplay.Combat;
 using UnityEngine;
 
 namespace Recalled.Gameplay
 {
-    public sealed class AnimateDeath : MonoBehaviour
+    internal sealed class AnimateDeath : MonoBehaviour
     {
         [SerializeField] EntityAnimationController _animationController;
         [SerializeField] Health _health;

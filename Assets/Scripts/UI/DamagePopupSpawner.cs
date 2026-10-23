@@ -1,4 +1,5 @@
 using Recalled.Gameplay;
+using Recalled.Gameplay.Combat;
 using UnityEngine;
 
 namespace Recalled.UI

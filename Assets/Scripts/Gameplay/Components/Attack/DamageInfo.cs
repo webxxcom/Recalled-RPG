@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-namespace Recalled.Gameplay
+namespace Recalled.Gameplay.Combat
 {
     public readonly struct DamageInfo
     {

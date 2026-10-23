@@ -1,7 +1,11 @@
 using System.Linq;
+using Recalled.Core;
 
-public class SpeedAggregator : ValueAggregator<float>
+namespace Recalled.Gameplay
 {
-    public override float Get()
-        => Values.Aggregate(1f, (acc, v) => acc * v);
+    public sealed class SpeedAggregator : ValueAggregator<float>
+    {
+        public override float Get()
+            => Values.Aggregate(1f, (acc, v) => acc * v);
+    }
 }

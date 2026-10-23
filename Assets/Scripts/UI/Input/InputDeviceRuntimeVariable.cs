@@ -1,7 +1,11 @@
-﻿using UnityEngine;
+﻿using Recalled.Core;
+using UnityEngine;
 
-[CreateAssetMenu(menuName = "Runtime/Variables/Input Device")]
-public class InputDeviceRuntimeVariable : RuntimeVariable<InputDeviceSO>
+namespace Recalled.UI
 {
+    [CreateAssetMenu(menuName = "Runtime/Variables/Input Device")]
+    public class InputDeviceRuntimeVariable : RuntimeVariable<InputDeviceSO>
+    {
 
+    }
 }

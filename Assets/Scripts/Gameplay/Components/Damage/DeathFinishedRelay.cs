@@ -3,7 +3,7 @@ using UnityEngine.Events;
 
 namespace Recalled.Gameplay
 {
-    public class DeathFinishedRelay : MonoBehaviour
+    internal class DeathFinishedRelay : MonoBehaviour
     {
         [SerializeField] UnityEvent _actions;
 

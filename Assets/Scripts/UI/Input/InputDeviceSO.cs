@@ -2,45 +2,47 @@
 using System.Linq;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using static InputDeviceSO.ActionImagePair;
 
-[CreateAssetMenu(menuName = "UI/Input Device Mapping")]
-public class InputDeviceSO : ScriptableObject
+namespace Recalled.UI
 {
-    [System.Serializable]
-    public class ActionImagePair
+    [CreateAssetMenu(menuName = "UI/Input Device Mapping")]
+    public class InputDeviceSO : ScriptableObject
     {
         [System.Serializable]
-        public class StateFrames
+        public class ActionImagePair
         {
-            [SerializeField] public Sprite Pressed;
-            [SerializeField] public Sprite Released;
+            [System.Serializable]
+            public class StateFrames
+            {
+                [SerializeField] public Sprite Pressed;
+                [SerializeField] public Sprite Released;
+            }
+
+            [SerializeField, Dropdown(nameof(ListBindingPaths))] string _path;
+            [SerializeField] StateFrames _frames;
+
+            public string Path => _path;
+            public StateFrames Frames => _frames;
         }
+        [SerializeField, Dropdown(nameof(ListInputSchemes))] string _schemeName;
+        [SerializeField] List<ActionImagePair> _pairs;
 
-        [SerializeField, Dropdown(nameof(ListBindingPaths))] string _path;
-        [SerializeField] StateFrames _frames;
+        public string SchemeName => _schemeName;
+        public List<ActionImagePair> Pairs => _pairs;
 
-        public string Path => _path;
-        public StateFrames Frames => _frames;
-    }
-    [SerializeField, Dropdown(nameof(ListInputSchemes))] string _schemeName;
-    [SerializeField] List<ActionImagePair> _pairs;
+        string[] ListInputSchemes()
+            => ControlSchemeBindings.ListInputSchemes();
+        string[] ListBindingPaths()
+            => ControlSchemeBindings.ListAllPathsForScheme(_schemeName);
 
-    public string SchemeName => _schemeName;
-    public List<ActionImagePair> Pairs => _pairs;
+        public ActionImagePair.StateFrames GetFramesForAction(InputAction action, string compositeName = null)
+        {
+            string controlPath = ControlSchemeBindings.GetControlPathNoDevice(action, SchemeName, compositeName);
 
-    string[] ListInputSchemes()
-        => ControlSchemeBindings.ListInputSchemes();
-    string[] ListBindingPaths()
-        => ControlSchemeBindings.ListAllPathsForScheme(_schemeName);
+            if (string.IsNullOrWhiteSpace(controlPath))
+                return null;
 
-    public StateFrames GetFramesForAction(InputAction action, string compositeName = null)
-    {
-        string controlPath = ControlSchemeBindings.GetControlPathNoDevice(action, SchemeName, compositeName);
-
-        if (string.IsNullOrWhiteSpace(controlPath))
-            return null;
-
-        return _pairs.FirstOrDefault(p => p.Path.Equals(controlPath))?.Frames;
+            return _pairs.FirstOrDefault(p => p.Path.Equals(controlPath))?.Frames;
+        }
     }
 }

@@ -150,8 +150,8 @@ GameObject:
   - component: {fileID: 8590568880229675989}
   - component: {fileID: 1719148658037476320}
   - component: {fileID: 1902290637789833124}
-  - component: {fileID: 2424012927989337741}
   - component: {fileID: 7236778059893084656}
+  - component: {fileID: 5303960880864863800}
   m_Layer: 5
   m_Name: Section
   m_TagString: Untagged
@@ -274,29 +274,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Toggleable
   _hidesWhenInactive: 0
---- !u!114 &2424012927989337741
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5632085946149819907}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7e8d2d234a74b5b4ebd9b5eee860c345, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::UISpriteAnimator
-  _graphic: {fileID: 8590568880229675989}
-  _sequences:
-  - key: Press
-    value: {fileID: 11400000, guid: 7040d1eeecf66104c8b848b3056f7d57, type: 2}
-  - key: Exit
-    value: {fileID: 11400000, guid: 796f1e9161c384f4e8f77769773abffa, type: 2}
-  - key: Enter
-    value: {fileID: 11400000, guid: 1a9033076a4a27243b3a4dbfc280e2d7, type: 2}
-  - key: Hide
-    value: {fileID: 11400000, guid: 59ce5bda51cddfa41a36646b9a269596, type: 2}
-  _useUnscaledTime: 1
 --- !u!114 &7236778059893084656
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -309,3 +286,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e812b7e7235f3d4fa1501c954bd5b11, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BookUITab
+--- !u!114 &5303960880864863800
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5632085946149819907}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 14d768848ab5c914a8579cb470985ea2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Recalled.UI::Recalled.UI.UISpriteAnimator
+  _graphic: {fileID: 8590568880229675989}
+  _sequences:
+  - key: Enter
+    value: {fileID: 11400000, guid: 1a9033076a4a27243b3a4dbfc280e2d7, type: 2}
+  - key: Exit
+    value: {fileID: 11400000, guid: 796f1e9161c384f4e8f77769773abffa, type: 2}
+  - key: Hide
+    value: {fileID: 11400000, guid: 59ce5bda51cddfa41a36646b9a269596, type: 2}
+  - key: Show
+    value: {fileID: 11400000, guid: 7040d1eeecf66104c8b848b3056f7d57, type: 2}
+  _useUnscaledTime: 1

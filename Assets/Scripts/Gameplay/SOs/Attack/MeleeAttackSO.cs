@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Recalled.Gameplay
+namespace Recalled.Gameplay.Combat
 {
     [CreateAssetMenu(menuName = "ApplyAttack/Melee Value")]
     public class MeleeAttackSO : AttackSO

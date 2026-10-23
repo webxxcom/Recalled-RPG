@@ -1,24 +1,27 @@
 using UnityEngine;
 
-public class PlayerAttackStateMachine : StateMachineBehaviour
+namespace Recalled.Gameplay.Combat
 {
-    EntityAttack _entityAttack;
-
-    public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    internal sealed class PlayerAttackStateMachine : StateMachineBehaviour
     {
-        if (!_entityAttack)
-            _entityAttack = animator.transform.parent.parent.GetComponentInChildren<EntityAttack>();
+        EntityAttack _entityAttack;
 
-        _entityAttack.StartAttack();
-    }
+        public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+        {
+            if (!_entityAttack)
+                _entityAttack = animator.transform.parent.parent.GetComponentInChildren<EntityAttack>();
 
-    public override void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    {
-        _entityAttack.ProcessAttack(stateInfo.normalizedTime);
-    }
+            _entityAttack.StartAttack();
+        }
 
-    public override void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    {
-        _entityAttack.FinishAttack();
+        public override void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+        {
+            _entityAttack.ProcessAttack(stateInfo.normalizedTime);
+        }
+
+        public override void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+        {
+            _entityAttack.FinishAttack();
+        }
     }
 }

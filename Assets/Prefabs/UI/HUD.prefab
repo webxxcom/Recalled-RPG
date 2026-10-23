@@ -371,8 +371,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2892109448073710242}
-  - component: {fileID: 3755580929801479921}
   - component: {fileID: 4677215757250593626}
+  - component: {fileID: 4528755437067668771}
   m_Layer: 5
   m_Name: Stamina
   m_TagString: Untagged
@@ -401,27 +401,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &3755580929801479921
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3294134283003082469}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d6adb27a1278eb64c8d4188a4a79a056, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Recalled.Core::Recalled.Core.BarScript
-  _topBar: {fileID: 8506641910476852834}
-  _bottomBar: {fileID: 806358016070723247}
-  _animationSpeed: 1
-  ProgressStarted:
-    m_PersistentCalls:
-      m_Calls: []
-  ProgressEnded:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!114 &4677215757250593626
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -434,8 +413,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 695c8c5ffb5caef4c8cf6d9a86bcf14e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Recalled.UI::Recalled.UI.VariableBarBinder
-  _bar: {fileID: 3755580929801479921}
+  _bar: {fileID: 4528755437067668771}
   _intVariable: {fileID: 11400000, guid: 152dda9ce74a4254aaee34009d4ca0b7, type: 2}
+--- !u!114 &4528755437067668771
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3294134283003082469}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f9b251128a2982408263a5f4dfb140f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Recalled.UI::Recalled.UI.BarScript
+  _topBar: {fileID: 8506641910476852834}
+  _bottomBar: {fileID: 806358016070723247}
+  _animationSpeed: 1
+  ProgressStarted:
+    m_PersistentCalls:
+      m_Calls: []
+  ProgressEnded:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &3753505226875226934
 GameObject:
   m_ObjectHideFlags: 0
@@ -887,8 +887,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1674003833183848371}
-  - component: {fileID: 257766664113766031}
   - component: {fileID: 7850128289392989007}
+  - component: {fileID: 8263196371593117597}
   m_Layer: 5
   m_Name: Health
   m_TagString: Untagged
@@ -917,27 +917,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: -0.19400024}
   m_SizeDelta: {x: 0, y: -0.3881}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &257766664113766031
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7757584504941349996}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d6adb27a1278eb64c8d4188a4a79a056, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Recalled.Core::Recalled.Core.BarScript
-  _topBar: {fileID: 5945832397638107246}
-  _bottomBar: {fileID: 7272627999548861126}
-  _animationSpeed: 1
-  ProgressStarted:
-    m_PersistentCalls:
-      m_Calls: []
-  ProgressEnded:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!114 &7850128289392989007
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -950,8 +929,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 695c8c5ffb5caef4c8cf6d9a86bcf14e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Recalled.UI::Recalled.UI.VariableBarBinder
-  _bar: {fileID: 257766664113766031}
+  _bar: {fileID: 8263196371593117597}
   _intVariable: {fileID: 11400000, guid: 060557ec0ac49624abeae20083c92407, type: 2}
+--- !u!114 &8263196371593117597
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7757584504941349996}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f9b251128a2982408263a5f4dfb140f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Recalled.UI::Recalled.UI.BarScript
+  _topBar: {fileID: 5945832397638107246}
+  _bottomBar: {fileID: 7272627999548861126}
+  _animationSpeed: 1
+  ProgressStarted:
+    m_PersistentCalls:
+      m_Calls: []
+  ProgressEnded:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &8201910989504618622
 GameObject:
   m_ObjectHideFlags: 0
