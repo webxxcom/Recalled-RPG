@@ -3,7 +3,9 @@ using Recalled.Systems.Dialogue;
 using Recalled.UI.Dialogue;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 
 namespace Recalled.UI
@@ -14,7 +16,7 @@ namespace Recalled.UI
     {
         [SerializeField] SpeakerDialogueController _speaker;
         [SerializeField] DialogueEventChannel _dialogueChannel;
-        [SerializeField] InputActionReference _skipAction;
+        [SerializeField] InputActionReference[] _skipActions;
         [SerializeField] EmotionRegistry _emotions;
         [SerializeField] SpeakerRegistry _speakers;
         [SerializeField] BobbleEffect _continueButton;
@@ -25,7 +27,7 @@ namespace Recalled.UI
 
         private void Awake()
         {
-            if (_speaker == null || _dialogueChannel == null || _playerButtons == null || _skipAction == null)
+            if (_speaker == null || _dialogueChannel == null || _playerButtons == null || _skipActions.Length == 0)
             {
                 Debug.LogError($"{gameObject.name}: missing references");
                 enabled = false;
@@ -33,6 +35,7 @@ namespace Recalled.UI
 
             _gameScreen = GetComponent<StateScreen>();
 
+            _continueButton.gameObject.SetActive(false);
             _dialogueChannel.AddListener(OnDialogueChannel);
         }
 
@@ -68,7 +71,7 @@ namespace Recalled.UI
         IEnumerator Run(LineStartedPayload payload)
         {
             // Wait until finished talking
-            yield return _speaker.Speak(payload.Line.Text, _skipAction.action,
+            yield return _speaker.Speak(payload.Line.Text,
                 _emotions.SpriteMap[payload.Line.Emotion]);
 
             // Decide what to do depending on the payload
@@ -105,6 +108,7 @@ namespace Recalled.UI
 
                 Canvas.ForceUpdateCanvases();
             }
+            EventSystem.current.SetSelectedGameObject(_playerButtons.Created[0]);
 
             // Wait when user chooses smth
             yield return new WaitUntil(() => pressedInd != -1);
@@ -125,14 +129,20 @@ namespace Recalled.UI
 
         IEnumerator FinishDialogue()
         {
+            _continueButton.gameObject.SetActive(true);
+
             yield return WaitForInputAction();
+
             _gameScreen.Deactivate();
             _conversation = null;
+            _continueButton.gameObject.SetActive(false);
         }
 
         IEnumerator WaitForInputAction()
         {
-            yield return new WaitUntil(() => _skipAction.action.WasReleasedThisFrame());
+            yield return null; // skip this frame's press
+            yield return new WaitUntil(() => _skipActions.Any(t => t.action.WasReleasedThisFrame()));
+            yield return null; // Consume this one
         }
     }
 }

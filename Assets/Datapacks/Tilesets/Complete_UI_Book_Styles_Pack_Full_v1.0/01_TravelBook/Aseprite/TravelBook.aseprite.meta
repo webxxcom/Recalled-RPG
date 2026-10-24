@@ -4181,6 +4181,27 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
+  - name: TravelBook_60
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 4, y: 4, z: 3, w: 3}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 325
+      y: 838
+      width: 62
+      height: 14
+    spriteID: 535ebb0f5c8b80442944bcbd6d539933
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 0, y: 0}
   tileSetImportData:
   - name: UI
     originalName: 

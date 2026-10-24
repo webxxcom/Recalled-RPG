@@ -1,5 +1,7 @@
 using Recalled.Core;
 using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 namespace Recalled.UI
 {
@@ -9,8 +11,17 @@ namespace Recalled.UI
     public sealed class StateScreen : MonoBehaviour
     {
         [SerializeField] GameStateSO _state;
+        [SerializeField] Selectable _firstSelected;
 
-        public bool IsActive => _handle != null;
+        public bool IsActive
+        {
+            get => _handle != null;
+            set
+            {
+                if (value) Activate();
+                else Deactivate();
+            }
+        }
 
         GameStateHandle _handle;
         ToggleableGroup _group;
@@ -18,6 +29,7 @@ namespace Recalled.UI
         GameStateStack _stack;
         Canvas _canvas;
         CanvasGroup _canvasGroup;
+        GameObject _prevSelected;
 
         void Awake()
         {
@@ -35,8 +47,10 @@ namespace Recalled.UI
             if (_handle == null)
                 return false;
 
+            _prevSelected = EventSystem.current.currentSelectedGameObject;
             _group.TryAddActive(_toggleable);
             _canvas.enabled = true;
+            if (_firstSelected) _firstSelected.Select();
             return true;
         }
         public void Deactivate()
@@ -46,6 +60,7 @@ namespace Recalled.UI
 
             _group.TryRemoveActive(_toggleable);
             _canvas.enabled = false;
+            EventSystem.current.SetSelectedGameObject(_prevSelected);
         }
 
         public void StopInput()

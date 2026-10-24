@@ -33,6 +33,9 @@ namespace Recalled.UI
 
         void Show(GameObject game)
         {
+            if (!gameObject.transform.IsChildOf(game.transform))
+                return;
+
             _animator.Play("Idle");
             _image.enabled = true;
             _image.preserveAspect = true;

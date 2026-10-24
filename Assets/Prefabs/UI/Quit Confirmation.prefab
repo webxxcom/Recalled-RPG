@@ -403,7 +403,7 @@ MonoBehaviour:
   m_SpriteState:
     m_HighlightedSprite: {fileID: -7615829633741795833, guid: 7dc57e3b08e3d39468e4247707670727, type: 3}
     m_PressedSprite: {fileID: -7615829633741795833, guid: 7dc57e3b08e3d39468e4247707670727, type: 3}
-    m_SelectedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: -7615829633741795833, guid: 7dc57e3b08e3d39468e4247707670727, type: 3}
     m_DisabledSprite: {fileID: 0}
   m_AnimationTriggers:
     m_NormalTrigger: Normal
@@ -738,6 +738,7 @@ GameObject:
   - component: {fileID: 2325947716028705835}
   - component: {fileID: 623171263816794654}
   - component: {fileID: 689451651000167642}
+  - component: {fileID: 6811709725891539048}
   m_Layer: 5
   m_Name: Quit Confirmation
   m_TagString: Untagged
@@ -848,6 +849,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Recalled.UI::Recalled.UI.StateScreen
   _state: {fileID: 11400000, guid: ecb99272b1ec2b24ab53934ee748ec3f, type: 2}
+  _firstSelected: {fileID: 6024556013372532266}
 --- !u!114 &689451651000167642
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -860,10 +862,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f9808337fae36f40ad2a5796e38fce7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  _stateScreen: {fileID: 0}
   _quitCancelled: {fileID: 11400000, guid: d3e14f91b84e9f745a204044f24a8bb5, type: 2}
   _quitConfirmed: {fileID: 11400000, guid: 9289e94c515d8d34784fe0b179cc0646, type: 2}
   _quitConfirmationRequest: {fileID: 11400000, guid: e54edc44e989b2c4f8d1644c4887dc76, type: 2}
+--- !u!114 &6811709725891539048
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5772493869081481296}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 844e230b86e96f24d976738432b9c215, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Recalled.UI::Recalled.UI.ToggleableUiBehavior
 --- !u!1 &7029953008263346408
 GameObject:
   m_ObjectHideFlags: 0
@@ -1071,7 +1084,7 @@ MonoBehaviour:
   m_SpriteState:
     m_HighlightedSprite: {fileID: -7615829633741795833, guid: 7dc57e3b08e3d39468e4247707670727, type: 3}
     m_PressedSprite: {fileID: -7615829633741795833, guid: 7dc57e3b08e3d39468e4247707670727, type: 3}
-    m_SelectedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: -7615829633741795833, guid: 7dc57e3b08e3d39468e4247707670727, type: 3}
     m_DisabledSprite: {fileID: 0}
   m_AnimationTriggers:
     m_NormalTrigger: Normal

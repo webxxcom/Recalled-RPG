@@ -10,8 +10,7 @@ internal class SpeakerDialogueController : MonoBehaviour
 {
     [SerializeField] Image _facesetImage;
     [SerializeField] Image _emotionImage;
-    [SerializeField] TMP_Text _text;
-    [SerializeField] float _delayTime = 0.035f;
+    [SerializeField] TypeWriter _typeWriter;
 
     AudioSource _audioSource;
 
@@ -30,7 +29,7 @@ internal class SpeakerDialogueController : MonoBehaviour
         _emotionImage.enabled = true;
     }
 
-    public IEnumerator Speak(string text, InputAction skipAction, Sprite emotionSprite)
+    public IEnumerator Speak(string text, Sprite emotionSprite)
     {
         _audioSource.Play();
         _emotionImage.sprite = emotionSprite;
@@ -38,7 +37,7 @@ internal class SpeakerDialogueController : MonoBehaviour
         _emotionImage.enabled = true;
 
         // Typewrite until skip action
-        yield return TypeWriter.TypeWriteWithSkip(_text, _delayTime, text, skipAction);
+        yield return _typeWriter.TypeWriteWithSkip(text);
 
         _audioSource.Stop();
     }

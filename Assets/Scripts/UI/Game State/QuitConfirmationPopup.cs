@@ -4,10 +4,9 @@ using UnityEngine;
 
 namespace Recalled.UI
 {
+    [RequireComponent(typeof(StateScreen))]
     sealed class QuitConfirmationPopup : MonoBehaviour
     {
-        [SerializeField] StateScreen _stateScreen;
-
         [Header("Raises")]
         [SerializeField] VoidGameEvent _quitCancelled;
         [SerializeField] VoidGameEvent _quitConfirmed;
@@ -15,11 +14,11 @@ namespace Recalled.UI
         [Header("Listens")]
         [SerializeField] VoidGameEvent _quitConfirmationRequest;
 
-        GameStateStack _stack;
+        StateScreen _stateScreen;
 
         private void Awake()
         {
-            _stack = GetComponentInParent<GameStateStack>();
+            _stateScreen = GetComponent<StateScreen>();
 
             _quitConfirmationRequest.EventRaised += OnConfirmationRequest;
         }

@@ -13,15 +13,12 @@ namespace Recalled.UI
         {
             _toggleable = GetComponent<Toggleable>();
             _canvas = GetComponent<Canvas>();
+
+            _toggleable.StateChanged.AddListener(OnToggled);
         }
         private void Start() => OnToggled(_toggleable.IsActive);
 
-        private void OnEnable()
-        {
-            _toggleable.StateChanged.AddListener(OnToggled);
-        }
-
-        void OnDisable()
+        void OnDestroy()
         {
             _toggleable.StateChanged.RemoveListener(OnToggled);
         }

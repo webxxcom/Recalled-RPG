@@ -1411,6 +1411,7 @@ GameObject:
   - component: {fileID: 5082944138232568711}
   - component: {fileID: 762039538765675699}
   - component: {fileID: 2175347848408977778}
+  - component: {fileID: 593304755625711391}
   m_Layer: 5
   m_Name: Book
   m_TagString: Untagged
@@ -1521,6 +1522,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Recalled.UI::Recalled.UI.StateScreen
   _state: {fileID: 11400000, guid: 3029483e43a1c5a4e94100700962da7f, type: 2}
+  _firstSelected: {fileID: 0}
 --- !u!114 &2175347848408977778
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1534,6 +1536,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   _actionReference: {fileID: -4958776791114779791, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
+--- !u!114 &593304755625711391
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1204620722222649022}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 844e230b86e96f24d976738432b9c215, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Recalled.UI::Recalled.UI.ToggleableUiBehavior
 --- !u!1 &1288130367956329864
 GameObject:
   m_ObjectHideFlags: 0
@@ -14045,6 +14059,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8e8a2902780be1a4db9622d8496109b0, type: 3}
+--- !u!114 &6114034589018837771 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1719148658037476320, guid: 8e8a2902780be1a4db9622d8496109b0, type: 3}
+  m_PrefabInstance: {fileID: 4828648834953550059}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Button
 --- !u!224 &6201216189721561128 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 1517127914578235587, guid: 8e8a2902780be1a4db9622d8496109b0, type: 3}
@@ -14457,7 +14482,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1902290637789833124, guid: 8e8a2902780be1a4db9622d8496109b0, type: 3}
       propertyPath: _stateChanged.m_PersistentCalls.m_Calls.Array.size
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1902290637789833124, guid: 8e8a2902780be1a4db9622d8496109b0, type: 3}
       propertyPath: _stateChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
@@ -16087,6 +16112,38 @@ PrefabInstance:
     - target: {fileID: 2806735178855446933, guid: f43f510a8560fc140968eb98e08d069d, type: 3}
       propertyPath: m_EditorClassIdentifier
       value: Assembly-CSharp::Toggleable
+      objectReference: {fileID: 0}
+    - target: {fileID: 2806735178855446933, guid: f43f510a8560fc140968eb98e08d069d, type: 3}
+      propertyPath: _stateChanged.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2806735178855446933, guid: f43f510a8560fc140968eb98e08d069d, type: 3}
+      propertyPath: _stateChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2806735178855446933, guid: f43f510a8560fc140968eb98e08d069d, type: 3}
+      propertyPath: _stateChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 6114034589018837771}
+    - target: {fileID: 2806735178855446933, guid: f43f510a8560fc140968eb98e08d069d, type: 3}
+      propertyPath: _stateChanged.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2806735178855446933, guid: f43f510a8560fc140968eb98e08d069d, type: 3}
+      propertyPath: _stateChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Select
+      objectReference: {fileID: 0}
+    - target: {fileID: 2806735178855446933, guid: f43f510a8560fc140968eb98e08d069d, type: 3}
+      propertyPath: _stateChanged.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: UnityEngine.UI.Button, UnityEngine.UI
+      objectReference: {fileID: 0}
+    - target: {fileID: 2806735178855446933, guid: f43f510a8560fc140968eb98e08d069d, type: 3}
+      propertyPath: _stateChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2806735178855446933, guid: f43f510a8560fc140968eb98e08d069d, type: 3}
+      propertyPath: _stateChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 7992203888772001403, guid: f43f510a8560fc140968eb98e08d069d, type: 3}
       propertyPath: m_Name
