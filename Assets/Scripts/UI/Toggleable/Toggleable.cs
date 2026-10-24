@@ -23,9 +23,7 @@ namespace Recalled.UI
         ///</summary>
         public event Action<Toggleable> ToggleRequested;
 
-        public event Action<bool> StateChanged;
-
-        private void Start() => UpdateState();
+        public UnityEvent<bool> StateChanged => _stateChanged;
 
         public void RequestToggle() => ToggleRequested?.Invoke(this);
 
@@ -34,7 +32,6 @@ namespace Recalled.UI
             if (_hidesWhenInactive)
                 gameObject.SetActive(IsActive);
 
-            StateChanged?.Invoke(IsActive);
             _stateChanged.Invoke(IsActive);
         }
 

@@ -1,4 +1,4 @@
-namespace Recalled.UI
+namespace Recalled.Core
 {
     public sealed class GameStateHandle
     {

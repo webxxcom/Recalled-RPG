@@ -4,7 +4,7 @@ namespace Recalled.UI
 {
     [RequireComponent(typeof(Toggleable))]
     [RequireComponent(typeof(Canvas))]
-    public class ToggleableGameobjectDisabler : MonoBehaviour
+    public class ToggleableUiBehavior : MonoBehaviour
     {
         Toggleable _toggleable;
         Canvas _canvas;
@@ -14,14 +14,16 @@ namespace Recalled.UI
             _toggleable = GetComponent<Toggleable>();
             _canvas = GetComponent<Canvas>();
         }
+        private void Start() => OnToggled(_toggleable.IsActive);
 
         private void OnEnable()
         {
-            _toggleable.StateChanged += OnToggled;
+            _toggleable.StateChanged.AddListener(OnToggled);
         }
+
         void OnDisable()
         {
-            _toggleable.StateChanged -= OnToggled;
+            _toggleable.StateChanged.RemoveListener(OnToggled);
         }
         void OnToggled(bool isActived)
         {

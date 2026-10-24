@@ -9,7 +9,7 @@ using UnityEngine.InputSystem;
 namespace Recalled.UI
 {
     [RequireComponent(typeof(Toggleable))]
-    [RequireComponent(typeof(GameStateScreen))]
+    [RequireComponent(typeof(StateScreen))]
     public class DialogueRunner : MonoBehaviour
     {
         [SerializeField] SpeakerDialogueController _speaker;
@@ -20,7 +20,7 @@ namespace Recalled.UI
         [SerializeField] BobbleEffect _continueButton;
         [SerializeField] PrefabPopulator _playerButtons;
 
-        GameStateScreen _gameScreen;
+        StateScreen _gameScreen;
         Conversation _conversation;
 
         private void Awake()
@@ -31,7 +31,7 @@ namespace Recalled.UI
                 enabled = false;
             }
 
-            _gameScreen = GetComponent<GameStateScreen>();
+            _gameScreen = GetComponent<StateScreen>();
 
             _dialogueChannel.AddListener(OnDialogueChannel);
         }

@@ -3,15 +3,15 @@ using UnityEngine.InputSystem;
 
 namespace Recalled.UI
 {
-    [RequireComponent(typeof(GameStateScreen))]
+    [RequireComponent(typeof(StateScreen))]
     public class ScreenOnActionBinder : MonoBehaviour
     {
         [SerializeField] InputActionReference _actionReference;
 
-        GameStateScreen _gameScreen;
+        StateScreen _gameScreen;
         private void Awake()
         {
-            _gameScreen = GetComponent<GameStateScreen>();
+            _gameScreen = GetComponent<StateScreen>();
 
             _actionReference.action.canceled += OnCancelled;
         }

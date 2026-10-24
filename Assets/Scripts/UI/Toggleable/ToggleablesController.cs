@@ -7,7 +7,7 @@ namespace Recalled.UI
     public class ToggleablesController : MonoBehaviour
     {
         [SerializeField] ToggleableGroup _activators;
-        [SerializeField] ToggleableGroup _activated;
+        [SerializeField] ToggleableGroup _activatees;
         [SerializeField] Toggleable _firstActivated;
 
         readonly Dictionary<IToggleable, IToggleable> _activorsToActivated = new();
@@ -15,28 +15,33 @@ namespace Recalled.UI
         private void Awake()
         {
             foreach (var toggleable in _activators.Elements)
-                _activorsToActivated[toggleable] = _activated.Elements.FirstOrDefault(t => t.name.Equals(toggleable.name));
+            {
+                var found = _activatees.Elements.FirstOrDefault(t => t.name.Equals(toggleable.name));
+
+                if (found != null)
+                    _activorsToActivated[toggleable] = found;
+            }
         }
 
         private void Start()
         {
             if (_activators.TryAddActive(_firstActivated))
-                ToggleToggleable(_firstActivated);
+                ToggleActivatee(_firstActivated);
         }
 
         private void OnEnable()
         {
-            _activators.ActiveChanged += ToggleToggleable;
+            _activators.ActiveChanged += ToggleActivatee;
         }
         private void OnDisable()
         {
-            _activators.ActiveChanged -= ToggleToggleable;
+            _activators.ActiveChanged -= ToggleActivatee;
         }
 
-        void ToggleToggleable(IToggleable toggleable)
+        void ToggleActivatee(IToggleable toggleable)
         {
             if (_activorsToActivated.TryGetValue(toggleable, out var value))
-                _activated.TryAddActive(value);
+                _activatees.TryAddActive(value);
         }
     }
 }

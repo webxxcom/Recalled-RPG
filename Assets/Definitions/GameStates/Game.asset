@@ -16,4 +16,5 @@ MonoBehaviour:
   - Player
   _cursorMode: 1
   _freezeTime: 0
+  _requiresConfirmation: 1
   _disallowedAbove: []

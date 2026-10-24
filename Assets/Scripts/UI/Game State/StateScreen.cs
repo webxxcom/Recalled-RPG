@@ -1,10 +1,12 @@
+using Recalled.Core;
 using UnityEngine;
 
 namespace Recalled.UI
 {
     [RequireComponent(typeof(Toggleable))]
     [RequireComponent(typeof(Canvas))]
-    public sealed class GameStateScreen : MonoBehaviour
+    [RequireComponent(typeof(CanvasGroup))]
+    public sealed class StateScreen : MonoBehaviour
     {
         [SerializeField] GameStateSO _state;
 
@@ -15,6 +17,7 @@ namespace Recalled.UI
         Toggleable _toggleable;
         GameStateStack _stack;
         Canvas _canvas;
+        CanvasGroup _canvasGroup;
 
         void Awake()
         {
@@ -22,18 +25,19 @@ namespace Recalled.UI
             _group = GetComponentInParent<ToggleableGroup>();
             _toggleable = GetComponent<Toggleable>();
             _canvas = GetComponent<Canvas>();
-
-            _canvas.enabled = true;
+            _canvasGroup = GetComponent<CanvasGroup>();
         }
 
-        public void Activate()
+        public bool Activate()
         {
             _handle = _stack.Push(_state);
 
             if (_handle == null)
-                return;
+                return false;
 
             _group.TryAddActive(_toggleable);
+            _canvas.enabled = true;
+            return true;
         }
         public void Deactivate()
         {
@@ -41,6 +45,16 @@ namespace Recalled.UI
             _handle = null;
 
             _group.TryRemoveActive(_toggleable);
+            _canvas.enabled = false;
+        }
+
+        public void StopInput()
+        {
+            _canvasGroup.interactable = false;
+        }
+        public void ResumeInput()
+        {
+            _canvasGroup.interactable = true;
         }
     }
 }

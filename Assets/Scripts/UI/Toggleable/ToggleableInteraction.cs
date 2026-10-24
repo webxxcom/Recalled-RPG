@@ -20,11 +20,11 @@ namespace Recalled.UI
 
         private void OnEnable()
         {
-            _toggleable.StateChanged += OnToggled;
+            _toggleable.StateChanged.AddListener(OnToggled);
         }
         private void OnDisable()
         {
-            _toggleable.StateChanged -= OnToggled;
+            _toggleable.StateChanged.RemoveListener(OnToggled);
         }
 
         void OnToggled(bool flag)

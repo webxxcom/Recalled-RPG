@@ -1,7 +1,9 @@
-using Recalled.Core;
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "Runtime/Event Channels/Game Object")]
-public class GameobjectGameEvent : GameEventChannel<GameObject>
+namespace Recalled.Core
 {
+    [CreateAssetMenu(menuName = "Runtime/Event Channels/Game Object")]
+    public sealed class GameobjectGameEvent : GameEventChannel<GameObject>
+    {
+    }
 }

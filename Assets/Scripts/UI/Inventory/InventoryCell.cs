@@ -10,6 +10,11 @@ namespace Recalled.UI.Inventory
 
         public ItemInstance ItemInstance { get; private set; }
 
+        private void OnEnable()
+        {
+            RemoveItem();
+        }
+
         public virtual void SetItem(ItemInstance instance)
         {
             ItemInstance = instance;

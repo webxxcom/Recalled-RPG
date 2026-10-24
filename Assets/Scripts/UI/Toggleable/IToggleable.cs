@@ -1,11 +1,12 @@
-﻿using System;
+﻿using UnityEngine;
+using UnityEngine.Events;
 
 namespace Recalled.UI
 {
     public interface IToggleable
     {
-        event Action<bool> StateChanged;
-
+        GameObject gameObject { get; }
+        UnityEvent<bool> StateChanged { get; }
         bool IsActive { get; }
         void SetIsActive(bool value);
     }

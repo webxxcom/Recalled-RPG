@@ -1,9 +1,10 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-namespace Recalled.UI
+namespace Recalled.Core
 {
     /// <summary>
     /// Owns the game state stack for one scene and derives all state-dependent
@@ -28,6 +29,7 @@ namespace Recalled.UI
         [SerializeField] string[] _alwaysEnabledMaps = { "System" };
 
         readonly List<GameStateHandle> _frames = new();
+        public IReadOnlyList<GameStateHandle> Frames => _frames;
 
         bool _dirty;
 
@@ -73,7 +75,7 @@ namespace Recalled.UI
             }
 
             if (_frames.Count == 0)
-                return null; // misconfigured; already reported in Awake
+                return null; // misconfigured;
 
             // Checked against the logical top, which is correct even if the
             // previous push hasn't been applied yet this frame.

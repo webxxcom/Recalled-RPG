@@ -16,4 +16,5 @@ MonoBehaviour:
   - UI
   _cursorMode: 0
   _freezeTime: 1
+  _requiresConfirmation: 1
   _disallowedAbove: []

@@ -19,7 +19,7 @@ namespace Recalled.UI
     public class ToggleableGroup : MonoBehaviour
     {
         [SerializeField] bool _allowEmpty;
-        [SerializeField] bool _allowMultiple; 
+        [SerializeField] bool _allowMultiple;
 
         List<Toggleable> _toggleables;
         protected IReadOnlyList<IToggleable> Active => _toggleables.Where(t => t.IsActive).ToArray();
@@ -48,7 +48,6 @@ namespace Recalled.UI
             foreach (var screen in Elements)
                 screen.ToggleRequested += Toggle;
         }
-
         private void OnDisable()
         {
             foreach (var screen in Elements)
@@ -81,6 +80,7 @@ namespace Recalled.UI
                 return false;
 
             toggleable.SetIsActive(false);
+            ActiveChanged?.Invoke(Active.Count != 0 ? Active[^1] : null);
             return true;
         }
 

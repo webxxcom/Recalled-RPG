@@ -60,6 +60,9 @@ TagManager:
   - name: Foreground
     uniqueID: 3321071701
     locked: 0
+  - name: Popup
+    uniqueID: 1205849765
+    locked: 0
   m_RenderingLayers:
   - Default
   m_MigratedRenderPipelines: []

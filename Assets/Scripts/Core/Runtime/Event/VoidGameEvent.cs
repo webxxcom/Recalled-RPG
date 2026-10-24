@@ -1,12 +1,15 @@
 using System;
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "Events/Void Game Event")]
-public class VoidGameEvent : ScriptableObject
+namespace Recalled.Core
 {
-    public event Action OnEventRaised;
+    [CreateAssetMenu(menuName = "Runtime/Event Channels/Void")]
+    public sealed class VoidGameEvent : ScriptableObject
+    {
+        public event Action EventRaised;
 
-    public void AddListener(Action list) => OnEventRaised += list;
-    public void RemoveListener(Action list) => OnEventRaised -= list;
-    public void Invoke() => OnEventRaised?.Invoke();
+        public void AddListener(Action list) => EventRaised += list;
+        public void RemoveListener(Action list) => EventRaised -= list;
+        public void Invoke() => EventRaised?.Invoke();
+    }
 }
