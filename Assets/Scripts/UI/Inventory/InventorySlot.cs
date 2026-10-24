@@ -6,10 +6,10 @@ using UnityEngine.UI;
 namespace Recalled.UI.Inventory
 {
     [RequireComponent(typeof(Selectable))]
-    public sealed class InventorySlot : InventoryCell
+    sealed class InventorySlot : InventoryCell
     {
-        [SerializeField] Selectable _selectable;
         [SerializeField] TMP_Text _countText;
+        Selectable _selectable;
 
         private void Awake() => _selectable = GetComponent<Selectable>();
 

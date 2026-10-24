@@ -1,31 +1,30 @@
 using Recalled.Systems.Inventory;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Recalled.UI.Inventory
 {
-    [RequireComponent(typeof(Toggleable))]
     public sealed class InventoryFilter : MonoBehaviour
     {
         [SerializeField] ItemCategory _category;
         [SerializeField] InventorySlotsView _view;
+        [SerializeField] Sprite _pressedSprite;
+        [SerializeField] Sprite _releasedSprite;
+        [SerializeField] Image _graphic;
 
-        IToggleable _toggleable;
-
-        private void Awake() => _toggleable = GetComponent<Toggleable>();
-
-        private void OnEnable()
+        private void OnEnable() => MakeFilter(false);
+        public void MakeFilter(bool isOn)
         {
-            _toggleable.StateChanged += OnActivated;
-        }
-        private void OnDisable()
-        {
-            _toggleable.StateChanged -= OnActivated;
-        }
-
-        void OnActivated(bool isActive)
-        {
-            if (isActive) _view.Filter(_category);
-            else _view.Filter(ItemCategory.Any);
+            if (isOn)
+            {
+                _graphic.sprite = _pressedSprite;
+                _view.Filter(_category);
+            }
+            else
+            {
+                _graphic.sprite = _releasedSprite;
+                _view.Filter(ItemCategory.Any);
+            }
         }
     }
 }

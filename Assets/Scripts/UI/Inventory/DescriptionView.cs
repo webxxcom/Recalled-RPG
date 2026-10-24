@@ -33,7 +33,8 @@ namespace Recalled.UI.Inventory
 
         void OnCellSelected(GameObject game)
         {
-            if (game != null) Show(game.GetComponent<InventorySlot>().ItemInstance);
+            if (game != null && game.TryGetComponent<InventorySlot>(out var slot))
+                Show(slot.ItemInstance);
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Recalled.UI
 {
@@ -7,6 +8,7 @@ namespace Recalled.UI
     public class Toggleable : MonoBehaviour, IToggleable
     {
         [SerializeField] bool _hidesWhenInactive;
+        [SerializeField] UnityEvent<bool> _stateChanged;
 
         /// <summary>
         /// IsActive is never called withing the class or the inheritors to avoid races for being active.
@@ -33,6 +35,7 @@ namespace Recalled.UI
                 gameObject.SetActive(IsActive);
 
             StateChanged?.Invoke(IsActive);
+            _stateChanged.Invoke(IsActive);
         }
 
         void IToggleable.SetIsActive(bool value)

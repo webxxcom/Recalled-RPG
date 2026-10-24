@@ -86,8 +86,9 @@ namespace Recalled.UI
 
         public void ChooseNext(int offset)
         {
-            if (offset < 0) offset %= _toggleables.Count;
-
+            if (offset < 0) offset += _toggleables.Count;
+                
+            offset %= _toggleables.Count;
             int i = 0;
             for (; i < _toggleables.Count; i++)
                 if (_toggleables[i].IsActive)

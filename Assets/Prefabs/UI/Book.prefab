@@ -873,6 +873,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Toggleable
   _hidesWhenInactive: 1
+  _stateChanged:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &3482741972918193329
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1043,8 +1046,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95ef7ff7a580e9f42974641b4e8939d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ScreenGroupInputActionBinder
-  _prevPageAction: {fileID: -1650557099248533712, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
-  _nextPageAction: {fileID: 4475253954407227911, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
+  _prevAction: {fileID: -1650557099248533712, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
+  _nextAction: {fileID: 4475253954407227911, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
 --- !u!1 &994807695691922236
 GameObject:
   m_ObjectHideFlags: 0
@@ -1533,6 +1536,7 @@ GameObject:
   - component: {fileID: 3102951910512009951}
   - component: {fileID: 5082944138232568711}
   - component: {fileID: 6320620881396512271}
+  - component: {fileID: 2175347848408977778}
   m_Layer: 5
   m_Name: Book
   m_TagString: Untagged
@@ -1568,7 +1572,7 @@ Canvas:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1204620722222649022}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 3
   m_RenderMode: 0
   m_Camera: {fileID: 0}
@@ -1615,6 +1619,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Toggleable
   _hidesWhenInactive: 1
+  _stateChanged:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &6320620881396512271
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1628,6 +1635,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Recalled.UI::GameStateScreen
   _state: {fileID: 11400000, guid: 3029483e43a1c5a4e94100700962da7f, type: 2}
+--- !u!114 &2175347848408977778
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1204620722222649022}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0600b227c3b180346a19156b20bacb96, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+  _actionReference: {fileID: -4958776791114779791, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
 --- !u!1 &1288130367956329864
 GameObject:
   m_ObjectHideFlags: 0
@@ -2292,6 +2312,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Toggleable
   _hidesWhenInactive: 1
+  _stateChanged:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &3382773688494484189
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3064,6 +3087,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Toggleable
   _hidesWhenInactive: 1
+  _stateChanged:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &2555393790651175302
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3336,6 +3362,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Toggleable
   _hidesWhenInactive: 1
+  _stateChanged:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &3456982098480872263
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3469,6 +3498,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Toggleable
   _hidesWhenInactive: 1
+  _stateChanged:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &7298152064056849419
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4623,6 +4655,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Toggleable
   _hidesWhenInactive: 1
+  _stateChanged:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &6804968238231419239
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6412,6 +6447,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Toggleable
   _hidesWhenInactive: 1
+  _stateChanged:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &262435995856430667
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6763,6 +6801,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Toggleable
   _hidesWhenInactive: 1
+  _stateChanged:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &6809185064766889384
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7121,6 +7162,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Toggleable
   _hidesWhenInactive: 1
+  _stateChanged:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &3230391696936954814
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7713,6 +7757,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Toggleable
   _hidesWhenInactive: 1
+  _stateChanged:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &3111869633355051089
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8434,7 +8481,7 @@ GameObject:
   - component: {fileID: 3064724913961940503}
   - component: {fileID: 245497402410419849}
   - component: {fileID: 8110495172501461946}
-  - component: {fileID: 7867885633344277249}
+  - component: {fileID: 8036181207571804190}
   m_Layer: 5
   m_Name: Buttons
   m_TagString: Untagged
@@ -8506,7 +8553,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ToggleableGroup
   _allowEmpty: 1
   _allowMultiple: 0
---- !u!114 &7867885633344277249
+--- !u!114 &8036181207571804190
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8515,19 +8562,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 8130319545939869730}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 306cc8c2b49d7114eaa3623786fc2126, type: 3}
+  m_Script: {fileID: 11500000, guid: 95ef7ff7a580e9f42974641b4e8939d7, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.LayoutElement
-  m_IgnoreLayout: 0
-  m_MinWidth: -1
-  m_MinHeight: -1
-  m_PreferredWidth: -1
-  m_PreferredHeight: 9
-  m_FlexibleWidth: -1
-  m_FlexibleHeight: -1
-  m_LayoutPriority: 1
-  m_MaxWidth: -1
-  m_MaxHeight: -1
+  m_EditorClassIdentifier: Recalled.UI::Recalled.UI.Inventory.ToggleGroupInputActionBinder
+  _prevAction: {fileID: -5070075939474610090, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
+  _nextAction: {fileID: -1662293123113559041, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
 --- !u!1 &8244491282033033403
 GameObject:
   m_ObjectHideFlags: 0
@@ -8648,6 +8687,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Toggleable
   _hidesWhenInactive: 1
+  _stateChanged:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &116982529235789801
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8992,6 +9034,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Toggleable
   _hidesWhenInactive: 1
+  _stateChanged:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &8523776001625393297
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11141,6 +11186,10 @@ PrefabInstance:
     - target: {fileID: 3434879247928910575, guid: efa1f3b7f057d0e4e80af06456f04756, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3737852568782313164, guid: efa1f3b7f057d0e4e80af06456f04756, type: 3}
+      propertyPath: m_SpriteState.m_SelectedSprite
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 7605442357790132226, guid: efa1f3b7f057d0e4e80af06456f04756, type: 3}
       propertyPath: m_Name

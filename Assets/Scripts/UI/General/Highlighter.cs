@@ -35,6 +35,7 @@ namespace Recalled.UI
         {
             _animator.Play("Idle");
             _image.enabled = true;
+            _image.preserveAspect = true;
             transform.position = game.transform.position;
             transform.SetParent(game.transform);
             transform.SetAsLastSibling();

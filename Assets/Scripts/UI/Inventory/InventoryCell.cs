@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 namespace Recalled.UI.Inventory
 {
-    public class InventoryCell : MonoBehaviour
+    class InventoryCell : MonoBehaviour
     {
         [SerializeField] Image _icon;
 
