@@ -1,3 +1,4 @@
+using Recalled.Core;
 using Recalled.Systems.Inventory;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,11 +9,13 @@ namespace Recalled.Gameplay
     [RequireComponent(typeof(InventoryHolder))]
     sealed class QuickSlotsHolder : MonoBehaviour
     {
-        [SerializeField] InputActionReference _useQuickSlotAction;
         [SerializeField] List<ItemDefinition> _loadout;
 
         [Header("Sets")]
         [SerializeField] QuickSlotsAnchor _slotsAnchor;
+
+        [Header("Raises")]
+        [SerializeField] VoidGameEvent _quickSlotsChanged;
 
         QuickSlots _quickSlots;
 
@@ -25,13 +28,15 @@ namespace Recalled.Gameplay
 
             _slotsAnchor.Provide(_quickSlots);
         }
-        private void OnEnable() => _useQuickSlotAction.action.performed += OnQuickSlotAction;
-        private void OnDisable() => _useQuickSlotAction.action.performed -= OnQuickSlotAction;
+        private void OnEnable() =>  _quickSlots.Changed += RaiseChanged;
+        private void OnDisable() => _quickSlots.Changed -= RaiseChanged;
         private void OnDestroy() => _slotsAnchor.Withdraw(_quickSlots);
 
-        void OnQuickSlotAction(InputAction.CallbackContext context)
+        void RaiseChanged() => _quickSlotsChanged.Invoke();
+
+        void OnQuickSlots(InputValue value)
         {
-            var vec2 = context.ReadValue<Vector2>();
+            var vec2 = value.Get<Vector2>();
 
             int i = -1;
             if (vec2 == Vector2.left) i = 0;

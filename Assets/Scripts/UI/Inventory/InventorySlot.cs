@@ -1,17 +1,15 @@
 using Recalled.Systems.Inventory;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
 namespace Recalled.UI.Inventory
 {
-    [RequireComponent(typeof(Selectable))]
     sealed class InventorySlot : InventoryCell
     {
         [SerializeField] TMP_Text _countText;
-        Selectable _selectable;
-
-        private void Awake() => _selectable = GetComponent<Selectable>();
+        [SerializeField] UnityEvent<bool> _itemPresented;
 
         public override void ShowItem(ItemInstance instance, bool showDimmed)
         {
@@ -19,12 +17,12 @@ namespace Recalled.UI.Inventory
 
             if (showDimmed)
             {
-                _selectable.enabled = false;
                 _countText.color = _dimColor;
+                _itemPresented.Invoke(false);
             }
             else
             {
-                _selectable.enabled = true;
+                _itemPresented.Invoke(true);
                 _countText.color = Color.white;
             }
 
@@ -35,14 +33,15 @@ namespace Recalled.UI.Inventory
             }
             else
                 _countText.enabled = false;
+
         }
 
         public override void ShowEmpty()
         {
-            _selectable.enabled = false;
             _countText.enabled = false;
 
             base.ShowEmpty();
+            _itemPresented.Invoke(false);
         }
     }
 }

@@ -7,14 +7,14 @@ using UnityEngine;
 
 namespace Recalled.Gameplay
 {
-    public sealed class QuickSlots : IReadOnlyList<ItemInstance>
+    public sealed class QuickSlots : IReadOnlyList<QuickSlots.Slot>
     {
         public class Slot
         {
             public readonly ItemDefinition Definition;
-            public int Count;
+            public uint Count;
 
-            public Slot(ItemDefinition definition, int count)
+            public Slot(ItemDefinition definition, uint count)
             {
                 Definition = definition;
                 Count = count;
@@ -24,7 +24,8 @@ namespace Recalled.Gameplay
         readonly Bag _inventory;
         readonly Slot[] _slots;
         public int Count => 4;
-        public ItemInstance this[int index] => _slots[index]?.Definition.CreateInstance(_slots[index].Count);
+        public Slot this[int index] => _slots[index];
+        public event Action Changed;
 
         public QuickSlots(Bag bag)
         {
@@ -45,17 +46,18 @@ namespace Recalled.Gameplay
                 var slot = _slots[i];
 
                 _slots[i].Count =
-                    _inventory.Items
+                    (uint)_inventory.Items
                         .Where(i => i?.Definition == slot.Definition)
                         .Sum(i => i.Count);
             }
+            Changed?.Invoke();
         }
 
         public void Put(int i, ItemDefinition def)
         {
             if (def == null) throw new ArgumentNullException();
 
-            _slots[i] = new(def, _inventory.Items.Where(i => i?.Definition == def).Sum(i => i.Count));
+            _slots[i] = new(def, (uint)_inventory.Items.Where(i => i?.Definition == def).Sum(i => i.Count));
         }
         public void Remove(int i)
         {
@@ -76,8 +78,8 @@ namespace Recalled.Gameplay
             }
         }
 
-        public IEnumerator<ItemInstance> GetEnumerator()
-            => _slots.Select(s => s.Definition.CreateInstance(s.Count)).AsEnumerable().GetEnumerator();
+        public IEnumerator<Slot> GetEnumerator()
+            => _slots.AsEnumerable().GetEnumerator();
         IEnumerator IEnumerable.GetEnumerator()
             => GetEnumerator();
     }

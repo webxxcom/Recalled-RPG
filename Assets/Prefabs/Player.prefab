@@ -1106,6 +1106,7 @@ GameObject:
   - component: {fileID: 797185126300389965}
   - component: {fileID: 7919439482791280018}
   - component: {fileID: 6749094384683476667}
+  - component: {fileID: 6112780135680013782}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -1343,7 +1344,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   _loadout: {fileID: 11400000, guid: 68b65b2dd4f3fad43b018019f0597086, type: 2}
   _inventoryVariable: {fileID: 11400000, guid: abd07e1b22b52784c8b624dda0224212, type: 2}
-  _quickSlotsVariable: {fileID: 11400000, guid: d74690ee45f51e147bcb27aacf99d36a, type: 2}
 --- !u!114 &7919439482791280018
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1356,9 +1356,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 418a9a8b047a1c843aecb9bd700ae752, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HealthResource
-  _config: {fileID: 11400000, guid: 8c7025ebdf498ce49baf01dcca61e655, type: 2}
+  _config: {fileID: 11400000, guid: 2e463e3769a329247a9da0cbb5b94970, type: 2}
   _hurtbox: {fileID: 7648009776092296695}
-  _intVariable: {fileID: 11400000, guid: 060557ec0ac49624abeae20083c92407, type: 2}
+  _healthVariable: {fileID: 11400000, guid: 18664fa8ddf79b54dbc9cb56202f04fb, type: 2}
   _hpChangedEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -1378,6 +1378,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Recalled.Gameplay::Recalled.Gameplay.RequestClipDispatcher
   _audioClipRequestChannel: {fileID: 11400000, guid: 67b85b404b05c124ea5e6d5550c770de, type: 2}
+--- !u!114 &6112780135680013782
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7559287907167481913}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c35116309300734b976ab7894d88040, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+  _useQuickSlotAction: {fileID: 4250535268698795447, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
+  _loadout:
+  - {fileID: 11400000, guid: d46a40fa60fa96e4baec8cc674a76eb1, type: 2}
+  - {fileID: 11400000, guid: d46a40fa60fa96e4baec8cc674a76eb1, type: 2}
+  _slotsAnchor: {fileID: 11400000, guid: f245f90d432f41045899e1c973919586, type: 2}
+  _quickSlotsChanged: {fileID: 11400000, guid: 0d4664b3a5cf9054b9cf72d733ec5bc7, type: 2}
 --- !u!1 &8375044973183638792
 GameObject:
   m_ObjectHideFlags: 0
