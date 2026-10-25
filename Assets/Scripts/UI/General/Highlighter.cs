@@ -9,6 +9,7 @@ namespace Recalled.UI
     public sealed class Highlighter : MonoBehaviour
     {
         [SerializeField] Image _image;
+        [SerializeField] Transform _parentZone;
 
         [Header("Watches")]
         [SerializeField] GameObjectRuntimeVariable _currentSelected;
@@ -33,7 +34,7 @@ namespace Recalled.UI
 
         void Show(GameObject game)
         {
-            if (!gameObject.transform.IsChildOf(game.transform))
+            if (!game.transform.IsChildOf(_parentZone))
                 return;
 
             _animator.Play("Idle");

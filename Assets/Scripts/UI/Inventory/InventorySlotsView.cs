@@ -3,6 +3,8 @@ using Recalled.Systems.Inventory;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 namespace Recalled.UI.Inventory
 {
@@ -18,6 +20,11 @@ namespace Recalled.UI.Inventory
         private void Awake()
         {
             _inventoryVariable.Subscribe(OnInventorySet);
+        }
+
+        private void OnEnable()
+        {
+            RefreshView();
         }
 
         private void OnDestroy()
@@ -49,18 +56,27 @@ namespace Recalled.UI.Inventory
 
         public void RefreshView()
         {
+            if (_inventory == null)
+                return;
+
             // Lazy init
             _slotsView ??= _populator != null
-                ? _populator.Populate(_inventoryVariable.Value.Count).Select(go => go.GetComponent<InventorySlot>()).ToArray()
+                ? _populator.Populate(_inventory.Count).Select(go => go.GetComponent<InventorySlot>()).ToArray()
                 : GetComponentsInChildren<InventorySlot>();
 
-            for (int i = 0; i < _inventoryVariable.Value.Count; i++)
+            if (_slotsView.Count != _inventory.Count)
             {
-                var slot = _inventoryVariable.Value[i];
-                if (!slot.IsEmpty && (_currentFilter == ItemCategory.Any || slot.Item.Definition.Category == _currentFilter))
-                    _slotsView[i].SetItem(slot.Item);
-                else
-                    _slotsView[i].RemoveItem();
+                Debug.LogError($"{name}: The {nameof(_slotsView)}'s Count doesn't match the {nameof(_inventory)}'s Count");
+                return;
+            }
+
+            for (int i = 0; i < _inventory.Count; i++)
+            {
+                var item = _inventory[i].Item;
+                var isVisible = item != null && item.Definition.IsInCategory(_currentFilter);
+
+                if (item != null) _slotsView[i].ShowItem(item, !isVisible);
+                else _slotsView[i].ShowEmpty();
             }
         }
     }

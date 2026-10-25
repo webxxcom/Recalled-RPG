@@ -13,6 +13,7 @@ namespace Recalled.Systems.Inventory
 
         public int MinStockSize => 1;
         public bool IsStackable => MaxStockSize > MinStockSize;
+        public bool IsInCategory(ItemCategory category) => category == ItemCategory.Any || Category == category;
 
         public virtual ItemInstance CreateInstance(int count = 1)
         {

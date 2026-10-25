@@ -1,5 +1,7 @@
+using Recalled.Gameplay;
 using Recalled.Systems.Inventory;
 using TMPro;
+using UnityEditor.Search;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -13,11 +15,21 @@ namespace Recalled.UI.Inventory
 
         private void Awake() => _selectable = GetComponent<Selectable>();
 
-        public override void SetItem(ItemInstance instance)
+        public override void ShowItem(ItemInstance instance, bool showDimmed)
         {
-            base.SetItem(instance);
+            base.ShowItem(instance, showDimmed);
 
-            _selectable.enabled = true;
+            if (showDimmed)
+            {
+                _selectable.enabled = false;
+                _countText.color = _dimColor;
+            }
+            else
+            {
+                _selectable.enabled = true;
+                _countText.color = Color.white;
+            }
+
             if (instance.Definition.IsStackable)
             {
                 _countText.enabled = true;
@@ -27,12 +39,12 @@ namespace Recalled.UI.Inventory
                 _countText.enabled = false;
         }
 
-        public override void RemoveItem()
+        public override void ShowEmpty()
         {
             _selectable.enabled = false;
             _countText.enabled = false;
 
-            base.RemoveItem();
+            base.ShowEmpty();
         }
     }
 }

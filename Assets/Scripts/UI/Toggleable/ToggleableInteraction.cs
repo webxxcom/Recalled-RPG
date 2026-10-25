@@ -5,29 +5,29 @@ namespace Recalled.UI
 {
     [RequireComponent(typeof(UISpriteAnimator))]
     [RequireComponent(typeof(Toggleable))]
-    public sealed class ToggleableInteraction : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
+    sealed class ToggleableInteraction
+        : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
     {
         UISpriteAnimator _animator;
         Toggleable _toggleable;
-
-        public void OnPointerClick(PointerEventData eventData) => _toggleable.RequestToggle();
 
         private void Awake()
         {
             _animator = GetComponent<UISpriteAnimator>();
             _toggleable = GetComponent<Toggleable>();
         }
-
         private void OnEnable()
         {
-            _toggleable.StateChanged.AddListener(OnToggled);
+            _toggleable.StateChanged.AddListener(UpdateState);
+
+            UpdateState(_toggleable.IsActive);
         }
         private void OnDisable()
         {
-            _toggleable.StateChanged.RemoveListener(OnToggled);
+            _toggleable.StateChanged.RemoveListener(UpdateState);
         }
 
-        void OnToggled(bool flag)
+        void UpdateState(bool flag)
         {
             if (flag) _animator.Play("Show");
             else _animator.Play("Hide");
@@ -42,7 +42,7 @@ namespace Recalled.UI
         {
             if (!_toggleable.IsActive) _animator.Play("Exit");
         }
-
+        public void OnPointerClick(PointerEventData eventData) => _toggleable.RequestToggle();
         public void OnPointerEnter(PointerEventData eventData) => OnEnter();
         public void OnPointerExit(PointerEventData eventData) => OnExit();
     }

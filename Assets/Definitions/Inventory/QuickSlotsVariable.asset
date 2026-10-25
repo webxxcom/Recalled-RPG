@@ -10,5 +10,5 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8f592914a6d6fbd42abcc17b9392dcb4, type: 3}
-  m_Name: PlayerInventoryVariable
+  m_Name: QuickSlotsVariable
   m_EditorClassIdentifier: Recalled.Gameplay::Recalled.Gameplay.InventoryVariable

@@ -26,7 +26,7 @@ namespace Recalled.UI.Inventory
 
         public void Show(ItemInstance instance)
         {
-            _cell.SetItem(instance);
+            _cell.ShowItem(instance, false);
             _header.text = instance.Definition.Name;
             _description.text = instance.Description;
         }

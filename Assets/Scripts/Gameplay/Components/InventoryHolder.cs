@@ -3,22 +3,25 @@ using UnityEngine;
 
 namespace Recalled.Gameplay
 {
-    public class InventoryHolder : MonoBehaviour
+    public sealed class InventoryHolder : MonoBehaviour
     {
         [SerializeField] Loadout _loadout;
         [SerializeField] InventoryVariable _inventoryVariable;
+        [SerializeField] InventoryVariable _quickSlotsVariable;
 
-        ItemSlotsArray _inventory;
-        public ItemSlotsArray Inventory => _inventory;
+        public ItemSlotsArray Inventory { get; private set; }
+        public ItemSlotsArray QuickSlots { get; private set; }
 
         private void Awake()
         {
-            _inventory = new(_loadout.Capacity, _loadout.Items);
+            Inventory = new(_loadout.Capacity, _loadout.Items);
+            QuickSlots = new(4);
         }
 
         private void Start()
         {
-            _inventoryVariable.Value = _inventory;
+            _inventoryVariable.Value = Inventory;
+            _quickSlotsVariable.Value = QuickSlots;
         }
     }
 }

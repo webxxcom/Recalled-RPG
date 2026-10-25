@@ -1343,6 +1343,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   _loadout: {fileID: 11400000, guid: 68b65b2dd4f3fad43b018019f0597086, type: 2}
   _inventoryVariable: {fileID: 11400000, guid: abd07e1b22b52784c8b624dda0224212, type: 2}
+  _quickSlotsVariable: {fileID: 11400000, guid: d74690ee45f51e147bcb27aacf99d36a, type: 2}
 --- !u!114 &7919439482791280018
 MonoBehaviour:
   m_ObjectHideFlags: 0
