@@ -1158,6 +1158,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce67ad1c2b5cac54ab0fdfcc723e2c80, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Recalled.UI::Recalled.UI.QuickSlotsView
+  _slotsAnchor: {fileID: 11400000, guid: f245f90d432f41045899e1c973919586, type: 2}
 --- !u!1001 &269293547162586644
 PrefabInstance:
   m_ObjectHideFlags: 0

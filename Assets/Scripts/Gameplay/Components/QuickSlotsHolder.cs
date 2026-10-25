@@ -1,8 +1,5 @@
-using NUnit.Framework;
 using Recalled.Systems.Inventory;
-using System;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -11,74 +8,11 @@ namespace Recalled.Gameplay
     [RequireComponent(typeof(InventoryHolder))]
     sealed class QuickSlotsHolder : MonoBehaviour
     {
-        public class QuickSlots
-        {
-            public class Slot
-            {
-                public readonly ItemDefinition Definition;
-                public int Count;
-
-                public Slot(ItemDefinition definition, int count)
-                {
-                    Definition = definition;
-                    Count = count;
-                }
-            }
-
-            readonly Bag _inventory;
-            readonly Slot[] _slots = new Slot[4];
-
-            public QuickSlots(Bag bag)
-            {
-                _inventory = bag;
-
-                _inventory.SlotsChanged += UpdateAll;
-            }
-
-            void UpdateAll()
-            {
-                for (int i = 0; i < _slots.Length; i++)
-                {
-                    if (_slots[i] == null)
-                        continue;
-
-                    var slot = _slots[i];
-
-                    _slots[i].Count =
-                        _inventory.Slots
-                            .Where(s => !s.IsEmpty && s.Item.Definition == slot.Definition)
-                            .Sum(s => s.Item.Count);
-                }
-            }
-
-            public void Put(int i, ItemDefinition def)
-            {
-                if (def == null) throw new ArgumentNullException();
-
-                _slots[i] = new(def, _inventory.Slots.Where(s => !s.IsEmpty && s.Item.Definition == def).Sum(s => s.Item.Count));
-            }
-            public void Remove(int i)
-            {
-                _slots[i] = default;
-            }
-
-            public void Use(int i, GameObject consumer)
-            {
-                if (_slots[i] == null) return;
-
-                if (!_slots[i].Definition.TryGetModule<Consumable>(out var consumeModule))
-                    return;
-
-                if (_inventory.Take(_slots[i].Definition, 1))
-                {
-                    _slots[i].Count--;
-                    consumeModule.Consume(consumer);
-                }
-            }
-        }
-
         [SerializeField] InputActionReference _useQuickSlotAction;
         [SerializeField] List<ItemDefinition> _loadout;
+
+        [Header("Sets")]
+        [SerializeField] QuickSlotsAnchor _slotsAnchor;
 
         QuickSlots _quickSlots;
 
@@ -88,9 +22,12 @@ namespace Recalled.Gameplay
             int i = 0;
             foreach (var item in _loadout)
                 _quickSlots.Put(i++, item);
+
+            _slotsAnchor.Provide(_quickSlots);
         }
         private void OnEnable() => _useQuickSlotAction.action.performed += OnQuickSlotAction;
         private void OnDisable() => _useQuickSlotAction.action.performed -= OnQuickSlotAction;
+        private void OnDestroy() => _slotsAnchor.Withdraw(_quickSlots);
 
         void OnQuickSlotAction(InputAction.CallbackContext context)
         {

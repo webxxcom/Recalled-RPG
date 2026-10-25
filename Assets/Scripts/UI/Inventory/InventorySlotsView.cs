@@ -13,7 +13,7 @@ namespace Recalled.UI.Inventory
         [SerializeField] InventoryVariable _inventoryVariable;
         [SerializeField] PrefabPopulator _populator;
 
-        Systems.Inventory.Bag _inventory;
+        Bag _inventory;
         IReadOnlyList<InventorySlot> _slotsView;
         ItemCategory _currentFilter = ItemCategory.Any;
         bool _isDirty;
@@ -72,7 +72,7 @@ namespace Recalled.UI.Inventory
             InventorySlot firstActiveSlot = default;
             for (int i = 0; i < _inventory.Count; i++)
             {
-                var item = _inventory[i].Item;
+                var item = _inventory[i];
                 var isVisible = item != null && item.Definition.IsInCategory(_currentFilter);
 
                 if (item != null) _slotsView[i].ShowItem(item, !isVisible);

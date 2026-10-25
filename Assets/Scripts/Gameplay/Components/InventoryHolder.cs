@@ -10,10 +10,7 @@ namespace Recalled.Gameplay
 
         public Bag Inventory { get; private set; }
 
-        private void Awake()
-        {
-            Inventory = new(_loadout.Capacity, _loadout.Items);
-        }
+        private void Awake() => Inventory = new(_loadout.Capacity, _loadout.Items);
 
         private void Start()
         {

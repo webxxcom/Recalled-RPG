@@ -5,9 +5,9 @@ using System.Linq;
 
 namespace Recalled.Systems.Inventory
 {
-    public sealed class Bag : IReadOnlyList<Bag.Slot>
+    public sealed class Bag : IReadOnlyList<ItemInstance>
     {
-        public readonly struct Slot
+        internal readonly struct Slot
         {
             public readonly ItemInstance Item;
             public readonly bool IsEmpty => Item == null;
@@ -20,8 +20,8 @@ namespace Recalled.Systems.Inventory
 
         readonly Slot[] _slots;
         public int Count => _slots.Length;
-        public Slot this[int index] => _slots[index];
-        public Slot[] Slots => _slots;
+        public ItemInstance this[int index] => _slots[index].Item;
+        public IReadOnlyList<ItemInstance> Items => _slots.Select(s => s.Item).ToArray();
 
         public event Action SlotsChanged;
 
@@ -203,8 +203,8 @@ namespace Recalled.Systems.Inventory
                 .Sum(s => s.Item.Count) >= count;
         }
 
-        public IEnumerator<Slot> GetEnumerator()
-            => _slots.AsEnumerable().GetEnumerator();
+        public IEnumerator<ItemInstance> GetEnumerator()
+            => _slots.Select(s => s.Item).AsEnumerable().GetEnumerator();
         IEnumerator IEnumerable.GetEnumerator()
             => GetEnumerator();
     }
