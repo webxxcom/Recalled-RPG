@@ -10,11 +10,12 @@ namespace Recalled.Gameplay
     [RequireComponent(typeof(Collider2D))]
     public sealed class Health : MonoBehaviour
     {
+
         [SerializeField] ValueProviderConfig _config;
         [SerializeField] Collider2D _hurtbox;
 
         [Tooltip("Optional Runtime Variable, mostly for player and bosses")]
-        [SerializeField] IntVariable _intVariable;
+        [SerializeField] HealthValueVariable _healthVariable;
 
         public Vector2 Center => _hurtbox.bounds.center;
         public Collider2D Hurtbox => _hurtbox;
@@ -30,13 +31,13 @@ namespace Recalled.Gameplay
         [SerializeField] UnityEvent<DamageInfo> _hpChangedEvent;
         [SerializeField] UnityEvent<DamageInfo> _diedEvent;
         public event Action<DamageInfo> Died;
-        public event Action<DamageInfo> OnMax;
+        public event Action OnMax;
 
         void Awake()
         {
             _valueResource = new(_config);
 
-            if (_intVariable != null) _intVariable.Value = _valueResource.Current;
+            if (_healthVariable != null) _healthVariable.Value = new(_valueResource.Current, _valueResource.MaxValue);
         }
 
         public void ApplyDamage(DamageInfo damageInfo)
@@ -45,8 +46,8 @@ namespace Recalled.Gameplay
                 return;
 
             int applied = _valueResource.Consume(damageInfo.Amount);
-            if (_intVariable != null)
-                _intVariable.Value = _valueResource.Current;
+            if (_healthVariable != null)
+                _healthVariable.Value = new(_valueResource.Current, _valueResource.MaxValue);
 
             HpChanged?.Invoke(damageInfo);
             _hpChangedEvent?.Invoke(damageInfo);
@@ -58,8 +59,19 @@ namespace Recalled.Gameplay
                     Died?.Invoke(damageInfo);
                     _diedEvent.Invoke(damageInfo);
                 }
+            }
+        }
+
+        public void Heal(int healInfo)
+        {
+            int applied = _valueResource.Replenish(healInfo);
+            if (_healthVariable != null)
+                _healthVariable.Value = new(_valueResource.Current, _valueResource.MaxValue);
+
+            if (applied != 0)
+            {
                 if (IsFull)
-                    OnMax?.Invoke(damageInfo);
+                    OnMax?.Invoke();
             }
         }
 

@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Recalled.Systems.Inventory
 {
-    [System.Serializable]
+    [Serializable]
     public class ItemInstance
     {
         [SerializeField] ItemDefinition _definition;

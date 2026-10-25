@@ -74,10 +74,10 @@ namespace Recalled.Systems.Inventory.Tests
             Enumerable.Range(0, capacity).Select(_ => Instance(_sword)).ToArray();
 
         /// <summary>Snapshot of the item references currently stored, by slot index.</summary>
-        private static ItemInstance[] StoredItems(ItemSlotsArray slots) =>
+        private static ItemInstance[] StoredItems(Bag slots) =>
             slots.Select(slot => slot.Item).ToArray();
 
-        private static void AssertSameItemsAs(ItemSlotsArray slots, ItemInstance[] expected)
+        private static void AssertSameItemsAs(Bag slots, ItemInstance[] expected)
         {
             Assert.That(slots.Count, Is.EqualTo(expected.Length));
             for (int i = 0; i < expected.Length; i++)
@@ -92,23 +92,23 @@ namespace Recalled.Systems.Inventory.Tests
             Assert.That(copy.Count, Is.EqualTo(original.Count));
         }
 
-        private static int EmptySlotCount(ItemSlotsArray slots) =>
+        private static int EmptySlotCount(Bag slots) =>
             slots.Count(slot => slot.IsEmpty);
 
-        private static int OccupiedSlotCount(ItemSlotsArray slots, ItemDefinition definition) =>
+        private static int OccupiedSlotCount(Bag slots, ItemDefinition definition) =>
             slots.Count(slot => !slot.IsEmpty && slot.Item.Definition == definition);
 
-        private static int TotalCountOf(ItemSlotsArray slots, ItemDefinition definition) =>
+        private static int TotalCountOf(Bag slots, ItemDefinition definition) =>
             slots.Where(slot => !slot.IsEmpty && slot.Item.Definition == definition)
                  .Sum(slot => slot.Item.Count);
 
-        private static bool ContainsReference(ItemSlotsArray slots, ItemInstance instance) =>
+        private static bool ContainsReference(Bag slots, ItemInstance instance) =>
             slots.Any(slot => ReferenceEquals(slot.Item, instance));
 
         /// <summary>
         /// Structural invariants that must hold after ANY operation, successful or not.
         /// </summary>
-        private static void AssertInvariants(ItemSlotsArray slots)
+        private static void AssertInvariants(Bag slots)
         {
             // Not HashSet + ReferenceEqualityComparer: that comparer is .NET 5+ and may not
             // exist in Unity's class library. Linear check is fine at inventory sizes.
@@ -137,7 +137,7 @@ namespace Recalled.Systems.Inventory.Tests
         }
 
         /// <summary>Subscribes a counter to SlotsChanged and returns a reader for it.</summary>
-        private static Func<int> CountSlotsChanged(ItemSlotsArray slots)
+        private static Func<int> CountSlotsChanged(Bag slots)
         {
             int raised = 0;
             slots.SlotsChanged += () => raised++;
@@ -149,7 +149,7 @@ namespace Recalled.Systems.Inventory.Tests
         [Test]
         public void Ctor_WithCapacity_CreatesThatManySlots()
         {
-            var slots = new ItemSlotsArray(Capacity);
+            var slots = new Bag(Capacity);
 
             Assert.That(slots.Count, Is.EqualTo(Capacity));
         }
@@ -157,7 +157,7 @@ namespace Recalled.Systems.Inventory.Tests
         [Test]
         public void Ctor_WithCapacity_AllSlotsAreEmpty()
         {
-            var slots = new ItemSlotsArray(Capacity);
+            var slots = new Bag(Capacity);
 
             Assert.That(EmptySlotCount(slots), Is.EqualTo(Capacity));
             AssertInvariants(slots);
@@ -168,7 +168,7 @@ namespace Recalled.Systems.Inventory.Tests
         [TestCase(-1)]
         public void Ctor_WithNonPositiveCapacity_Throws(int capacity)
         {
-            Assert.That(() => new ItemSlotsArray(capacity), Throws.InstanceOf<ArgumentException>());
+            Assert.That(() => new Bag(capacity), Throws.InstanceOf<ArgumentException>());
         }
 
         // ================================================================ ctor(capacity, loadout)
@@ -179,7 +179,7 @@ namespace Recalled.Systems.Inventory.Tests
             var sword = Instance(_sword);
             var potions = Instance(_potion, 5);
 
-            var slots = new ItemSlotsArray(Capacity, new[] { sword, potions });
+            var slots = new Bag(Capacity, new[] { sword, potions });
 
             AssertIsCopyOf(slots[0].Item, sword);
             AssertIsCopyOf(slots[1].Item, potions);
@@ -190,7 +190,7 @@ namespace Recalled.Systems.Inventory.Tests
         [Test]
         public void Ctor_WithEmptyLoadout_AllSlotsAreEmpty()
         {
-            var slots = new ItemSlotsArray(Capacity, Array.Empty<ItemInstance>());
+            var slots = new Bag(Capacity, Array.Empty<ItemInstance>());
 
             Assert.That(slots.Count, Is.EqualTo(Capacity));
             Assert.That(EmptySlotCount(slots), Is.EqualTo(Capacity));
@@ -203,7 +203,7 @@ namespace Recalled.Systems.Inventory.Tests
         {
             var loadoutPotions = Instance(_potion, 5);
             var loadoutSword = Instance(_sword);
-            var slots = new ItemSlotsArray(Capacity, new[] { loadoutPotions, loadoutSword });
+            var slots = new Bag(Capacity, new[] { loadoutPotions, loadoutSword });
 
             slots.Add(_potion, 10);      // merges into the stored potion stack
             slots.Take(_potion, 12);     // reduces it
@@ -218,7 +218,7 @@ namespace Recalled.Systems.Inventory.Tests
         public void Ctor_WithLoadout_LoadoutChangesAfterConstruction_DoNotAffectInventory()
         {
             var loadout = new[] { Instance(_sword) };
-            var slots = new ItemSlotsArray(Capacity, loadout);
+            var slots = new Bag(Capacity, loadout);
 
             loadout[0] = Instance(_potion, 7); // caller replaces an entry in its own array
 
@@ -233,7 +233,7 @@ namespace Recalled.Systems.Inventory.Tests
         {
             var sword = Instance(_sword);
 
-            var slots = new ItemSlotsArray(Capacity, new[] { sword, sword });
+            var slots = new Bag(Capacity, new[] { sword, sword });
 
             AssertIsCopyOf(slots[0].Item, sword);
             AssertIsCopyOf(slots[1].Item, sword);
@@ -247,14 +247,14 @@ namespace Recalled.Systems.Inventory.Tests
         {
             var loadout = FullOfSwords(Capacity + 1);
 
-            Assert.That(() => new ItemSlotsArray(Capacity, loadout), Throws.InstanceOf<ArgumentException>());
+            Assert.That(() => new Bag(Capacity, loadout), Throws.InstanceOf<ArgumentException>());
         }
 
         // ASSUMPTION: null loadout throws.
         [Test]
         public void Ctor_WithNullLoadout_Throws()
         {
-            Assert.That(() => new ItemSlotsArray(Capacity, null), Throws.InstanceOf<ArgumentNullException>());
+            Assert.That(() => new Bag(Capacity, null), Throws.InstanceOf<ArgumentNullException>());
         }
 
         // ================================================================ bool Add(ItemInstance)
@@ -262,7 +262,7 @@ namespace Recalled.Systems.Inventory.Tests
         [Test]
         public void AddInstance_NonStackable_ReturnsTrue_AndStoresSameInstanceInFirstSlot()
         {
-            var slots = new ItemSlotsArray(Capacity);
+            var slots = new Bag(Capacity);
             var sword = Instance(_sword);
 
             bool added = slots.Add(sword);
@@ -275,7 +275,7 @@ namespace Recalled.Systems.Inventory.Tests
         [Test]
         public void AddInstance_NonStackableTwice_UsesSeparateSlots()
         {
-            var slots = new ItemSlotsArray(Capacity);
+            var slots = new Bag(Capacity);
             var first = Instance(_sword);
             var second = Instance(_sword);
 
@@ -290,7 +290,7 @@ namespace Recalled.Systems.Inventory.Tests
         [Test]
         public void AddInstance_FillsFirstEmptySlot_EvenWhenItIsAGap()
         {
-            var slots = new ItemSlotsArray(Capacity, FullOfSwords(3));
+            var slots = new Bag(Capacity, FullOfSwords(3));
             slots.Remove(slots[1].Item); // gap at index 1
 
             var incoming = Instance(_sword);
@@ -303,7 +303,7 @@ namespace Recalled.Systems.Inventory.Tests
         [Test]
         public void AddInstance_Stackable_MergesIntoExistingStack()
         {
-            var slots = new ItemSlotsArray(Capacity);
+            var slots = new Bag(Capacity);
 
             slots.Add(Instance(_potion, 3));
             bool added = slots.Add(Instance(_potion, 2));
@@ -317,7 +317,7 @@ namespace Recalled.Systems.Inventory.Tests
         [Test]
         public void AddInstance_StackableBeyondMaxStack_OverflowsIntoNextSlot()
         {
-            var slots = new ItemSlotsArray(Capacity);
+            var slots = new Bag(Capacity);
 
             slots.Add(Instance(_potion, StackableMax));
             bool added = slots.Add(Instance(_potion, 1));
@@ -331,7 +331,7 @@ namespace Recalled.Systems.Inventory.Tests
         [Test]
         public void AddInstance_StackableFitsExactlyAcrossStackAndEmptySlot_ReturnsTrue()
         {
-            var slots = new ItemSlotsArray(2, new[] { Instance(_potion, StackableMax - 9) });
+            var slots = new Bag(2, new[] { Instance(_potion, StackableMax - 9) });
 
             bool added = slots.Add(Instance(_potion, 20)); // 9 top up, 11 into the empty slot
 
@@ -344,7 +344,7 @@ namespace Recalled.Systems.Inventory.Tests
         public void AddInstance_StackablePartlyFits_ReturnsFalse_AddsWhatFits_AndLeavesLeftoverOnIncoming()
         {
             // Only room left is 9 more potions on the existing stack; no empty slot.
-            var slots = new ItemSlotsArray(2, new[] { Instance(_potion, StackableMax - 9), Instance(_sword) });
+            var slots = new Bag(2, new[] { Instance(_potion, StackableMax - 9), Instance(_sword) });
             var storedPotions = slots[0].Item;
             var storedSword = slots[1].Item;
             var raised = CountSlotsChanged(slots);
@@ -366,7 +366,7 @@ namespace Recalled.Systems.Inventory.Tests
         [Test]
         public void AddInstance_StackableWithAnEmptySlot_AlwaysFitsEntirely()
         {
-            var slots = new ItemSlotsArray(3, new[] { Instance(_potion, 1), Instance(_sword) });
+            var slots = new Bag(3, new[] { Instance(_potion, 1), Instance(_sword) });
             var storedSword = slots[1].Item;
             var incoming = Instance(_potion, StackableMax); // largest possible instance
 
@@ -381,7 +381,7 @@ namespace Recalled.Systems.Inventory.Tests
         [Test]
         public void AddInstance_LeftoverPlusAdded_EqualsOriginalCount()
         {
-            var slots = new ItemSlotsArray(2, new[] { Instance(_potion, StackableMax - 9), Instance(_sword) });
+            var slots = new Bag(2, new[] { Instance(_potion, StackableMax - 9), Instance(_sword) });
             var storedPotions = slots[0].Item;
             const int original = 500;
             var incoming = Instance(_potion, original);
@@ -397,7 +397,7 @@ namespace Recalled.Systems.Inventory.Tests
         [Test]
         public void AddInstance_PartialFailure_IncomingObjectIsNotStoredInAnySlot()
         {
-            var slots = new ItemSlotsArray(2, new[] { Instance(_potion, StackableMax - 9), Instance(_sword) });
+            var slots = new Bag(2, new[] { Instance(_potion, StackableMax - 9), Instance(_sword) });
             var incoming = Instance(_potion, 20);
 
             slots.Add(incoming);
@@ -409,7 +409,7 @@ namespace Recalled.Systems.Inventory.Tests
         [Test]
         public void AddInstance_StackableNothingFits_ReturnsFalse_IncomingUnchanged_NoEvent()
         {
-            var slots = new ItemSlotsArray(Capacity, FullOfSwords());
+            var slots = new Bag(Capacity, FullOfSwords());
             var raised = CountSlotsChanged(slots);
             var incoming = Instance(_potion, 20);
 
@@ -423,7 +423,7 @@ namespace Recalled.Systems.Inventory.Tests
         [Test]
         public void AddInstance_NonStackableWhenFull_ReturnsFalse_AndLeavesSlotsUnchanged()
         {
-            var slots = new ItemSlotsArray(Capacity, FullOfSwords());
+            var slots = new Bag(Capacity, FullOfSwords());
             var before = StoredItems(slots);
             var incoming = Instance(_sword);
 
@@ -437,7 +437,7 @@ namespace Recalled.Systems.Inventory.Tests
         [Test]
         public void AddInstance_Success_RaisesSlotsChangedOnce()
         {
-            var slots = new ItemSlotsArray(Capacity);
+            var slots = new Bag(Capacity);
             var raised = CountSlotsChanged(slots);
 
             slots.Add(Instance(_sword));
@@ -448,7 +448,7 @@ namespace Recalled.Systems.Inventory.Tests
         [Test]
         public void AddInstance_SlotsChanged_IsRaisedAfterStateIsFinal()
         {
-            var slots = new ItemSlotsArray(Capacity, new[] { Instance(_potion, StackableMax - 1) });
+            var slots = new Bag(Capacity, new[] { Instance(_potion, StackableMax - 1) });
             int totalSeenByHandler = -1;
             slots.SlotsChanged += () => totalSeenByHandler = TotalCountOf(slots, _potion);
 
@@ -464,7 +464,7 @@ namespace Recalled.Systems.Inventory.Tests
         [Test]
         public void AddInstance_Null_Throws_AndChangesNothing()
         {
-            var slots = new ItemSlotsArray(Capacity);
+            var slots = new Bag(Capacity);
             var raised = CountSlotsChanged(slots);
 
             Assert.That(() => slots.Add(null), Throws.InstanceOf<ArgumentNullException>());
@@ -478,7 +478,7 @@ namespace Recalled.Systems.Inventory.Tests
         [Test]
         public void AddInstance_AlreadyContained_Throws_AndChangesNothing()
         {
-            var slots = new ItemSlotsArray(Capacity, new[] { Instance(_potion, 5) });
+            var slots = new Bag(Capacity, new[] { Instance(_potion, 5) });
             var stored = slots[0].Item; // the inventory's own instance, not the loadout's
 
             Assert.That(() => slots.Add(stored), Throws.InstanceOf<ArgumentException>());
@@ -492,7 +492,7 @@ namespace Recalled.Systems.Inventory.Tests
         public void AddInstance_LoadoutInstance_IsTreatedAsNewItem()
         {
             var loadoutPotions = Instance(_potion, 5);
-            var slots = new ItemSlotsArray(Capacity, new[] { loadoutPotions });
+            var slots = new Bag(Capacity, new[] { loadoutPotions });
 
             bool added = slots.Add(loadoutPotions);
 
@@ -506,7 +506,7 @@ namespace Recalled.Systems.Inventory.Tests
         [Test]
         public void AddDefinition_StackableAllFits_SingleStack_RemainderZero()
         {
-            var slots = new ItemSlotsArray(Capacity);
+            var slots = new Bag(Capacity);
 
             int remainder = slots.Add(_potion, 10);
 
@@ -519,7 +519,7 @@ namespace Recalled.Systems.Inventory.Tests
         [Test]
         public void AddDefinition_CreatedInstancesHaveTheRequestedDefinition()
         {
-            var slots = new ItemSlotsArray(Capacity);
+            var slots = new Bag(Capacity);
 
             slots.Add(_sword, 2);
 
@@ -529,7 +529,7 @@ namespace Recalled.Systems.Inventory.Tests
         [Test]
         public void AddDefinition_StackableAboveMaxStack_SplitsAcrossSlots_RemainderZero()
         {
-            var slots = new ItemSlotsArray(Capacity);
+            var slots = new Bag(Capacity);
 
             int remainder = slots.Add(_potion, StackableMax + 1);
 
@@ -542,7 +542,7 @@ namespace Recalled.Systems.Inventory.Tests
         [Test]
         public void AddDefinition_Stackable_TopsUpExistingStackBeforeUsingEmptySlot()
         {
-            var slots = new ItemSlotsArray(Capacity, new[] { Instance(_potion, 5) });
+            var slots = new Bag(Capacity, new[] { Instance(_potion, 5) });
             var storedPotions = slots[0].Item;
 
             int remainder = slots.Add(_potion, 10);
@@ -557,7 +557,7 @@ namespace Recalled.Systems.Inventory.Tests
         public void AddDefinition_StackablePartlyFits_AddsWhatFits_AndReturnsRest()
         {
             // Room for exactly 9: top-up only, no empty slot.
-            var slots = new ItemSlotsArray(2, new[] { Instance(_potion, StackableMax - 9), Instance(_sword) });
+            var slots = new Bag(2, new[] { Instance(_potion, StackableMax - 9), Instance(_sword) });
             var storedPotions = slots[0].Item;
             var storedSword = slots[1].Item;
 
@@ -572,7 +572,7 @@ namespace Recalled.Systems.Inventory.Tests
         [Test]
         public void AddDefinition_StackablePartlyFitsAcrossEmptySlots_FillsEachToMax()
         {
-            var slots = new ItemSlotsArray(2);
+            var slots = new Bag(2);
 
             int remainder = slots.Add(_potion, StackableMax * 2 + 5);
 
@@ -584,7 +584,7 @@ namespace Recalled.Systems.Inventory.Tests
         [Test]
         public void AddDefinition_NonStackable_OccupiesOneSlotPerItem_WithDistinctInstances()
         {
-            var slots = new ItemSlotsArray(Capacity);
+            var slots = new Bag(Capacity);
 
             int remainder = slots.Add(_sword, 3);
 
@@ -596,7 +596,7 @@ namespace Recalled.Systems.Inventory.Tests
         [Test]
         public void AddDefinition_NonStackablePartlyFits_FillsEmptySlots_AndReturnsRest()
         {
-            var slots = new ItemSlotsArray(Capacity);
+            var slots = new Bag(Capacity);
 
             int remainder = slots.Add(_sword, Capacity + 2);
 
@@ -608,7 +608,7 @@ namespace Recalled.Systems.Inventory.Tests
         [Test]
         public void AddDefinition_NothingFits_RemainderEqualsRequested_AndSlotsUnchanged()
         {
-            var slots = new ItemSlotsArray(Capacity, FullOfSwords());
+            var slots = new Bag(Capacity, FullOfSwords());
             var before = StoredItems(slots);
 
             int remainder = slots.Add(_potion, 7);
@@ -620,7 +620,7 @@ namespace Recalled.Systems.Inventory.Tests
         [Test]
         public void AddDefinition_AddedPlusRemainder_EqualsRequested()
         {
-            var slots = new ItemSlotsArray(2, new[] { Instance(_potion, StackableMax - 50) });
+            var slots = new Bag(2, new[] { Instance(_potion, StackableMax - 50) });
             const int requested = StackableMax + 100;
 
             int remainder = slots.Add(_potion, requested);
@@ -632,7 +632,7 @@ namespace Recalled.Systems.Inventory.Tests
         [Test]
         public void AddDefinition_FullSuccess_RaisesSlotsChangedOnce()
         {
-            var slots = new ItemSlotsArray(Capacity);
+            var slots = new Bag(Capacity);
             var raised = CountSlotsChanged(slots);
 
             slots.Add(_sword, 3); // several slots change, still one operation
@@ -643,7 +643,7 @@ namespace Recalled.Systems.Inventory.Tests
         [Test]
         public void AddDefinition_PartialSuccess_RaisesSlotsChangedOnce()
         {
-            var slots = new ItemSlotsArray(Capacity);
+            var slots = new Bag(Capacity);
             var raised = CountSlotsChanged(slots);
 
             _ = slots.Add(_sword, Capacity + 2);
@@ -654,7 +654,7 @@ namespace Recalled.Systems.Inventory.Tests
         [Test]
         public void AddDefinition_NothingFits_DoesNotRaiseSlotsChanged()
         {
-            var slots = new ItemSlotsArray(Capacity, FullOfSwords());
+            var slots = new Bag(Capacity, FullOfSwords());
             var raised = CountSlotsChanged(slots);
 
             _ = slots.Add(_potion, 7);
@@ -667,7 +667,7 @@ namespace Recalled.Systems.Inventory.Tests
         [TestCase(-5)]
         public void AddDefinition_NonPositiveCount_Throws(int count)
         {
-            var slots = new ItemSlotsArray(Capacity);
+            var slots = new Bag(Capacity);
 
             Assert.That(() => slots.Add(_potion, count), Throws.InstanceOf<ArgumentException>());
         }
@@ -675,7 +675,7 @@ namespace Recalled.Systems.Inventory.Tests
         [Test]
         public void AddDefinition_NullDefinition_Throws()
         {
-            var slots = new ItemSlotsArray(Capacity);
+            var slots = new Bag(Capacity);
 
             Assert.That(() => slots.Add(null, 1), Throws.InstanceOf<ArgumentNullException>());
         }
@@ -685,7 +685,7 @@ namespace Recalled.Systems.Inventory.Tests
         [Test]
         public void RemoveInstance_Present_ReturnsTrue_AndEmptiesItsSlot()
         {
-            var slots = new ItemSlotsArray(Capacity, new[] { Instance(_sword) });
+            var slots = new Bag(Capacity, new[] { Instance(_sword) });
 
             bool removed = slots.Remove(slots[0].Item);
 
@@ -697,7 +697,7 @@ namespace Recalled.Systems.Inventory.Tests
         [Test]
         public void RemoveInstance_RemovesByReference_NotByDefinition()
         {
-            var slots = new ItemSlotsArray(Capacity, FullOfSwords(2));
+            var slots = new Bag(Capacity, FullOfSwords(2));
             var storedFirst = slots[0].Item;
 
             slots.Remove(slots[1].Item);
@@ -709,7 +709,7 @@ namespace Recalled.Systems.Inventory.Tests
         [Test]
         public void RemoveInstance_DoesNotShiftOtherSlots()
         {
-            var slots = new ItemSlotsArray(Capacity, FullOfSwords(3));
+            var slots = new Bag(Capacity, FullOfSwords(3));
             var before = StoredItems(slots);
 
             slots.Remove(before[0]);
@@ -721,7 +721,7 @@ namespace Recalled.Systems.Inventory.Tests
         [Test]
         public void RemoveInstance_StackableRemovesWholeStack_RegardlessOfCount()
         {
-            var slots = new ItemSlotsArray(Capacity, new[] { Instance(_potion, 50) });
+            var slots = new Bag(Capacity, new[] { Instance(_potion, 50) });
 
             slots.Remove(slots[0].Item);
 
@@ -731,7 +731,7 @@ namespace Recalled.Systems.Inventory.Tests
         [Test]
         public void RemoveInstance_NotPresent_ReturnsFalse_AndChangesNothing()
         {
-            var slots = new ItemSlotsArray(Capacity, new[] { Instance(_sword) });
+            var slots = new Bag(Capacity, new[] { Instance(_sword) });
             var before = StoredItems(slots);
             var raised = CountSlotsChanged(slots);
 
@@ -747,7 +747,7 @@ namespace Recalled.Systems.Inventory.Tests
         public void RemoveInstance_LoadoutInstance_ReturnsFalse()
         {
             var loadoutSword = Instance(_sword);
-            var slots = new ItemSlotsArray(Capacity, new[] { loadoutSword });
+            var slots = new Bag(Capacity, new[] { loadoutSword });
 
             bool removed = slots.Remove(loadoutSword);
 
@@ -758,7 +758,7 @@ namespace Recalled.Systems.Inventory.Tests
         [Test]
         public void RemoveInstance_Twice_SecondReturnsFalse()
         {
-            var slots = new ItemSlotsArray(Capacity, new[] { Instance(_sword) });
+            var slots = new Bag(Capacity, new[] { Instance(_sword) });
             var stored = slots[0].Item;
 
             slots.Remove(stored);
@@ -770,7 +770,7 @@ namespace Recalled.Systems.Inventory.Tests
         [Test]
         public void RemoveInstance_Success_RaisesSlotsChangedOnce()
         {
-            var slots = new ItemSlotsArray(Capacity, new[] { Instance(_sword) });
+            var slots = new Bag(Capacity, new[] { Instance(_sword) });
             var stored = slots[0].Item;
             var raised = CountSlotsChanged(slots);
 
@@ -783,7 +783,7 @@ namespace Recalled.Systems.Inventory.Tests
         [Test]
         public void RemoveInstance_Null_Throws()
         {
-            var slots = new ItemSlotsArray(Capacity);
+            var slots = new Bag(Capacity);
 
             Assert.That(() => slots.Remove((ItemInstance)null), Throws.InstanceOf<ArgumentNullException>());
         }
@@ -793,7 +793,7 @@ namespace Recalled.Systems.Inventory.Tests
         [Test]
         public void RemoveDefinition_Present_ReturnsTrue_AndEmptiesMatchingSlot()
         {
-            var slots = new ItemSlotsArray(Capacity, new[] { Instance(_sword) });
+            var slots = new Bag(Capacity, new[] { Instance(_sword) });
 
             bool removed = slots.Remove(_sword);
 
@@ -805,7 +805,7 @@ namespace Recalled.Systems.Inventory.Tests
         [Test]
         public void RemoveDefinition_LeavesOtherDefinitionsUntouched()
         {
-            var slots = new ItemSlotsArray(Capacity, new[] { Instance(_sword), Instance(_potion, 5) });
+            var slots = new Bag(Capacity, new[] { Instance(_sword), Instance(_potion, 5) });
             var storedPotions = slots[1].Item;
 
             slots.Remove(_sword);
@@ -819,7 +819,7 @@ namespace Recalled.Systems.Inventory.Tests
         [Test]
         public void RemoveDefinition_WithSeveralMatches_RemovesOnlyFirst()
         {
-            var slots = new ItemSlotsArray(Capacity, FullOfSwords(2));
+            var slots = new Bag(Capacity, FullOfSwords(2));
             var storedSecond = slots[1].Item;
 
             slots.Remove(_sword);
@@ -831,7 +831,7 @@ namespace Recalled.Systems.Inventory.Tests
         [Test]
         public void RemoveDefinition_NotPresent_ReturnsFalse_AndDoesNotRaiseEvent()
         {
-            var slots = new ItemSlotsArray(Capacity, new[] { Instance(_potion, 3) });
+            var slots = new Bag(Capacity, new[] { Instance(_potion, 3) });
             var raised = CountSlotsChanged(slots);
 
             bool removed = slots.Remove(_sword);
@@ -844,7 +844,7 @@ namespace Recalled.Systems.Inventory.Tests
         [Test]
         public void RemoveDefinition_Success_RaisesSlotsChangedOnce()
         {
-            var slots = new ItemSlotsArray(Capacity, new[] { Instance(_sword) });
+            var slots = new Bag(Capacity, new[] { Instance(_sword) });
             var raised = CountSlotsChanged(slots);
 
             slots.Remove(_sword);
@@ -856,7 +856,7 @@ namespace Recalled.Systems.Inventory.Tests
         [Test]
         public void RemoveDefinition_Null_Throws()
         {
-            var slots = new ItemSlotsArray(Capacity);
+            var slots = new Bag(Capacity);
 
             Assert.That(() => slots.Remove((ItemDefinition)null), Throws.InstanceOf<ArgumentNullException>());
         }
@@ -866,7 +866,7 @@ namespace Recalled.Systems.Inventory.Tests
         [Test]
         public void Take_LessThanStack_ReducesCount_AndKeepsSlot()
         {
-            var slots = new ItemSlotsArray(Capacity, new[] { Instance(_potion, 5) });
+            var slots = new Bag(Capacity, new[] { Instance(_potion, 5) });
 
             bool taken = slots.Take(_potion, 2);
 
@@ -879,7 +879,7 @@ namespace Recalled.Systems.Inventory.Tests
         [Test]
         public void Take_ExactStack_EmptiesSlot()
         {
-            var slots = new ItemSlotsArray(Capacity, new[] { Instance(_potion, 5) });
+            var slots = new Bag(Capacity, new[] { Instance(_potion, 5) });
 
             bool taken = slots.Take(_potion, 5);
 
@@ -891,7 +891,7 @@ namespace Recalled.Systems.Inventory.Tests
         [Test]
         public void Take_AcrossSeveralStacks_TakesTotalAmount()
         {
-            var slots = new ItemSlotsArray(Capacity,
+            var slots = new Bag(Capacity,
                 new[] { Instance(_potion, StackableMax), Instance(_potion, 10) });
 
             bool taken = slots.Take(_potion, StackableMax + 5);
@@ -904,7 +904,7 @@ namespace Recalled.Systems.Inventory.Tests
         [Test]
         public void Take_ExactTotalAcrossSeveralStacks_EmptiesAllOfThem()
         {
-            var slots = new ItemSlotsArray(Capacity,
+            var slots = new Bag(Capacity,
                 new[] { Instance(_potion, 7), Instance(_sword), Instance(_potion, 3) });
 
             bool taken = slots.Take(_potion, 10);
@@ -918,7 +918,7 @@ namespace Recalled.Systems.Inventory.Tests
         [Test]
         public void Take_NonStackable_TakesAcrossSlots()
         {
-            var slots = new ItemSlotsArray(Capacity, FullOfSwords());
+            var slots = new Bag(Capacity, FullOfSwords());
 
             bool taken = slots.Take(_sword, 3);
 
@@ -930,7 +930,7 @@ namespace Recalled.Systems.Inventory.Tests
         [Test]
         public void Take_MoreThanOwned_ReturnsFalse_AndTakesNothing()
         {
-            var slots = new ItemSlotsArray(Capacity, new[] { Instance(_potion, 3) });
+            var slots = new Bag(Capacity, new[] { Instance(_potion, 3) });
             var raised = CountSlotsChanged(slots);
 
             bool taken = slots.Take(_potion, 4);
@@ -943,7 +943,7 @@ namespace Recalled.Systems.Inventory.Tests
         [Test]
         public void Take_MoreThanOwnedAcrossStacks_ReturnsFalse_AndTakesNothingFromAnyStack()
         {
-            var slots = new ItemSlotsArray(Capacity, new[] { Instance(_potion, 5), Instance(_potion, 5) });
+            var slots = new Bag(Capacity, new[] { Instance(_potion, 5), Instance(_potion, 5) });
             var storedFirst = slots[0].Item;
             var storedSecond = slots[1].Item;
 
@@ -957,7 +957,7 @@ namespace Recalled.Systems.Inventory.Tests
         [Test]
         public void Take_DefinitionNotPresent_ReturnsFalse()
         {
-            var slots = new ItemSlotsArray(Capacity, new[] { Instance(_sword) });
+            var slots = new Bag(Capacity, new[] { Instance(_sword) });
 
             bool taken = slots.Take(_potion, 1);
 
@@ -967,7 +967,7 @@ namespace Recalled.Systems.Inventory.Tests
         [Test]
         public void Take_Success_RaisesSlotsChangedOnce()
         {
-            var slots = new ItemSlotsArray(Capacity,
+            var slots = new Bag(Capacity,
                 new[] { Instance(_potion, StackableMax), Instance(_potion, 10) });
             var raised = CountSlotsChanged(slots);
 
@@ -981,7 +981,7 @@ namespace Recalled.Systems.Inventory.Tests
         [TestCase(-2)]
         public void Take_NonPositiveCount_Throws(int count)
         {
-            var slots = new ItemSlotsArray(Capacity, new[] { Instance(_potion, 5) });
+            var slots = new Bag(Capacity, new[] { Instance(_potion, 5) });
 
             Assert.That(() => slots.Take(_potion, count), Throws.InstanceOf<ArgumentException>());
         }
@@ -989,7 +989,7 @@ namespace Recalled.Systems.Inventory.Tests
         [Test]
         public void Take_NullDefinition_Throws()
         {
-            var slots = new ItemSlotsArray(Capacity);
+            var slots = new Bag(Capacity);
 
             Assert.That(() => slots.Take(null, 1), Throws.InstanceOf<ArgumentNullException>());
         }
@@ -1013,7 +1013,7 @@ namespace Recalled.Systems.Inventory.Tests
             var definition = CreateTestDefinition(NonStackableMax);
             var loadoutItem = new TestItemInstance(definition, 1);
 
-            var slots = new ItemSlotsArray(Capacity, new ItemInstance[] { loadoutItem });
+            var slots = new Bag(Capacity, new ItemInstance[] { loadoutItem });
 
             Assert.That(slots[0].Item, Is.InstanceOf<TestItemInstance>());
             AssertIsCopyOf(slots[0].Item, loadoutItem);
@@ -1023,7 +1023,7 @@ namespace Recalled.Systems.Inventory.Tests
         public void AddDefinition_CreatesItemsThroughDefinitionFactory()
         {
             var definition = CreateTestDefinition(NonStackableMax);
-            var slots = new ItemSlotsArray(Capacity);
+            var slots = new Bag(Capacity);
 
             slots.Add(definition, 2);
 
@@ -1034,7 +1034,7 @@ namespace Recalled.Systems.Inventory.Tests
         public void AddDefinition_StackableSplit_EveryStackHasSubclassType()
         {
             var definition = CreateTestDefinition(StackableMax);
-            var slots = new ItemSlotsArray(Capacity);
+            var slots = new Bag(Capacity);
 
             slots.Add(definition, StackableMax + 1); // two stacks
 
@@ -1047,7 +1047,7 @@ namespace Recalled.Systems.Inventory.Tests
         public void AddInstance_StackableOverflow_NewStackHasSubclassType()
         {
             var definition = CreateTestDefinition(StackableMax);
-            var slots = new ItemSlotsArray(2, new ItemInstance[] { new TestItemInstance(definition, StackableMax - 9) });
+            var slots = new Bag(2, new ItemInstance[] { new TestItemInstance(definition, StackableMax - 9) });
 
             slots.Add(new TestItemInstance(definition, 20)); // 9 top up, 11 overflow into slot 1
 
@@ -1060,7 +1060,7 @@ namespace Recalled.Systems.Inventory.Tests
         {
             var definition = CreateTestDefinition(NonStackableMax);
             var incoming = new TestItemInstance(definition, 1);
-            var slots = new ItemSlotsArray(Capacity);
+            var slots = new Bag(Capacity);
 
             slots.Add(incoming);
 
@@ -1072,7 +1072,7 @@ namespace Recalled.Systems.Inventory.Tests
         [Test]
         public void Enumeration_YieldsSlotsInIndexOrder()
         {
-            var slots = new ItemSlotsArray(Capacity, new[] { Instance(_sword), Instance(_potion, 2) });
+            var slots = new Bag(Capacity, new[] { Instance(_sword), Instance(_potion, 2) });
 
             var enumerated = slots.ToList();
 
@@ -1085,7 +1085,7 @@ namespace Recalled.Systems.Inventory.Tests
         [TestCase(Capacity)]
         public void Indexer_OutOfRange_Throws(int index)
         {
-            var slots = new ItemSlotsArray(Capacity);
+            var slots = new Bag(Capacity);
 
             // Array-backed → IndexOutOfRangeException, List-backed → ArgumentOutOfRangeException.
             // Either is fine; tighten this once you know which you use.

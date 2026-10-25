@@ -5,7 +5,7 @@ using Recalled.Core;
 namespace Recalled.UI
 {
     [RequireComponent(typeof(EventSystem))]
-    public sealed class CurrentSelectedRaiser : MonoBehaviour
+    sealed class CurrentSelectedRaiser : MonoBehaviour
     {
         [Header("Sets Value to")]
         [SerializeField] GameObjectRuntimeVariable _currentSelected;

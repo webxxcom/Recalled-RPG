@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace Recalled.Systems.Inventory
 {
-    [CreateAssetMenu(menuName = "Inventory/Items/Boots")]
+    [CreateAssetMenu(menuName = "Bag/Items/Boots")]
     public class BootsDefinition : ItemDefinition
     {
         [field: SerializeField] public float SpeedMultiplier { get; private set; }

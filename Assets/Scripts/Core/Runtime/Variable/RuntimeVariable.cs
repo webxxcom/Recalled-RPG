@@ -29,7 +29,6 @@ namespace Recalled.Core
     public abstract class RuntimeVariable<T> : RuntimeVariableBase
     {
         [SerializeField] T _initialValue;
-
         [SerializeField] T _runtimeValue;
 
         event Action<T> Changed;

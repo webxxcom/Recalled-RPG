@@ -4,8 +4,8 @@ using UnityEngine;
 
 namespace Recalled.Gameplay
 {
-    [CreateAssetMenu(menuName = "Inventory/Variable")]
-    public sealed class InventoryVariable : RuntimeVariable<ItemSlotsArray>
+    [CreateAssetMenu(menuName = "Bag/Variable")]
+    public sealed class InventoryVariable : RuntimeVariable<Bag>
     {
 
     }

@@ -9,7 +9,7 @@ namespace Recalled.Gameplay
     public sealed class Sprint : MonoBehaviour
     {
         [SerializeField] ValueProviderConfig _config;
-        [SerializeField] IntVariable _intVariable;
+        [SerializeField] HealthValueVariable _intVariable;
         [SerializeField] int _usage;
         [SerializeField] int _restore;
         [SerializeField] float _speedMultiplier;
@@ -40,18 +40,21 @@ namespace Recalled.Gameplay
             _movementable = GetComponent<Movementable>();
             _valueResource = new(_config);
 
-            if (_intVariable != null) _intVariable.Value = _valueResource.Current;
+            if (_intVariable != null)
+                _intVariable.Value = new(_valueResource.Current, _valueResource.MaxValue);
         }
 
         private void OnEnable()
         {
-            if (_intVariable) _valueResource.ValueApplied += SetVariableValue;
+            if (_intVariable)
+                _valueResource.ValueApplied += SetVariableValue;
         }
         private void OnDisable()
         {
-            if (_intVariable) _valueResource.ValueApplied -= SetVariableValue;
+            if (_intVariable)
+                _valueResource.ValueApplied -= SetVariableValue;
         }
-        void SetVariableValue(int _, int newVal) => _intVariable.Value = newVal;
+        void SetVariableValue(int _, int newVal) => _intVariable.Value.WithCurrent(_valueResource.Current);
 
         public bool AskFor(int amount)
         {

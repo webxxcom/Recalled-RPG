@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace Recalled.Systems.Inventory
@@ -8,12 +9,28 @@ namespace Recalled.Systems.Inventory
         [field: SerializeField] public string Name { get; private set; }
         [field: SerializeField] public Sprite Icon { get; private set; }
         [field: SerializeField] public string Description { get; private set; }
-        [field: SerializeField][Min(1)] public int MaxStockSize { get; internal set; } = 999;
+        [SerializeField][Min(1)] int _maxStockSize = 999;
         [field: SerializeField] public ItemCategory Category { get; private set; } = ItemCategory.Consumable;
+        [SerializeReference, SubclassSelector] List<IModule> _modules;
 
         public int MinStockSize => 1;
-        public bool IsStackable => MaxStockSize > MinStockSize;
+        public int MaxStockSize { get => _maxStockSize; internal set => _maxStockSize = value; }
+        public bool IsStackable => _maxStockSize > MinStockSize;
         public bool IsInCategory(ItemCategory category) => category == ItemCategory.Any || Category == category;
+        public bool TryGetModule<T>(out T result) where T : IModule
+        {
+            result = default;
+            foreach (var module in _modules)
+            {
+                if (module is T typed)
+                {
+                    result = typed;
+                    return true;
+                }
+            }
+
+            return false;
+        }
 
         public virtual ItemInstance CreateInstance(int count = 1)
         {

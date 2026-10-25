@@ -6,26 +6,21 @@ using UnityEngine.InputSystem;
 
 namespace Recalled.UI.Inventory
 {
-    public sealed class InventoryPage : MonoBehaviour
+    sealed class InventoryPage : MonoBehaviour
     {
         [SerializeField] InputActionReference _quickSlotRemove;
         [SerializeField] InputActionReference _quickSlotAdd;
         [SerializeField] InventoryVariable _inventory;
-        [SerializeField] Highlighter _highlighter;
 
         private void OnEnable()
         {
             _quickSlotRemove.action.performed += OnQuickSlotRemove;
             _quickSlotAdd.action.performed += OnQuickSlotItemPressed;
-
-            _highlighter.gameObject.SetActive(true);
         }
         private void OnDisable()
         {
             _quickSlotRemove.action.performed -= OnQuickSlotRemove;
             _quickSlotAdd.action.performed -= OnQuickSlotItemPressed;
-
-            _highlighter.gameObject.SetActive(false);
         }
 
         void OnQuickSlotItemPressed(InputAction.CallbackContext context)
@@ -33,20 +28,6 @@ namespace Recalled.UI.Inventory
             if (EventSystem.current.currentSelectedGameObject == null)
                 return;
 
-            var slot = EventSystem.current.currentSelectedGameObject.GetComponent<InventorySlot>();
-            if (slot.ItemInstance.Definition.Category != ItemCategory.Consumable)
-                return;
-
-            var vec2 = context.ReadValue<Vector2>();
-
-            //if (_quickSlots.Set(vec2, slot.Item, out var replaced))
-            //{
-            //    _generalItems.Remove(slot.Item);
-
-            //    SetCurrentSelected();
-            //}
-            //if (!replaced.IsEmpty)
-            //    _generalItems.Add(replaced);
         }
 
         void OnQuickSlotRemove(InputAction.CallbackContext context)

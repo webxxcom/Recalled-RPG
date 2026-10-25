@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NUnit.Framework.Constraints;
+using System;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -9,6 +10,7 @@ namespace Recalled.UI
     {
         [SerializeField] bool _hidesWhenInactive;
         [SerializeField] UnityEvent<bool> _stateChanged;
+        [SerializeField] bool _requestOnStart;
 
         /// <summary>
         /// IsActive is never called withing the class or the inheritors to avoid races for being active.
@@ -26,6 +28,11 @@ namespace Recalled.UI
         public UnityEvent<bool> StateChanged => _stateChanged;
 
         public void RequestToggle() => ToggleRequested?.Invoke(this);
+
+        private void Start()
+        {
+            if (_requestOnStart) RequestToggle();
+        }
 
         void UpdateState()
         {

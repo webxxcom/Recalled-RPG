@@ -15,5 +15,23 @@ MonoBehaviour:
   <Name>k__BackingField: Healing Potion
   <Icon>k__BackingField: {fileID: 817752166335122541, guid: 0daa3ba3dddbbca448bb810d864562d8, type: 3}
   <Description>k__BackingField: Sometimes all you need in life is to just heal.
-  <MaxStockSize>k__BackingField: 999
+  _maxStockSize: 999
   <Category>k__BackingField: 0
+  _modules:
+  - rid: 1304809717832613975
+  - rid: 1304809717832613977
+  references:
+    version: 2
+    RefIds:
+    - rid: 1304809717832613975
+      type: {class: Consumable, ns: Recalled.Gameplay, asm: Recalled.Gameplay}
+      data:
+        _effects:
+        - rid: 1304809717832613978
+    - rid: 1304809717832613977
+      type: {class: Equippable, ns: Recalled.Gameplay, asm: Recalled.Gameplay}
+      data: 
+    - rid: 1304809717832613978
+      type: {class: HealingEffect, ns: Recalled.Gameplay, asm: Recalled.Gameplay}
+      data:
+        _healingPower: 12

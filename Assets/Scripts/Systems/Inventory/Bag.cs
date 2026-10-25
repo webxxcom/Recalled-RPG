@@ -5,7 +5,7 @@ using System.Linq;
 
 namespace Recalled.Systems.Inventory
 {
-    public sealed class ItemSlotsArray : IReadOnlyList<ItemSlotsArray.Slot>
+    public sealed class Bag : IReadOnlyList<Bag.Slot>
     {
         public readonly struct Slot
         {
@@ -21,10 +21,11 @@ namespace Recalled.Systems.Inventory
         readonly Slot[] _slots;
         public int Count => _slots.Length;
         public Slot this[int index] => _slots[index];
+        public Slot[] Slots => _slots;
 
         public event Action SlotsChanged;
 
-        public ItemSlotsArray(int capacity)
+        public Bag(int capacity)
         {
             if (capacity <= 0)
                 throw new ArgumentException();
@@ -32,7 +33,7 @@ namespace Recalled.Systems.Inventory
             _slots = new Slot[capacity];
         }
 
-        public ItemSlotsArray(int capacity, ItemInstance[] loadout)
+        public Bag(int capacity, ItemInstance[] loadout)
         {
             if (loadout == null)
                 throw new ArgumentNullException();
@@ -192,16 +193,14 @@ namespace Recalled.Systems.Inventory
             return false;
         }
 
-        public bool Has(ItemDefinition definition, int count)
+        public bool Has(ItemDefinition definition, uint count)
         {
             if (definition == null)
                 throw new ArgumentNullException();
-            if (count <= 0)
-                throw new ArgumentException();
 
             return _slots
-                .Where(s => !s.IsEmpty)
-                .Any(s => s.Item.Definition == definition && s.Item.Count >= count);
+                .Where(s => !s.IsEmpty && s.Item.Definition == definition)
+                .Sum(s => s.Item.Count) >= count;
         }
 
         public IEnumerator<Slot> GetEnumerator()

@@ -99,7 +99,7 @@ namespace Recalled.Systems.Inventory.Tests
             var original = new ItemInstance(_potion, 5);
             var copy = original.Copy();
 
-            var slots = new ItemSlotsArray(1);
+            var slots = new Bag(1);
             slots.Add(copy);
             slots.Add(_potion, 10);
 
@@ -113,7 +113,7 @@ namespace Recalled.Systems.Inventory.Tests
             var original = new ItemInstance(_potion, 5);
             var copy = original.Copy();
 
-            var slots = new ItemSlotsArray(1);
+            var slots = new Bag(1);
             slots.Add(original);
             slots.Add(_potion, 10);
 

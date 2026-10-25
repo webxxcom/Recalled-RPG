@@ -2,7 +2,7 @@
 
 namespace Recalled.Systems.Inventory
 {
-    [CreateAssetMenu(menuName = "Inventory/Items/Armor")]
+    [CreateAssetMenu(menuName = "Bag/Items/Armor")]
     public class ArmorDefinition : ItemDefinition
     {
         [field: SerializeField] public float Protection { get; private set; }

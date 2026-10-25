@@ -13,37 +13,36 @@ namespace Recalled.UI.Inventory
         [SerializeField] InventoryVariable _inventoryVariable;
         [SerializeField] PrefabPopulator _populator;
 
-        ItemSlotsArray _inventory;
+        Systems.Inventory.Bag _inventory;
         IReadOnlyList<InventorySlot> _slotsView;
         ItemCategory _currentFilter = ItemCategory.Any;
+        bool _isDirty;
 
         private void Awake()
         {
             _inventoryVariable.Subscribe(OnInventorySet);
         }
 
-        private void OnEnable()
-        {
-            RefreshView();
-        }
+        private void OnEnable() => _isDirty = true;
 
         private void OnDestroy()
         {
             _inventoryVariable.Unsubscribe(OnInventorySet);
         }
 
-        void OnInventorySet(ItemSlotsArray inventory)
+        void OnInventorySet(Systems.Inventory.Bag inventory)
         {
-            if (_inventory != null) _inventory.SlotsChanged -= RefreshView;
+            if (_inventory != null) _inventory.SlotsChanged -= OnInventoryChanged;
 
             _inventory = inventory;
             if (_inventory != null)
             {
-                _inventory.SlotsChanged += RefreshView;
+                _inventory.SlotsChanged += OnInventoryChanged;
 
-                RefreshView();
+                _isDirty = true;
             }
         }
+        void OnInventoryChanged() => _isDirty = true;
 
         public void Filter(ItemCategory filter)
         {
@@ -51,7 +50,7 @@ namespace Recalled.UI.Inventory
                 return;
 
             _currentFilter = filter;
-            RefreshView();
+            _isDirty = true;
         }
 
         public void RefreshView()
@@ -70,6 +69,7 @@ namespace Recalled.UI.Inventory
                 return;
             }
 
+            InventorySlot firstActiveSlot = default;
             for (int i = 0; i < _inventory.Count; i++)
             {
                 var item = _inventory[i].Item;
@@ -77,6 +77,22 @@ namespace Recalled.UI.Inventory
 
                 if (item != null) _slotsView[i].ShowItem(item, !isVisible);
                 else _slotsView[i].ShowEmpty();
+
+                if (firstActiveSlot == null && item != null && isVisible) firstActiveSlot = _slotsView[i];
+            }
+
+            var currentSelected = EventSystem.current.currentSelectedGameObject;
+            if (currentSelected == null || (currentSelected.TryGetComponent<Selectable>(out var selectable) && !selectable.enabled))
+                EventSystem.current.SetSelectedGameObject(firstActiveSlot.gameObject);
+        }
+
+        private void LateUpdate()
+        {
+            if (_isDirty)
+            {
+                _isDirty = false;
+
+                RefreshView();
             }
         }
     }

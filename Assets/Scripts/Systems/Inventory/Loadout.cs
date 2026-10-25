@@ -2,7 +2,7 @@
 
 namespace Recalled.Systems.Inventory
 {
-    [CreateAssetMenu(menuName = "Inventory/Loadout")]
+    [CreateAssetMenu(menuName = "Bag/Loadout")]
     public sealed class Loadout : ScriptableObject
     {
         [SerializeField] int _capacity;

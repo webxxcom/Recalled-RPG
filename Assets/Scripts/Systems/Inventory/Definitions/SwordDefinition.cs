@@ -3,7 +3,7 @@
 namespace Recalled.Systems.Inventory
 {
 
-    [CreateAssetMenu(menuName = "Inventory/Items/Sword")]
+    [CreateAssetMenu(menuName = "Bag/Items/Sword")]
     public class SwordDefinition : ItemDefinition
     {
         [field: SerializeField] public int Damage { get; private set; }
