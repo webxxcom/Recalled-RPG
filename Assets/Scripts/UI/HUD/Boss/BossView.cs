@@ -1,4 +1,5 @@
 using Recalled.Core;
+using Recalled.Gameplay;
 using UnityEngine;
 
 namespace Recalled.UI
@@ -6,7 +7,7 @@ namespace Recalled.UI
     [RequireComponent(typeof(PrefabPopulator))]
     public class BossView : MonoBehaviour
     {
-        [SerializeField] IntVariableGameEvent _variableEventChannel;
+        [SerializeField] HealthVariableGameEvent _variableEventChannel;
         PrefabPopulator _populator;
 
         private void Awake()
@@ -14,16 +15,10 @@ namespace Recalled.UI
             _populator = GetComponent<PrefabPopulator>();
         }
 
-        private void OnEnable()
-        {
-            _variableEventChannel.EventRaised += AddBar;
-        }
-        private void OnDisable()
-        {
-            _variableEventChannel.EventRaised -= AddBar;
-        }
+        private void OnEnable() => _variableEventChannel.EventRaised += AddBar;
+        private void OnDisable() =>  _variableEventChannel.EventRaised -= AddBar;
 
-        void AddBar(IntVariable variable)
+        void AddBar(HealthValueVariable variable)
         {
             var variableBinder = _populator.Add().GetComponent<BossBar>();
             

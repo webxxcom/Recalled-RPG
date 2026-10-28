@@ -33,6 +33,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 7373025ea4df7b04fbfa46d6994370b0, type: 2}
     - target: {fileID: 6520413568205409604, guid: a36798c2fab103f4797ce026132d4fc6, type: 3}
+      propertyPath: _healthVariable
+      value: 
+      objectReference: {fileID: 11400000, guid: 0ddc785c1947cbf459da77bd642e739f, type: 2}
+    - target: {fileID: 6520413568205409604, guid: a36798c2fab103f4797ce026132d4fc6, type: 3}
       propertyPath: _diedEvent.m_PersistentCalls.m_Calls.Array.size
       value: 4
       objectReference: {fileID: 0}

@@ -1,4 +1,5 @@
 using Recalled.Core;
+using Recalled.Gameplay;
 using System;
 using TMPro;
 using UnityEngine;
@@ -10,27 +11,25 @@ namespace Recalled.UI
         [SerializeField] BarScript _bar;
         [SerializeField] TMP_Text _text;
 
-        IntVariable _intVariable;
-        int _max;
+        HealthValueVariable _healthVariable;
 
-        private void OnDestroy() => _intVariable.Unsubscribe(OnValueChanged);
+        private void OnDestroy() => _healthVariable.Unsubscribe(OnValueChanged);
 
-        public void Init(IntVariable variable)
+        public void Init(HealthValueVariable variable)
         {
             if (variable == null)
                 throw new ArgumentNullException();
 
-            _intVariable = variable;
-            _max = _intVariable.Value;
-            _text.text = _intVariable.name;
-            _intVariable.Subscribe(OnValueChanged);
+            _healthVariable = variable;
+            _text.text = _healthVariable.name;
+            _healthVariable.Subscribe(OnValueChanged);
         }
 
-        void OnValueChanged(int value)
+        void OnValueChanged(HealthValue value)
         {
-            _bar.Set(value / (float)_max);
+            _bar.Set(value.Normalized);
 
-            if (value == 0)
+            if (value.Current == 0)
                 Destroy(gameObject, 2);
         }
     }

@@ -117,7 +117,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e4068bb62415f842837de41edc899ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Recalled.UI::Recalled.UI.BossBar
-  _bar: {fileID: 1585970890552960458}
+  _bar: {fileID: 2174185908839204306}
   _text: {fileID: 45676735980543205}
 --- !u!1 &2748229636000036177
 GameObject:
@@ -376,7 +376,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3101294770275892006}
   - component: {fileID: 1803553931634266061}
-  - component: {fileID: 1585970890552960458}
+  - component: {fileID: 2174185908839204306}
   m_Layer: 0
   m_Name: Bar
   m_TagString: Untagged
@@ -427,7 +427,7 @@ MonoBehaviour:
   m_LayoutPriority: 1
   m_MaxWidth: -1
   m_MaxHeight: -1
---- !u!114 &1585970890552960458
+--- !u!114 &2174185908839204306
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -436,9 +436,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 3970720725198281582}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d6adb27a1278eb64c8d4188a4a79a056, type: 3}
+  m_Script: {fileID: 11500000, guid: 2f9b251128a2982408263a5f4dfb140f, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Recalled.Core::Recalled.Core.BarScript
+  m_EditorClassIdentifier: Recalled.UI::Recalled.UI.BarScript
   _topBar: {fileID: 8135176062350409485}
   _bottomBar: {fileID: 5360613054133992162}
   _animationSpeed: 1
