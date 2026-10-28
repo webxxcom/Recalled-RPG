@@ -415,6 +415,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Recalled.UI::Recalled.UI.VariableBarBinder
   _bar: {fileID: 4528755437067668771}
   _healthVariable: {fileID: 11400000, guid: 152dda9ce74a4254aaee34009d4ca0b7, type: 2}
+  _destroyOnMin: 0
 --- !u!114 &4528755437067668771
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -429,7 +430,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Recalled.UI::Recalled.UI.BarScript
   _topBar: {fileID: 8506641910476852834}
   _bottomBar: {fileID: 806358016070723247}
-  _animationSpeed: 1
+  _animationSpeed: 2
   ProgressStarted:
     m_PersistentCalls:
       m_Calls: []
@@ -931,6 +932,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Recalled.UI::Recalled.UI.VariableBarBinder
   _bar: {fileID: 8263196371593117597}
   _healthVariable: {fileID: 11400000, guid: 18664fa8ddf79b54dbc9cb56202f04fb, type: 2}
+  _destroyOnMin: 0
 --- !u!114 &8263196371593117597
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -10,11 +10,22 @@ namespace Recalled.Gameplay
         [SerializeReference, SubclassSelector]
         IEffect[] _effects;
 
-        public void Consume(GameObject game)
+        public ItemCategory DomainCategory => ItemCategory.Consumable;
+
+        public bool Consume(GameObject game)
         {
+            if (_effects.Length == 0) return true;
+
+            bool consumed = false;
             foreach (var effect in _effects)
+            {
                 if (effect.Check(game))
+                {
                     effect.Apply(game);
+                    consumed = true;
+                }
+            }
+            return consumed;
         }
     }
 }

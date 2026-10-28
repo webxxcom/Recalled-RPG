@@ -1,5 +1,6 @@
 using Recalled.Core;
 using Recalled.Gameplay.Movement;
+using System;
 using UnityEngine;
 
 namespace Recalled.Gameplay
@@ -10,14 +11,16 @@ namespace Recalled.Gameplay
     {
         [SerializeField] ValueProviderConfig _config;
         [SerializeField] HealthValueVariable _intVariable;
-        [SerializeField] int _usage;
-        [SerializeField] int _restore;
-        [SerializeField] float _speedMultiplier;
+        [SerializeField, Min(0)] int _usage;
+        [SerializeField, Min(0)] int _restore;
+        [SerializeField, Min(0)] float _deltaBetween;
+        [SerializeField, Min(0)] float _speedMultiplier;
 
         Movementable _movementable;
         ValueResource _valueResource;
         bool _isActive;
 
+        public bool IsFull => _valueResource.IsFull;
         public bool IsActive
         {
             get => _isActive;
@@ -54,7 +57,7 @@ namespace Recalled.Gameplay
             if (_intVariable)
                 _valueResource.ValueApplied -= SetVariableValue;
         }
-        void SetVariableValue(int _, int newVal) => _intVariable.Value.WithCurrent(_valueResource.Current);
+        void SetVariableValue(int _, int newVal) => _intVariable.Value = _intVariable.Value.WithCurrent(_valueResource.Current);
 
         public bool AskFor(int amount)
         {
@@ -65,8 +68,21 @@ namespace Recalled.Gameplay
             return true;
         }
 
+        public void Restore(int quantity)
+        {
+            if (quantity < 0) throw new ArgumentException();
+
+            _valueResource.Replenish(quantity);
+        }
+
+        float _elapsed;
         private void FixedUpdate()
         {
+            _elapsed += Time.deltaTime;
+            if (_elapsed < _deltaBetween)
+                return;
+
+            _elapsed = 0;
             if (IsActive)
             {
                 if (_valueResource.Consume(_usage) == 0)

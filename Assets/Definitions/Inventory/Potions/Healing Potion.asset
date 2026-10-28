@@ -19,7 +19,6 @@ MonoBehaviour:
   <Category>k__BackingField: 0
   _modules:
   - rid: 1304809717832613975
-  - rid: 1304809717832613977
   references:
     version: 2
     RefIds:
@@ -28,9 +27,6 @@ MonoBehaviour:
       data:
         _effects:
         - rid: 1304809717832613978
-    - rid: 1304809717832613977
-      type: {class: Equippable, ns: Recalled.Gameplay, asm: Recalled.Gameplay}
-      data: 
     - rid: 1304809717832613978
       type: {class: HealingEffect, ns: Recalled.Gameplay, asm: Recalled.Gameplay}
       data:

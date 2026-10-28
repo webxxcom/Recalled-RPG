@@ -2,5 +2,6 @@
 {
     public interface IModule
     {
+        ItemCategory DomainCategory { get; }
     }
 }

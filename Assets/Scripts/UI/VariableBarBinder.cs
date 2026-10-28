@@ -7,6 +7,7 @@ namespace Recalled.UI
     {
         [SerializeField] BarScript _bar;
         [SerializeField] HealthValueVariable _healthVariable;
+        [SerializeField] bool _destroyOnMin = true;
 
         private void Awake()
         {
@@ -22,7 +23,7 @@ namespace Recalled.UI
         {
             _bar.Set(hv.Normalized);
 
-            if (hv.Current == 0)
+            if (hv.Current == 0 && _destroyOnMin)
                 Destroy(gameObject, 2);
         }
     }

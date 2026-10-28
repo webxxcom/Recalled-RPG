@@ -15,6 +15,8 @@ namespace Recalled.Gameplay
         [SerializeField] float _invincibilityDuration = 0.3f;
         [SerializeField] float _reload = 0.8f;
         [SerializeField] AnimatorVFX _vfx;
+
+        [Header("Edge")]
         [SerializeField] UnityEvent _dashed;
 
         Health _health;

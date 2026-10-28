@@ -18,7 +18,10 @@ namespace Recalled.Gameplay
 
         public bool Check(GameObject game)
         {
-            return true;
+            if (!game.TryGetComponent<Health>(out var health))
+                return false;
+
+            return !health.IsFull;
         }
     }
 }

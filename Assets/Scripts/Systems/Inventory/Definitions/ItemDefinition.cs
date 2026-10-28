@@ -16,7 +16,16 @@ namespace Recalled.Systems.Inventory
         public int MinStockSize => 1;
         public int MaxStockSize { get => _maxStockSize; internal set => _maxStockSize = value; }
         public bool IsStackable => _maxStockSize > MinStockSize;
-        public bool IsInCategory(ItemCategory category) => category == ItemCategory.Any || Category == category;
+        public bool IsInCategory(ItemCategory category)
+        {
+            foreach (var module in _modules)
+            {
+                if (module.DomainCategory == category)
+                    return true;
+            }
+            return category == ItemCategory.Any || Category == category;
+        }
+
         public bool TryGetModule<T>(out T result) where T : IModule
         {
             result = default;

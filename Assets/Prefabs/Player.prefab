@@ -1107,6 +1107,7 @@ GameObject:
   - component: {fileID: 7919439482791280018}
   - component: {fileID: 6749094384683476667}
   - component: {fileID: 6112780135680013782}
+  - component: {fileID: 2604665884603746442}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -1265,10 +1266,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dff72821c3f6d694b9378707447cb063, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  _config: {fileID: 11400000, guid: 864889a04087d4d448a4d01d160d960a, type: 2}
+  _config: {fileID: 11400000, guid: 2e463e3769a329247a9da0cbb5b94970, type: 2}
   _intVariable: {fileID: 11400000, guid: 152dda9ce74a4254aaee34009d4ca0b7, type: 2}
-  _usage: 4
+  _usage: 2
   _restore: 3
+  _deltaBetween: 0.2
   _speedMultiplier: 1.8
 --- !u!114 &6443777087678772007
 MonoBehaviour:
@@ -1343,7 +1345,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   _loadout: {fileID: 11400000, guid: 68b65b2dd4f3fad43b018019f0597086, type: 2}
-  _inventoryVariable: {fileID: 11400000, guid: abd07e1b22b52784c8b624dda0224212, type: 2}
+  _inventoryAnchor: {fileID: 11400000, guid: 9a580f0e060b5ec428662a70a5c9ef41, type: 2}
 --- !u!114 &7919439482791280018
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1390,12 +1392,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c35116309300734b976ab7894d88040, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  _useQuickSlotAction: {fileID: 4250535268698795447, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   _loadout:
-  - {fileID: 11400000, guid: d46a40fa60fa96e4baec8cc674a76eb1, type: 2}
   - {fileID: 11400000, guid: d46a40fa60fa96e4baec8cc674a76eb1, type: 2}
   _slotsAnchor: {fileID: 11400000, guid: f245f90d432f41045899e1c973919586, type: 2}
   _quickSlotsChanged: {fileID: 11400000, guid: 0d4664b3a5cf9054b9cf72d733ec5bc7, type: 2}
+--- !u!114 &2604665884603746442
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7559287907167481913}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8dd2277ec37695e469a4cc977c7c877a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Recalled.Gameplay::Recalled.Gameplay.ItemUser
 --- !u!1 &8375044973183638792
 GameObject:
   m_ObjectHideFlags: 0

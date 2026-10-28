@@ -15,5 +15,19 @@ MonoBehaviour:
   <Name>k__BackingField: Stamina Potion
   <Icon>k__BackingField: {fileID: 8577181984978149163, guid: 0daa3ba3dddbbca448bb810d864562d8, type: 3}
   <Description>k__BackingField: I can't stop, I can't stop, I cant' stop
-  <MaxStockSize>k__BackingField: 999
+  _maxStockSize: 999
   <Category>k__BackingField: 0
+  _modules:
+  - rid: 1304809787348746319
+  references:
+    version: 2
+    RefIds:
+    - rid: 1304809787348746319
+      type: {class: Consumable, ns: Recalled.Gameplay, asm: Recalled.Gameplay}
+      data:
+        _effects:
+        - rid: 1304809787348746321
+    - rid: 1304809787348746321
+      type: {class: StaminaRestoreEffect, ns: Recalled.Gameplay, asm: Recalled.Gameplay}
+      data:
+        _restorePower: 20

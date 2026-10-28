@@ -9,6 +9,7 @@ namespace Recalled.Core
         public int MaxValue { get; private set; }
         public int Current { get; private set; }
         public bool IsInfinite { get; private set; }
+        public bool IsFull => Current == MaxValue;
 
         /// <summary> (oldVal, newVal) after the change </summary>
         public event Action<int, int> ValueChanged;
@@ -46,6 +47,6 @@ namespace Recalled.Core
         }
         public int Consume(int amount) => Replenish(-amount);
 
-        public bool Has(int amount) => IsInfinite || Current <= amount;
+        public bool Has(int amount) => IsInfinite || Current >= amount;
     }
 }

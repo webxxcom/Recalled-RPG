@@ -6,7 +6,8 @@ using UnityEngine.InputSystem;
 
 namespace Recalled.Gameplay.Inventory
 {
-    [RequireComponent(typeof(InventoryHolder))]
+[RequireComponent(typeof(InventoryHolder))]
+    [RequireComponent(typeof(ItemUser))]
     sealed class QuickSlotsHolder : MonoBehaviour
     {
         [SerializeField] ItemDefinition[] _loadout;
@@ -18,7 +19,9 @@ namespace Recalled.Gameplay.Inventory
         [SerializeField] VoidGameEvent _quickSlotsChanged;
 
         QuickSlots _quickSlots;
+        ItemUser _itemUser;
 
+        private void Awake() => _itemUser = GetComponent<ItemUser>();
         private void Start()
         {
             _quickSlots = new(_loadout, GetComponent<InventoryHolder>().Inventory);
@@ -40,6 +43,8 @@ namespace Recalled.Gameplay.Inventory
 
             if (i == -1)
                 return;
+
+            if (_quickSlots[i]) _itemUser.ConsumeItem(_quickSlots[i]);
         }
     }
 }

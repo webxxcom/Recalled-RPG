@@ -13,7 +13,7 @@ namespace Recalled.UI.Inventory
         [SerializeField] InventoryAnchor _inventoryAnchor;
         [SerializeField] PrefabPopulator _populator;
 
-        Bag _inventory;
+        IBagView _inventoryView;
         IReadOnlyList<InventorySlot> _slotsView;
         ItemCategory _currentFilter = ItemCategory.Any;
         bool _isDirty;
@@ -22,18 +22,17 @@ namespace Recalled.UI.Inventory
         {
             _inventoryAnchor.Provided += OnInventoryProvided;
 
+            if (_inventoryAnchor.IsSet) _inventoryView = _inventoryAnchor.Value;
             _isDirty = true;
         }
         void OnDisable() => _inventoryAnchor.Provided -= OnInventoryProvided;
 
-        void OnInventoryProvided(Bag inventory)
+        void OnInventoryProvided(IBagView inventory)
         {
-            _inventory = inventory;
+            _inventoryView = inventory;
 
-            _inventory.Changed += OnInventoryChanged;
-            _isDirty = true;
+            _inventoryView.Changed += () => _isDirty = true;
         }
-        void OnInventoryChanged() => _isDirty = true;
 
         public void Filter(ItemCategory filter)
         {
@@ -46,24 +45,24 @@ namespace Recalled.UI.Inventory
 
         public void RefreshView()
         {
-            if (_inventory == null)
+            if (_inventoryView == null)
                 return;
 
             // Lazy init
             _slotsView ??= _populator != null
-                ? _populator.Populate(_inventory.Count).Select(go => go.GetComponent<InventorySlot>()).ToArray()
+                ? _populator.Populate(_inventoryView.Count).Select(go => go.GetComponent<InventorySlot>()).ToArray()
                 : GetComponentsInChildren<InventorySlot>();
 
-            if (_slotsView.Count != _inventory.Count)
+            if (_slotsView.Count != _inventoryView.Count)
             {
-                Debug.LogError($"{name}: The {nameof(_slotsView)}'s Count doesn't match the {nameof(_inventory)}'s Count");
+                Debug.LogError($"{name}: The {nameof(_slotsView)}'s Count doesn't match the {nameof(_inventoryView)}'s Count");
                 return;
             }
 
             InventorySlot firstActiveSlot = default;
-            for (int i = 0; i < _inventory.Count; i++)
+            for (int i = 0; i < _inventoryView.Count; i++)
             {
-                var item = _inventory[i];
+                var item = _inventoryView[i];
                 var isVisible = item != null && item.Definition.IsInCategory(_currentFilter);
 
                 if (item != null) _slotsView[i].ShowItem(item, !isVisible);

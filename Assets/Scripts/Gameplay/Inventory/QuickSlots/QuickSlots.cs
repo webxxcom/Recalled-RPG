@@ -1,6 +1,5 @@
 using Recalled.Systems.Inventory;
 using System;
-using System.Linq;
 
 namespace Recalled.Gameplay.Inventory
 {
@@ -30,21 +29,15 @@ namespace Recalled.Gameplay.Inventory
             {
                 var res = new SlotView[Count];
                 for (int i = 0; i < res.Length; i++)
-                    res[i] = this[i];
+                {
+                    var def = _storedDefinitions[i];
+
+                    res[i] = def != null ? new(def, _inventoryView.TotalCountOf(def)) : default;
+                }
                 return res;
             }
         }
-        public SlotView this[int index]
-        {
-            get
-            {
-                var def = _storedDefinitions[index];
-
-                return def != null
-                    ? new(def, _inventoryView.TotalCountOf(def))
-                    : default;
-            }
-        }
+        public ItemDefinition this[int index] => _storedDefinitions[index];
 
         public QuickSlots(ItemDefinition[] loadout, IBagView inventoryView)
         {
