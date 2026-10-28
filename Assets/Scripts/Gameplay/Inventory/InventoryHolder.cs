@@ -1,12 +1,12 @@
 using Recalled.Systems.Inventory;
 using UnityEngine;
 
-namespace Recalled.Gameplay
+namespace Recalled.Gameplay.Inventory
 {
     public sealed class InventoryHolder : MonoBehaviour
     {
         [SerializeField] Loadout _loadout;
-        [SerializeField] InventoryVariable _inventoryVariable;
+        [SerializeField] InventoryAnchor _inventoryAnchor;
 
         public Bag Inventory { get; private set; }
 
@@ -14,7 +14,7 @@ namespace Recalled.Gameplay
 
         private void Start()
         {
-            _inventoryVariable.Value = Inventory;
+            _inventoryAnchor.Provide(Inventory);
         }
     }
 }

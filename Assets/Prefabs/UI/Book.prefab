@@ -4734,7 +4734,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a406cac7e098df748bd377d105cb28ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LoadoutView
-  _inventoryVariable: {fileID: 11400000, guid: abd07e1b22b52784c8b624dda0224212, type: 2}
+  _inventoryAnchor: {fileID: 11400000, guid: 9a580f0e060b5ec428662a70a5c9ef41, type: 2}
   _populator: {fileID: 2573888013514326025}
 --- !u!1 &4405131892048501857
 GameObject:
@@ -16861,9 +16861,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 7992203888772001403, guid: f43f510a8560fc140968eb98e08d069d, type: 3}
       insertIndex: -1
       addedObject: {fileID: 262435995856430667}
-    - targetCorrespondingSourceObject: {fileID: 7992203888772001403, guid: f43f510a8560fc140968eb98e08d069d, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 7325574808925116375}
   m_SourcePrefab: {fileID: 100100000, guid: f43f510a8560fc140968eb98e08d069d, type: 3}
 --- !u!224 &968945482927851021 stripped
 RectTransform:
@@ -16887,21 +16884,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 844e230b86e96f24d976738432b9c215, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TogglebleObjectDisabler
---- !u!114 &7325574808925116375
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1511724104232976196}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9e1a5c12b133d6548bcb6b09067c7725, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: '::'
-  _quickSlotRemove: {fileID: 22364365118713342, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
-  _quickSlotAdd: {fileID: 9072136222087115967, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
-  _inventory: {fileID: 11400000, guid: abd07e1b22b52784c8b624dda0224212, type: 2}
 --- !u!1001 &8852132996700321546
 PrefabInstance:
   m_ObjectHideFlags: 0

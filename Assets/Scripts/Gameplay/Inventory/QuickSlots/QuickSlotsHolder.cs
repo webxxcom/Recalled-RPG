@@ -4,12 +4,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-namespace Recalled.Gameplay
+namespace Recalled.Gameplay.Inventory
 {
     [RequireComponent(typeof(InventoryHolder))]
     sealed class QuickSlotsHolder : MonoBehaviour
     {
-        [SerializeField] List<ItemDefinition> _loadout;
+        [SerializeField] ItemDefinition[] _loadout;
 
         [Header("Sets")]
         [SerializeField] QuickSlotsAnchor _slotsAnchor;
@@ -19,20 +19,14 @@ namespace Recalled.Gameplay
 
         QuickSlots _quickSlots;
 
-        private void Awake() => _quickSlots = new(GetComponent<InventoryHolder>().Inventory);
         private void Start()
         {
-            int i = 0;
-            foreach (var item in _loadout)
-                _quickSlots.Put(i++, item);
+            _quickSlots = new(_loadout, GetComponent<InventoryHolder>().Inventory);
 
+            _quickSlots.Changed += () => _quickSlotsChanged.Invoke();
             _slotsAnchor.Provide(_quickSlots);
         }
-        private void OnEnable() =>  _quickSlots.Changed += RaiseChanged;
-        private void OnDisable() => _quickSlots.Changed -= RaiseChanged;
         private void OnDestroy() => _slotsAnchor.Withdraw(_quickSlots);
-
-        void RaiseChanged() => _quickSlotsChanged.Invoke();
 
         void OnQuickSlots(InputValue value)
         {
@@ -46,8 +40,6 @@ namespace Recalled.Gameplay
 
             if (i == -1)
                 return;
-
-            _quickSlots.Use(i, gameObject);
         }
     }
 }

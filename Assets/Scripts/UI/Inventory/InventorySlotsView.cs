@@ -1,4 +1,4 @@
-using Recalled.Gameplay;
+using Recalled.Gameplay.Inventory;
 using Recalled.Systems.Inventory;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,7 +10,7 @@ namespace Recalled.UI.Inventory
 {
     public sealed class InventorySlotsView : MonoBehaviour
     {
-        [SerializeField] InventoryVariable _inventoryVariable;
+        [SerializeField] InventoryAnchor _inventoryAnchor;
         [SerializeField] PrefabPopulator _populator;
 
         Bag _inventory;
@@ -18,29 +18,20 @@ namespace Recalled.UI.Inventory
         ItemCategory _currentFilter = ItemCategory.Any;
         bool _isDirty;
 
-        private void Awake()
+        void OnEnable()
         {
-            _inventoryVariable.Subscribe(OnInventorySet);
+            _inventoryAnchor.Provided += OnInventoryProvided;
+
+            _isDirty = true;
         }
+        void OnDisable() => _inventoryAnchor.Provided -= OnInventoryProvided;
 
-        private void OnEnable() => _isDirty = true;
-
-        private void OnDestroy()
+        void OnInventoryProvided(Bag inventory)
         {
-            _inventoryVariable.Unsubscribe(OnInventorySet);
-        }
-
-        void OnInventorySet(Systems.Inventory.Bag inventory)
-        {
-            if (_inventory != null) _inventory.SlotsChanged -= OnInventoryChanged;
-
             _inventory = inventory;
-            if (_inventory != null)
-            {
-                _inventory.SlotsChanged += OnInventoryChanged;
 
-                _isDirty = true;
-            }
+            _inventory.Changed += OnInventoryChanged;
+            _isDirty = true;
         }
         void OnInventoryChanged() => _isDirty = true;
 

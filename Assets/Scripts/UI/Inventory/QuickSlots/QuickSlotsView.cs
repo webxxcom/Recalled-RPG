@@ -1,7 +1,6 @@
 using Recalled.Core;
-using Recalled.Gameplay;
+using Recalled.Gameplay.Inventory;
 using Recalled.UI.Inventory;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace Recalled.UI
@@ -13,7 +12,7 @@ namespace Recalled.UI
         [SerializeField] VoidGameEvent _quickSlotsChanged;
 
         QuickSlotCell[] _cells;
-        IReadOnlyList<QuickSlots.Slot> _quickSlots;
+        IQuickSlotsView _quickSlots;
 
         private void Awake()
         {
@@ -32,7 +31,7 @@ namespace Recalled.UI
             _quickSlotsChanged.RemoveListener(RefreshView);
         }
 
-        void OnAnchorProvided(IReadOnlyList<QuickSlots.Slot> slots)
+        void OnAnchorProvided(IQuickSlotsView slots)
         {
             _quickSlots = slots;
 
@@ -43,9 +42,9 @@ namespace Recalled.UI
         {
             for (int i = 0; i < _cells.Length; i++)
             {
-                var slot = _quickSlots[i];
+                var slot = _quickSlots.Slots[i];
 
-                if (slot?.Definition != null) _cells[i].Show(slot.Definition, slot.Count);
+                if (!slot.Equals(default)) _cells[i].Show(slot.Definition, slot.Count);
                 else _cells[i].Remove();
             }
         }

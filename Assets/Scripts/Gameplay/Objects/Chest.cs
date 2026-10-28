@@ -1,3 +1,4 @@
+using Recalled.Gameplay.Inventory;
 using Recalled.Systems.Inventory;
 using System;
 using System.Collections.Generic;

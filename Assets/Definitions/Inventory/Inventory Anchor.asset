@@ -9,6 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8f592914a6d6fbd42abcc17b9392dcb4, type: 3}
-  m_Name: InventoryVariable
-  m_EditorClassIdentifier: Recalled.Gameplay::Recalled.Gameplay.InventoryVariable
+  m_Script: {fileID: 11500000, guid: d7dc243584728994a92a3c06a3d07c61, type: 3}
+  m_Name: Inventory Anchor
+  m_EditorClassIdentifier: Recalled.Gameplay::Recalled.Gameplay.InventoryAnchor

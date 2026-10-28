@@ -11,7 +11,7 @@ namespace Recalled.UI.Inventory
         [SerializeField] Color _dimColor;
         [SerializeField] TMP_Text _text;
 
-        public void Show(ItemDefinition definition, uint count)
+        public void Show(ItemDefinition definition, int count)
         {
             if (definition == null)
                 return;

@@ -5,7 +5,7 @@ using System.Linq;
 
 namespace Recalled.Systems.Inventory
 {
-    public sealed class Bag : IReadOnlyList<ItemInstance>
+    public sealed class Bag : IBagView
     {
         internal readonly struct Slot
         {
@@ -23,7 +23,7 @@ namespace Recalled.Systems.Inventory
         public ItemInstance this[int index] => _slots[index].Item;
         public IReadOnlyList<ItemInstance> Items => _slots.Select(s => s.Item).ToArray();
 
-        public event Action SlotsChanged;
+        public event Action Changed;
 
         public Bag(int capacity)
         {
@@ -59,7 +59,7 @@ namespace Recalled.Systems.Inventory
                 remainder = AddStockable(definition, remainder);
                 if (remainder == 0)
                 {
-                    SlotsChanged?.Invoke();
+                    Changed?.Invoke();
                     return 0;
                 }
             }
@@ -77,7 +77,7 @@ namespace Recalled.Systems.Inventory
                     break;
             }
 
-            if (remainder != count) SlotsChanged?.Invoke();
+            if (remainder != count) Changed?.Invoke();
             return remainder;
         }
 
@@ -105,7 +105,7 @@ namespace Recalled.Systems.Inventory
                 var remainder = AddStockable(instance.Definition, instance.Count);
                 if (remainder == 0)
                 {
-                    SlotsChanged?.Invoke();
+                    Changed?.Invoke();
                     return true;
                 }
                 instance.SetStock(remainder);
@@ -117,12 +117,12 @@ namespace Recalled.Systems.Inventory
                     continue;
 
                 _slots[i] = new(instance);
-                SlotsChanged?.Invoke();
+                Changed?.Invoke();
                 return true;
             }
 
             if (instance.Count != initCount)
-                SlotsChanged?.Invoke();
+                Changed?.Invoke();
 
             return false;
         }
@@ -139,7 +139,7 @@ namespace Recalled.Systems.Inventory
                     continue;
 
                 _slots[i] = default;
-                SlotsChanged?.Invoke();
+                Changed?.Invoke();
                 return true;
             }
 
@@ -187,7 +187,7 @@ namespace Recalled.Systems.Inventory
 
             if (TakeRecursively(definition, count))
             {
-                SlotsChanged?.Invoke();
+                Changed?.Invoke();
                 return true;
             }
             return false;
@@ -207,5 +207,9 @@ namespace Recalled.Systems.Inventory
             => _slots.Select(s => s.Item).AsEnumerable().GetEnumerator();
         IEnumerator IEnumerable.GetEnumerator()
             => GetEnumerator();
+
+        public int TotalCountOf(ItemDefinition def)
+            => _slots.Where(s => !s.IsEmpty && s.Item.Definition == def)
+            .Sum(s => s.Item.Count);
     }
 }
