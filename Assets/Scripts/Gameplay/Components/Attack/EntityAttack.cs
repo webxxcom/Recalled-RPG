@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Recalled.Gameplay.Combat
 {
@@ -12,8 +13,8 @@ namespace Recalled.Gameplay.Combat
 
         protected float _elapsedLastAttack;
 
-        public event Action OnAttackStarted;
-        public event Action OnAttackFinished;
+        public UnityEvent AttackStarted;
+        public UnityEvent AttackFinished;
 
         bool IsActive => enabled;
 
@@ -31,7 +32,7 @@ namespace Recalled.Gameplay.Combat
         {
             _currentAttack.StartExecuting(_attackContext);
 
-            OnAttackStarted?.Invoke();
+            AttackStarted?.Invoke();
         }
 
         public void ProcessAttack(float normalizedTime)
@@ -46,7 +47,7 @@ namespace Recalled.Gameplay.Combat
         {
             _currentAttack.FinishExecuting(_attackContext);
 
-            OnAttackFinished?.Invoke();
+            AttackFinished?.Invoke();
         }
 
 #if UNITY_EDITOR

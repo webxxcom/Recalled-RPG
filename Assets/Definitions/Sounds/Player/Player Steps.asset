@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6b1cec965ff6f44c90715075605b2dc, type: 3}
   m_Name: Player Steps
   m_EditorClassIdentifier: Recalled.Core::Recalled.Core.SoundCue
-  _clip: {fileID: 8300000, guid: df7bfa3a892ac25499652b5c8e9cc97a, type: 3}
+  _clip: {fileID: 8300000, guid: 25663a670ac5d3a40957dc3a735de26b, type: 3}
   _mixerGroup: {fileID: 2485437016345203308, guid: 690e8d8c0ae056542bcef00037ba2c5a, type: 2}

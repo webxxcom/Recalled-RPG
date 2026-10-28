@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.Events;
 
 namespace Recalled.Gameplay.Movement
 {
@@ -42,7 +43,7 @@ namespace Recalled.Gameplay.Movement
 
         public event System.Action OnMovementStarted;
         public event System.Action OnMovementStopped;
-        public event System.Action OnMovement;
+        public UnityEvent OnMovement;
 
         void Awake()
         {

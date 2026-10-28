@@ -4,21 +4,17 @@ using UnityEngine;
 namespace Recalled.Gameplay
 {
     [RequireComponent(typeof(Collider2D))]
-    public class MeleeAttackCollisionMove : MonoBehaviour
+    sealed class MeleeAttackCollisionMove : MonoBehaviour
     {
         [SerializeField] Movementable _movementBase;
 
         Collider2D _hitbox;
 
-        private void Awake()
-        {
-            _hitbox = GetComponent<Collider2D>();
-        }
-
+        private void Awake() => _hitbox = GetComponent<Collider2D>();
         private void OnEnable()
-            => _movementBase.OnMovement += SetAttackCollisionOffset;
+            => _movementBase.OnMovement.AddListener(SetAttackCollisionOffset);
         private void OnDisable()
-            => _movementBase.OnMovement -= SetAttackCollisionOffset;
+            => _movementBase.OnMovement.RemoveListener(SetAttackCollisionOffset);
 
         void SetAttackCollisionOffset()
         {
