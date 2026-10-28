@@ -6,8 +6,6 @@ namespace Recalled.Gameplay
     [RequireComponent(typeof(Light2D))]
     sealed class CandleLightFlicker : MonoBehaviour
     {
-        [SerializeField] float _speed = 1.16f;
-
         Light2D _light2D;
         float _baseIntensity;
         float _baseRadius;
