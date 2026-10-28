@@ -2,27 +2,30 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RuntimeSet<T> : ScriptableObject
+namespace Recalled.Core
 {
-    readonly HashSet<T> _items = new();
-
-    public IReadOnlyCollection<T> Items => _items;
-
-    public event Action Changed;
-
-    public void Add(T obj)
+    public abstract class RuntimeSet<T> : ScriptableObject
     {
-        if (!_items.Add(obj))
-            return;
+        readonly HashSet<T> _items = new();
 
-        Changed?.Invoke();
-    }
+        public IReadOnlyCollection<T> Items => _items;
 
-    public void Remove(T obj)
-    {
-        if (!_items.Remove(obj))
-            return;
+        public event Action Changed;
 
-        Changed?.Invoke();
+        public void Add(T obj)
+        {
+            if (!_items.Add(obj))
+                return;
+
+            Changed?.Invoke();
+        }
+
+        public void Remove(T obj)
+        {
+            if (!_items.Remove(obj))
+                return;
+
+            Changed?.Invoke();
+        }
     }
 }

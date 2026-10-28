@@ -1,6 +1,10 @@
 ﻿using UnityEngine;
 
-[CreateAssetMenu(menuName = "Runtime Sets/Transform")]
-public class TransformRuntimeSet : RuntimeSet<Transform>
+namespace Recalled.Core
 {
+    [CreateAssetMenu(menuName = "Runtime/Sets/Transform")]
+    public class TransformRuntimeSet : RuntimeSet<Transform>
+    {
+
+    }
 }
