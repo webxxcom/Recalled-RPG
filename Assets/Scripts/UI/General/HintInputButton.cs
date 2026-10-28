@@ -23,6 +23,7 @@ namespace Recalled.UI
         [SerializeField] string _compositePartName;
         [SerializeField] bool _listenToInput;
         [SerializeField] InputDeviceRuntimeVariable _currentInputDevice;
+        [SerializeField] bool _showPressed;
 
         bool IsAvailable => _frames != null;
 
@@ -50,6 +51,8 @@ namespace Recalled.UI
             _inputAction.action.started += OnPress;
             _inputAction.action.canceled += OnRelease;
             _currentInputDevice.Subscribe(OnInputDeviceChanged);
+
+            if (_showPressed) UpdateGraphics(_frames?.Pressed);
         }
 
         private void OnDisable()

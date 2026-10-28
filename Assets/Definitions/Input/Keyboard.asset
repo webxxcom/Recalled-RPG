@@ -62,3 +62,7 @@ MonoBehaviour:
     _frames:
       Pressed: {fileID: -5636659211455234566, guid: 8ec24e7ae85c4dc4881f9e2cf7db9fba, type: 3}
       Released: {fileID: -3468430240258086507, guid: 8ec24e7ae85c4dc4881f9e2cf7db9fba, type: 3}
+  - _path: leftButton
+    _frames:
+      Pressed: {fileID: 4044664119197855241, guid: 681bbcca1ea510b4693b3b2344f340f6, type: 3}
+      Released: {fileID: -2798577942855918962, guid: 681bbcca1ea510b4693b3b2344f340f6, type: 3}
