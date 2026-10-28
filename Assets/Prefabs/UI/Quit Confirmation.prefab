@@ -832,11 +832,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ccbf9b5ad9a2b374b92f768ea5e9ed8d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Recalled.UI::Recalled.UI.Toggleable
-  _hidesWhenInactive: 0
+  _hidesWhenInactive: 1
+  _requestOnStart: 0
   _stateChanged:
     m_PersistentCalls:
       m_Calls: []
-  _requestOnStart: 0
 --- !u!114 &623171263816794654
 MonoBehaviour:
   m_ObjectHideFlags: 0

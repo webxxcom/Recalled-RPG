@@ -1266,7 +1266,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dff72821c3f6d694b9378707447cb063, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  _config: {fileID: 11400000, guid: 2e463e3769a329247a9da0cbb5b94970, type: 2}
+  _config: {fileID: 11400000, guid: 864889a04087d4d448a4d01d160d960a, type: 2}
   _intVariable: {fileID: 11400000, guid: 152dda9ce74a4254aaee34009d4ca0b7, type: 2}
   _usage: 2
   _restore: 3
@@ -1358,7 +1358,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 418a9a8b047a1c843aecb9bd700ae752, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HealthResource
-  _config: {fileID: 11400000, guid: 2e463e3769a329247a9da0cbb5b94970, type: 2}
+  _config: {fileID: 11400000, guid: 864889a04087d4d448a4d01d160d960a, type: 2}
   _hurtbox: {fileID: 7648009776092296695}
   _healthVariable: {fileID: 11400000, guid: 18664fa8ddf79b54dbc9cb56202f04fb, type: 2}
   _hpChangedEvent:
@@ -1366,7 +1366,43 @@ MonoBehaviour:
       m_Calls: []
   _diedEvent:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 7505962688322566842}
+        m_TargetAssemblyTypeName: Recalled.Gameplay.Movement.Movementable, Recalled.Gameplay
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 2511438768263475401}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1515305421710409048}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &6749094384683476667
 MonoBehaviour:
   m_ObjectHideFlags: 0

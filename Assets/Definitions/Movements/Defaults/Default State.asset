@@ -9,8 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7c1114f7e9e43484a919319e26f75933, type: 3}
-  m_Name: ChasingMovementStrategySO
-  m_EditorClassIdentifier: Assembly-CSharp::ChaseMovementComponent
-  <MinDistanceToTarget>k__BackingField: 1.2
-  <Delta>k__BackingField: 0
+  m_Script: {fileID: 11500000, guid: 46ac52b5f0bd6f24bbd87fc99211d24f, type: 3}
+  m_Name: Default State
+  m_EditorClassIdentifier: Recalled.Gameplay::Recalled.Gameplay.Movement.State
+  _actions: []
+  _transitions: []

@@ -8,23 +8,15 @@ namespace Recalled.UI
     {
         [SerializeField] InputActionReference _actionReference;
 
-        StateScreen _gameScreen;
+        Toggleable _toggleable;
         private void Awake()
         {
-            _gameScreen = GetComponent<StateScreen>();
+            _toggleable = GetComponent<Toggleable>();
 
             _actionReference.action.canceled += OnCancelled;
         }
-
-        private void OnDestroy()
-        {
-            _actionReference.action.canceled -= OnCancelled;
-        }
-
-        void OnCancelled(InputAction.CallbackContext cc)
-        {
-            if (_gameScreen.IsActive) _gameScreen.Deactivate();
-            else _gameScreen.Activate();
-        }
+        private void OnDestroy() => _actionReference.action.canceled -= OnCancelled;
+        void OnCancelled(InputAction.CallbackContext _)
+            => _toggleable.RequestToggle();
     }
 }

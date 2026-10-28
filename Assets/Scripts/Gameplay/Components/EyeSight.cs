@@ -15,10 +15,7 @@ namespace Recalled.Gameplay
 
         public event Action<GameObject> SawSomeone;
 
-        private void Awake()
-        {
-            _collider2D = GetComponent<CircleCollider2D>();
-        }
+        private void Awake() => _collider2D = GetComponent<CircleCollider2D>();
 
         readonly RaycastHit2D[] hits = new RaycastHit2D[1];
         private void OnTriggerStay2D(Collider2D collision)

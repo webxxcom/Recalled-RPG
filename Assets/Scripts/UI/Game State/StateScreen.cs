@@ -13,18 +13,9 @@ namespace Recalled.UI
         [SerializeField] GameStateSO _state;
         [SerializeField] Selectable _firstSelected;
 
-        public bool IsActive
-        {
-            get => _handle != null;
-            set
-            {
-                if (value) Activate();
-                else Deactivate();
-            }
-        }
+        public bool IsActive => _handle != null;
 
         GameStateHandle _handle;
-        ToggleableGroup _group;
         Toggleable _toggleable;
         GameStateStack _stack;
         Canvas _canvas;
@@ -34,21 +25,32 @@ namespace Recalled.UI
         void Awake()
         {
             _stack = GetComponentInParent<GameStateStack>();
-            _group = GetComponentInParent<ToggleableGroup>();
             _toggleable = GetComponent<Toggleable>();
             _canvas = GetComponent<Canvas>();
             _canvasGroup = GetComponent<CanvasGroup>();
+
+            _toggleable.StateChanged.AddListener(OnToggled);
+        }
+
+        private void OnEnable() => OnToggled(_toggleable.IsActive);
+        private void OnDestroy() => _toggleable.StateChanged.RemoveListener(OnToggled);
+
+        void OnToggled(bool isActive)
+        {
+            if (isActive) Activate();
+            else Deactivate();
         }
 
         public bool Activate()
         {
+            if (IsActive) return true;
+
             _handle = _stack.Push(_state);
 
             if (_handle == null)
                 return false;
 
             _prevSelected = EventSystem.current.currentSelectedGameObject;
-            _group.TryAddActive(_toggleable);
             _canvas.enabled = true;
             if (_firstSelected) _firstSelected.Select();
             return true;
@@ -58,18 +60,11 @@ namespace Recalled.UI
             _stack.Release(_handle);
             _handle = null;
 
-            _group.TryRemoveActive(_toggleable);
             _canvas.enabled = false;
             EventSystem.current.SetSelectedGameObject(_prevSelected);
         }
 
-        public void StopInput()
-        {
-            _canvasGroup.interactable = false;
-        }
-        public void ResumeInput()
-        {
-            _canvasGroup.interactable = true;
-        }
+        public void StopInput() => _canvasGroup.interactable = false;
+        public void ResumeInput() => _canvasGroup.interactable = true;
     }
 }

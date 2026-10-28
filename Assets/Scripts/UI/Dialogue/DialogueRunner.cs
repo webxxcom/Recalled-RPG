@@ -22,7 +22,7 @@ namespace Recalled.UI
         [SerializeField] BobbleEffect _continueButton;
         [SerializeField] PrefabPopulator _playerButtons;
 
-        StateScreen _gameScreen;
+        Toggleable _toggleable;
         Conversation _conversation;
 
         private void Awake()
@@ -33,7 +33,7 @@ namespace Recalled.UI
                 enabled = false;
             }
 
-            _gameScreen = GetComponent<StateScreen>();
+            _toggleable = GetComponent<Toggleable>();
 
             _continueButton.gameObject.SetActive(false);
             _dialogueChannel.AddListener(OnDialogueChannel);
@@ -55,7 +55,7 @@ namespace Recalled.UI
             _speaker.Init(_speakers.SpriteMap[dialogueSource.Graph.Speaker]);
             _conversation.LineStarted += OnLineStarted;
 
-            _gameScreen.Activate();
+            _toggleable.RequestToggle();
             _isDirty = true;
         }
 
@@ -133,7 +133,7 @@ namespace Recalled.UI
 
             yield return WaitForInputAction();
 
-            _gameScreen.Deactivate();
+            _toggleable.RequestToggle();
             _conversation = null;
             _continueButton.gameObject.SetActive(false);
         }

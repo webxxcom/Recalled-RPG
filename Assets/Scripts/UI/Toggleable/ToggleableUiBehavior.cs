@@ -25,7 +25,6 @@ namespace Recalled.UI
         void OnToggled(bool isActived)
         {
             _canvas.enabled = isActived;
-            _toggleable.gameObject.SetActive(isActived);
         }
     }
 }

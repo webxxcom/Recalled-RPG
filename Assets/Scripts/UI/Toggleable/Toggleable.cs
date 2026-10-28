@@ -9,8 +9,8 @@ namespace Recalled.UI
     public class Toggleable : MonoBehaviour, IToggleable
     {
         [SerializeField] bool _hidesWhenInactive;
-        [SerializeField] UnityEvent<bool> _stateChanged;
         [SerializeField] bool _requestOnStart;
+        [SerializeField] UnityEvent<bool> _stateChanged;
 
         /// <summary>
         /// IsActive is never called withing the class or the inheritors to avoid races for being active.
@@ -32,14 +32,21 @@ namespace Recalled.UI
         private void Start()
         {
             if (_requestOnStart) RequestToggle();
+
+            UpdateStateNoNotify();
         }
 
         void UpdateState()
         {
-            if (_hidesWhenInactive)
-                gameObject.SetActive(IsActive);
+            UpdateStateNoNotify();
 
             _stateChanged.Invoke(IsActive);
+        }
+
+        void UpdateStateNoNotify()
+        {
+            if (_hidesWhenInactive)
+                gameObject.SetActive(IsActive);
         }
 
         void IToggleable.SetIsActive(bool value)

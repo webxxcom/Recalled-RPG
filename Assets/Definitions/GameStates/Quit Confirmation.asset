@@ -16,4 +16,8 @@ MonoBehaviour:
   - UI
   _cursorMode: 0
   _freezeTime: 1
-  _disallowedAbove: []
+  _requiresConfirmation: 0
+  _disallowedAbove:
+  - {fileID: 11400000, guid: 3029483e43a1c5a4e94100700962da7f, type: 2}
+  - {fileID: 11400000, guid: 8cae5a555b587004a85c422192e28695, type: 2}
+  - {fileID: 11400000}

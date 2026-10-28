@@ -24,20 +24,9 @@ namespace Recalled.Gameplay
                 return dist.normalized;
             }
         }
-
-        private void Awake()
-        {
-            _eyeSight = GetComponentInChildren<EyeSight>();
-        }
-
-        private void OnEnable()
-        {
-            _eyeSight.SawSomeone += UpdateTarget;
-        }
-        private void OnDisable()
-        {
-            _eyeSight.SawSomeone -= UpdateTarget;
-        }
+        private void Awake() => _eyeSight = GetComponentInChildren<EyeSight>();
+        private void OnEnable() => _eyeSight.SawSomeone += UpdateTarget;
+        private void OnDisable() => _eyeSight.SawSomeone -= UpdateTarget;
 
         float _elapsedLastSet;
         void UpdateTarget(GameObject target)
@@ -54,7 +43,7 @@ namespace Recalled.Gameplay
             if (Target != null && !_eyeSight.IsWithinSight(Target))
                 _elapsedLastSet += Time.deltaTime;
 
-            if (_elapsedLastSet >= _losesInterestAfter)
+            if (_elapsedLastSet >= _losesInterestAfter || (Target != null && Target.TryGetComponent<Health>(out var health) && health.IsDead))
                 Target = null;
         }
     }
