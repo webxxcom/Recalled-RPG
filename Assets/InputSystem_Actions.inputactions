@@ -470,7 +470,7 @@
                     "priority": 0
                 },
                 {
-                    "name": "Quick Slots",
+                    "name": "Equip Quick Slots",
                     "type": "Value",
                     "id": "2a2f4846-a94c-4dfe-b3ec-2e35fbbb8a43",
                     "expectedControlType": "Dpad",
@@ -498,7 +498,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Quick Slots",
+                    "action": "Equip Quick Slots",
                     "isComposite": true,
                     "isPartOfComposite": false
                 },
@@ -509,7 +509,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": ";Keyboard&Mouse",
-                    "action": "Quick Slots",
+                    "action": "Equip Quick Slots",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -520,7 +520,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": ";Keyboard&Mouse",
-                    "action": "Quick Slots",
+                    "action": "Equip Quick Slots",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -531,7 +531,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": ";Keyboard&Mouse",
-                    "action": "Quick Slots",
+                    "action": "Equip Quick Slots",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -542,7 +542,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": ";Keyboard&Mouse",
-                    "action": "Quick Slots",
+                    "action": "Equip Quick Slots",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -553,7 +553,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": ";Gamepad",
-                    "action": "Quick Slots",
+                    "action": "Equip Quick Slots",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },

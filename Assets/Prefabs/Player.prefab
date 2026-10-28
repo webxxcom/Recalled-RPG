@@ -1394,6 +1394,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   _loadout:
   - {fileID: 11400000, guid: d46a40fa60fa96e4baec8cc674a76eb1, type: 2}
+  - {fileID: 11400000, guid: 7731e81e68071414da725ade43d9b4ec, type: 2}
   _slotsAnchor: {fileID: 11400000, guid: f245f90d432f41045899e1c973919586, type: 2}
   _quickSlotsChanged: {fileID: 11400000, guid: 0d4664b3a5cf9054b9cf72d733ec5bc7, type: 2}
 --- !u!114 &2604665884603746442

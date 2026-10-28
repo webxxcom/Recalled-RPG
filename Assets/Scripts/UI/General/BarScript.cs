@@ -16,7 +16,7 @@ namespace Recalled.UI
         public UnityEvent ProgressStarted;
         public UnityEvent ProgressEnded;
 
-        void Awake() => Set(1);
+        void Start() => Set(1);
 
         IEnumerator ProgressBars(float delta)
         {

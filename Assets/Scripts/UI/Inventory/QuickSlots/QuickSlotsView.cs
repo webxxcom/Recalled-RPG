@@ -40,9 +40,10 @@ namespace Recalled.UI
 
         public void RefreshView()
         {
+            var slots = _quickSlots.Slots;
             for (int i = 0; i < _cells.Length; i++)
             {
-                var slot = _quickSlots.Slots[i];
+                var slot = slots[i];
 
                 if (!slot.Equals(default)) _cells[i].Show(slot.Definition, slot.Count);
                 else _cells[i].Remove();

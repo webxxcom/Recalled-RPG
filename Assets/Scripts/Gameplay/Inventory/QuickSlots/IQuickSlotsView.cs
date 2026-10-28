@@ -8,6 +8,7 @@ namespace Recalled.Gameplay.Inventory
         QuickSlots.SlotView[] Slots { get; }
         ItemDefinition this[int index] { get; }
         event Action Changed;
+        void RequestDefinitionForSlot(ItemDefinition def, int i);
     }
 }
     

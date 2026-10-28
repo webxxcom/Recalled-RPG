@@ -18,8 +18,10 @@ namespace Recalled.UI.Inventory
 
             _icon.enabled = true;
             _icon.sprite = definition.Icon;
+            _text.text = count.ToString();
+
             _icon.color = count > 0 ? Color.white : _dimColor;
-            _text.text = count > 0 ? count.ToString() : "";
+            _text.enabled = count > 0;
         }
 
         public void Remove()

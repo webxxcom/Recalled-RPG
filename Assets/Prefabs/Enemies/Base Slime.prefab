@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 204187425499516699}
   - component: {fileID: 2644242239129820267}
   - component: {fileID: 3126699097939647616}
-  - component: {fileID: 8913527906829891372}
+  - component: {fileID: 4310163558308139391}
   m_Layer: 5
   m_Name: Health Bar
   m_TagString: Untagged
@@ -92,7 +92,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   _offset: 0
   _speed: 1.5
---- !u!114 &8913527906829891372
+--- !u!114 &4310163558308139391
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -101,19 +101,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 1411412690808520615}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d6adb27a1278eb64c8d4188a4a79a056, type: 3}
+  m_Script: {fileID: 11500000, guid: 2f9b251128a2982408263a5f4dfb140f, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::BarScript
+  m_EditorClassIdentifier: Recalled.UI::Recalled.UI.BarScript
   _topBar: {fileID: 2440223251967382662}
   _bottomBar: {fileID: 7076693973008773320}
-  _animationSpeed: 1.5
+  _animationSpeed: 1
   ProgressStarted:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2644242239129820267}
-        m_TargetAssemblyTypeName: UnityEngine.CanvasGroup, UnityEngine
-        m_MethodName: set_alpha
-        m_Mode: 4
+      - m_Target: {fileID: 3126699097939647616}
+        m_TargetAssemblyTypeName: Recalled.Gameplay.CanvasHider, Recalled.Gameplay
+        m_MethodName: ShowCanvas
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -124,19 +124,7 @@ MonoBehaviour:
         m_CallState: 2
   ProgressEnded:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2644242239129820267}
-        m_TargetAssemblyTypeName: UnityEngine.CanvasGroup, UnityEngine
-        m_MethodName: set_alpha
-        m_Mode: 4
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!1 &2885427920188934926
 GameObject:
   m_ObjectHideFlags: 0
@@ -691,7 +679,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   _health: {fileID: 6520413568205409604}
-  _barScript: {fileID: 8913527906829891372}
+  _barScript: {fileID: 4310163558308139391}
 --- !u!114 &3263599248175951136
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -913,7 +901,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Recalled.Gameplay::Recalled.Gameplay.Health
   _config: {fileID: 11400000, guid: 2e463e3769a329247a9da0cbb5b94970, type: 2}
   _hurtbox: {fileID: 621622585988327914}
-  _intVariable: {fileID: 0}
+  _healthVariable: {fileID: 0}
   _hpChangedEvent:
     m_PersistentCalls:
       m_Calls: []
