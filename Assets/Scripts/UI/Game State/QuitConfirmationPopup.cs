@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Recalled.UI
 {
-    [RequireComponent(typeof(StateScreen))]
+    [RequireComponent(typeof(Toggleable))]
     sealed class QuitConfirmationPopup : MonoBehaviour
     {
         [Header("Raises")]
@@ -14,11 +14,11 @@ namespace Recalled.UI
         [Header("Listens")]
         [SerializeField] VoidGameEvent _quitConfirmationRequest;
 
-        StateScreen _stateScreen;
+        Toggleable _toggleable;
 
         private void Awake()
         {
-            _stateScreen = GetComponent<StateScreen>();
+            _toggleable = GetComponent<Toggleable>();
 
             _quitConfirmationRequest.EventRaised += OnConfirmationRequest;
         }
@@ -30,10 +30,10 @@ namespace Recalled.UI
 
         public void OnConfirmationRequest()
         {
-            var activated = _stateScreen.Activate();
+            _toggleable.RequestToggle();
 
             // If for some reason the popup didn't appear then cancel by default
-            if (!activated)
+            if (!_toggleable.IsActive)
                 Decline();
         }
 
@@ -46,7 +46,7 @@ namespace Recalled.UI
         {
             _quitCancelled.Invoke();
 
-            _stateScreen.Deactivate();
+            _toggleable.RequestToggle();
         }
     }
 }

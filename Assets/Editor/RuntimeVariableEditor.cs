@@ -1,11 +1,12 @@
+using Recalled.Core;
 using UnityEditor;
 using UnityEditor.UIElements;
 using UnityEngine.UIElements;
 
-namespace Recalled.Core.Editor
+namespace RecalledEditor
 {
     [CustomEditor(typeof(RuntimeVariableBase), editorForChildClasses: true)]
-    public sealed class RuntimeVariableEditor : UnityEditor.Editor
+    public sealed class RuntimeVariabzleEditor : UnityEditor.Editor
     {
         PropertyField _runtimeField;
         Label _subscribers;

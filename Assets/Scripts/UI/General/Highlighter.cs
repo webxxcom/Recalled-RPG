@@ -104,7 +104,6 @@ namespace Recalled.UI
             if (!_isVisible)
                 return;
 
-            // Unity-null: the target was destroyed, for example when its item was consumed and the slot removed.
             if (_target == null)
             {
                 Hide();
