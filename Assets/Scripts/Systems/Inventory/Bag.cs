@@ -193,15 +193,7 @@ namespace Recalled.Systems.Inventory
             return false;
         }
 
-        public bool Has(ItemDefinition definition, uint count)
-        {
-            if (definition == null)
-                throw new ArgumentNullException();
-
-            return _slots
-                .Where(s => !s.IsEmpty && s.Item.Definition == definition)
-                .Sum(s => s.Item.Count) >= count;
-        }
+        public bool Has(ItemDefinition definition, uint count) => TotalCountOf(definition) >= count;
 
         public IEnumerator<ItemInstance> GetEnumerator()
             => _slots.Select(s => s.Item).AsEnumerable().GetEnumerator();
@@ -211,5 +203,7 @@ namespace Recalled.Systems.Inventory
         public int TotalCountOf(ItemDefinition def)
             => _slots.Where(s => !s.IsEmpty && s.Item.Definition == def)
             .Sum(s => s.Item.Count);
+
+        public void RequestDiscardItem(ItemInstance item) => Remove(item);
     }
 }

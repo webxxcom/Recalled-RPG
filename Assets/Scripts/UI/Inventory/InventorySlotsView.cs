@@ -22,7 +22,7 @@ namespace Recalled.UI.Inventory
         {
             _inventoryAnchor.Provided += OnInventoryProvided;
 
-            if (_inventoryAnchor.IsSet) _inventoryView = _inventoryAnchor.Value;
+            if (_inventoryAnchor.IsSet) OnInventoryProvided(_inventoryAnchor.Value);
             _isDirty = true;
         }
         void OnDisable() => _inventoryAnchor.Provided -= OnInventoryProvided;
@@ -72,8 +72,9 @@ namespace Recalled.UI.Inventory
             }
 
             var currentSelected = EventSystem.current.currentSelectedGameObject;
-            if (currentSelected == null || (currentSelected.TryGetComponent<Selectable>(out var selectable) && !selectable.enabled))
+            if (firstActiveSlot != null && (currentSelected == null || (currentSelected.TryGetComponent<Selectable>(out var selectable) && !selectable.enabled)))
                 EventSystem.current.SetSelectedGameObject(firstActiveSlot.gameObject);
+            else EventSystem.current.SetSelectedGameObject(null);
         }
 
         private void LateUpdate()

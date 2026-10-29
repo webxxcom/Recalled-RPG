@@ -66,3 +66,11 @@ MonoBehaviour:
     _frames:
       Pressed: {fileID: 332659519393252310, guid: b10d0f9df714a3947bfa3e86134eaf7a, type: 3}
       Released: {fileID: 7077469740812172911, guid: b10d0f9df714a3947bfa3e86134eaf7a, type: 3}
+  - _path: leftStick
+    _frames:
+      Pressed: {fileID: -3516281433549496296, guid: b240b7f8ab30c4040b2453212eb7ee38, type: 3}
+      Released: {fileID: 733932313501997061, guid: b240b7f8ab30c4040b2453212eb7ee38, type: 3}
+  - _path: rightStick
+    _frames:
+      Pressed: {fileID: 9017920520576934180, guid: b240b7f8ab30c4040b2453212eb7ee38, type: 3}
+      Released: {fileID: -5921052742911719464, guid: b240b7f8ab30c4040b2453212eb7ee38, type: 3}

@@ -51,7 +51,8 @@ namespace Recalled.UI
             if (eventSystem == null)
                 return;
 
-            if (!eventSystem.currentSelectedGameObject.TryGetComponent<InventorySlot>(out var ivSlot))
+            var current = eventSystem.currentSelectedGameObject;
+            if (current == null || !current.TryGetComponent<InventorySlot>(out var ivSlot))
                 return;
 
             _view.RequestDefinitionForSlot(ivSlot.ItemInstance.Definition, i);

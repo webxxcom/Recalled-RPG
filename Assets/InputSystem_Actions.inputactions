@@ -480,9 +480,9 @@
                     "priority": 0
                 },
                 {
-                    "name": "Quick Slot Remove",
+                    "name": "Discard",
                     "type": "Button",
-                    "id": "e258d19a-a567-43b2-9572-4ac9baf71ca0",
+                    "id": "67ceae70-4af1-4574-8885-194e3141f7c7",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
@@ -728,7 +728,7 @@
                     "path": "<Keyboard>/space",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": ";Keyboard&Mouse",
                     "action": "Submit",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -900,12 +900,23 @@
                 },
                 {
                     "name": "",
-                    "id": "a1a667d3-2fc8-43d6-9e07-474c7e6b8ada",
-                    "path": "<Keyboard>/f",
+                    "id": "2e34c9ff-6776-4532-8ad7-ccaa6b43c1c6",
+                    "path": "<Keyboard>/x",
                     "interactions": "",
                     "processors": "",
                     "groups": ";Keyboard&Mouse",
-                    "action": "Quick Slot Remove",
+                    "action": "Discard",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "8ba36dab-5b36-4b27-8ba1-c394c1ba3411",
+                    "path": "<Gamepad>/buttonEast",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Gamepad",
+                    "action": "Discard",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
@@ -927,17 +938,6 @@
                 }
             ],
             "bindings": [
-                {
-                    "name": "",
-                    "id": "b214a310-ea8c-41aa-b48f-26fae71f875a",
-                    "path": "<Keyboard>/f",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": ";Keyboard&Mouse",
-                    "action": "Pause",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
                 {
                     "name": "",
                     "id": "becbb7f5-9998-4554-b110-f502f3ebadcb",

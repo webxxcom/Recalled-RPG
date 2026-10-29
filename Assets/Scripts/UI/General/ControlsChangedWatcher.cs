@@ -1,14 +1,14 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-namespace Recalled.UI.Assets.Scripts.UI.General
+namespace Recalled.UI
 {
     [RequireComponent(typeof(PlayerInput))]
-    public sealed class ControlsChangedWatcher : MonoBehaviour
+    sealed class ControlsChangedWatcher : MonoBehaviour
     {
         [SerializeField] AvailableInputDevicesSO _devices;
 
-        [Header("Sets Value to")]
+        [Header("Sets")]
         [SerializeField] InputDeviceRuntimeVariable _currentInputDevice;
 
         void OnControlsChanged(PlayerInput playerInput)

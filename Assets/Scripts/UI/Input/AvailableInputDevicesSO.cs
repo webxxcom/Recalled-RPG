@@ -8,9 +8,6 @@ namespace Recalled.UI
     {
         [SerializeField] InputDeviceSO[] _devices;
 
-        [Header("Sets")]
-        [SerializeField] InputDeviceRuntimeVariable _currentInputDevice;
-
         public InputDeviceSO FindForScheme(string scheme)
         {
             InputDeviceSO inputDevice = _devices.FirstOrDefault(d => d.SchemeName.ToLower().Contains(scheme.ToLower()));

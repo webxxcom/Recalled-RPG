@@ -66,3 +66,15 @@ MonoBehaviour:
     _frames:
       Pressed: {fileID: 4044664119197855241, guid: 681bbcca1ea510b4693b3b2344f340f6, type: 3}
       Released: {fileID: -2798577942855918962, guid: 681bbcca1ea510b4693b3b2344f340f6, type: 3}
+  - _path: space
+    _frames:
+      Pressed: {fileID: -2982643624736881224, guid: 8ec24e7ae85c4dc4881f9e2cf7db9fba, type: 3}
+      Released: {fileID: 4409524639825876684, guid: 8ec24e7ae85c4dc4881f9e2cf7db9fba, type: 3}
+  - _path: enter
+    _frames:
+      Pressed: {fileID: -923052127551337170, guid: 8ec24e7ae85c4dc4881f9e2cf7db9fba, type: 3}
+      Released: {fileID: 4620708317986174969, guid: 8ec24e7ae85c4dc4881f9e2cf7db9fba, type: 3}
+  - _path: x
+    _frames:
+      Pressed: {fileID: 6945070037232060747, guid: 8ec24e7ae85c4dc4881f9e2cf7db9fba, type: 3}
+      Released: {fileID: 5251377500263456645, guid: 8ec24e7ae85c4dc4881f9e2cf7db9fba, type: 3}

@@ -1,44 +1,38 @@
-﻿using Recalled.UI;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.Linq;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public static class ControlSchemeBindings
 {
-    static string[] GetBindingPath(InputControl inputControl)
-    {
-        List<string> controls = new();
-        GetBindingPathRecursive(inputControl, controls, "");
-        return controls.ToArray();
-    }
-    static void GetBindingPathRecursive(InputControl inputControl, List<string> controls, string parent)
-    {
-        var children = inputControl.children;
-
-        if (children.Count != 0)
-            foreach (var child in children)
-                GetBindingPathRecursive(child, controls, parent + inputControl.name + "/");
-        else
-            controls.Add(parent + inputControl.name);
-    }
+    static string GetPathOnDevice(InputControl control)
+        => control.path[(control.device.path.Length + 1)..];
 
     public static string[] ListAllPathsForScheme(string schemeName)
     {
         if (string.IsNullOrWhiteSpace(schemeName))
             return Array.Empty<string>();
 
-        string[] schemes = schemeName.Split("&");
-
-        // Find available devices whose name matches the scheme name
-        var inputDevices = InputSystem.devices.Where(d => schemes.Any(s => d.name.Contains(s)));
-        if (inputDevices.Count() == 0)
+        var scheme = InputSystem.actions.FindControlScheme(schemeName);
+        if (scheme == null)
         {
-            Debug.Log($"Incorrect Input device name for {nameof(InputDeviceSO)}");
+            Debug.LogWarning($"No control scheme named '{schemeName}' in the project-wide actions.");
             return Array.Empty<string>();
         }
-        return inputDevices.SelectMany(d => d.allControls.SelectMany(GetBindingPath)).ToArray();
+
+        var devices = InputSystem.devices.Where(d => scheme.Value.SupportsDevice(d)).ToArray();
+        if (devices.Length == 0)
+        {
+            Debug.Log($"No connected device for scheme '{schemeName}'. Connect one to populate the list.");
+            return Array.Empty<string>();
+        }
+
+        return devices
+            .SelectMany(d => d.allControls)
+            .Select(GetPathOnDevice)
+            .Distinct()
+            .ToArray();
     }
 
     public static string[] ListInputSchemes()
@@ -46,34 +40,13 @@ public static class ControlSchemeBindings
         return InputSystem.actions.controlSchemes.Select(cs => cs.name).ToArray();
     }
 
-    static bool TryGetActionBindingForScheme(
-        InputAction action,
-        string scheme,
-        string compositePartName,
-        out InputBinding result)
+    static int GetBindingIndexForScheme(InputAction action, string scheme, string compositePartName)
     {
-        if (!ListInputSchemes().Contains(scheme))
-            throw new ArgumentException($"There exists no such scheme as {scheme}");
+        var mask = InputBinding.MaskByGroup(scheme);
+        if (!string.IsNullOrWhiteSpace(compositePartName))
+            mask.name = compositePartName;
 
-        result = default;
-        for (int i = 0; i < action.bindings.Count; i++)
-        {
-            result = action.bindings[i];
-            if (result.isComposite)
-                continue;
-
-            if (result.groups.Split(InputBinding.Separator).Contains(scheme))
-            {
-                if (!string.IsNullOrWhiteSpace(compositePartName))
-                {
-                    if (result.name.Equals(compositePartName, StringComparison.OrdinalIgnoreCase))
-                        return true;
-                    else continue;
-                }
-                else return true;
-            }
-        }
-        return false;
+        return action.GetBindingIndex(mask);
     }
 
     public static string GetControlPathNoDevice(
@@ -81,15 +54,11 @@ public static class ControlSchemeBindings
         string scheme,
         string compositePartName)
     {
-        if (!TryGetActionBindingForScheme(action, scheme, compositePartName, out var inputBinding))
+        var ind = GetBindingIndexForScheme(action, scheme, compositePartName);
+        if (ind < 0)
             return null;
 
-        InputControlPath.ToHumanReadableString(
-            inputBinding.path,
-            out var _,
-            out var controlPath,
-            InputControlPath.HumanReadableStringOptions.OmitDevice);
-
+        action.GetBindingDisplayString(ind, out _, out var controlPath);
         return controlPath;
     }
 }

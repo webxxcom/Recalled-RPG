@@ -306,10 +306,10 @@ TextureImporter:
       name: sticks_0
       rect:
         serializedVersion: 2
-        x: 2
-        y: 177
-        width: 12
-        height: 14
+        x: 0
+        y: 176
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -328,10 +328,10 @@ TextureImporter:
       name: sticks_1
       rect:
         serializedVersion: 2
-        x: 2
-        y: 159
-        width: 12
-        height: 18
+        x: 16
+        y: 176
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -350,10 +350,10 @@ TextureImporter:
       name: sticks_2
       rect:
         serializedVersion: 2
-        x: 19
-        y: 177
-        width: 12
-        height: 12
+        x: 32
+        y: 176
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -372,10 +372,10 @@ TextureImporter:
       name: sticks_3
       rect:
         serializedVersion: 2
-        x: 34
-        y: 177
-        width: 12
-        height: 14
+        x: 48
+        y: 176
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -394,10 +394,10 @@ TextureImporter:
       name: sticks_4
       rect:
         serializedVersion: 2
-        x: 34
-        y: 159
-        width: 12
-        height: 18
+        x: 64
+        y: 176
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -416,10 +416,10 @@ TextureImporter:
       name: sticks_5
       rect:
         serializedVersion: 2
-        x: 49
-        y: 177
-        width: 12
-        height: 14
+        x: 80
+        y: 176
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -438,10 +438,10 @@ TextureImporter:
       name: sticks_6
       rect:
         serializedVersion: 2
-        x: 66
-        y: 177
-        width: 12
-        height: 13
+        x: 0
+        y: 160
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -460,10 +460,10 @@ TextureImporter:
       name: sticks_7
       rect:
         serializedVersion: 2
-        x: 83
-        y: 177
-        width: 12
-        height: 14
+        x: 16
+        y: 160
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -482,10 +482,10 @@ TextureImporter:
       name: sticks_8
       rect:
         serializedVersion: 2
-        x: 2
-        y: 145
-        width: 12
-        height: 14
+        x: 32
+        y: 160
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -504,9 +504,9 @@ TextureImporter:
       name: sticks_9
       rect:
         serializedVersion: 2
-        x: 19
+        x: 48
         y: 160
-        width: 12
+        width: 16
         height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -526,10 +526,10 @@ TextureImporter:
       name: sticks_10
       rect:
         serializedVersion: 2
-        x: 34
-        y: 145
-        width: 12
-        height: 14
+        x: 64
+        y: 160
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -548,10 +548,10 @@ TextureImporter:
       name: sticks_11
       rect:
         serializedVersion: 2
-        x: 47
-        y: 161
+        x: 80
+        y: 160
         width: 16
-        height: 14
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -570,10 +570,10 @@ TextureImporter:
       name: sticks_12
       rect:
         serializedVersion: 2
-        x: 49
-        y: 145
-        width: 12
-        height: 14
+        x: 0
+        y: 144
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -592,10 +592,10 @@ TextureImporter:
       name: sticks_13
       rect:
         serializedVersion: 2
-        x: 66
-        y: 159
-        width: 12
-        height: 17
+        x: 16
+        y: 144
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -614,10 +614,10 @@ TextureImporter:
       name: sticks_14
       rect:
         serializedVersion: 2
-        x: 81
-        y: 161
-        width: 15
-        height: 14
+        x: 32
+        y: 144
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -636,10 +636,10 @@ TextureImporter:
       name: sticks_15
       rect:
         serializedVersion: 2
-        x: 83
-        y: 145
-        width: 12
-        height: 14
+        x: 48
+        y: 144
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -658,10 +658,10 @@ TextureImporter:
       name: sticks_16
       rect:
         serializedVersion: 2
-        x: 19
-        y: 145
-        width: 12
-        height: 12
+        x: 64
+        y: 144
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -680,10 +680,10 @@ TextureImporter:
       name: sticks_17
       rect:
         serializedVersion: 2
-        x: 66
-        y: 145
-        width: 12
-        height: 13
+        x: 80
+        y: 144
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -702,10 +702,10 @@ TextureImporter:
       name: sticks_18
       rect:
         serializedVersion: 2
-        x: 2
-        y: 129
-        width: 12
-        height: 14
+        x: 0
+        y: 128
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -724,10 +724,10 @@ TextureImporter:
       name: sticks_19
       rect:
         serializedVersion: 2
-        x: 2
-        y: 108
-        width: 12
-        height: 21
+        x: 16
+        y: 128
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -746,10 +746,10 @@ TextureImporter:
       name: sticks_20
       rect:
         serializedVersion: 2
-        x: 19
-        y: 129
-        width: 12
-        height: 12
+        x: 32
+        y: 128
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -768,10 +768,10 @@ TextureImporter:
       name: sticks_21
       rect:
         serializedVersion: 2
-        x: 34
-        y: 129
-        width: 12
-        height: 14
+        x: 48
+        y: 128
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -790,10 +790,10 @@ TextureImporter:
       name: sticks_22
       rect:
         serializedVersion: 2
-        x: 34
-        y: 108
-        width: 12
-        height: 21
+        x: 64
+        y: 128
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -812,10 +812,10 @@ TextureImporter:
       name: sticks_23
       rect:
         serializedVersion: 2
-        x: 49
-        y: 129
-        width: 12
-        height: 14
+        x: 80
+        y: 128
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -834,10 +834,10 @@ TextureImporter:
       name: sticks_24
       rect:
         serializedVersion: 2
-        x: 66
-        y: 129
-        width: 12
-        height: 13
+        x: 0
+        y: 112
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -856,10 +856,10 @@ TextureImporter:
       name: sticks_25
       rect:
         serializedVersion: 2
-        x: 83
-        y: 129
-        width: 12
-        height: 14
+        x: 16
+        y: 112
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -878,9 +878,9 @@ TextureImporter:
       name: sticks_26
       rect:
         serializedVersion: 2
-        x: 19
+        x: 32
         y: 112
-        width: 12
+        width: 16
         height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -900,10 +900,10 @@ TextureImporter:
       name: sticks_27
       rect:
         serializedVersion: 2
-        x: 47
-        y: 113
+        x: 48
+        y: 112
         width: 16
-        height: 14
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -922,10 +922,10 @@ TextureImporter:
       name: sticks_28
       rect:
         serializedVersion: 2
-        x: 66
-        y: 115
-        width: 12
-        height: 13
+        x: 64
+        y: 112
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -944,10 +944,10 @@ TextureImporter:
       name: sticks_29
       rect:
         serializedVersion: 2
-        x: 66
-        y: 95
-        width: 12
-        height: 21
+        x: 80
+        y: 112
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -966,10 +966,10 @@ TextureImporter:
       name: sticks_30
       rect:
         serializedVersion: 2
-        x: 81
-        y: 113
-        width: 15
-        height: 14
+        x: 0
+        y: 96
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -988,10 +988,10 @@ TextureImporter:
       name: sticks_31
       rect:
         serializedVersion: 2
-        x: 2
-        y: 95
-        width: 12
-        height: 14
+        x: 16
+        y: 96
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1010,9 +1010,9 @@ TextureImporter:
       name: sticks_32
       rect:
         serializedVersion: 2
-        x: 19
+        x: 32
         y: 96
-        width: 12
+        width: 16
         height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -1032,10 +1032,10 @@ TextureImporter:
       name: sticks_33
       rect:
         serializedVersion: 2
-        x: 34
-        y: 95
-        width: 12
-        height: 14
+        x: 48
+        y: 96
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1054,10 +1054,10 @@ TextureImporter:
       name: sticks_34
       rect:
         serializedVersion: 2
-        x: 47
-        y: 97
+        x: 64
+        y: 96
         width: 16
-        height: 14
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1076,10 +1076,10 @@ TextureImporter:
       name: sticks_35
       rect:
         serializedVersion: 2
-        x: 81
-        y: 97
-        width: 15
-        height: 14
+        x: 80
+        y: 96
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1098,10 +1098,10 @@ TextureImporter:
       name: sticks_36
       rect:
         serializedVersion: 2
-        x: 2
-        y: 81
-        width: 12
-        height: 14
+        x: 0
+        y: 80
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1120,10 +1120,10 @@ TextureImporter:
       name: sticks_37
       rect:
         serializedVersion: 2
-        x: 19
-        y: 81
-        width: 12
-        height: 12
+        x: 16
+        y: 80
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1142,10 +1142,10 @@ TextureImporter:
       name: sticks_38
       rect:
         serializedVersion: 2
-        x: 34
-        y: 81
-        width: 12
-        height: 14
+        x: 32
+        y: 80
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1164,10 +1164,10 @@ TextureImporter:
       name: sticks_39
       rect:
         serializedVersion: 2
-        x: 49
-        y: 81
-        width: 12
-        height: 14
+        x: 48
+        y: 80
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1186,10 +1186,10 @@ TextureImporter:
       name: sticks_40
       rect:
         serializedVersion: 2
-        x: 66
-        y: 81
-        width: 12
-        height: 13
+        x: 64
+        y: 80
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1208,10 +1208,10 @@ TextureImporter:
       name: sticks_41
       rect:
         serializedVersion: 2
-        x: 83
-        y: 81
-        width: 12
-        height: 14
+        x: 80
+        y: 80
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1230,10 +1230,10 @@ TextureImporter:
       name: sticks_42
       rect:
         serializedVersion: 2
-        x: 2
-        y: 65
-        width: 12
-        height: 14
+        x: 0
+        y: 64
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1252,9 +1252,9 @@ TextureImporter:
       name: sticks_43
       rect:
         serializedVersion: 2
-        x: 2
-        y: 48
-        width: 12
+        x: 16
+        y: 64
+        width: 16
         height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -1274,10 +1274,10 @@ TextureImporter:
       name: sticks_44
       rect:
         serializedVersion: 2
-        x: 19
-        y: 65
-        width: 12
-        height: 12
+        x: 32
+        y: 64
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1296,10 +1296,10 @@ TextureImporter:
       name: sticks_45
       rect:
         serializedVersion: 2
-        x: 34
-        y: 65
-        width: 12
-        height: 14
+        x: 48
+        y: 64
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1318,10 +1318,10 @@ TextureImporter:
       name: sticks_46
       rect:
         serializedVersion: 2
-        x: 34
-        y: 48
-        width: 12
-        height: 17
+        x: 64
+        y: 64
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1340,10 +1340,10 @@ TextureImporter:
       name: sticks_47
       rect:
         serializedVersion: 2
-        x: 49
-        y: 65
-        width: 12
-        height: 14
+        x: 80
+        y: 64
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1362,10 +1362,10 @@ TextureImporter:
       name: sticks_48
       rect:
         serializedVersion: 2
-        x: 66
-        y: 65
-        width: 12
-        height: 13
+        x: 0
+        y: 48
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1384,10 +1384,10 @@ TextureImporter:
       name: sticks_49
       rect:
         serializedVersion: 2
-        x: 83
-        y: 65
-        width: 12
-        height: 14
+        x: 16
+        y: 48
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1406,10 +1406,10 @@ TextureImporter:
       name: sticks_50
       rect:
         serializedVersion: 2
-        x: 19
-        y: 49
-        width: 12
-        height: 15
+        x: 32
+        y: 48
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1428,10 +1428,10 @@ TextureImporter:
       name: sticks_51
       rect:
         serializedVersion: 2
-        x: 47
-        y: 49
+        x: 48
+        y: 48
         width: 16
-        height: 14
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1450,10 +1450,10 @@ TextureImporter:
       name: sticks_52
       rect:
         serializedVersion: 2
-        x: 66
-        y: 51
-        width: 12
-        height: 13
+        x: 64
+        y: 48
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1472,10 +1472,10 @@ TextureImporter:
       name: sticks_53
       rect:
         serializedVersion: 2
-        x: 66
-        y: 30
-        width: 12
-        height: 17
+        x: 80
+        y: 48
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1494,10 +1494,10 @@ TextureImporter:
       name: sticks_54
       rect:
         serializedVersion: 2
-        x: 81
-        y: 49
-        width: 15
-        height: 14
+        x: 0
+        y: 32
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1516,9 +1516,9 @@ TextureImporter:
       name: sticks_55
       rect:
         serializedVersion: 2
-        x: 2
+        x: 16
         y: 32
-        width: 12
+        width: 16
         height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -1538,10 +1538,10 @@ TextureImporter:
       name: sticks_56
       rect:
         serializedVersion: 2
-        x: 20
-        y: 33
-        width: 10
-        height: 14
+        x: 32
+        y: 32
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1560,9 +1560,9 @@ TextureImporter:
       name: sticks_57
       rect:
         serializedVersion: 2
-        x: 34
+        x: 48
         y: 32
-        width: 12
+        width: 16
         height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -1582,10 +1582,10 @@ TextureImporter:
       name: sticks_58
       rect:
         serializedVersion: 2
-        x: 47
-        y: 33
+        x: 64
+        y: 32
         width: 16
-        height: 14
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1604,10 +1604,10 @@ TextureImporter:
       name: sticks_59
       rect:
         serializedVersion: 2
-        x: 81
-        y: 33
-        width: 15
-        height: 14
+        x: 80
+        y: 32
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1626,10 +1626,10 @@ TextureImporter:
       name: sticks_60
       rect:
         serializedVersion: 2
-        x: 2
-        y: 6
-        width: 12
-        height: 25
+        x: 0
+        y: 16
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1648,10 +1648,10 @@ TextureImporter:
       name: sticks_61
       rect:
         serializedVersion: 2
-        x: 18
-        y: 4
-        width: 12
-        height: 27
+        x: 16
+        y: 16
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1670,10 +1670,10 @@ TextureImporter:
       name: sticks_62
       rect:
         serializedVersion: 2
-        x: 34
-        y: 6
-        width: 12
-        height: 25
+        x: 32
+        y: 16
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1692,10 +1692,10 @@ TextureImporter:
       name: sticks_63
       rect:
         serializedVersion: 2
-        x: 50
-        y: 4
-        width: 12
-        height: 27
+        x: 48
+        y: 16
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1714,10 +1714,10 @@ TextureImporter:
       name: sticks_64
       rect:
         serializedVersion: 2
-        x: 69
-        y: 21
-        width: 6
-        height: 6
+        x: 64
+        y: 16
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1736,10 +1736,10 @@ TextureImporter:
       name: sticks_65
       rect:
         serializedVersion: 2
-        x: 85
-        y: 21
-        width: 6
-        height: 6
+        x: 80
+        y: 16
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1758,10 +1758,10 @@ TextureImporter:
       name: sticks_66
       rect:
         serializedVersion: 2
-        x: 69
-        y: 5
-        width: 6
-        height: 6
+        x: 0
+        y: 0
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1780,10 +1780,10 @@ TextureImporter:
       name: sticks_67
       rect:
         serializedVersion: 2
-        x: 85
-        y: 5
-        width: 6
-        height: 6
+        x: 16
+        y: 0
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1794,6 +1794,94 @@ TextureImporter:
       bones: []
       spriteID: a37a1593489db8e20800000000000000
       internalID: 3354013509428029242
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sticks_68
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 67fa89639edd2d04c85535398739c3eb
+      internalID: 1119814915
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sticks_69
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c03401d12343a4c43a5ae1749991ab54
+      internalID: -1043565080
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sticks_70
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9d6be8e02671cbd488c30a583239855a
+      internalID: -1072770124
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sticks_71
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dab65c9602b568d4db3f934788b7ea4e
+      internalID: -23665216
       vertices: []
       indices: 
       edges: []
@@ -1810,7 +1898,9 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     spriteCustomMetadata:
-      entries: []
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":16.0,"y":16.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
       sticks_0: 6650738528677379693
       sticks_1: -3301283709267967565
@@ -1877,7 +1967,11 @@ TextureImporter:
       sticks_65: -7154674519537998753
       sticks_66: -4766447423065921882
       sticks_67: 3354013509428029242
+      sticks_68: 1119814915
+      sticks_69: -1043565080
       sticks_7: 3767348334575506315
+      sticks_70: -1072770124
+      sticks_71: -23665216
       sticks_8: -1882316556215962754
       sticks_9: 6904486264885979234
   mipmapLimitGroupName: 

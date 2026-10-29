@@ -15,26 +15,28 @@ namespace Recalled.UI.Inventory
         [Header("Reads")]
         [SerializeField] GameObjectRuntimeVariable _currentSelected;
 
-        private void OnEnable()
-        {
-            _currentSelected.Subscribe(OnCellSelected);
-        }
-        private void OnDisable()
-        {
-            _currentSelected.Unsubscribe(OnCellSelected);
-        }
+        private void OnEnable() => _currentSelected.Subscribe(OnCellSelected);
+        private void OnDisable() => _currentSelected.Unsubscribe(OnCellSelected);
 
-        public void Show(ItemInstance instance)
+        void Show(ItemInstance instance)
         {
             _cell.ShowItem(instance, false);
             _header.text = instance.Definition.Name;
             _description.text = instance.Description;
         }
 
+        void Hide()
+        {
+            _cell.ShowEmpty();
+            _header.text = "";
+            _description.text = "";
+        }
+
         void OnCellSelected(GameObject game)
         {
             if (game != null && game.TryGetComponent<InventorySlot>(out var slot))
                 Show(slot.ItemInstance);
+            else Hide();
         }
     }
 }
