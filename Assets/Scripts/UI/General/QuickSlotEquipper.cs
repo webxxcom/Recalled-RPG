@@ -1,5 +1,3 @@
-using Newtonsoft.Json.Linq;
-using Recalled.Gameplay;
 using Recalled.Gameplay.Inventory;
 using Recalled.UI.Inventory;
 using UnityEngine;
@@ -8,26 +6,13 @@ using UnityEngine.InputSystem;
 
 namespace Recalled.UI
 {
-    public class QuickSlotEquipper : MonoBehaviour
+    sealed class QuickSlotEquipper : MonoBehaviour
     {
         [SerializeField] QuickSlotsAnchor _quickSlotsAnchor;
         [SerializeField] InputActionReference _quickSlotsAction;
 
-        IQuickSlotsView _view;
-
-        private void OnEnable()
-        {
-            _quickSlotsAction.action.performed += OnActionTriggered;
-            _quickSlotsAnchor.Provided += OnAnchorProvided;
-
-            if (_quickSlotsAnchor.IsSet) OnAnchorProvided(_quickSlotsAnchor.Value);
-        }
-        private void OnDisable()
-        {
-            _quickSlotsAction.action.performed -= OnActionTriggered;
-            _quickSlotsAnchor.Provided -= OnAnchorProvided;
-        }
-        void OnAnchorProvided(IQuickSlotsView view) => _view = view;
+        private void OnEnable() => _quickSlotsAction.action.performed += OnActionTriggered;
+        private void OnDisable() => _quickSlotsAction.action.performed -= OnActionTriggered;
 
         void OnActionTriggered(InputAction.CallbackContext context)
         {
@@ -55,7 +40,9 @@ namespace Recalled.UI
             if (current == null || !current.TryGetComponent<InventorySlot>(out var ivSlot))
                 return;
 
-            _view.RequestDefinitionForSlot(ivSlot.ItemInstance.Definition, i);
+            if (_quickSlotsAnchor.IsSet)
+                _quickSlotsAnchor.Value.RequestDefinitionForSlot(ivSlot.ItemInstance.Definition, i);
+            else Debug.LogWarning($"The {nameof(_quickSlotsAnchor)} was not provided");
         }
     }
 }
