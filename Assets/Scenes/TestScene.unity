@@ -878,24 +878,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Unity.InputSystem::UnityEngine.InputSystem.PlayerInput
---- !u!1 &696072580 stripped
+--- !u!1 &1098303043 stripped
 GameObject:
-  m_CorrespondingSourceObject: {fileID: 1511724104232976196, guid: 05c21f723d3cdbc4ab0a31fbd70cd0f7, type: 3}
+  m_CorrespondingSourceObject: {fileID: 128455746296942081, guid: 05c21f723d3cdbc4ab0a31fbd70cd0f7, type: 3}
   m_PrefabInstance: {fileID: 2046603347}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &696072588
+--- !u!114 &1098303048
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 696072580}
+  m_GameObject: {fileID: 1098303043}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e2c4a841811a23f4691a69ab700f5102, type: 3}
+  m_Script: {fileID: 11500000, guid: 7257d7cd3eea6c941b9a3ed785736194, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  _actionReference: {fileID: -4377984260820160753, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   _inventoryAnchor: {fileID: 11400000, guid: 9a580f0e060b5ec428662a70a5c9ef41, type: 2}
 --- !u!1 &1137712248
 GameObject:
@@ -2609,14 +2608,6 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5543539298606920497, guid: 05c21f723d3cdbc4ab0a31fbd70cd0f7, type: 3}
-      propertyPath: m_fontColor.a
-      value: 0.7882353
-      objectReference: {fileID: 0}
-    - target: {fileID: 5543539298606920497, guid: 05c21f723d3cdbc4ab0a31fbd70cd0f7, type: 3}
-      propertyPath: m_fontColor32.rgba
-      value: 3388997631
-      objectReference: {fileID: 0}
     - target: {fileID: 5582298568225928336, guid: 05c21f723d3cdbc4ab0a31fbd70cd0f7, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -2909,14 +2900,6 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7888357218603103061, guid: 05c21f723d3cdbc4ab0a31fbd70cd0f7, type: 3}
-      propertyPath: m_fontColor.a
-      value: 0.7882353
-      objectReference: {fileID: 0}
-    - target: {fileID: 7888357218603103061, guid: 05c21f723d3cdbc4ab0a31fbd70cd0f7, type: 3}
-      propertyPath: m_fontColor32.rgba
-      value: 3388997631
-      objectReference: {fileID: 0}
     - target: {fileID: 8003640685013072449, guid: 05c21f723d3cdbc4ab0a31fbd70cd0f7, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -3017,9 +3000,9 @@ PrefabInstance:
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 1511724104232976196, guid: 05c21f723d3cdbc4ab0a31fbd70cd0f7, type: 3}
+    - targetCorrespondingSourceObject: {fileID: 128455746296942081, guid: 05c21f723d3cdbc4ab0a31fbd70cd0f7, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 696072588}
+      addedObject: {fileID: 1098303048}
   m_SourcePrefab: {fileID: 100100000, guid: 05c21f723d3cdbc4ab0a31fbd70cd0f7, type: 3}
 --- !u!224 &2046603349 stripped
 RectTransform:
