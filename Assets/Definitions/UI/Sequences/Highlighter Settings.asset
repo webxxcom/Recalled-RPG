@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b52387baa966bb44b9a13e735e453b78, type: 3}
+  m_Name: Highlighter Settings
+  m_EditorClassIdentifier: Assembly-CSharp::SpriteSequence
+  _sourceGuid: 78250459a0e7767449c0bd780d66bccc
+  _clipName: Point02a
+  _frames:
+  - Time: 0
+    Sprite: {fileID: -6020743233282100490, guid: 78250459a0e7767449c0bd780d66bccc, type: 3}
+  - Time: 0.6999998
+    Sprite: {fileID: -749743685596488475, guid: 78250459a0e7767449c0bd780d66bccc, type: 3}
+  - Time: 0.78999984
+    Sprite: {fileID: -749743685596488475, guid: 78250459a0e7767449c0bd780d66bccc, type: 3}
+  _length: 0.79999983
+  _loop: 1

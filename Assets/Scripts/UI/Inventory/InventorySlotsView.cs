@@ -23,7 +23,6 @@ namespace Recalled.UI.Inventory
             _inventoryAnchor.Provided += OnInventoryProvided;
 
             if (_inventoryAnchor.IsSet) OnInventoryProvided(_inventoryAnchor.Value);
-            _isDirty = true;
         }
         void OnDisable() => _inventoryAnchor.Provided -= OnInventoryProvided;
 
@@ -32,6 +31,7 @@ namespace Recalled.UI.Inventory
             _inventoryView = inventory;
 
             _inventoryView.Changed += () => _isDirty = true;
+            _isDirty = true;
         }
 
         public void Filter(ItemCategory filter)
