@@ -166,10 +166,8 @@ namespace Recalled.Core
             {
                 bool shouldEnable = NameIn(_alwaysEnabledMaps, map.name) || NameIn(state.ActionMaps, map.name);
 
-                if (shouldEnable && !map.enabled)
-                    map.Enable();
-                else if (!shouldEnable && map.enabled)
-                    map.Disable();
+                if (shouldEnable) map.Enable();
+                else map.Disable();
             }
 
             Time.timeScale = state.FreezeTime ? 0f : 1f;
