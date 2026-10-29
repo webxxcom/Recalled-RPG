@@ -1,3 +1,4 @@
+using Recalled.Gameplay;
 using Recalled.Gameplay.Inventory;
 using Recalled.Systems.Inventory;
 using Recalled.UI.Inventory;
@@ -10,9 +11,9 @@ namespace Recalled.UI
     sealed class DiscardItem : MonoBehaviour
     {
         [SerializeField] InputActionReference _actionReference;
-        [SerializeField] InventoryAnchor _inventoryAnchor;
+        [SerializeField] ItemProcessorAnchor _itemProcessorAnchor;
 
-        private void OnEnable() => _actionReference.action.performed += OnDiscarded;
+        void OnEnable() => _actionReference.action.performed += OnDiscarded;
         void OnDisable() => _actionReference.action.performed -= OnDiscarded;
 
         void OnDiscarded(InputAction.CallbackContext _)
@@ -25,9 +26,9 @@ namespace Recalled.UI
             if (current == null || !current.TryGetComponent<InventorySlot>(out var slot))
                 return;
 
-            if (_inventoryAnchor.IsSet)
-                _inventoryAnchor.Value.RequestDiscardItem(slot.ItemInstance);
-            else Debug.LogWarning($"The {nameof(_inventoryAnchor)}'s value was not provided");
+            if (_itemProcessorAnchor.IsSet)
+                _itemProcessorAnchor.Value.TryDiscard(slot.ItemInstance);
+            else Debug.LogWarning($"The {nameof(_itemProcessorAnchor)}'s value was not provided");
         }
     }
 }

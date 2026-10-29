@@ -3,19 +3,19 @@ using UnityEngine;
 
 namespace Recalled.Gameplay.Inventory
 {
-    public sealed class InventoryHolder : MonoBehaviour
+    internal sealed class InventoryHolder : MonoBehaviour
     {
         [SerializeField] Loadout _loadout;
         [SerializeField] InventoryAnchor _inventoryAnchor;
 
-        public Bag Inventory { get; private set; }
+        public Bag Reference { get; private set; }
 
         private void Awake()
         {
-            Inventory = new(_loadout.Capacity, _loadout.Items);
+            Reference = new(_loadout.Capacity, _loadout.Items);
 
-            _inventoryAnchor.Provide(Inventory);
+            _inventoryAnchor.Provide(Reference);
         }
-        private void OnDestroy() => _inventoryAnchor.Withdraw(Inventory);
+        private void OnDestroy() => _inventoryAnchor.Withdraw(Reference);
     }
 }

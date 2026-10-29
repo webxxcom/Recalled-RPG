@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Recalled.Gameplay
 {
-    [CreateAssetMenu(menuName ="Runtime/Variables/Health Value")]
+    [CreateAssetMenu(menuName ="Runtime/Variables/Health Reference")]
     public class HealthValueVariable : RuntimeVariable<HealthValue>
     {
 

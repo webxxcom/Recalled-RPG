@@ -9,6 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4c399f73096374548b96b713947c8a7c, type: 3}
-  m_Name: QuickSlotsChanged
-  m_EditorClassIdentifier: Recalled.Core::Recalled.Core.VoidGameEvent
+  m_Script: {fileID: 11500000, guid: e621248df2a3066428d88bcc2134ac5e, type: 3}
+  m_Name: ItemProcessorAnchor
+  m_EditorClassIdentifier: Recalled.Gameplay::Recalled.Gameplay.ItemProcessorAnchor

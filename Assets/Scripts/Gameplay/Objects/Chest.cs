@@ -50,7 +50,7 @@ namespace Recalled.Gameplay
                         return;
                 }
 
-                var inventory = interactor.GetComponentInParent<InventoryHolder>().Inventory;
+                var inventory = interactor.GetComponentInParent<InventoryHolder>().Reference;
                 var loot = _lootTable.GetItem();
 
                 bool hasKey = _requiredKey == null || inventory.Take(_requiredKey, 1);

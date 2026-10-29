@@ -2,7 +2,6 @@ using Recalled.Systems.Inventory;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
-using UnityEngine.UI;
 
 namespace Recalled.UI.Inventory
 {

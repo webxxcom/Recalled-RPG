@@ -16,9 +16,9 @@ namespace RecalledEditor
         {
             var root = new VisualElement();
 
-            root.Add(new PropertyField(serializedObject.FindProperty(RuntimeVariableBase.InitialValueField), "Initial Value"));
+            root.Add(new PropertyField(serializedObject.FindProperty(RuntimeVariableBase.InitialValueField), "Initial Reference"));
 
-            _runtimeField = new PropertyField(serializedObject.FindProperty(RuntimeVariableBase.RuntimeValueField), "Runtime Value");
+            _runtimeField = new PropertyField(serializedObject.FindProperty(RuntimeVariableBase.RuntimeValueField), "Runtime Reference");
             _runtimeField.RegisterValueChangeCallback(_ =>
             {
                 // Fires after the serialized value is applied. In play mode that means the field

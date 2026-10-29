@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace Recalled.Gameplay.Inventory
 {
-    public sealed class QuickSlots : IQuickSlotsView
+    public sealed class QuickSlots : IQuickSlots
     {
         public readonly struct SlotView : IEquatable<SlotView>
         {
@@ -49,20 +49,22 @@ namespace Recalled.Gameplay.Inventory
             _inventoryView.Changed += () => Changed?.Invoke();
         }
 
-        public void RequestDefinitionForSlot(ItemDefinition def, int i)
+        public bool RequestDefinitionForSlot(ItemDefinition def, int i, out int occupiedSlot)
         {
             if (i < 0 || i >= _storedDefinitions.Length)
                 throw new ArgumentException();
 
-            if (def != _storedDefinitions[i] && _storedDefinitions.Any(d => d == def))
-                return; // Do not put another same def into different slot
+            occupiedSlot = Array.IndexOf(_storedDefinitions, def);
+            if (occupiedSlot != i && occupiedSlot != -1)
+                return false; // Do not put another same def into different slot
 
             if (!def.IsInCategory(ItemCategory.Consumable))
-                return; // not consumable can't be put there
+                return false; // not consumable can't be put there
 
             if (def == _storedDefinitions[i]) _storedDefinitions[i] = default;
             else _storedDefinitions[i] = def;
             Changed?.Invoke();
+            return true;
         }
     }
 }

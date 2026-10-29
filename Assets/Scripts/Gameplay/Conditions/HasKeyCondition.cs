@@ -12,12 +12,12 @@ namespace Recalled.Gameplay
 
         public bool Apply(InteractionProcessor interaction)
         {
-            return interaction.GetComponentInParent<InventoryHolder>().Inventory.Take(_key, 1);
+            return interaction.GetComponentInParent<InventoryHolder>().Reference.Take(_key, 1);
         }
 
         public bool Check(InteractionProcessor interaction)
         {
-            return interaction.GetComponentInParent<InventoryHolder>().Inventory.Has(_key, 1);
+            return interaction.GetComponentInParent<InventoryHolder>().Reference.Has(_key, 1);
         }
     }
 }

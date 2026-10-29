@@ -1,35 +1,30 @@
-using Recalled.Core;
 using Recalled.Systems.Inventory;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 namespace Recalled.Gameplay.Inventory
 {
-[RequireComponent(typeof(InventoryHolder))]
-    [RequireComponent(typeof(ItemUser))]
-    sealed class QuickSlotsHolder : MonoBehaviour
+    [RequireComponent(typeof(InventoryHolder))]
+    [RequireComponent(typeof(ItemProcessor))]
+    internal sealed class QuickSlotsHolder : MonoBehaviour
     {
         [SerializeField] ItemDefinition[] _loadout;
 
         [Header("Sets")]
         [SerializeField] QuickSlotsAnchor _slotsAnchor;
 
-        [Header("Raises")]
-        [SerializeField] VoidGameEvent _quickSlotsChanged;
+        public QuickSlots Reference { get; private set; }
+        ItemProcessor _itemUser;
 
-        QuickSlots _quickSlots;
-        ItemUser _itemUser;
 
-        private void Awake() => _itemUser = GetComponent<ItemUser>();
+        private void Awake() => _itemUser = GetComponent<ItemProcessor>();
         private void Start()
         {
-            _quickSlots = new(_loadout, GetComponent<InventoryHolder>().Inventory);
+            Reference = new(_loadout, GetComponent<InventoryHolder>().Reference);
 
-            _quickSlots.Changed += () => _quickSlotsChanged.Invoke();
-            _slotsAnchor.Provide(_quickSlots);
+            _slotsAnchor.Provide(Reference);
         }
-        private void OnDestroy() => _slotsAnchor.Withdraw(_quickSlots);
+        private void OnDestroy() => _slotsAnchor.Withdraw(Reference);
 
         void OnQuickSlots(InputValue value)
         {
@@ -44,7 +39,7 @@ namespace Recalled.Gameplay.Inventory
             if (i == -1)
                 return;
 
-            if (_quickSlots[i]) _itemUser.ConsumeItem(_quickSlots[i]);
+            if (Reference[i]) _itemUser.Consume(Reference[i]);
         }
     }
 }

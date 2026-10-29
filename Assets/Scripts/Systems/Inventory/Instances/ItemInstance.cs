@@ -28,6 +28,7 @@ namespace Recalled.Systems.Inventory
         }
 
         internal int AppendStock(int count) => SetStock(_count + count);
+        internal int RemoveStock(int count) => SetStock(_count - count);
         internal int SetStock(int count)
         {
             _count = Mathf.Clamp(count, _definition.MinStockSize, _definition.MaxStockSize);

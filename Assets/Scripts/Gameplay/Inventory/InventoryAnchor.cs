@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Recalled.Gameplay.Inventory
 {
-    [CreateAssetMenu(menuName = "Inventory/Variable")]
+    [CreateAssetMenu(menuName = "Reference/Variable")]
     public sealed class InventoryAnchor : RuntimeAnchor<IBagView>
     {
 

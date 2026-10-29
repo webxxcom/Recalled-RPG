@@ -2,7 +2,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using System.Security.Cryptography;
 
 namespace Recalled.Systems.Inventory
 {
@@ -146,8 +145,6 @@ namespace Recalled.Systems.Inventory
 
             return false;
         }
-        public bool Remove(ItemDefinition itemDefinition)
-            => Take(itemDefinition, 1);
 
         bool TakeRecursively(ItemDefinition definition, int count, int i = 0)
         {
@@ -194,6 +191,20 @@ namespace Recalled.Systems.Inventory
             return false;
         }
 
+        public bool Take(ItemInstance item, int count)
+        {
+            if (item == null)
+                throw new ArgumentNullException();
+            if (count <= 0)
+                throw new ArgumentException();
+            if (item.Count < count)
+                return false;
+
+            item.RemoveStock(count);
+            Changed?.Invoke();
+            return true;
+        }
+
         public bool Has(ItemDefinition definition, uint count) => TotalCountOf(definition) >= count;
 
         public IEnumerator<ItemInstance> GetEnumerator()
@@ -204,7 +215,5 @@ namespace Recalled.Systems.Inventory
         public int TotalCountOf(ItemDefinition def)
             => _slots.Where(s => !s.IsEmpty && s.Item.Definition == def)
             .Sum(s => s.Item.Count);
-
-        public void RequestDiscardItem(ItemInstance item) => Remove(item);
     }
 }

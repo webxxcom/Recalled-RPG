@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace Recalled.Gameplay.Combat
 {
-    [CreateAssetMenu(menuName = "ApplyAttack/Melee Value")]
+    [CreateAssetMenu(menuName = "ApplyAttack/Melee Reference")]
     public class MeleeAttackSO : AttackSO
     {
         [SerializeField] int _dealtDamage = 10;

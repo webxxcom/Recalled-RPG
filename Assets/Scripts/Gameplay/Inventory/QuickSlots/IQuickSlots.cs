@@ -3,12 +3,12 @@ using System;
 
 namespace Recalled.Gameplay.Inventory
 {
-    public interface IQuickSlotsView
+    public interface IQuickSlots
     {
         QuickSlots.SlotView[] Slots { get; }
         ItemDefinition this[int index] { get; }
         event Action Changed;
-        void RequestDefinitionForSlot(ItemDefinition def, int i);
+        bool RequestDefinitionForSlot(ItemDefinition def, int i, out int occupiedSlot);
     }
 }
     

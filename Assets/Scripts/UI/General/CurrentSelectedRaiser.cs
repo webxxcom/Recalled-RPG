@@ -7,7 +7,7 @@ namespace Recalled.UI
     [RequireComponent(typeof(EventSystem))]
     sealed class CurrentSelectedRaiser : MonoBehaviour
     {
-        [Header("Sets Value to")]
+        [Header("Sets Reference to")]
         [SerializeField] GameObjectRuntimeVariable _currentSelected;
 
         GameObject _selectedObject;

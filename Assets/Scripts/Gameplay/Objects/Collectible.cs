@@ -20,7 +20,7 @@ namespace Recalled.Gameplay
                 if (!collision.TryGetComponent<InventoryHolder>(out var holder))
                     return;
 
-                _count = holder.Inventory.Add(_definition, _count);
+                _count = holder.Reference.Add(_definition, _count);
                 _collected?.Invoke();
 
                 if (_count != 0)

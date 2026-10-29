@@ -11,8 +11,11 @@ namespace Recalled.UI
         [SerializeField] QuickSlotsAnchor _quickSlotsAnchor;
         [SerializeField] InputActionReference _quickSlotsAction;
 
-        private void OnEnable() => _quickSlotsAction.action.performed += OnActionTriggered;
-        private void OnDisable() => _quickSlotsAction.action.performed -= OnActionTriggered;
+        [Tooltip("UIShake on each slot's Visual child, in slot order.")]
+        [SerializeField] UIShake[] _slotShakes;
+
+        void OnEnable() => _quickSlotsAction.action.performed += OnActionTriggered;
+        void OnDisable() => _quickSlotsAction.action.performed -= OnActionTriggered;
 
         void OnActionTriggered(InputAction.CallbackContext context)
         {
@@ -27,10 +30,10 @@ namespace Recalled.UI
             if (i == -1)
                 return;
 
-            PutIntoSlot(i);
+            TryAssign(i);
         }
 
-        void PutIntoSlot(int i)
+        void TryAssign(int i)
         {
             var eventSystem = EventSystem.current;
             if (eventSystem == null)
@@ -41,7 +44,12 @@ namespace Recalled.UI
                 return;
 
             if (_quickSlotsAnchor.IsSet)
-                _quickSlotsAnchor.Value.RequestDefinitionForSlot(ivSlot.ItemInstance.Definition, i);
+            {
+                var put = _quickSlotsAnchor.Value.RequestDefinitionForSlot(ivSlot.ItemInstance.Definition, i, out var occupiedSlot);
+
+                if (!put)
+                    _slotShakes[occupiedSlot].Play();
+            }
             else Debug.LogWarning($"The {nameof(_quickSlotsAnchor)} was not provided");
         }
     }
