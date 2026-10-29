@@ -10,7 +10,7 @@ namespace Recalled.UI
         [SerializeField] ToggleableGroup _activatees;
         [SerializeField] Toggleable _firstActivated;
 
-        readonly Dictionary<IToggleable, IToggleable> _activorsToActivated = new();
+        readonly Dictionary<IToggleable, Toggleable> _activorsToActivated = new();
 
         private void Awake()
         {
@@ -22,26 +22,17 @@ namespace Recalled.UI
                     _activorsToActivated[toggleable] = found;
             }
         }
-
+        private void OnEnable() => _activators.ActiveChanged += ToggleActivatee;
+        private void OnDisable() => _activators.ActiveChanged -= ToggleActivatee;
         private void Start()
         {
-            if (_activators.TryAddActive(_firstActivated))
-                ToggleActivatee(_firstActivated);
-        }
-
-        private void OnEnable()
-        {
-            _activators.ActiveChanged += ToggleActivatee;
-        }
-        private void OnDisable()
-        {
-            _activators.ActiveChanged -= ToggleActivatee;
+            if (_firstActivated) _firstActivated.RequestToggle();
         }
 
         void ToggleActivatee(IToggleable toggleable)
         {
             if (_activorsToActivated.TryGetValue(toggleable, out var value))
-                _activatees.TryAddActive(value);
+                value.RequestToggle();
         }
     }
 }

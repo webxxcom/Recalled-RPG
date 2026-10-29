@@ -62,10 +62,7 @@ namespace Recalled.UI
 
         GraphicAnimator _animator;
 
-        private void OnDisable()
-        {
-            Stop();
-        }
+        private void OnDisable() => Stop();
 
         public void Play(string clip)
         {

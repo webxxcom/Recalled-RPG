@@ -16,14 +16,12 @@ namespace Recalled.UI
     ///     is active or multiple screens are allowed
     /// 
     /// </summary>
-    public class ToggleableGroup : MonoBehaviour
+    sealed class ToggleableGroup : MonoBehaviour
     {
         [SerializeField] bool _allowEmpty;
         [SerializeField] bool _allowMultiple;
 
         List<Toggleable> _toggleables;
-        protected IReadOnlyList<IToggleable> Active => _toggleables.Where(t => t.IsActive).ToArray();
-
         public IReadOnlyList<Toggleable> Elements
         {
             get
@@ -45,42 +43,44 @@ namespace Recalled.UI
 
         private void OnEnable()
         {
-            foreach (var screen in Elements)
-                screen.ToggleRequested += Toggle;
+            foreach (var toggleable in Elements)
+                toggleable.ToggleRequested += Toggle;
         }
         private void OnDisable()
         {
-            foreach (var screen in Elements)
-                screen.ToggleRequested -= Toggle;
+            foreach (var toggleable in Elements)
+                toggleable.ToggleRequested -= Toggle;
         }
 
         void Toggle(Toggleable toggleable)
         {
-            if (Active.Contains(toggleable)) TryRemoveActiveToggleable(toggleable);
+            if (toggleable.IsActive) RemoveActiveToggleable(toggleable);
             else AddActiveToggleable(toggleable);
         }
 
-        protected virtual bool AddActiveToggleable(IToggleable toggleable)
+
+        bool AddActiveToggleable(IToggleable toggleable)
         {
             // Don't want to set same again or more than one if disallowed
             if (toggleable == null || toggleable.IsActive)
                 return false;
 
-            if (!_allowMultiple && Active.Any())
-                Active.First().SetIsActive(false);
+            IToggleable firstActive = _toggleables.FirstOrDefault(t => t.IsActive);
+            if (!_allowMultiple && firstActive != null)
+                firstActive.SetIsActive(false);
 
             toggleable.SetIsActive(true);
             ActiveChanged?.Invoke(toggleable);
             return true;
         }
 
-        protected virtual bool TryRemoveActiveToggleable(IToggleable toggleable)
+        bool RemoveActiveToggleable(IToggleable toggleable)
         {
-            if (toggleable == null || !toggleable.IsActive || (!_allowEmpty && Active.Count <= 1))
+            if (toggleable == null || !toggleable.IsActive || (!_allowEmpty && !_toggleables.Any(t => t.IsActive)))
                 return false;
 
             toggleable.SetIsActive(false);
-            ActiveChanged?.Invoke(Active.Count != 0 ? Active[^1] : null);
+            ActiveChanged?.Invoke(_toggleables.LastOrDefault(t => t.IsActive));
             return true;
         }
 
@@ -96,24 +96,6 @@ namespace Recalled.UI
 
             var nextTab = _toggleables[(i + offset) % _toggleables.Count];
             AddActiveToggleable(nextTab);
-        }
-
-        public bool TryAddActive(IToggleable toggleable)
-        {
-            if (toggleable == null || !_toggleables.Contains(toggleable))
-                return false;
-
-            AddActiveToggleable(toggleable);
-            return true;
-        }
-
-        public bool TryRemoveActive(Toggleable toggleable)
-        {
-            if (toggleable == null || !_toggleables.Contains(toggleable))
-                return false;
-
-            TryRemoveActiveToggleable(toggleable);
-            return true;
         }
     }
 }

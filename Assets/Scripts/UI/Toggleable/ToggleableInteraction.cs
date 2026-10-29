@@ -22,10 +22,7 @@ namespace Recalled.UI
 
             UpdateState(_toggleable.IsActive);
         }
-        private void OnDisable()
-        {
-            _toggleable.StateChanged.RemoveListener(UpdateState);
-        }
+        private void OnDisable() => _toggleable.StateChanged.RemoveListener(UpdateState);
 
         void UpdateState(bool flag)
         {
