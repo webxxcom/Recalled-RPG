@@ -6,7 +6,9 @@
 # This template is maintained from the gitattributes/gitattributes repository
 # and distributed under MIT License.
 
-Resources/*
+# Third-party files: keep them out of GitHub's language stats
+Assets/Resources/Tilesets/** linguist-vendored
+Assets/TextMesh?Pro/** linguist-vendored
 
 # Define macros (only works in top-level gitattributes files)
 [attr]lfs               filter=lfs diff=lfs merge=lfs -text
