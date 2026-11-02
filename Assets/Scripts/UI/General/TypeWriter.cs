@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -7,43 +6,42 @@ using UnityEngine.InputSystem;
 namespace Recalled.UI
 {
     [RequireComponent(typeof(TMP_Text))]
-    public class TypeWriter : MonoBehaviour
+    internal sealed class TypeWriter : MonoBehaviour
     {
         [SerializeField] float _delay = 0.035f;
         [SerializeField] InputActionReference[] _actions;
 
         TMP_Text _text;
-        bool _cancellationToken;
-        bool _isTyping;
+        bool _skipToken;
 
         private void Awake() => _text = GetComponent<TMP_Text>();
         private void OnEnable()
         {
-            foreach (var actionRef in _actions) actionRef.action.canceled += Skip;
+            foreach (var actionRef in _actions)
+                actionRef.action.performed += Skip;
         }
         private void OnDisable()
         {
-            foreach (var actionRef in _actions) actionRef.action.canceled -= Skip;
+            foreach (var actionRef in _actions)
+                actionRef.action.performed -= Skip;
         }
-
-        void Skip(InputAction.CallbackContext context)
-        {
-            if (_isTyping) _cancellationToken = true;
-        }
+        void Skip(InputAction.CallbackContext _) => _skipToken = true;
 
         public IEnumerator TypeWriteWithSkip(string text)
         {
             _text.text = text;
             _text.maxVisibleCharacters = 0;
-            _isTyping = true;
+            _skipToken = false;
 
-            float elapsed = 0;
+            float elapsed;
             while (_text.maxVisibleCharacters < _text.text.Length)
             {
+                elapsed = 0;
                 _text.maxVisibleCharacters++;
+
                 while (elapsed < _delay)
                 {
-                    if (_cancellationToken)
+                    if (_skipToken)
                     {
                         _text.maxVisibleCharacters = _text.text.Length;
                         break;
@@ -52,10 +50,7 @@ namespace Recalled.UI
                     elapsed += Time.unscaledDeltaTime;
                     yield return null;
                 }
-                elapsed = 0;
             }
-            _isTyping = false;
-            _cancellationToken = false;
         }
     }
 }

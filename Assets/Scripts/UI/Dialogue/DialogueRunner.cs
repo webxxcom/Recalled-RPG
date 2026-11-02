@@ -39,10 +39,7 @@ namespace Recalled.UI
             _dialogueChannel.AddListener(OnDialogueChannel);
         }
 
-        private void OnDestroy()
-        {
-            _dialogueChannel.RemoveListener(OnDialogueChannel);
-        }
+        private void OnDestroy() => _dialogueChannel.RemoveListener(OnDialogueChannel);
 
         bool _isDirty;
         Coroutine _dialogueCoroutine;
@@ -141,7 +138,7 @@ namespace Recalled.UI
         IEnumerator WaitForInputAction()
         {
             yield return null; // skip this frame's press
-            yield return new WaitUntil(() => _skipActions.Any(t => t.action.WasReleasedThisFrame()));
+            yield return new WaitUntil(() => _skipActions.Any(t => t.action.WasPerformedThisDynamicUpdate()));
             yield return null; // Consume this one
         }
     }

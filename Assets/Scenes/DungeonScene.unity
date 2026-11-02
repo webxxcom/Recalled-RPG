@@ -284,17 +284,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 385440463970829723, guid: 500a443843846f94098eeab5c4647204, type: 3}
   m_PrefabInstance: {fileID: 91671285}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &145451354 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8467507851206656365, guid: 05c21f723d3cdbc4ab0a31fbd70cd0f7, type: 3}
-  m_PrefabInstance: {fileID: 162602340}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ccbf9b5ad9a2b374b92f768ea5e9ed8d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Toggleable
 --- !u!1001 &162602340
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -543,10 +532,6 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1075289889788511632, guid: 05c21f723d3cdbc4ab0a31fbd70cd0f7, type: 3}
-      propertyPath: _firstActivated
-      value: 
-      objectReference: {fileID: 145451354}
     - target: {fileID: 1204620722222649022, guid: 05c21f723d3cdbc4ab0a31fbd70cd0f7, type: 3}
       propertyPath: m_Name
       value: Book
@@ -1049,10 +1034,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3185503732845258813, guid: 05c21f723d3cdbc4ab0a31fbd70cd0f7, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3513828680334018968, guid: 05c21f723d3cdbc4ab0a31fbd70cd0f7, type: 3}
-      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3537635031214153171, guid: 05c21f723d3cdbc4ab0a31fbd70cd0f7, type: 3}
