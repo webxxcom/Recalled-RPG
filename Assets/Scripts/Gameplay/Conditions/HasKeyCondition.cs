@@ -6,7 +6,7 @@ using UnityEngine;
 namespace Recalled.Gameplay
 {
     [Serializable]
-    public class HasKeyCondition : IInteractionCondition
+    internal class HasKeyCondition : IInteractionCondition
     {
         [SerializeField] ItemDefinition _key;
 

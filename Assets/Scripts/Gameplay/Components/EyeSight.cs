@@ -20,13 +20,13 @@ namespace Recalled.Gameplay
         readonly RaycastHit2D[] hits = new RaycastHit2D[1];
         private void OnTriggerStay2D(Collider2D collision)
         {
-            var hitsN = Physics2D.RaycastNonAlloc(
-                _collider2D.bounds.center,
-                Vector2.Normalize(collision.transform.position - transform.position),
-                hits,
-                _collider2D.radius,
-                _layerMask.value);
+            if (_overlaps.Contains(collision.gameObject)) return;
 
+            var origin = _collider2D.bounds.center;
+            var dir = Vector2.Normalize(collision.transform.position - transform.position);
+            var dist = _collider2D.radius;
+
+            var hitsN = Physics2D.RaycastNonAlloc(origin, dir, hits, dist, _layerMask.value);
             if (hitsN > 0)
                 return;
 

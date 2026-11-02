@@ -6,7 +6,7 @@ namespace Recalled.Gameplay
 {
     [SelectionBase]
     [RequireComponent(typeof(Interactable))]
-    public class Npc : MonoBehaviour
+    internal class Npc : MonoBehaviour
     {
         [SerializeField] DialogueSource _data;
 

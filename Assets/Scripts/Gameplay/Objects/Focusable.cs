@@ -16,5 +16,16 @@ namespace Recalled.Gameplay
         {
             _focused.Invoke(false);
         }
+
+        private void OnTriggerEnter2D(Collider2D collision)
+        {
+            if (collision.TryGetComponent<InteractionProcessor>(out var _))
+                _focused.Invoke(true);
+        }
+        private void OnTriggerExit2D(Collider2D collision)
+        {
+            if (collision.TryGetComponent<InteractionProcessor>(out var _))
+                _focused.Invoke(false);
+        }
     }
 }

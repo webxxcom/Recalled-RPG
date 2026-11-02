@@ -1,6 +1,6 @@
 namespace Recalled.Gameplay
 {
-    public interface IInteractionCondition
+    internal interface IInteractionCondition
     {
         bool Check(InteractionProcessor interaction);
         bool Apply(InteractionProcessor interaction);

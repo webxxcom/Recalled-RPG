@@ -8,7 +8,7 @@ using UnityEngine.Events;
 namespace Recalled.Gameplay
 {
     [RequireComponent(typeof(Interactable))]
-    public sealed class Chest : MonoBehaviour
+    internal sealed class Chest : MonoBehaviour
     {
         [SerializeField] ItemDefinition _requiredKey;
         [SerializeField] LootTable _lootTable;
