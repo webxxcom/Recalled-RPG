@@ -52,20 +52,20 @@ MonoBehaviour:
       Released: {fileID: 2693708649983283906, guid: b240b7f8ab30c4040b2453212eb7ee38, type: 3}
   - _path: dpad/up
     _frames:
-      Pressed: {fileID: 3748167293724885773, guid: b10d0f9df714a3947bfa3e86134eaf7a, type: 3}
-      Released: {fileID: 1690350123862750284, guid: b10d0f9df714a3947bfa3e86134eaf7a, type: 3}
+      Pressed: {fileID: -3973898596593023253, guid: 7bc84bcbf4e2e6d428ad5f230524e072, type: 3}
+      Released: {fileID: -3973898596593023253, guid: 7bc84bcbf4e2e6d428ad5f230524e072, type: 3}
   - _path: dpad/down
     _frames:
-      Pressed: {fileID: -6608621346297814346, guid: b10d0f9df714a3947bfa3e86134eaf7a, type: 3}
-      Released: {fileID: -5843400385420062974, guid: b10d0f9df714a3947bfa3e86134eaf7a, type: 3}
+      Pressed: {fileID: -91379860841068940, guid: 7bc84bcbf4e2e6d428ad5f230524e072, type: 3}
+      Released: {fileID: -91379860841068940, guid: 7bc84bcbf4e2e6d428ad5f230524e072, type: 3}
   - _path: dpad/left
     _frames:
-      Pressed: {fileID: -5325720778019076065, guid: b10d0f9df714a3947bfa3e86134eaf7a, type: 3}
-      Released: {fileID: -1149440019849829769, guid: b10d0f9df714a3947bfa3e86134eaf7a, type: 3}
+      Pressed: {fileID: 6536714373949701191, guid: 7bc84bcbf4e2e6d428ad5f230524e072, type: 3}
+      Released: {fileID: 6536714373949701191, guid: 7bc84bcbf4e2e6d428ad5f230524e072, type: 3}
   - _path: dpad/right
     _frames:
-      Pressed: {fileID: 332659519393252310, guid: b10d0f9df714a3947bfa3e86134eaf7a, type: 3}
-      Released: {fileID: 7077469740812172911, guid: b10d0f9df714a3947bfa3e86134eaf7a, type: 3}
+      Pressed: {fileID: 7043970390639535549, guid: 7bc84bcbf4e2e6d428ad5f230524e072, type: 3}
+      Released: {fileID: 7043970390639535549, guid: 7bc84bcbf4e2e6d428ad5f230524e072, type: 3}
   - _path: leftStick
     _frames:
       Pressed: {fileID: -3516281433549496296, guid: b240b7f8ab30c4040b2453212eb7ee38, type: 3}
@@ -74,3 +74,7 @@ MonoBehaviour:
     _frames:
       Pressed: {fileID: 9017920520576934180, guid: b240b7f8ab30c4040b2453212eb7ee38, type: 3}
       Released: {fileID: -5921052742911719464, guid: b240b7f8ab30c4040b2453212eb7ee38, type: 3}
+  - _path: dpad
+    _frames:
+      Pressed: {fileID: -4460590879795636732, guid: 7bc84bcbf4e2e6d428ad5f230524e072, type: 3}
+      Released: {fileID: -2385793834391949893, guid: 7bc84bcbf4e2e6d428ad5f230524e072, type: 3}

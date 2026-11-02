@@ -300,12 +300,34 @@
                     "isPartOfComposite": true
                 },
                 {
+                    "name": "up",
+                    "id": "f53478b5-750f-4169-a34b-8a52e61818f7",
+                    "path": "<Gamepad>/dpad/up",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Gamepad",
+                    "action": "Quick Slots",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
                     "name": "down",
                     "id": "75b0f724-eab1-4dbe-91f3-5b61cb929a7e",
                     "path": "<Keyboard>/4",
                     "interactions": "",
                     "processors": "",
                     "groups": ";Keyboard&Mouse",
+                    "action": "Quick Slots",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "down",
+                    "id": "3d6d8275-3077-41d6-bd44-6c2a3e81048e",
+                    "path": "<Gamepad>/dpad/down",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Gamepad",
                     "action": "Quick Slots",
                     "isComposite": false,
                     "isPartOfComposite": true
@@ -322,6 +344,17 @@
                     "isPartOfComposite": true
                 },
                 {
+                    "name": "left",
+                    "id": "17d18e72-eb46-4c6d-ada0-7a64c51643be",
+                    "path": "<Gamepad>/dpad/left",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Gamepad",
+                    "action": "Quick Slots",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
                     "name": "right",
                     "id": "baf503df-54a8-4d5d-b11f-58ab5607f87e",
                     "path": "<Keyboard>/3",
@@ -333,15 +366,15 @@
                     "isPartOfComposite": true
                 },
                 {
-                    "name": "",
-                    "id": "cca98757-746f-497b-b68c-0c9d8207d04b",
-                    "path": "<Gamepad>/dpad",
+                    "name": "right",
+                    "id": "1711a68a-2fbd-46d7-a3f3-565d220ee043",
+                    "path": "<Gamepad>/dpad/right",
                     "interactions": "",
                     "processors": "",
                     "groups": ";Gamepad",
                     "action": "Quick Slots",
                     "isComposite": false,
-                    "isPartOfComposite": false
+                    "isPartOfComposite": true
                 }
             ]
         },
@@ -514,12 +547,34 @@
                     "isPartOfComposite": true
                 },
                 {
+                    "name": "up",
+                    "id": "379dd4e4-9a42-42c7-8d7a-208bdbf8c3b4",
+                    "path": "<Gamepad>/dpad/up",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Gamepad",
+                    "action": "Equip Quick Slots",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
                     "name": "down",
                     "id": "24cd4c62-adfd-4822-9088-8951e8c9ae6a",
                     "path": "<Keyboard>/4",
                     "interactions": "",
                     "processors": "",
                     "groups": ";Keyboard&Mouse",
+                    "action": "Equip Quick Slots",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "down",
+                    "id": "54985b69-cc67-44e4-a48a-af54342747f8",
+                    "path": "<Gamepad>/dpad/down",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Gamepad",
                     "action": "Equip Quick Slots",
                     "isComposite": false,
                     "isPartOfComposite": true
@@ -536,6 +591,17 @@
                     "isPartOfComposite": true
                 },
                 {
+                    "name": "left",
+                    "id": "7d863b29-84f4-4aab-954f-4120b6226c71",
+                    "path": "<Gamepad>/dpad/left",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Gamepad",
+                    "action": "Equip Quick Slots",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
                     "name": "right",
                     "id": "004a0871-293a-4e11-b5d9-27ccf5fec1f5",
                     "path": "<Keyboard>/3",
@@ -547,15 +613,15 @@
                     "isPartOfComposite": true
                 },
                 {
-                    "name": "",
-                    "id": "d597e6a1-2666-4681-bddf-e35f01a373f2",
-                    "path": "<Gamepad>/dpad",
+                    "name": "right",
+                    "id": "b76b5cd0-6f0b-42d4-b794-63f6961a9bcc",
+                    "path": "<Gamepad>/dpad/right",
                     "interactions": "",
                     "processors": "",
                     "groups": ";Gamepad",
                     "action": "Equip Quick Slots",
                     "isComposite": false,
-                    "isPartOfComposite": false
+                    "isPartOfComposite": true
                 },
                 {
                     "name": "Keyboard",
