@@ -8,7 +8,7 @@ using UnityEngine.UI;
 
 namespace Recalled.UI.Inventory
 {
-    public sealed class InventorySlotsView : MonoBehaviour
+    sealed class InventorySlotsView : MonoBehaviour
     {
         [SerializeField] InventoryAnchor _inventoryAnchor;
         [SerializeField] PrefabPopulator _populator;
@@ -68,12 +68,15 @@ namespace Recalled.UI.Inventory
                 if (item != null) _slotsView[i].ShowItem(item, !isVisible);
                 else _slotsView[i].ShowEmpty();
 
-                if (firstActiveSlot == null && item != null && isVisible) firstActiveSlot = _slotsView[i];
+                if (firstActiveSlot == null && isVisible) firstActiveSlot = _slotsView[i];
             }
 
-            var currentSelected = EventSystem.current.currentSelectedGameObject;
-            if (firstActiveSlot != null && (currentSelected == null || (currentSelected.TryGetComponent<Selectable>(out var selectable) && !selectable.enabled)))
-                EventSystem.current.SetSelectedGameObject(firstActiveSlot.gameObject);
+            var currentSel = EventSystem.current.currentSelectedGameObject;
+            if (firstActiveSlot != null)
+            {
+                if (currentSel == null || (currentSel.TryGetComponent<Selectable>(out var s) && !s.enabled))
+                    EventSystem.current.SetSelectedGameObject(firstActiveSlot.gameObject);
+            }
             else EventSystem.current.SetSelectedGameObject(null);
         }
 

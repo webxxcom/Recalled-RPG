@@ -432,6 +432,12 @@ MonoBehaviour:
   _animationController: {fileID: 4782641299976584344}
   _attackStrategies:
   - {fileID: 1017372488747182917}
+  AttackStarted:
+    m_PersistentCalls:
+      m_Calls: []
+  AttackFinished:
+    m_PersistentCalls:
+      m_Calls: []
   _meleeAttackData: {fileID: 11400000, guid: 3874b33b6ce54b849af454eb61ed5ea4, type: 2}
 --- !u!114 &1017372488747182917
 MonoBehaviour:
@@ -1242,6 +1248,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Recalled.Gameplay::Movementable
   _walkingSpeed: 2
+  OnMovement:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &7162682655650916106
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1432,7 +1441,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: d46a40fa60fa96e4baec8cc674a76eb1, type: 2}
   - {fileID: 11400000, guid: 7731e81e68071414da725ade43d9b4ec, type: 2}
   _slotsAnchor: {fileID: 11400000, guid: f245f90d432f41045899e1c973919586, type: 2}
-  _quickSlotsChanged: {fileID: 11400000, guid: 0d4664b3a5cf9054b9cf72d733ec5bc7, type: 2}
 --- !u!114 &2604665884603746442
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1445,6 +1453,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8dd2277ec37695e469a4cc977c7c877a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Recalled.Gameplay::Recalled.Gameplay.ItemUser
+  _processorAnchor: {fileID: 11400000, guid: 0dc54fe998362e74e9df7a516651c58a, type: 2}
 --- !u!1 &8375044973183638792
 GameObject:
   m_ObjectHideFlags: 0

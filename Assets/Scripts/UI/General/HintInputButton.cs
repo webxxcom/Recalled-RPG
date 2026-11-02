@@ -16,7 +16,7 @@ namespace Recalled.UI
     /// The object activating the button should populate current control scheme
     /// </summary>
     [RequireComponent(typeof(Image))]
-    public class HintInputButton : MonoBehaviour
+    public sealed class HintInputButton : MonoBehaviour
     {
         [SerializeField] InputActionReference _inputAction;
         [Tooltip("Fill in only if the action contains composite bindings")]
@@ -77,8 +77,10 @@ namespace Recalled.UI
 
         void OnInputDeviceChanged(InputDeviceSO inputDevice)
         {
-            _frames = inputDevice.GetFramesForAction(_inputAction.action, _compositePartName);
+            if (inputDevice == null)
+                return;
 
+            _frames = inputDevice.GetFramesForAction(_inputAction.action, _compositePartName);
             UpdateGraphics();
         }
     }

@@ -676,6 +676,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 844e230b86e96f24d976738432b9c215, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Recalled.UI::Recalled.UI.ToggleableUiBehavior
+  _firstSelected: {fileID: 0}
 --- !u!1 &4440890812020815409
 GameObject:
   m_ObjectHideFlags: 0
