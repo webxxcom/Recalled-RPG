@@ -5200,6 +5200,7 @@ GameObject:
   - component: {fileID: 7068105315267738624}
   - component: {fileID: 3814502691735498026}
   - component: {fileID: 7856862879736404136}
+  - component: {fileID: 2059939078082198689}
   m_Layer: 5
   m_Name: Content
   m_TagString: Untagged
@@ -5324,6 +5325,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Recalled.UI::Recalled.UI.DiscardItem
   _actionReference: {fileID: -4377984260820160753, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
+  _itemProcessorAnchor: {fileID: 11400000, guid: 0dc54fe998362e74e9df7a516651c58a, type: 2}
+--- !u!114 &2059939078082198689
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4223665171452222209}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 14d32f07007d7da43806432bf0ea480f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+  _useAction: {fileID: 392368643174621059, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   _itemProcessorAnchor: {fileID: 11400000, guid: 0dc54fe998362e74e9df7a516651c58a, type: 2}
 --- !u!1 &4405131892048501857
 GameObject:
@@ -17014,6 +17029,10 @@ PrefabInstance:
       propertyPath: _view
       value: 
       objectReference: {fileID: 7068105315267738624}
+    - target: {fileID: 3224609862533463858, guid: efa1f3b7f057d0e4e80af06456f04756, type: 3}
+      propertyPath: _category
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 3379468467864268875, guid: efa1f3b7f057d0e4e80af06456f04756, type: 3}
       propertyPath: _requestOnStart
       value: 1

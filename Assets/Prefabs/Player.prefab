@@ -1275,7 +1275,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80671b5b445efbe4c84cbf7ca43fa800, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Recalled.Gameplay::Movementable
-  _speedDefinition: {fileID: 0}
+  _speedDefinition: {fileID: 11400000, guid: 57f17e86497345f4dae024b88ad0442d, type: 2}
   OnMovement:
     m_PersistentCalls:
       m_Calls: []
