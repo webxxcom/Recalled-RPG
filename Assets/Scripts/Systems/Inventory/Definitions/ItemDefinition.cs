@@ -3,16 +3,20 @@ using UnityEngine;
 
 namespace Recalled.Systems.Inventory
 {
-    [CreateAssetMenu(menuName = "Inventory/Items/General")]
-    public class ItemDefinition : ScriptableObject
+    [CreateAssetMenu(menuName = "Bag/Item Definition")]
+    public sealed class ItemDefinition : ScriptableObject
     {
-        [field: SerializeField] public string Name { get; private set; }
-        [field: SerializeField] public Sprite Icon { get; private set; }
-        [field: SerializeField] public string Description { get; private set; }
+        [SerializeField] string _name;
+        [SerializeField] Sprite _icon;
+        [SerializeField] string _description;
         [SerializeField][Min(1)] int _maxStockSize = 999;
-        [field: SerializeField] public ItemCategory Category { get; private set; } = ItemCategory.Consumable;
+        [SerializeField] ItemCategory _category = ItemCategory.Consumable;
         [SerializeReference, SubclassSelector] List<IModule> _modules;
 
+        public string Name => _name;
+        public Sprite Icon => _icon;
+        public string Description => _description;
+        public string Extra => ""; // TODO extra info
         public int MinStockSize => 1;
         public int MaxStockSize { get => _maxStockSize; internal set => _maxStockSize = value; }
         public bool IsStackable => _maxStockSize > MinStockSize;
@@ -23,7 +27,7 @@ namespace Recalled.Systems.Inventory
                 if (module.DomainCategory == category)
                     return true;
             }
-            return category == ItemCategory.Any || Category == category;
+            return category == ItemCategory.Any || _category == category;
         }
 
         public bool TryGetModule<T>(out T result) where T : IModule
@@ -40,10 +44,6 @@ namespace Recalled.Systems.Inventory
 
             return false;
         }
-
-        public virtual ItemInstance CreateInstance(int count = 1)
-        {
-            return new(this, count);
-        }
+        public ItemInstance CreateInstance(int count = 1) => new(this, count);
     }
 }

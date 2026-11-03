@@ -11,10 +11,7 @@ namespace Recalled.UI.Inventory
 
         public ItemInstance ItemInstance { get; private set; }
 
-        private void OnEnable()
-        {
-            ShowEmpty();
-        }
+        private void OnEnable() => ShowEmpty();
 
         public virtual void ShowItem(ItemInstance instance, bool showDimmed)
         {
@@ -24,6 +21,8 @@ namespace Recalled.UI.Inventory
             _icon.enabled = true;
             _icon.color = showDimmed ? _dimColor : Color.white;
         }
+
+        public void Dim() => _icon.color = _dimColor;
 
         public virtual void ShowEmpty()
         {

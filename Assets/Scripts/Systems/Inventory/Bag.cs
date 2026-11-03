@@ -42,7 +42,10 @@ namespace Recalled.Systems.Inventory
 
             _slots = new Slot[capacity];
             for (int i = 0; i < loadout.Length; i++)
-                _slots[i] = new(loadout[i].Copy());
+            {
+                var item = loadout[i];
+                _slots[i] = new(item.Copy());
+            }
         }
 
         public int Add(ItemDefinition definition, int count)

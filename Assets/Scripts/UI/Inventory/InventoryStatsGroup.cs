@@ -33,7 +33,7 @@ namespace Recalled.UI
         {
             foreach (var statHolder in _statsHolders)
             {
-                var n = _inventoryView.Where(i => i != null && i.Definition.Category == statHolder.Group).Count();
+                var n = _inventoryView.Where(i => i != null && i.Definition.IsInCategory(statHolder.Group)).Count();
 
                 statHolder.Show(n, _inventoryView.Count);
             }

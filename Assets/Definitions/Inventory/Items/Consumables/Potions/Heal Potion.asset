@@ -10,24 +10,24 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6e183e6339ed2b04fb2956ad3fc77a77, type: 3}
-  m_Name: Healing Potion
-  m_EditorClassIdentifier: Assembly-CSharp::ItemDefinition
-  <Name>k__BackingField: Healing Potion
-  <Icon>k__BackingField: {fileID: 817752166335122541, guid: 0daa3ba3dddbbca448bb810d864562d8, type: 3}
-  <Description>k__BackingField: Sometimes all you need in life is to just heal.
+  m_Name: Heal Potion
+  m_EditorClassIdentifier: Recalled.Systems::Recalled.Systems.Inventory.ItemDefinition
+  _name: Heal Potion
+  _icon: {fileID: -9154038787517364728, guid: 1a65b3f4372800f40a20f414fbed9cc7, type: 3}
+  _description: Well.. it can heal you
   _maxStockSize: 999
-  <Category>k__BackingField: 0
+  _category: 0
   _modules:
-  - rid: 1304809717832613975
+  - rid: 127226768443834443
   references:
     version: 2
     RefIds:
-    - rid: 1304809717832613975
+    - rid: 127226768443834443
       type: {class: Consumable, ns: Recalled.Gameplay, asm: Recalled.Gameplay}
       data:
         _effects:
-        - rid: 1304809717832613978
-    - rid: 1304809717832613978
+        - rid: 127226768443834444
+    - rid: 127226768443834444
       type: {class: HealingEffect, ns: Recalled.Gameplay, asm: Recalled.Gameplay}
       data:
-        _healingPower: 12
+        _healingPower: 10

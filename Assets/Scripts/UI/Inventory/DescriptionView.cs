@@ -5,34 +5,34 @@ using UnityEngine;
 
 namespace Recalled.UI.Inventory
 {
-    public class DescriptionView : MonoBehaviour
+    internal sealed class DescriptionView : MonoBehaviour
     {
         [SerializeField] InventoryCell _cell;
-        [SerializeField] TextMeshProUGUI _header;
-        [SerializeField] TextMeshProUGUI _extra;
-        [SerializeField] TextMeshProUGUI _description;
+        [SerializeField] TMP_Text _header;
+        [SerializeField] TMP_Text _extra;
+        [SerializeField] TMP_Text _description;
 
         [Header("Reads")]
         [SerializeField] GameObjectRuntimeVariable _currentSelected;
 
-        private void OnEnable() => _currentSelected.Subscribe(OnCellSelected);
-        private void OnDisable() => _currentSelected.Unsubscribe(OnCellSelected);
+        private void OnEnable() => _currentSelected.Subscribe(OnCurrentSelected);
+        private void OnDisable() => _currentSelected.Unsubscribe(OnCurrentSelected);
 
         void Show(ItemInstance instance)
         {
             _cell.ShowItem(instance, false);
             _header.text = instance.Definition.Name;
-            _description.text = instance.Description;
+            _extra.text = instance.Definition.Extra;
+            _description.text = instance.Definition.Description;
         }
 
         void Hide()
         {
-            _cell.ShowEmpty();
-            _header.text = "";
-            _description.text = "";
+            if (_cell.ItemInstance != null) _cell.Dim();
+            else _cell.ShowEmpty();
         }
 
-        void OnCellSelected(GameObject game)
+        void OnCurrentSelected(GameObject game)
         {
             if (game != null && game.TryGetComponent<InventorySlot>(out var slot))
                 Show(slot.ItemInstance);

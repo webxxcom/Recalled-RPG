@@ -4,17 +4,13 @@ using UnityEngine;
 namespace Recalled.Systems.Inventory
 {
     [Serializable]
-    public class ItemInstance
+    public sealed class ItemInstance
     {
         [SerializeField] ItemDefinition _definition;
-        [SerializeField] int _count;
+        [SerializeField, Min(1)] int _count;
 
         public ItemDefinition Definition => _definition;
         public int Count => _count;
-        public virtual string Description => _definition.Description;
-
-        internal ItemInstance(ItemDefinition definition)
-            : this(definition, 1) { }
 
         internal ItemInstance(ItemDefinition definition, int count)
         {
@@ -34,6 +30,6 @@ namespace Recalled.Systems.Inventory
             _count = Mathf.Clamp(count, _definition.MinStockSize, _definition.MaxStockSize);
             return count - _count;
         }
-        internal virtual ItemInstance Copy() => new(Definition, Count);
+        internal ItemInstance Copy() => new(Definition, Count);
     }
 }
