@@ -1,8 +1,5 @@
 using Recalled.UI;
-using System.Collections;
-using TMPro;
 using UnityEngine;
-using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 [RequireComponent(typeof(AudioSource))]
@@ -13,11 +10,9 @@ internal class SpeakerDialogueController : MonoBehaviour
     [SerializeField] TypeWriter _typeWriter;
 
     AudioSource _audioSource;
+    public bool IsDone => !_typeWriter.IsTyping;
 
-    void Awake()
-    {
-        _audioSource = GetComponent<AudioSource>();
-    }
+    void Awake() => _audioSource = GetComponent<AudioSource>();
 
     public void Init(Sprite faceset)
     {
@@ -29,16 +24,18 @@ internal class SpeakerDialogueController : MonoBehaviour
         _emotionImage.enabled = true;
     }
 
-    public IEnumerator Speak(string text, Sprite emotionSprite)
+    public void Speak(string text, Sprite emotionSprite)
     {
         _audioSource.Play();
         _emotionImage.sprite = emotionSprite;
         _emotionImage.preserveAspect = true;
         _emotionImage.enabled = true;
+        _typeWriter.Play(text);
+    }
 
-        // Typewrite until skip action
-        yield return _typeWriter.TypeWriteWithSkip(text);
-
+    public void Finish()
+    {
         _audioSource.Stop();
+        _typeWriter.Stop();
     }
 }

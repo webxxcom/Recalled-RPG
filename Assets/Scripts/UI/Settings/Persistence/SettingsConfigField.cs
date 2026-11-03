@@ -32,7 +32,7 @@ namespace Assets.Scripts.UI.Settings.Persistence
         private void OnValidate()
         {
             if (!SettingsDataService.FindField(_fieldName).FieldType.IsEquivalentTo(Value.GetType()))
-                throw new UnityException($"Type mismatch of settings field '{gameObject.name}' and set '{_fieldName}'");
+                throw new UnityException($"Play mismatch of settings field '{gameObject.name}' and set '{_fieldName}'");
         }
 #endif
     }

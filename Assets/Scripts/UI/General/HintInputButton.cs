@@ -35,6 +35,7 @@ namespace Recalled.UI
         void UpdateGraphics(Sprite sprite)
         {
             _graphic.sprite = sprite;
+            _graphic.preserveAspect = true;
         }
 
         void OnPress(InputAction.CallbackContext _)

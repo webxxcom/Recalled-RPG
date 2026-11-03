@@ -68,8 +68,10 @@ namespace Recalled.UI
         IEnumerator Run(LineStartedPayload payload)
         {
             // Wait until finished talking
-            yield return _speaker.Speak(payload.Line.Text,
-                _emotions.SpriteMap[payload.Line.Emotion]);
+            var emotionSprite = _emotions.SpriteMap[payload.Line.Emotion];
+            _speaker.Speak(payload.Line.Text, emotionSprite);
+            yield return new WaitUntil(() => _speaker.IsDone || _skipActions.Any(a => a.action.WasPressedThisFrame()));
+            _speaker.Finish();
 
             // Decide what to do depending on the payload
             if (payload.Type == Line.Types.End)
@@ -138,7 +140,7 @@ namespace Recalled.UI
         IEnumerator WaitForInputAction()
         {
             yield return null; // skip this frame's press
-            yield return new WaitUntil(() => _skipActions.Any(t => t.action.WasPerformedThisDynamicUpdate()));
+            yield return new WaitUntil(() => _skipActions.Any(t => t.action.WasPressedThisFrame()));
             yield return null; // Consume this one
         }
     }
