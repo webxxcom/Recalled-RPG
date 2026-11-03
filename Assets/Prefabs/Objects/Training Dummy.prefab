@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4647231223192459453}
   - component: {fileID: 6885743430467850160}
-  - component: {fileID: 2486069124411795992}
   - component: {fileID: 8482076990832578042}
   - component: {fileID: 6924303021497496187}
   - component: {fileID: 1886725608859973883}
@@ -73,59 +72,6 @@ CapsuleCollider2D:
   m_Offset: {x: 0.6201514, y: 0.6249275}
   m_Size: {x: 0.5127704, y: 1.2969136}
   m_Direction: 0
---- !u!114 &2486069124411795992
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 175039996589242903}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 418a9a8b047a1c843aecb9bd700ae752, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::HealthResource
-  _config: {fileID: 11400000, guid: 864889a04087d4d448a4d01d160d960a, type: 2}
-  _intVariable: {fileID: 0}
-  HpChangedUnty:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 6924303021497496187}
-        m_TargetAssemblyTypeName: Recalled.Gameplay.RequestClipDispatcher, Recalled.Gameplay
-        m_MethodName: Dispatch
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 11400000, guid: b1b9b3314918ff644a6871843b671c83, type: 2}
-          m_ObjectArgumentAssemblyTypeName: Recalled.Core.SoundCue, Recalled.Core
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 8482076990832578042}
-        m_TargetAssemblyTypeName: Recalled.UI.DamageNumberPopup, Recalled.UI
-        m_MethodName: Spawn
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1886725608859973883}
-        m_TargetAssemblyTypeName: Recalled.Gameplay.TrainingDummyAnimation, Recalled.Gameplay
-        m_MethodName: HpChanged
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!114 &8482076990832578042
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -139,6 +85,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Recalled.UI::Recalled.UI.DamageNumberPopup
   _damagePopup: {fileID: 7535224943969880707, guid: 385f75b1c0c81584c85f5375d9fc8db4, type: 3}
+  _health: {fileID: 5770895020412966281}
 --- !u!114 &6924303021497496187
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -176,6 +123,7 @@ GameObject:
   - component: {fileID: 7308363247229969624}
   - component: {fileID: 1997348381863260962}
   - component: {fileID: 1614906266074812132}
+  - component: {fileID: 5770895020412966281}
   m_Layer: 11
   m_Name: Training Dummy
   m_TagString: Untagged
@@ -264,6 +212,63 @@ CapsuleCollider2D:
   m_Offset: {x: 0.6425835, y: 0.12457359}
   m_Size: {x: 0.5619152, y: 0.34902158}
   m_Direction: 1
+--- !u!114 &5770895020412966281
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8822795234151242890}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 418a9a8b047a1c843aecb9bd700ae752, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Recalled.Gameplay::Recalled.Gameplay.Health
+  _config: {fileID: 11400000, guid: 864889a04087d4d448a4d01d160d960a, type: 2}
+  _hurtbox: {fileID: 6885743430467850160}
+  _healthVariable: {fileID: 0}
+  _hpChangedEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1886725608859973883}
+        m_TargetAssemblyTypeName: Recalled.Gameplay.TrainingDummyAnimation, Recalled.Gameplay
+        m_MethodName: HpChanged
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 8482076990832578042}
+        m_TargetAssemblyTypeName: Recalled.UI.DamagePopupSpawner, Recalled.UI
+        m_MethodName: Spawn
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 6924303021497496187}
+        m_TargetAssemblyTypeName: Recalled.Gameplay.RequestClipDispatcher, Recalled.Gameplay
+        m_MethodName: Dispatch
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 11400000, guid: bd9a490ee446093488095d863d7783d3, type: 2}
+          m_ObjectArgumentAssemblyTypeName: Recalled.Core.SoundCue, Recalled.Core
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  _diedEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1001 &2638589704726934692
 PrefabInstance:
   m_ObjectHideFlags: 0

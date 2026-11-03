@@ -55,7 +55,7 @@ namespace Recalled.UI.Inventory
 
             if (_slotsView.Count != _inventoryView.Count)
             {
-                Debug.LogError($"{name}: The {nameof(_slotsView)}'s Count doesn't match the {nameof(_inventoryView)}'s Count");
+                Debug.LogError($"{name}: The {nameof(_slotsView)}'s Amount doesn't match the {nameof(_inventoryView)}'s Amount");
                 return;
             }
 

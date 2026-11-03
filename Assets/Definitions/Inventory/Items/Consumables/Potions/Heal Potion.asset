@@ -18,16 +18,16 @@ MonoBehaviour:
   _maxStockSize: 999
   _category: 0
   _modules:
-  - rid: 127226768443834443
+  - rid: 127226768443834445
   references:
     version: 2
     RefIds:
-    - rid: 127226768443834443
-      type: {class: Consumable, ns: Recalled.Gameplay, asm: Recalled.Gameplay}
+    - rid: 127226768443834445
+      type: {class: Consumable, ns: Recalled.Gameplay.Inventory, asm: Recalled.Gameplay}
       data:
         _effects:
-        - rid: 127226768443834444
-    - rid: 127226768443834444
+        - rid: 127226768443834446
+    - rid: 127226768443834446
       type: {class: HealingEffect, ns: Recalled.Gameplay, asm: Recalled.Gameplay}
       data:
         _healingPower: 10

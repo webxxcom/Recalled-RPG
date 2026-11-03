@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: Recalled.Inventory::Recalled.Inventory.Loadout
   _capacity: 20
   _items:
-  - _definition: {fileID: 11400000, guid: a4777e54509390d4898afd37eabd630d, type: 2}
-    _count: 10
+  - _definition: {fileID: 11400000, guid: 6876918c8c625f84b953f18f7b515fa5, type: 2}
+    _count: 1

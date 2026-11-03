@@ -1,6 +1,5 @@
 using Recalled.Systems.Inventory;
 using System;
-using System.Linq;
 
 namespace Recalled.Gameplay.Inventory
 {

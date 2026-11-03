@@ -1641,7 +1641,7 @@ Canvas:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1204620722222649022}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_RenderMode: 0
   m_Camera: {fileID: 0}
@@ -2515,7 +2515,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::InventoryCell
   _icon: {fileID: 893144421014675872}
-  _dimColor: {r: 1, g: 1, b: 1, a: 1}
+  _dimColor: {r: 0.27058825, g: 0.16078432, b: 0.16470589, a: 1}
 --- !u!114 &4946459427053150385
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace Recalled.Systems.Inventory
@@ -16,18 +17,18 @@ namespace Recalled.Systems.Inventory
         public string Name => _name;
         public Sprite Icon => _icon;
         public string Description => _description;
-        public string Extra => ""; // TODO extra info
+        public string Extra => _category.ToString();
         public int MinStockSize => 1;
         public int MaxStockSize { get => _maxStockSize; internal set => _maxStockSize = value; }
         public bool IsStackable => _maxStockSize > MinStockSize;
         public bool IsInCategory(ItemCategory category)
         {
-            foreach (var module in _modules)
-            {
-                if (module.DomainCategory == category)
-                    return true;
-            }
-            return category == ItemCategory.Any || _category == category;
+            // If this is general category or the one assigned then fast-return
+            if (category == ItemCategory.Any || _category == category)
+                return true;
+
+            // Otherwise check the modules extending the category item belongs ot
+            return _modules.Any(m => m.DomainCategory == category);
         }
 
         public bool TryGetModule<T>(out T result) where T : IModule

@@ -6,7 +6,6 @@ namespace Recalled.Systems.Inventory
         Treasure,
         KeyItem,
         Equipment,
-        Armor,
         Any
     }
 }

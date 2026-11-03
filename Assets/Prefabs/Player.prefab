@@ -358,6 +358,7 @@ GameObject:
   - component: {fileID: 4452931388105062793}
   - component: {fileID: 1017372488747182917}
   - component: {fileID: 6527412316840103686}
+  - component: {fileID: 5551428589621701768}
   m_Layer: 8
   m_Name: Hitbox
   m_TagString: Player
@@ -434,7 +435,19 @@ MonoBehaviour:
   - {fileID: 1017372488747182917}
   AttackStarted:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 5551428589621701768}
+        m_TargetAssemblyTypeName: Recalled.Gameplay.RequestClipDispatcher, Recalled.Gameplay
+        m_MethodName: Dispatch
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 11400000, guid: a335d12c1287d8e43942d6ab3a580f59, type: 2}
+          m_ObjectArgumentAssemblyTypeName: Recalled.Core.SoundCue, Recalled.Core
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   AttackFinished:
     m_PersistentCalls:
       m_Calls: []
@@ -465,6 +478,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   _movementBase: {fileID: 7505962688322566842}
+--- !u!114 &5551428589621701768
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2511438768263475401}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c188fef6f57ebd3418addda2f20540dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Recalled.Gameplay::Recalled.Gameplay.RequestClipDispatcher
+  _audioClipRequestChannel: {fileID: 11400000, guid: 67b85b404b05c124ea5e6d5550c770de, type: 2}
 --- !u!1 &2880830138094642791
 GameObject:
   m_ObjectHideFlags: 0
@@ -1104,16 +1130,18 @@ GameObject:
   - component: {fileID: 2409675021506303179}
   - component: {fileID: 6836397006442588245}
   - component: {fileID: 7505962688322566842}
+  - component: {fileID: 1255662501661695068}
   - component: {fileID: 7162682655650916106}
+  - component: {fileID: 5642640477246636282}
   - component: {fileID: 2708507066674380346}
   - component: {fileID: 6443777087678772007}
-  - component: {fileID: 1255662501661695068}
-  - component: {fileID: 5642640477246636282}
-  - component: {fileID: 797185126300389965}
   - component: {fileID: 7919439482791280018}
-  - component: {fileID: 6749094384683476667}
+  - component: {fileID: 797185126300389965}
   - component: {fileID: 6112780135680013782}
   - component: {fileID: 2604665884603746442}
+  - component: {fileID: 6749094384683476667}
+  - component: {fileID: 4255398299159072370}
+  - component: {fileID: 938965487799119155}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -1247,10 +1275,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80671b5b445efbe4c84cbf7ca43fa800, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Recalled.Gameplay::Movementable
-  _walkingSpeed: 2
+  _speedDefinition: {fileID: 0}
   OnMovement:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &1255662501661695068
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7559287907167481913}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de202badedf79b547a6adbee14277b17, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ExternalVelocity
+  decayRate: 8
+  restThreshold: 0.05
 --- !u!114 &7162682655650916106
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1263,6 +1305,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aee9dd943d1e0d54a9d789a014f366f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMovementComponent
+--- !u!114 &5642640477246636282
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7559287907167481913}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 87d248c24243bac47879c3b79f1e01c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+  _devices: {fileID: 11400000, guid: 99a9f4f6ecea88248a32e08c318dfd8c, type: 2}
+  _currentInputDevice: {fileID: 11400000, guid: 8116cefb92c0bfa498ed98723bb495e2, type: 2}
 --- !u!114 &2708507066674380346
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1313,48 +1369,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &1255662501661695068
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7559287907167481913}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: de202badedf79b547a6adbee14277b17, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ExternalVelocity
-  decayRate: 8
-  restThreshold: 0.05
---- !u!114 &5642640477246636282
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7559287907167481913}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 87d248c24243bac47879c3b79f1e01c0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: '::'
-  _devices: {fileID: 11400000, guid: 99a9f4f6ecea88248a32e08c318dfd8c, type: 2}
-  _currentInputDevice: {fileID: 11400000, guid: 8116cefb92c0bfa498ed98723bb495e2, type: 2}
---- !u!114 &797185126300389965
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7559287907167481913}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fdc21735999b4bc478d97a16e21cc504, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: '::'
-  _loadout: {fileID: 11400000, guid: 68b65b2dd4f3fad43b018019f0597086, type: 2}
-  _inventoryAnchor: {fileID: 11400000, guid: 9a580f0e060b5ec428662a70a5c9ef41, type: 2}
 --- !u!114 &7919439482791280018
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1367,7 +1381,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 418a9a8b047a1c843aecb9bd700ae752, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HealthResource
-  _config: {fileID: 11400000, guid: 864889a04087d4d448a4d01d160d960a, type: 2}
+  _config: {fileID: 11400000, guid: 2e463e3769a329247a9da0cbb5b94970, type: 2}
   _hurtbox: {fileID: 7648009776092296695}
   _healthVariable: {fileID: 11400000, guid: 18664fa8ddf79b54dbc9cb56202f04fb, type: 2}
   _hpChangedEvent:
@@ -1412,7 +1426,31 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &6749094384683476667
+      - m_Target: {fileID: 1515305421710409048}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 11400000, guid: e74abf333e5d28b4f9c12dd05ac45b24, type: 2}
+        m_TargetAssemblyTypeName: Recalled.Core.VoidGameEvent, Recalled.Core
+        m_MethodName: Invoke
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &797185126300389965
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1421,10 +1459,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 7559287907167481913}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c188fef6f57ebd3418addda2f20540dd, type: 3}
+  m_Script: {fileID: 11500000, guid: fdc21735999b4bc478d97a16e21cc504, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Recalled.Gameplay::Recalled.Gameplay.RequestClipDispatcher
-  _audioClipRequestChannel: {fileID: 11400000, guid: 67b85b404b05c124ea5e6d5550c770de, type: 2}
+  m_EditorClassIdentifier: '::'
+  _loadout: {fileID: 11400000, guid: 68b65b2dd4f3fad43b018019f0597086, type: 2}
+  _inventoryAnchor: {fileID: 11400000, guid: 9a580f0e060b5ec428662a70a5c9ef41, type: 2}
 --- !u!114 &6112780135680013782
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1437,9 +1476,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c35116309300734b976ab7894d88040, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  _loadout:
-  - {fileID: 11400000, guid: d46a40fa60fa96e4baec8cc674a76eb1, type: 2}
-  - {fileID: 11400000, guid: 7731e81e68071414da725ade43d9b4ec, type: 2}
+  _loadout: []
   _slotsAnchor: {fileID: 11400000, guid: f245f90d432f41045899e1c973919586, type: 2}
 --- !u!114 &2604665884603746442
 MonoBehaviour:
@@ -1454,6 +1491,46 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Recalled.Gameplay::Recalled.Gameplay.ItemUser
   _processorAnchor: {fileID: 11400000, guid: 0dc54fe998362e74e9df7a516651c58a, type: 2}
+--- !u!114 &6749094384683476667
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7559287907167481913}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c188fef6f57ebd3418addda2f20540dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Recalled.Gameplay::Recalled.Gameplay.RequestClipDispatcher
+  _audioClipRequestChannel: {fileID: 11400000, guid: 67b85b404b05c124ea5e6d5550c770de, type: 2}
+--- !u!114 &4255398299159072370
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7559287907167481913}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e641d67acee9934aae3f8d3c36aedf1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+  _baseStats:
+  - key: {fileID: 11400000, guid: 57f17e86497345f4dae024b88ad0442d, type: 2}
+    value: 2
+--- !u!114 &938965487799119155
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7559287907167481913}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23efb6e83e6b1aa4eafd01ca693ea9d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Recalled.Gameplay::Recalled.Gameplay.EquipmentStateModifier
 --- !u!1 &8375044973183638792
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Recalled.Gameplay.Inventory;
+using UnityEngine;
 using UnityEngine.Events;
 
 namespace Recalled.Gameplay.Movement
@@ -8,7 +9,7 @@ namespace Recalled.Gameplay.Movement
     [RequireComponent(typeof(ExternalVelocity))]
     public sealed class Movementable : MonoBehaviour
     {
-        [SerializeField] float _walkingSpeed;
+        [SerializeField] StatDefinition _speedDefinition;
 
         public bool IsWalking => MovementIntention != Vector2.zero;
         public Vector2 FacingDirection => MovementIntention != Vector2.zero ? MovementIntention : _lastMovement;
@@ -17,6 +18,7 @@ namespace Recalled.Gameplay.Movement
         Vector2 _lastMovement;
 
         Rigidbody2D _rigidbody2D;
+        StatsAggregator _statsAggregator;
         ExternalVelocity _externalVelocity;
         EntityAnimationController _animationController;
         readonly SpeedAggregator _speedAggregator = new();
@@ -49,6 +51,7 @@ namespace Recalled.Gameplay.Movement
         {
             _rigidbody2D = GetComponent<Rigidbody2D>();
             _externalVelocity = GetComponent<ExternalVelocity>();
+            _statsAggregator = GetComponent<StatsAggregator>();
             _animationController = GetComponentInChildren<EntityAnimationController>();
         }
 
@@ -61,8 +64,9 @@ namespace Recalled.Gameplay.Movement
         {
             float speedCoeficient = _speedAggregator.Get();
             Vector2 externalVelocity = _externalVelocity != null ? _externalVelocity.TickAndGet(Time.fixedDeltaTime) : Vector2.zero;
-            Vector2 finalMovement = MovementIntention;
-            return (speedCoeficient * _walkingSpeed * finalMovement) + externalVelocity;
+            float aggregatedSpeed = _statsAggregator.GetAggregatedFor(_speedDefinition);
+
+            return (speedCoeficient * aggregatedSpeed * MovementIntention) + externalVelocity;
         }
 
         public void SetDirection(Vector2 vec2)

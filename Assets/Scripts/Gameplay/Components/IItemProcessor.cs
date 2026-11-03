@@ -7,5 +7,6 @@ namespace Recalled.Gameplay
         bool Consume(ItemDefinition item);
         bool Consume(ItemInstance item);
         bool TryDiscard(ItemInstance item);
+        bool TryToggleEquip(ItemInstance item);
     }
 }

@@ -56,5 +56,12 @@ namespace Recalled.Gameplay
 
         public bool TryDiscard(ItemInstance item)
             => _inventory.Reference.Remove(item);
+
+        public bool TryToggleEquip(ItemInstance item)
+        {
+            if (_inventory.Reference.CanEquip(item)) _inventory.Reference.Equip(item);
+            else _inventory.Reference.Unequip(item);
+            return true;
+        }
     }
 }

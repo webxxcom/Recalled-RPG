@@ -8,6 +8,8 @@ namespace Recalled.Gameplay
     {
         [SerializeField] int _restorePower;
 
+        public string Description => $"Restores {_restorePower} stamina points";
+
         public void Apply(GameObject game)
         {
             if (!game.TryGetComponent<Sprint>(out var sprint))

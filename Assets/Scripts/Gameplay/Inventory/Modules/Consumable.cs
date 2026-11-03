@@ -2,7 +2,7 @@
 using System;
 using UnityEngine;
 
-namespace Recalled.Gameplay
+namespace Recalled.Gameplay.Inventory
 {
     [Serializable]
     public sealed class Consumable : IModule
