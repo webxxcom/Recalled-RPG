@@ -5,6 +5,7 @@ namespace Recalled.Systems.Inventory
 {
     public interface IBagView : IReadOnlyList<ItemInstance>
     {
+        IReadOnlyList<Bag.Slot> Slots { get; }
         int TotalCountOf(ItemDefinition def);
         event Action Changed;
     }

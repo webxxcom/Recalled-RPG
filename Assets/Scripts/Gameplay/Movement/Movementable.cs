@@ -1,4 +1,5 @@
 ﻿using Recalled.Gameplay.Inventory;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -64,7 +65,7 @@ namespace Recalled.Gameplay.Movement
         {
             float speedCoeficient = _speedAggregator.Get();
             Vector2 externalVelocity = _externalVelocity != null ? _externalVelocity.TickAndGet(Time.fixedDeltaTime) : Vector2.zero;
-            float aggregatedSpeed = _statsAggregator.GetAggregatedFor(_speedDefinition);
+            float aggregatedSpeed = _statsAggregator.Stats.GetValueOrDefault(_speedDefinition);
 
             return (speedCoeficient * aggregatedSpeed * MovementIntention) + externalVelocity;
         }

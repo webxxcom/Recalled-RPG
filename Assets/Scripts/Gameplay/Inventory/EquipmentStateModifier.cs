@@ -1,4 +1,3 @@
-using NUnit.Framework;
 using Recalled.Gameplay.Inventory;
 using System;
 using System.Collections.Generic;
@@ -21,13 +20,26 @@ namespace Recalled.Gameplay
         StatsAggregator _aggregator;
         InventoryHolder _inventoryHolder;
 
+        public event Action Changed;
+
         private void Awake()
         {
             _aggregator = GetComponent<StatsAggregator>();
             _inventoryHolder = GetComponent<InventoryHolder>();
         }
-        private void OnEnable() => _aggregator.Register(this);
-        private void OnDisable() => _aggregator.Unregister(this);
+
+        private void OnEnable()
+        {
+            _aggregator.Register(this);
+            _inventoryHolder.Reference.Changed += OnInventoryUpdate;
+        }
+        private void OnDisable()
+        {
+            _aggregator.Unregister(this);
+            _inventoryHolder.Reference.Changed -= OnInventoryUpdate;
+        }
+
+        void OnInventoryUpdate() => Changed?.Invoke();
 
         public StatModifier[] Retrieve(StatDefinition statDefinition)
         {

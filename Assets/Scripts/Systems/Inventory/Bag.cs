@@ -7,7 +7,7 @@ namespace Recalled.Systems.Inventory
 {
     public sealed class Bag : IBagView
     {
-        internal readonly struct Slot
+        public readonly struct Slot
         {
             public readonly ItemInstance Item;
             public readonly bool IsEmpty => Item == null;
@@ -21,6 +21,7 @@ namespace Recalled.Systems.Inventory
         }
 
         readonly Slot[] _slots;
+        public IReadOnlyList<Slot> Slots => _slots;
         public int Count => _slots.Length;
         public ItemInstance this[int index] => _slots[index].Item;
         public IReadOnlyList<ItemInstance> Items => _slots.Select(s => s.Item).ToArray();
@@ -243,6 +244,7 @@ namespace Recalled.Systems.Inventory
                 if (_slots[i].Item == item)
                 {
                     _slots[i] = new(_slots[i].Item, equipping);
+                    Changed?.Invoke();
                     return;
                 }
 

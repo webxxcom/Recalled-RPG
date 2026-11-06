@@ -8,14 +8,17 @@ namespace Recalled.Gameplay.Inventory
         [SerializeField] Loadout _loadout;
         [SerializeField] InventoryAnchor _inventoryAnchor;
 
-        public Bag Reference { get; private set; }
-
-        private void Awake()
+        Bag _reference;
+        public Bag Reference
         {
-            Reference = new(_loadout.Capacity, _loadout.Items);
+            get
+            {
+                _reference ??= new(_loadout.Capacity, _loadout.Items);
 
-            _inventoryAnchor.Provide(Reference);
+                return _reference;
+            }
         }
+        private void Awake() => _inventoryAnchor.Provide(Reference);
         private void OnDestroy() => _inventoryAnchor.Withdraw(Reference);
     }
 }

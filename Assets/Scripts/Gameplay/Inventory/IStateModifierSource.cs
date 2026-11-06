@@ -5,6 +5,7 @@ namespace Recalled.Gameplay
 {
     interface IStateModifierSource
     {
+        event Action Changed;
         StatModifier[] Retrieve(StatDefinition statDefinition);
     }
 }

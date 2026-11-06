@@ -1,0 +1,21 @@
+using Recalled.Systems.Inventory;
+using TMPro;
+using UnityEngine;
+
+namespace Recalled.UI
+{
+    internal sealed class EquipmentSlot : MonoBehaviour
+    {
+        static readonly string EQUIPPED_STR = "Equipped";
+        static readonly string UNEQUIPPED_STR = "";
+
+        [SerializeField] TMP_Text _nameTmp;
+        [SerializeField] TMP_Text _statusTmp;
+
+        public void ShowItem(Bag.Slot itemSlot)
+        {
+            _nameTmp.text = itemSlot.Item.Definition.Name;
+            _statusTmp.text = itemSlot.IsEquppied ? EQUIPPED_STR : UNEQUIPPED_STR;
+        }
+    }
+}
