@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
@@ -18,6 +19,7 @@ namespace Recalled.UI
     [RequireComponent(typeof(Image))]
     public sealed class HintInputButton : MonoBehaviour
     {
+        [SerializeField] Image _graphic;
         [SerializeField] InputActionReference _inputAction;
         [Tooltip("Fill in only if the action contains composite bindings")]
         [SerializeField] string _compositePartName;
@@ -26,11 +28,7 @@ namespace Recalled.UI
         [SerializeField] bool _showPressed;
 
         bool IsAvailable => _frames != null;
-
-        Image _graphic;
         StateFrames _frames;
-
-        private void Awake() => _graphic = GetComponent<Image>();
 
         void UpdateGraphics(Sprite sprite)
         {
@@ -83,6 +81,19 @@ namespace Recalled.UI
 
             _frames = inputDevice.GetFramesForAction(_inputAction.action, _compositePartName);
             UpdateGraphics();
+        }
+
+        InputDeviceSO _prev;
+        private void OnValidate()
+        {
+            if (_graphic == null)
+                _graphic = GetComponent<Image>();
+
+            if (_currentInputDevice.InitialValue != null && _prev != _currentInputDevice.Value)
+            {
+                OnInputDeviceChanged(_currentInputDevice.InitialValue);
+                _prev = _currentInputDevice.InitialValue;
+            }
         }
     }
 }

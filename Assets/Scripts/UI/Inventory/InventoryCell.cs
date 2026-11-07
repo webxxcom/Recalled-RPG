@@ -4,19 +4,19 @@ using UnityEngine.UI;
 
 namespace Recalled.UI.Inventory
 {
-    class InventoryCell : MonoBehaviour
+    class InventoryCell : MonoBehaviour, IItemHolder
     {
         [SerializeField] Image _icon;
         [SerializeField] protected Color _dimColor;
 
-        public ItemInstance ItemInstance { get; private set; }
+        public ItemInstance Item { get; private set; }
 
         private void OnEnable() => ShowEmpty();
 
         public virtual void ShowItem(ItemInstance instance, bool showDimmed)
         {
-            ItemInstance = instance;
-            _icon.sprite = ItemInstance.Definition.Icon;
+            Item = instance;
+            _icon.sprite = Item.Definition.Icon;
             _icon.preserveAspect = true;
             _icon.enabled = true;
             _icon.color = showDimmed ? _dimColor : Color.white;
@@ -26,7 +26,7 @@ namespace Recalled.UI.Inventory
 
         public virtual void ShowEmpty()
         {
-            ItemInstance = null;
+            Item = null;
             _icon.enabled = false;
         }
     }

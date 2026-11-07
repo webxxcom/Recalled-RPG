@@ -1,18 +1,19 @@
 using Recalled.Gameplay.Inventory;
 using System;
 using System.Collections.Generic;
-using System.Runtime.InteropServices;
 using UnityEngine;
 
 namespace Recalled.Gameplay
 {
-    internal sealed class StatsAggregator : MonoBehaviour
+    public sealed class StatsAggregator : MonoBehaviour
     {
         [SerializeField] Dictionary<StatDefinition, float> _baseStats;
+        [SerializeField] StatsAggregatorAnchor _statsAggregatoAnchor;
 
         readonly Dictionary<StatDefinition, float> _stats = new();
         readonly HashSet<IStateModifierSource> _modifierSources = new();
 
+        public event Action Changed;
         public IReadOnlyDictionary<StatDefinition, float> Stats
         {
             get
@@ -28,8 +29,21 @@ namespace Recalled.Gameplay
         }
 
         bool _isDirty;
-        void OnStatChanged() => _isDirty = true;
+        void OnStatChanged()
+        {
+            _isDirty = true;
+            Changed?.Invoke();
+        }
         private void OnEnable() => OnStatChanged();
+
+        private void Awake()
+        {
+            _statsAggregatoAnchor.Provide(this);
+        }
+        private void OnDestroy()
+        {
+            _statsAggregatoAnchor.Withdraw(this);
+        }
 
         void UpdateStats()
         {
@@ -55,12 +69,12 @@ namespace Recalled.Gameplay
             return res;
         }
 
-        public void Register(IStateModifierSource source)
+        internal void Register(IStateModifierSource source)
         {
             _modifierSources.Add(source);
             source.Changed += OnStatChanged;
         }
-        public void Unregister(IStateModifierSource source)
+        internal void Unregister(IStateModifierSource source)
         {
             _modifierSources.Remove(source);
             source.Changed -= OnStatChanged;

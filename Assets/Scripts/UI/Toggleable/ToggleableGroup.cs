@@ -76,7 +76,7 @@ namespace Recalled.UI
 
         bool RemoveActiveToggleable(IToggleable toggleable)
         {
-            if (toggleable == null || !toggleable.IsActive || (!_allowEmpty && !_toggleables.Any(t => t.IsActive)))
+            if (toggleable == null || !toggleable.IsActive || (!_allowEmpty && _toggleables.Count(t => t.IsActive) <= 1))
                 return false;
 
             toggleable.SetIsActive(false);

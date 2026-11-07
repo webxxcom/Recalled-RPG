@@ -33,6 +33,7 @@ namespace Recalled.Core
 
         event Action<T> Changed;
 
+        public T InitialValue => _initialValue;
         public T Value
         {
             get => _runtimeValue;

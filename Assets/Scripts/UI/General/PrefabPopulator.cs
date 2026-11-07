@@ -28,9 +28,6 @@ namespace Recalled.UI
 
         public void DestroyAll()
         {
-            if (_created == null)
-                return;
-
             foreach (var item in Created)
                 Destroy(item);
             _created.Clear();

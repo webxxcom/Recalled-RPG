@@ -40,12 +40,12 @@ namespace Recalled.UI
                 return;
 
             var current = eventSystem.currentSelectedGameObject;
-            if (current == null || !current.TryGetComponent<InventorySlot>(out var ivSlot))
+            if (current == null || !current.TryGetComponent<IItemHolder>(out var itemHolder))
                 return;
 
             if (_quickSlotsAnchor.IsSet)
             {
-                var put = _quickSlotsAnchor.Value.RequestDefinitionForSlot(ivSlot.ItemInstance.Definition, i, out var occupiedSlot);
+                var put = _quickSlotsAnchor.Value.RequestDefinitionForSlot(itemHolder.Item.Definition, i, out var occupiedSlot);
 
                 if (!put)
                     _slotShakes[occupiedSlot].Play();

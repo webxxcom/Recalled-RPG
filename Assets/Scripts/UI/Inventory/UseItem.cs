@@ -23,11 +23,11 @@ namespace Recalled.UI
                 return;
 
             var current = eventSystem.currentSelectedGameObject;
-            if (current == null || !current.TryGetComponent<InventorySlot>(out var slot))
+            if (current == null || !current.TryGetComponent<IItemHolder>(out var slot))
                 return;
 
             if (_itemProcessorAnchor.IsSet)
-                _itemProcessorAnchor.Value.TryToggleEquip(slot.ItemInstance);
+                _itemProcessorAnchor.Value.TryToggleEquip(slot.Item);
             else Debug.LogWarning($"The {nameof(_itemProcessorAnchor)}'s value was not provided");
         }
     }

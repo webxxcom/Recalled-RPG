@@ -7,7 +7,7 @@ namespace Recalled.Gameplay.Inventory
     struct StatModifier
     {
         [SerializeField] StatDefinition _stat;
-        [SerializeField] int _amount;
+        [SerializeField] float _amount;
         [SerializeField] Operations _operation;
 
         public readonly StatDefinition Stat => _stat;

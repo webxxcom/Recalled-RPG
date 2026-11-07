@@ -10,7 +10,6 @@ namespace Recalled.Gameplay
     [RequireComponent(typeof(Collider2D))]
     public sealed class Health : MonoBehaviour
     {
-
         [SerializeField] ValueProviderConfig _config;
         [SerializeField] Collider2D _hurtbox;
 

@@ -1,6 +1,4 @@
 using Recalled.Gameplay;
-using Recalled.Gameplay.Inventory;
-using Recalled.Systems.Inventory;
 using Recalled.UI.Inventory;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -23,11 +21,11 @@ namespace Recalled.UI
                 return;
 
             var current = eventSystem.currentSelectedGameObject;
-            if (current == null || !current.TryGetComponent<InventorySlot>(out var slot))
+            if (current == null || !current.TryGetComponent<IItemHolder>(out var itemHolder))
                 return;
 
             if (_itemProcessorAnchor.IsSet)
-                _itemProcessorAnchor.Value.TryDiscard(slot.ItemInstance);
+                _itemProcessorAnchor.Value.TryDiscard(itemHolder.Item);
             else Debug.LogWarning($"The {nameof(_itemProcessorAnchor)}'s value was not provided");
         }
     }

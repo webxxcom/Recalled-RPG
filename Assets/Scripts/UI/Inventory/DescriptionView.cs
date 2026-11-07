@@ -28,14 +28,14 @@ namespace Recalled.UI.Inventory
 
         void Hide()
         {
-            if (_cell.ItemInstance != null) _cell.Dim();
+            if (_cell.Item != null) _cell.Dim();
             else _cell.ShowEmpty();
         }
 
         void OnCurrentSelected(GameObject game)
         {
-            if (game != null && game.TryGetComponent<InventorySlot>(out var slot))
-                Show(slot.ItemInstance);
+            if (game != null && game.TryGetComponent<IItemHolder>(out var itemHolder))
+                Show(itemHolder.Item);
             else Hide();
         }
     }
