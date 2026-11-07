@@ -14,6 +14,7 @@ namespace Recalled.UI
         [SerializeField] TMP_Text _statusTmp;
 
         public ItemInstance Item { get; private set; }
+        public ItemInstance Displayed => Item;
 
         public void ShowItem(Bag.Slot itemSlot)
         {

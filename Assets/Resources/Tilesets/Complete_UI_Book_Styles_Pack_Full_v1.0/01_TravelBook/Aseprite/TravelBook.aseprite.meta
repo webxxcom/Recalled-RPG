@@ -2280,7 +2280,7 @@ ScriptedImporter:
       serializedVersion: 2
       x: 56
       y: 552
-      width: 8
+      width: 9
       height: 9
     spriteID: 19370b0dfd264bc40aafdd12dc0cea66
     spriteBone: []
@@ -2320,9 +2320,9 @@ ScriptedImporter:
     customData: 
     rect:
       serializedVersion: 2
-      x: 88
+      x: 87
       y: 552
-      width: 7
+      width: 9
       height: 9
     spriteID: b4ca04aa2a1610b4597cc8cfa9839c81
     spriteBone: []
@@ -4097,27 +4097,6 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
-  - name: TravelBook_44
-    originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
-    border: {x: 0, y: 0, z: 0, w: 0}
-    customData: 
-    rect:
-      serializedVersion: 2
-      x: 88
-      y: 552
-      width: 7
-      height: 9
-    spriteID: 0ecc49392f0f1e848a4fa15948e74153
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 0, y: 0}
   - name: TravelBook_57
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -4215,6 +4194,27 @@ ScriptedImporter:
       width: 30
       height: 2
     spriteID: 0904a6cc9c21b934aacf383778825767
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 0, y: 0}
+  - name: TravelBook_145
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 88
+      y: 552
+      width: 7
+      height: 9
+    spriteID: 0a290054d4986fd4abe66e4707febff2
     spriteBone: []
     spriteOutline: []
     vertices: []
