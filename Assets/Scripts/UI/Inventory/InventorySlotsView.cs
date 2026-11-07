@@ -8,12 +8,11 @@ using UnityEngine.UI;
 
 namespace Recalled.UI.Inventory
 {
-    sealed class InventorySlotsView : MonoBehaviour
+    internal sealed class InventorySlotsView : MonoBehaviour
     {
         [SerializeField] InventoryAnchor _inventoryAnchor;
         [SerializeField] PrefabPopulator _populator;
 
-        IBagView _inventoryView;
         IReadOnlyList<InventorySlot> _slotsView;
         ItemCategory _currentFilter = ItemCategory.Any;
         bool _isDirty;
@@ -28,9 +27,7 @@ namespace Recalled.UI.Inventory
 
         void OnInventoryProvided(IBagView inventory)
         {
-            _inventoryView = inventory;
-
-            _inventoryView.Changed += () => _isDirty = true;
+            inventory.Changed += () => _isDirty = true;
             _isDirty = true;
         }
 
@@ -45,24 +42,24 @@ namespace Recalled.UI.Inventory
 
         public void RefreshView()
         {
-            if (_inventoryView == null)
+            if (!_inventoryAnchor.IsSet)
                 return;
 
             // Lazy init
             _slotsView ??= _populator != null
-                ? _populator.Populate(_inventoryView.Count).Select(go => go.GetComponent<InventorySlot>()).ToArray()
+                ? _populator.Populate(_inventoryAnchor.Value.Count).Select(go => go.GetComponent<InventorySlot>()).ToArray()
                 : GetComponentsInChildren<InventorySlot>();
 
-            if (_slotsView.Count != _inventoryView.Count)
+            if (_slotsView.Count != _inventoryAnchor.Value.Count)
             {
-                Debug.LogError($"{name}: The {nameof(_slotsView)}'s Amount doesn't match the {nameof(_inventoryView)}'s Amount");
+                Debug.LogError($"{name}: The {nameof(_slotsView)}'s Amount doesn't match the {nameof(_inventoryAnchor.Value)}'s Amount");
                 return;
             }
 
             InventorySlot firstActiveSlot = default;
-            for (int i = 0; i < _inventoryView.Count; i++)
+            for (int i = 0; i < _inventoryAnchor.Value.Count; i++)
             {
-                var item = _inventoryView[i];
+                var item = _inventoryAnchor.Value[i];
                 var isVisible = item != null && item.Definition.IsInCategory(_currentFilter);
 
                 if (item != null) _slotsView[i].ShowItem(item, !isVisible);

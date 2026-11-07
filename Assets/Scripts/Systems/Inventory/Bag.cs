@@ -247,7 +247,6 @@ namespace Recalled.Systems.Inventory
                     Changed?.Invoke();
                     return;
                 }
-
             }
         }
         public void Equip(ItemInstance item) => SetEquip(item, true);

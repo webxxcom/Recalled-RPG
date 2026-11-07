@@ -46,7 +46,7 @@ namespace Recalled.Core
             return applied;
         }
         public int Consume(int amount) => Replenish(-amount);
-
         public bool Has(int amount) => IsInfinite || Current >= amount;
+        public ValueResource WithMax(int max) => new(Current, max, IsInfinite);
     }
 }

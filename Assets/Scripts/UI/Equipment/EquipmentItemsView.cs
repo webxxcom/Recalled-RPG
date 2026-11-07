@@ -1,20 +1,17 @@
 using Recalled.Gameplay.Inventory;
 using Recalled.Systems.Inventory;
-using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
 namespace Recalled.UI
 {
     [RequireComponent(typeof(PrefabPopulator))]
-    internal sealed class InventoryItemsView : MonoBehaviour
+    internal sealed class EquipmentItemsView : MonoBehaviour
     {
         [SerializeField] InventoryAnchor _inventoryAnchor;
-        [SerializeField] ItemCategory _currentFilter = ItemCategory.Any;
-
         [SerializeField] SlotType _displayedSlot;
+
         PrefabPopulator _populator;
-        IReadOnlyList<EquipmentSlot> _itemsView;
         bool _isDirty;
 
         private void Awake()
@@ -30,18 +27,18 @@ namespace Recalled.UI
         }
         void OnDisable() => _inventoryAnchor.Provided -= OnInventoryProvided;
 
+        void OnInventoryProvided(IBagView inventory)
+        {
+            inventory.Changed += () => _isDirty = true;
+            _isDirty = true;
+        }
+
         public void Filter(SlotType slot)
         {
             if (_displayedSlot == slot)
                 return;
 
             _displayedSlot = slot;
-            _isDirty = true;
-        }
-
-        void OnInventoryProvided(IBagView inventory)
-        {
-            inventory.Changed += () => _isDirty = true;
             _isDirty = true;
         }
 

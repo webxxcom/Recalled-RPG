@@ -6,7 +6,7 @@ namespace Recalled.UI
     internal sealed class EquipmentFilter : MonoBehaviour
     {
         [SerializeField] SlotType _slot;
-        [SerializeField] InventoryItemsView _view;
+        [SerializeField] EquipmentItemsView _view;
 
         public void Filter(bool isOn)
         {

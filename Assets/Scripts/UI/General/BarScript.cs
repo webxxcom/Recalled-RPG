@@ -43,5 +43,13 @@ namespace Recalled.UI
             StopAllCoroutines();
             StartCoroutine(ProgressBars(_currentValue - prevValue));
         }
+
+        public void SetImmediately(float ratio)
+        {
+            StopAllCoroutines();
+            _currentValue = ratio;
+            _bottomBar.fillAmount = _currentValue;
+            _topBar.fillAmount = _currentValue;
+        }
     }
 }

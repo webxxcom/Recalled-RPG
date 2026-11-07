@@ -26,11 +26,12 @@ namespace Recalled.UI
             return _created[^1];
         }
 
-        public void DestroyAll()
+        public void DestroyAll() => Resize(0);
+        public void Resize(int count)
         {
-            foreach (var item in Created)
-                Destroy(item);
-            _created.Clear();
+            for (int i = count; i < _created.Count; ++i)
+                Destroy(_created[i]);
+            _created.Capacity = count;
         }
     }
 }

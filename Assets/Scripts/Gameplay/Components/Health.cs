@@ -1,6 +1,8 @@
 using Recalled.Core;
 using Recalled.Gameplay.Combat;
+using Recalled.Gameplay.Inventory;
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -8,10 +10,12 @@ namespace Recalled.Gameplay
 {
     [DisallowMultipleComponent]
     [RequireComponent(typeof(Collider2D))]
+    [RequireComponent(typeof(StatsAggregator))]
     public sealed class Health : MonoBehaviour
     {
         [SerializeField] ValueProviderConfig _config;
         [SerializeField] Collider2D _hurtbox;
+        [SerializeField] StatDefinition _maxHealthStatDefinition;
 
         [Tooltip("Optional Runtime Variable, mostly for player and bosses")]
         [SerializeField] HealthValueVariable _healthVariable;
@@ -25,6 +29,7 @@ namespace Recalled.Gameplay
         public int MaxValue => _valueResource.MaxValue;
         float _invincibilityTimestamp;
         ValueResource _valueResource;
+        StatsAggregator _statsAggregator;
 
         public event Action<DamageInfo> HpChanged;
         [SerializeField] UnityEvent<DamageInfo> _hpChangedEvent;
@@ -35,8 +40,25 @@ namespace Recalled.Gameplay
         void Awake()
         {
             _valueResource = new(_config);
+            _statsAggregator = GetComponent<StatsAggregator>();
 
             if (_healthVariable != null) _healthVariable.Value = new(_valueResource.Current, _valueResource.MaxValue);
+        }
+
+        private void OnEnable()
+        {
+            _statsAggregator.Changed += OnStatsChanged;
+        }
+        private void OnDisable()
+        {
+            _statsAggregator.Changed -= OnStatsChanged;
+        }
+
+        void OnStatsChanged()
+        {
+            _valueResource = _valueResource.WithMax(Mathf.RoundToInt(_statsAggregator.Stats[_maxHealthStatDefinition]));
+            if (_healthVariable != null)
+                _healthVariable.Value = new(_valueResource.Current, _valueResource.MaxValue);
         }
 
         public void ApplyDamage(DamageInfo damageInfo)

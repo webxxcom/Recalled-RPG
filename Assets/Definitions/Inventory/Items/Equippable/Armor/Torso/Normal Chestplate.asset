@@ -26,4 +26,7 @@ MonoBehaviour:
       type: {class: EquippableModule, ns: Recalled.Gameplay.Inventory, asm: Recalled.Gameplay}
       data:
         _slot: 1
-        _stats: []
+        _stats:
+        - _stat: {fileID: 11400000, guid: 53bf89454f9c5b040b173f8b5e2c1273, type: 2}
+          _amount: 3
+          _operation: 1

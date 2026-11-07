@@ -89,7 +89,7 @@ namespace Recalled.UI
             if (_graphic == null)
                 _graphic = GetComponent<Image>();
 
-            if (_currentInputDevice.InitialValue != null && _prev != _currentInputDevice.Value)
+            if (_currentInputDevice.InitialValue != null && _prev != _currentInputDevice.Value && _inputAction != null)
             {
                 OnInputDeviceChanged(_currentInputDevice.InitialValue);
                 _prev = _currentInputDevice.InitialValue;
