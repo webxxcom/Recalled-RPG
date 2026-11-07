@@ -5,33 +5,9 @@ using UnityEngine;
 
 namespace Recalled.UI
 {
-    [RequireComponent(typeof(PrefabPopulator))]
-    internal sealed class EquipmentItemsView : MonoBehaviour
+    internal sealed class EquipmentItemsView : InventoryItemsView
     {
-        [SerializeField] InventoryAnchor _inventoryAnchor;
         [SerializeField] SlotType _displayedSlot;
-
-        PrefabPopulator _populator;
-        bool _isDirty;
-
-        private void Awake()
-        {
-            _populator = GetComponent<PrefabPopulator>();
-        }
-
-        void OnEnable()
-        {
-            _inventoryAnchor.Provided += OnInventoryProvided;
-
-            if (_inventoryAnchor.IsSet) OnInventoryProvided(_inventoryAnchor.Value);
-        }
-        void OnDisable() => _inventoryAnchor.Provided -= OnInventoryProvided;
-
-        void OnInventoryProvided(IBagView inventory)
-        {
-            inventory.Changed += () => _isDirty = true;
-            _isDirty = true;
-        }
 
         public void Filter(SlotType slot)
         {
@@ -42,7 +18,7 @@ namespace Recalled.UI
             _isDirty = true;
         }
 
-        public void RefreshView()
+        public override void RefreshView()
         {
             if (!_inventoryAnchor.IsSet)
                 return;
@@ -58,16 +34,6 @@ namespace Recalled.UI
 
                 var addedSlot = _populator.Add().GetComponent<EquipmentSlot>();
                 addedSlot.ShowItem(itemSlot);
-            }
-        }
-
-        private void LateUpdate()
-        {
-            if (_isDirty)
-            {
-                _isDirty = false;
-
-                RefreshView();
             }
         }
     }

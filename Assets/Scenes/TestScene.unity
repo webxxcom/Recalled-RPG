@@ -902,6 +902,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Unity.InputSystem::UnityEngine.InputSystem.PlayerInput
+--- !u!114 &771249661 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5017337656332605396, guid: 05c21f723d3cdbc4ab0a31fbd70cd0f7, type: 3}
+  m_PrefabInstance: {fileID: 2046603347}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa8cc8a00f8013c4f88bae994af3ac9c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Recalled.UI::PrefabPopulator
 --- !u!1 &1137712248
 GameObject:
   m_ObjectHideFlags: 0
@@ -1718,6 +1729,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -103.59657
       objectReference: {fileID: 0}
+    - target: {fileID: 797604218001805994, guid: 05c21f723d3cdbc4ab0a31fbd70cd0f7, type: 3}
+      propertyPath: _populator
+      value: 
+      objectReference: {fileID: 771249661}
     - target: {fileID: 926321376325293707, guid: 05c21f723d3cdbc4ab0a31fbd70cd0f7, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0

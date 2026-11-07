@@ -1,4 +1,3 @@
-using Recalled.Gameplay.Inventory;
 using Recalled.Systems.Inventory;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,28 +7,10 @@ using UnityEngine.UI;
 
 namespace Recalled.UI.Inventory
 {
-    internal sealed class InventorySlotsView : MonoBehaviour
+    internal sealed class InventorySlotsView : InventoryItemsView
     {
-        [SerializeField] InventoryAnchor _inventoryAnchor;
-        [SerializeField] PrefabPopulator _populator;
-
         IReadOnlyList<InventorySlot> _slotsView;
         ItemCategory _currentFilter = ItemCategory.Any;
-        bool _isDirty;
-
-        void OnEnable()
-        {
-            _inventoryAnchor.Provided += OnInventoryProvided;
-
-            if (_inventoryAnchor.IsSet) OnInventoryProvided(_inventoryAnchor.Value);
-        }
-        void OnDisable() => _inventoryAnchor.Provided -= OnInventoryProvided;
-
-        void OnInventoryProvided(IBagView inventory)
-        {
-            inventory.Changed += () => _isDirty = true;
-            _isDirty = true;
-        }
 
         public void Filter(ItemCategory filter)
         {
@@ -40,7 +21,7 @@ namespace Recalled.UI.Inventory
             _isDirty = true;
         }
 
-        public void RefreshView()
+        public override void RefreshView()
         {
             if (!_inventoryAnchor.IsSet)
                 return;
@@ -75,16 +56,6 @@ namespace Recalled.UI.Inventory
                     EventSystem.current.SetSelectedGameObject(firstActiveSlot.gameObject);
             }
             else EventSystem.current.SetSelectedGameObject(null);
-        }
-
-        private void LateUpdate()
-        {
-            if (_isDirty)
-            {
-                _isDirty = false;
-
-                RefreshView();
-            }
         }
     }
 }
