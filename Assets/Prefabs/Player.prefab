@@ -1138,10 +1138,11 @@ GameObject:
   - component: {fileID: 7919439482791280018}
   - component: {fileID: 797185126300389965}
   - component: {fileID: 6112780135680013782}
+  - component: {fileID: 5074204453201146094}
   - component: {fileID: 2604665884603746442}
-  - component: {fileID: 6749094384683476667}
   - component: {fileID: 4255398299159072370}
   - component: {fileID: 938965487799119155}
+  - component: {fileID: 6749094384683476667}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -1383,6 +1384,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::HealthResource
   _config: {fileID: 11400000, guid: 2e463e3769a329247a9da0cbb5b94970, type: 2}
   _hurtbox: {fileID: 7648009776092296695}
+  _maxHealthStatDefinition: {fileID: 11400000, guid: 53bf89454f9c5b040b173f8b5e2c1273, type: 2}
   _healthVariable: {fileID: 11400000, guid: 18664fa8ddf79b54dbc9cb56202f04fb, type: 2}
   _hpChangedEvent:
     m_PersistentCalls:
@@ -1478,6 +1480,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   _loadout: []
   _slotsAnchor: {fileID: 11400000, guid: f245f90d432f41045899e1c973919586, type: 2}
+--- !u!114 &5074204453201146094
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7559287907167481913}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f4a8c151d4a5ac46bee27a22ddc2802, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Recalled.Gameplay::Recalled.Gameplay.Inventory.EquipmentHolder
+  _equipmentAnchor: {fileID: 11400000, guid: 5aecb3c1110e52a45b25e99d4a31fc64, type: 2}
 --- !u!114 &2604665884603746442
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1491,19 +1506,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Recalled.Gameplay::Recalled.Gameplay.ItemUser
   _processorAnchor: {fileID: 11400000, guid: 0dc54fe998362e74e9df7a516651c58a, type: 2}
---- !u!114 &6749094384683476667
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7559287907167481913}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c188fef6f57ebd3418addda2f20540dd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Recalled.Gameplay::Recalled.Gameplay.RequestClipDispatcher
-  _audioClipRequestChannel: {fileID: 11400000, guid: 67b85b404b05c124ea5e6d5550c770de, type: 2}
 --- !u!114 &4255398299159072370
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1519,6 +1521,9 @@ MonoBehaviour:
   _baseStats:
   - key: {fileID: 11400000, guid: 57f17e86497345f4dae024b88ad0442d, type: 2}
     value: 2
+  - key: {fileID: 11400000, guid: 53bf89454f9c5b040b173f8b5e2c1273, type: 2}
+    value: 100
+  _statsAggregatoAnchor: {fileID: 11400000, guid: 148c9e65282dfc0469daa53834e084de, type: 2}
 --- !u!114 &938965487799119155
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1531,6 +1536,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23efb6e83e6b1aa4eafd01ca693ea9d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Recalled.Gameplay::Recalled.Gameplay.EquipmentStateModifier
+--- !u!114 &6749094384683476667
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7559287907167481913}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c188fef6f57ebd3418addda2f20540dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Recalled.Gameplay::Recalled.Gameplay.RequestClipDispatcher
+  _audioClipRequestChannel: {fileID: 11400000, guid: 67b85b404b05c124ea5e6d5550c770de, type: 2}
 --- !u!1 &8375044973183638792
 GameObject:
   m_ObjectHideFlags: 0

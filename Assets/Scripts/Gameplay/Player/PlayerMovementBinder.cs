@@ -7,7 +7,7 @@ namespace Recalled.Gameplay
     [RequireComponent(typeof(Sprint))]
     [RequireComponent(typeof(Dash))]
     [RequireComponent(typeof(Movementable))]
-    public sealed class PlayerMovementBinder : MonoBehaviour
+    internal sealed class PlayerMovementBinder : MonoBehaviour
     {
         Sprint _sprintingResource;
         Dash _dash;
