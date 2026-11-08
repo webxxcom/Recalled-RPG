@@ -11,7 +11,7 @@ namespace Recalled.UI.Inventory
 
         ToggleableGroup _group;
 
-        private void Awake() =>  _group = GetComponent<ToggleableGroup>();
+        private void Awake() => _group = GetComponent<ToggleableGroup>();
         private void OnEnable()
         {
             _nextAction.action.canceled += NextPage;

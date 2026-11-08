@@ -1,6 +1,6 @@
+using Recalled.Core;
 using UnityEngine;
 using UnityEngine.EventSystems;
-using Recalled.Core;
 
 namespace Recalled.UI
 {

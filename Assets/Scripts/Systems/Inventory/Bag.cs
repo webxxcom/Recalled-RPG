@@ -7,25 +7,23 @@ namespace Recalled.Systems.Inventory
 {
     public sealed class Bag : IBagView
     {
-        public readonly struct Slot
+        internal readonly struct Slot
         {
             public readonly ItemInstance Item;
             public readonly bool IsEmpty => Item == null;
-            public readonly bool IsEquppied { get; }
 
-            internal Slot(ItemInstance instance, bool isEquipped = false)
+            internal Slot(ItemInstance instance)
             {
                 Item = instance ?? throw new ArgumentNullException();
-                IsEquppied = isEquipped;
             }
+
+            internal static Slot Empty => default;
         }
 
         readonly Slot[] _slots;
-        public IReadOnlyList<Slot> Slots => _slots;
         public int Count => _slots.Length;
         public ItemInstance this[int index] => _slots[index].Item;
         public IReadOnlyList<ItemInstance> Items => _slots.Select(s => s.Item).ToArray();
-        public IReadOnlyList<ItemInstance> EquippedItems => _slots.Where(s => s.IsEquppied).Select(s => s.Item).ToArray();
 
         public event Action Changed;
 
@@ -145,7 +143,7 @@ namespace Recalled.Systems.Inventory
                 if (_slots[i].Item != itemInstance)
                     continue;
 
-                _slots[i] = default;
+                _slots[i] = Slot.Empty;
                 Changed?.Invoke();
                 return true;
             }
@@ -166,13 +164,13 @@ namespace Recalled.Systems.Inventory
 
                 int newCount = item.Count - count;
                 if (newCount == 0)
-                    _slots[i] = default;
+                    _slots[i] = Slot.Empty;
                 if (newCount < 0)
                 {
                     if (!TakeRecursively(definition, -newCount, i + 1))
                         return false;
 
-                    _slots[i] = default;
+                    _slots[i] = Slot.Empty;
                 }
                 else
                     item.SetStock(newCount);
@@ -206,6 +204,8 @@ namespace Recalled.Systems.Inventory
                 throw new ArgumentException();
             if (item.Count < count)
                 return false;
+            if (item.Count == count)
+                return Remove(item);
 
             item.RemoveStock(count);
             Changed?.Invoke();
@@ -222,34 +222,5 @@ namespace Recalled.Systems.Inventory
         public int TotalCountOf(ItemDefinition def)
             => _slots.Where(s => !s.IsEmpty && s.Item.Definition == def)
                         .Sum(s => s.Item.Count);
-
-        public bool CanEquip(ItemInstance item)
-        {
-            if (item == null)
-                throw new ArgumentNullException();
-
-            var found = _slots.FirstOrDefault(s => s.Item == item);
-            if (found.Equals(default))
-                throw new NullReferenceException("Inventory doesn't have this item instance");
-            return !found.IsEquppied;
-        }
-
-        void SetEquip(ItemInstance item, bool equipping)
-        {
-            if (!(equipping ^ !CanEquip(item)))
-                return;
-
-            for (int i = 0; i < _slots.Length; i++)
-            {
-                if (_slots[i].Item == item)
-                {
-                    _slots[i] = new(_slots[i].Item, equipping);
-                    Changed?.Invoke();
-                    return;
-                }
-            }
-        }
-        public void Equip(ItemInstance item) => SetEquip(item, true);
-        public void Unequip(ItemInstance item) => SetEquip(item, false);
     }
 }

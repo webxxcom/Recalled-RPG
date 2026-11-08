@@ -18,12 +18,12 @@ MonoBehaviour:
   _maxStockSize: 1
   _category: 3
   _modules:
-  - rid: 127226841540591696
+  - rid: 127226882250506321
   references:
     version: 2
     RefIds:
-    - rid: 127226841540591696
-      type: {class: EquippableModule, ns: Recalled.Gameplay.Inventory, asm: Recalled.Gameplay}
+    - rid: 127226882250506321
+      type: {class: EquippableModule, ns: Recalled.Systems.Inventory, asm: Recalled.Systems}
       data:
         _slot: 3
         _stats: []

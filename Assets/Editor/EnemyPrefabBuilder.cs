@@ -1,8 +1,8 @@
-﻿using System.IO;
+﻿using Recalled.Gameplay;
+using System.IO;
 using UnityEditor;
 using UnityEditor.SceneManagement;
 using UnityEngine;
-using Recalled.Gameplay;
 
 namespace RecalledEditor
 {

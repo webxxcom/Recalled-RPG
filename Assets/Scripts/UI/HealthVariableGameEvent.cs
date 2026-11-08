@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Recalled.UI
 {
-    [CreateAssetMenu(menuName ="Runtime/Event Channels/Health Variable")]
+    [CreateAssetMenu(menuName = "Runtime/Event Channels/Health Variable")]
     public sealed class HealthVariableGameEvent : GameEventChannel<HealthValueVariable>
     { }
 }

@@ -11,7 +11,7 @@ namespace Recalled.UI
 
         InventoryStatsHolder[] _statsHolders;
         IBagView _inventoryView;
-        
+
         private void Awake() => _statsHolders = GetComponentsInChildren<InventoryStatsHolder>();
         private void OnEnable()
         {

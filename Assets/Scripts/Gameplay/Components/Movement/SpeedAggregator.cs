@@ -1,5 +1,5 @@
-using System.Linq;
 using Recalled.Core;
+using System.Linq;
 
 namespace Recalled.Gameplay
 {

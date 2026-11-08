@@ -8716,9 +8716,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d3f08bc907e097469c1179f7313eab6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  _inventoryAnchor: {fileID: 11400000, guid: 9a580f0e060b5ec428662a70a5c9ef41, type: 2}
-  _currentFilter: 3
   _displayedSlot: 2
+  _equipmentAnchor: {fileID: 11400000, guid: 5aecb3c1110e52a45b25e99d4a31fc64, type: 2}
+  _populator: {fileID: 5017337656332605396}
 --- !u!114 &1827901701274942027
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15686,7 +15686,7 @@ PrefabInstance:
     - target: {fileID: 2015929194014760249, guid: 1375b4fb4facc2147bd3696b6e41c9b3, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: b5c6f7d1ce5cdba4d9b35a9279c9566d, type: 3}
+      objectReference: {fileID: -1889949744499105774, guid: 7dc57e3b08e3d39468e4247707670727, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -15910,7 +15910,7 @@ PrefabInstance:
     - target: {fileID: 2015929194014760249, guid: 1375b4fb4facc2147bd3696b6e41c9b3, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 0c4912fff03848d4c8da1f04ef90aa3d, type: 3}
+      objectReference: {fileID: 4979866911403308131, guid: 7dc57e3b08e3d39468e4247707670727, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -17963,7 +17963,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2806735178855446933, guid: f43f510a8560fc140968eb98e08d069d, type: 3}
       propertyPath: _requestOnStart
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2806735178855446933, guid: f43f510a8560fc140968eb98e08d069d, type: 3}
       propertyPath: _hidesWhenInactive
@@ -20032,7 +20032,7 @@ PrefabInstance:
     - target: {fileID: 2015929194014760249, guid: 1375b4fb4facc2147bd3696b6e41c9b3, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 0bb691aa36141a6499eab747bdef5887, type: 3}
+      objectReference: {fileID: 5471756342870052849, guid: 7dc57e3b08e3d39468e4247707670727, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -20769,7 +20769,7 @@ PrefabInstance:
     - target: {fileID: 2015929194014760249, guid: 1375b4fb4facc2147bd3696b6e41c9b3, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: e473b2b47c0ffb24799622d180126dc2, type: 3}
+      objectReference: {fileID: -2339557475606625829, guid: 7dc57e3b08e3d39468e4247707670727, type: 3}
     - target: {fileID: 7694638383640617219, guid: 1375b4fb4facc2147bd3696b6e41c9b3, type: 3}
       propertyPath: _requestOnStart
       value: 1

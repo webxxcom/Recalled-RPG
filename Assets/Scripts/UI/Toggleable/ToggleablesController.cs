@@ -22,7 +22,13 @@ namespace Recalled.UI
                     _activorsToActivated[toggleable] = found;
             }
         }
-        private void OnEnable() => _activators.ActiveChanged += ToggleActivatee;
+        private void OnEnable()
+        {
+            _activators.ActiveChanged += ToggleActivatee;
+
+            var activeActivator = _activators.Elements.FirstOrDefault(t => t.IsActive);
+            if (activeActivator) ToggleActivatee(activeActivator);
+        }
         private void OnDisable() => _activators.ActiveChanged -= ToggleActivatee;
         private void Start()
         {

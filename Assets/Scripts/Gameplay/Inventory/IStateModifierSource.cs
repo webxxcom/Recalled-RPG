@@ -1,4 +1,4 @@
-using Recalled.Gameplay.Inventory;
+using Recalled.Systems.Inventory.Stats;
 using System;
 
 namespace Recalled.Gameplay

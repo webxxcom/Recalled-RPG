@@ -1,4 +1,3 @@
-using Recalled.Core;
 using Recalled.Gameplay;
 using UnityEngine;
 
@@ -16,12 +15,12 @@ namespace Recalled.UI
         }
 
         private void OnEnable() => _variableEventChannel.EventRaised += AddBar;
-        private void OnDisable() =>  _variableEventChannel.EventRaised -= AddBar;
+        private void OnDisable() => _variableEventChannel.EventRaised -= AddBar;
 
         void AddBar(HealthValueVariable variable)
         {
             var variableBinder = _populator.Add().GetComponent<BossBar>();
-            
+
             variableBinder.Init(variable);
         }
     }

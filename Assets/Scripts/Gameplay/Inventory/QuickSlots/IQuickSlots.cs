@@ -11,4 +11,3 @@ namespace Recalled.Gameplay.Inventory
         bool RequestDefinitionForSlot(ItemDefinition def, int i, out int occupiedSlot);
     }
 }
-    

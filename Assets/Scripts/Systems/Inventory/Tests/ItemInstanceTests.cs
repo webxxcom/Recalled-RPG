@@ -231,13 +231,13 @@ namespace Recalled.Systems.Inventory.Tests
     public class StackableItemInstanceCopyTests : ItemInstanceCopyContract
     {
         protected override ItemInstance CreateOriginal() =>
-            new ItemInstance(CreateDefinition(StackableMax), 42);
+            new(CreateDefinition(StackableMax), 42);
     }
 
     [TestFixture]
     public class NonStackableItemInstanceCopyTests : ItemInstanceCopyContract
     {
         protected override ItemInstance CreateOriginal() =>
-            new ItemInstance(CreateDefinition(NonStackableMax), 1);
+            new(CreateDefinition(NonStackableMax), 1);
     }
 }

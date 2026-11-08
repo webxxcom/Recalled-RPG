@@ -1,8 +1,7 @@
 using Recalled.Core;
 using Recalled.Gameplay.Combat;
-using Recalled.Gameplay.Inventory;
+using Recalled.Systems.Inventory.Stats;
 using System;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 

@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace Recalled.Gameplay.Movement
 {
-    [CreateAssetMenu(menuName ="Movement/Decision/Spotted")]
+    [CreateAssetMenu(menuName = "Movement/Decision/Spotted")]
     public class SpottedDecision : Decision
     {
         public override bool Decide(MovementStateMachine stateMachine, Movementable movementable)

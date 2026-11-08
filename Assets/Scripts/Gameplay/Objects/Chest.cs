@@ -82,7 +82,7 @@ namespace Recalled.Gameplay
         {
             bool open = State == States.Opened;
 
-            if (!_wasFirstOpened) 
+            if (!_wasFirstOpened)
                 _wasFirstOpened = open;
             if (_animator != null)
                 _animator.SetBool(AnimatorParameters.IsOpenHash, open);

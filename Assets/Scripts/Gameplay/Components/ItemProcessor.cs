@@ -7,17 +7,18 @@ namespace Recalled.Gameplay
 {
     [RequireComponent(typeof(InventoryHolder))]
     [RequireComponent(typeof(QuickSlotsHolder))]
+    [RequireComponent(typeof(EquipmentHolder))]
     internal class ItemProcessor : MonoBehaviour, IItemProcessor
     {
         [SerializeField] ItemProcessorAnchor _processorAnchor;
 
         InventoryHolder _inventory;
-        QuickSlotsHolder _quickSlots;
+        EquipmentHolder _equipmentHolder;
 
         private void Awake()
         {
             _inventory = GetComponent<InventoryHolder>();
-            _quickSlots = GetComponent<QuickSlotsHolder>();
+            _equipmentHolder = GetComponent<EquipmentHolder>();
         }
         private void OnEnable() => _processorAnchor.Provide(this);
         private void OnDisable() => _processorAnchor.Withdraw(this);
@@ -59,8 +60,13 @@ namespace Recalled.Gameplay
 
         public bool TryToggleEquip(ItemInstance item)
         {
-            if (_inventory.Reference.CanEquip(item)) _inventory.Reference.Equip(item);
-            else _inventory.Reference.Unequip(item);
+            var equipment = _equipmentHolder.Reference;
+
+            if (item.IsEquipped(equipment))
+                equipment.Unequip(item);
+            else
+                equipment.Equip(item);
+
             return true;
         }
     }

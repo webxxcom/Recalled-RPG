@@ -1,4 +1,4 @@
-﻿using Recalled.Gameplay.Inventory;
+﻿using Recalled.Systems.Inventory.Stats;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
@@ -75,7 +75,7 @@ namespace Recalled.Gameplay.Movement
             if (!enabled)
                 return;
 
-            MovementIntention = vec2; 
+            MovementIntention = vec2;
         }
 
         private void FixedUpdate()

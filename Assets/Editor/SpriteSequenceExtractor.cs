@@ -22,7 +22,7 @@ namespace RecalledEditor
                 return false;
 
             string extension = Path.GetExtension(path).ToLowerInvariant();
-            return extension == ".aseprite" || extension == ".ase";
+            return extension is ".aseprite" or ".ase";
         }
 
         /// <summary>

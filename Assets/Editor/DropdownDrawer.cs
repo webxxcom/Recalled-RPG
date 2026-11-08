@@ -22,8 +22,8 @@ namespace RecalledEditor
 
         public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
         {
-            if (property.propertyType != SerializedPropertyType.String &&
-                property.propertyType != SerializedPropertyType.Integer)
+            if (property.propertyType is not SerializedPropertyType.String and
+                not SerializedPropertyType.Integer)
             {
                 EditorGUI.LabelField(position, label, new GUIContent("Dropdown: string or int only."));
                 return;
