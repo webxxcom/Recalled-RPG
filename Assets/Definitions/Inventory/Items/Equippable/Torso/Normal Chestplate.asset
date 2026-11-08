@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Recalled.Systems::Recalled.Systems.Inventory.ItemDefinition
   _name: Normal Chestplate
   _icon: {fileID: -6730011014630177073, guid: 0daa3ba3dddbbca448bb810d864562d8, type: 3}
-  _description: What could be more normal than <b>normal</b>chestplate
+  _description: What could be more normal than <b>normal</b> chestplate
   _maxStockSize: 1
   _category: 3
   _modules:

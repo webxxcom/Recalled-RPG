@@ -45,6 +45,17 @@ namespace Recalled.Systems.Inventory
 
             return false;
         }
+
+        public T[] GetModules<T>()
+        {
+            List<T> res = new();
+            foreach (var module in _modules)
+                if (module is T typed)
+                    res.Add(typed);
+
+            return res.ToArray();
+        }
+
         public ItemInstance CreateInstance(int count = 1) => new(this, count);
     }
 }

@@ -1,4 +1,4 @@
-using Recalled.Gameplay;
+using Recalled.Systems.Inventory.Stats;
 using TMPro;
 using UnityEngine;
 
@@ -7,41 +7,18 @@ namespace Recalled.UI.Inventory
     [RequireComponent(typeof(PrefabPopulator))]
     internal sealed class StatsView : MonoBehaviour
     {
-        [SerializeField] StatsAggregatorAnchor _statsAggregatorAnchor;
-
         PrefabPopulator _populator;
 
-        private void Awake()
-        {
-            _populator = GetComponent<PrefabPopulator>();
-        }
+        private void Awake() => _populator = GetComponent<PrefabPopulator>();
 
-        private void OnEnable()
-        {
-            _statsAggregatorAnchor.Provided += OnAggregatorProvided;
-
-            if (_statsAggregatorAnchor.IsSet) OnAggregatorProvided(_statsAggregatorAnchor.Value);
-        }
-        private void OnDisable()
-        {
-            _statsAggregatorAnchor.Provided -= OnAggregatorProvided;
-        }
-
-        void OnAggregatorProvided(StatsAggregator statsAggregator)
-        {
-            statsAggregator.Changed += UpdateStats;
-
-            UpdateStats();
-        }
-
-        void UpdateStats()
+        public void UpdateStats(string[] stats)
         {
             _populator.DestroyAll();
-            foreach (var stat in _statsAggregatorAnchor.Value.Stats)
+            foreach (var stat in stats)
             {
                 var statText = _populator.Add().GetComponent<TMP_Text>();
 
-                statText.text = $"{stat.Key.name}: {stat.Value}";
+                statText.text = stat;
             }
         }
     }

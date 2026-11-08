@@ -8,7 +8,7 @@ namespace Recalled.Gameplay
     {
         [SerializeField] int _healingPower;
 
-        public string Description => $"Restores {_healingPower} HP";
+        public string Description => $"Heal: {_healingPower}HP";
 
         public void Apply(GameObject game)
         {

@@ -4,20 +4,6 @@ using System.Linq;
 
 namespace Recalled.Systems.Inventory
 {
-    public static class EquipmentExtension
-    {
-        public static bool IsEquipped(this ItemInstance item, Equipment equipment)
-            => equipment.Slots.Any(kv => kv.Value == item);
-
-        internal static Equipment.EquippableItem? Equippable(this ItemInstance item, Equipment equipment)
-        {
-            if (!item.Definition.TryGetModule<EquippableModule>(out var module))
-                return null;
-
-            return new(item, module, item.IsEquipped(equipment));
-        }
-    }
-
     public sealed class Equipment
     {
         public readonly struct EquippableItem
@@ -36,7 +22,7 @@ namespace Recalled.Systems.Inventory
 
         readonly IBagView _bag;
         readonly Dictionary<SlotType, ItemInstance> _slots = new();
-        public event Action<SlotType> Changed;
+        public event Action Changed;
         public IReadOnlyList<EquippableItem> EquippableItems
         {
             get
@@ -66,6 +52,15 @@ namespace Recalled.Systems.Inventory
 
         void EnsureValidState()
         {
+            List<SlotType> toRemove = new();
+
+            foreach (var slot in _slots)
+                if (!_bag.Contains(slot.Value))
+                    toRemove.Add(slot.Key);
+
+            foreach (var slotType in toRemove)
+                _slots.Remove(slotType);
+            Changed?.Invoke();
         }
 
         public bool Equip(ItemInstance item)
@@ -75,7 +70,7 @@ namespace Recalled.Systems.Inventory
 
             var slot = equippable.Slot;
             _slots[slot] = item ?? throw new ArgumentNullException();
-            Changed?.Invoke(slot);
+            Changed?.Invoke();
             return true;
         }
 
@@ -87,7 +82,7 @@ namespace Recalled.Systems.Inventory
 
             var slot = equippableItem.Value.Equippable.Slot;
             if (_slots.Remove(slot))
-                Changed?.Invoke(slot);
+                Changed?.Invoke();
         }
     }
 }

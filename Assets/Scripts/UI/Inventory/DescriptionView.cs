@@ -1,5 +1,6 @@
 using Recalled.Core;
 using Recalled.Systems.Inventory;
+using System.Linq;
 using TMPro;
 using UnityEngine;
 
@@ -9,7 +10,7 @@ namespace Recalled.UI.Inventory
     {
         [SerializeField] InventoryCell _cell;
         [SerializeField] TMP_Text _header;
-        [SerializeField] TMP_Text _extra;
+        [SerializeField] StatsView _statsView;
         [SerializeField] TMP_Text _description;
 
         [Header("Reads")]
@@ -21,8 +22,8 @@ namespace Recalled.UI.Inventory
         void Show(ItemInstance instance)
         {
             _cell.ShowItem(instance, false);
+            _statsView.UpdateStats(instance.Definition.GetModules<IExtraDescription>().SelectMany(d => d.ExtraDescription).ToArray());
             _header.text = instance.Definition.Name;
-            _extra.text = instance.Definition.Extra;
             _description.text = instance.Definition.Description;
         }
 

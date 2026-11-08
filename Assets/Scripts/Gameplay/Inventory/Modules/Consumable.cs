@@ -1,16 +1,18 @@
 ﻿using Recalled.Systems.Inventory;
 using System;
+using System.Linq;
 using UnityEngine;
 
 namespace Recalled.Gameplay.Inventory
 {
     [Serializable]
-    public sealed class Consumable : IModule
+    public sealed class Consumable : IModule, IExtraDescription
     {
         [SerializeReference, SubclassSelector]
         IEffect[] _effects;
 
         public ItemCategory DomainCategory => ItemCategory.Consumable;
+        public string[] ExtraDescription => _effects.Select(e => e.Description).ToArray();
 
         public bool Consume(GameObject game)
         {

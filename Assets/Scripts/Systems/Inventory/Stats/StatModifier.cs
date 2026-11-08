@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace Recalled.Systems.Inventory.Stats
@@ -7,10 +8,27 @@ namespace Recalled.Systems.Inventory.Stats
     public struct StatModifier
     {
         [SerializeField] StatDefinition _stat;
-        [SerializeField] float _amount;
+        [SerializeField, Min(0)] float _amount;
         [SerializeField] Operations _operation;
 
         public readonly StatDefinition Stat => _stat;
+        public readonly float Amount => _amount;
+        internal readonly Operations Operation => _operation;
+
+        public static string Displayed(StatModifier sm)
+        {
+            string sign;
+            if (sm.Operation == Operations.Add)
+            {
+                if (sm.Amount > 0) sign = "+";
+                else if (sm.Amount < 0) sign = "-";
+                else sign = string.Empty;
+            }
+            else sign = "*";
+
+            return $"{sm.Stat.name}: {sign}{MathF.Abs(sm.Amount)}";
+        }
+        
 
         /// <summary>
         /// Applies this stat data to the base value depending on its aggregation operation <see cref="Operations"/>

@@ -25,7 +25,7 @@ namespace Recalled.UI.Inventory
 
         void OnAnchorProvided(Equipment equipment)
         {
-            equipment.Changed += _ => _isDirty = true;
+            equipment.Changed += () => _isDirty = true;
         }
 
         public void Filter(SlotType slot)

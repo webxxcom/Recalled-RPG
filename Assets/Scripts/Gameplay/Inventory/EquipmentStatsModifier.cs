@@ -41,7 +41,7 @@ namespace Recalled.Gameplay
             _equipmentHolder.Reference.Changed -= OnEquipmentChange;
         }
 
-        void OnEquipmentChange(SlotType _)
+        void OnEquipmentChange()
         {
             Changed?.Invoke();
         }
