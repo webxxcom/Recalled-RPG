@@ -1,16 +1,20 @@
+using Recalled.Core;
+using Recalled.Gameplay.Inventory;
 using Recalled.Systems.Inventory;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using UnityEngine.EventSystems;
-using UnityEngine.UI;
 
 namespace Recalled.UI.Inventory
 {
-    internal sealed class InventorySlotsView : InventoryItemsView
+    internal sealed class InventorySlotsView : UiView<IBagView>
     {
+        [SerializeField] InventoryAnchor _inventoryAnchor;
+
         IReadOnlyList<InventorySlot> _slotsView;
         ItemCategory _currentFilter = ItemCategory.Any;
+        protected override RuntimeAnchor<IBagView> Anchor => _inventoryAnchor;
 
         public void Filter(ItemCategory filter)
         {
@@ -21,41 +25,24 @@ namespace Recalled.UI.Inventory
             _isDirty = true;
         }
 
-        public override void RefreshView()
+        protected override void Refresh()
         {
             if (!_inventoryAnchor.IsSet)
                 return;
 
-            // Lazy init
+            var inventory = _inventoryAnchor.Value;
             _slotsView ??= _populator != null
-                ? _populator.Populate(_inventoryAnchor.Value.Count).Select(go => go.GetComponent<InventorySlot>()).ToArray()
+                ? _populator.Populate(inventory.Count).Select(go => go.GetComponent<InventorySlot>()).ToArray()
                 : GetComponentsInChildren<InventorySlot>();
 
-            if (_slotsView.Count != _inventoryAnchor.Value.Count)
+            for (int i = 0; i < inventory.Count; i++)
             {
-                Debug.LogError($"{name}: The {nameof(_slotsView)}'s Amount doesn't match the {nameof(_inventoryAnchor.Value)}'s Amount");
-                return;
-            }
+                var item = inventory[i];
+                var slotEnabled = item != null && item.Definition.IsInCategory(_currentFilter);
 
-            InventorySlot firstActiveSlot = default;
-            for (int i = 0; i < _inventoryAnchor.Value.Count; i++)
-            {
-                var item = _inventoryAnchor.Value[i];
-                var isVisible = item != null && item.Definition.IsInCategory(_currentFilter);
-
-                if (item != null) _slotsView[i].ShowItem(item, !isVisible);
+                if (item != null) _slotsView[i].ShowItem(item, !slotEnabled);
                 else _slotsView[i].ShowEmpty();
-
-                if (firstActiveSlot == null && isVisible) firstActiveSlot = _slotsView[i];
             }
-
-            var currentSel = EventSystem.current.currentSelectedGameObject;
-            if (firstActiveSlot != null)
-            {
-                if (currentSel == null || (currentSel.TryGetComponent<Selectable>(out var s) && !s.enabled))
-                    EventSystem.current.SetSelectedGameObject(firstActiveSlot.gameObject);
-            }
-            else EventSystem.current.SetSelectedGameObject(null);
         }
     }
 }

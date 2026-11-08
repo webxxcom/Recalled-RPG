@@ -11,8 +11,6 @@ namespace Recalled.UI.Inventory
 
         public ItemInstance Item { get; private set; }
 
-        private void OnEnable() => ShowEmpty();
-
         public virtual void ShowItem(ItemInstance instance, bool showDimmed)
         {
             Item = instance;

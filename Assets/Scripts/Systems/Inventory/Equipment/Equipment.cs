@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace Recalled.Systems.Inventory
 {
-    public sealed class Equipment
+    public sealed class Equipment : IView
     {
         public readonly struct EquippableItem
         {

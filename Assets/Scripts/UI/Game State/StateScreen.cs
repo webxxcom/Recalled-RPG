@@ -11,7 +11,6 @@ namespace Recalled.UI
     public sealed class StateScreen : MonoBehaviour
     {
         [SerializeField] GameStateSO _state;
-        [SerializeField] Selectable _firstSelected;
 
         public bool IsActive => _handle != null;
 
@@ -52,7 +51,6 @@ namespace Recalled.UI
 
             _prevSelected = EventSystem.current.currentSelectedGameObject;
             _canvas.enabled = true;
-            if (_firstSelected) _firstSelected.Select();
             return true;
         }
         public void Deactivate()

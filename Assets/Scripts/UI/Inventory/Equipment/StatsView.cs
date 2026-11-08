@@ -13,13 +13,15 @@ namespace Recalled.UI.Inventory
 
         public void UpdateStats(string[] stats)
         {
-            _populator.DestroyAll();
-            foreach (var stat in stats)
+            int i = 0;
+            for (; i < stats.Length; i++)
             {
-                var statText = _populator.Add().GetComponent<TMP_Text>();
+                if (i >= _populator.Created.Count) _populator.Add();
 
-                statText.text = stat;
+                var statText = _populator.Created[i].GetComponent<TMP_Text>();
+                statText.text = stats[i];
             }
+            _populator.RemoveAfterAt(i);
         }
     }
 }

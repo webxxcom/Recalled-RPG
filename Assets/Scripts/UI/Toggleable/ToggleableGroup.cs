@@ -58,7 +58,6 @@ namespace Recalled.UI
             else AddActiveToggleable(toggleable);
         }
 
-
         bool AddActiveToggleable(IToggleable toggleable)
         {
             // Don't want to set same again or more than one if disallowed

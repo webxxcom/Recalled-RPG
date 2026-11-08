@@ -113,7 +113,7 @@ namespace Recalled.UI
             yield return new WaitUntil(() => pressedInd != -1);
 
             //Remove buttons and choose the option
-            _playerButtons.DestroyAll();
+            _playerButtons.RemoveAll();
             _conversation.ChooseOption(pressedInd);
         }
 

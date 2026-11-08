@@ -1,32 +1,17 @@
+using Recalled.Core;
 using Recalled.Gameplay.Inventory;
 using Recalled.Systems.Inventory;
+using System.Linq;
 using UnityEngine;
 
 namespace Recalled.UI.Inventory
 {
-    internal sealed class EquipmentItemsView : MonoBehaviour
+    internal sealed class EquipmentItemsView : UiView<Equipment>
     {
         [SerializeField] SlotType _displayedSlot;
         [SerializeField] EquipmentAnchor _equipmentAnchor;
-        [SerializeField] PrefabPopulator _populator;
 
-        bool _isDirty;
-
-        private void OnEnable()
-        {
-            _equipmentAnchor.Provided += OnAnchorProvided;
-
-            if (_equipmentAnchor.IsSet) OnAnchorProvided(_equipmentAnchor.Value);
-        }
-        private void OnDisable()
-        {
-            _equipmentAnchor.Provided -= OnAnchorProvided;
-        }
-
-        void OnAnchorProvided(Equipment equipment)
-        {
-            equipment.Changed += () => _isDirty = true;
-        }
+        protected override RuntimeAnchor<Equipment> Anchor => _equipmentAnchor;
 
         public void Filter(SlotType slot)
         {
@@ -37,32 +22,21 @@ namespace Recalled.UI.Inventory
             _isDirty = true;
         }
 
-        public void RefreshView()
+        protected override void Refresh()
         {
             if (!_equipmentAnchor.IsSet)
                 return;
 
-            _populator.DestroyAll();
+            int j = 0;
             var equippableItems = _equipmentAnchor.Value.EquippableItems;
-            for (int i = 0; i < equippableItems.Count; i++)
+            foreach (var itemSlot in equippableItems.Where(ei => ei.Equippable.Slot == _displayedSlot))
             {
-                var itemSlot = equippableItems[i];
+                if (j >= _populator.Created.Count) _populator.Add();
 
-                if (_displayedSlot != itemSlot.Equippable.Slot)
-                    continue;
-
-                var addedSlot = _populator.Add().GetComponent<EquipmentSlot>();
+                var addedSlot = _populator.Created[j++].GetComponent<EquipmentSlot>();
                 addedSlot.ShowItem(itemSlot);
             }
-        }
-
-        private void LateUpdate()
-        {
-            if (_isDirty)
-            {
-                _isDirty = false;
-                RefreshView();
-            }
+            _populator.RemoveAfterAt(j);
         }
     }
 }

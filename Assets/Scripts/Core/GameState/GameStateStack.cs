@@ -18,13 +18,10 @@ namespace Recalled.Core
     /// </summary>
     public sealed class GameStateStack : MonoBehaviour
     {
-        [Tooltip("Bottom frame for this scene. Always present, cannot be released.")]
         [SerializeField] GameStateSO _baseState;
 
-        [Tooltip("Wired explicitly. Never looked up at runtime.")]
         [SerializeField] PlayerInput _playerInput;
 
-        [Tooltip("Maps enabled in every state, e.g. System (pause/back). Owned here so no state can forget them.")]
         [SerializeField] string[] _alwaysEnabledMaps = { "System" };
 
         readonly List<GameStateHandle> _frames = new();

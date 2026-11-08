@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -13,7 +14,7 @@ namespace Recalled.UI
 
         public IReadOnlyList<GameObject> Populate(int count)
         {
-            DestroyAll();
+            RemoveAll();
 
             for (int i = 0; i < count; i++) Add();
             return _created;
@@ -26,10 +27,27 @@ namespace Recalled.UI
             return _created[^1];
         }
 
-        public void DestroyAll()
+        public void RemoveAt(int i)
         {
-            foreach (var item in Created)
-                Destroy(item);
+            if (i < 0 || i >= _created.Count)
+                return;
+
+            _created[i].SetActive(false);
+            Destroy(_created[i]);
+            _created.RemoveAt(i);
+        }
+
+        public void RemoveAfterAt(int startingInd)
+        {
+            for (int i = startingInd; i < _created.Count; i++)
+                RemoveAt(i);
+        }
+
+        public void RemoveAll()
+        {
+            for (int i = 0; i < _created.Count; i++)
+                RemoveAt(i);
+
             _created.Clear();
         }
     }

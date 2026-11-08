@@ -4,11 +4,10 @@ using UnityEngine;
 
 namespace Recalled.UI
 {
-    public class ToggleablesController : MonoBehaviour
+    internal sealed class ToggleablesController : MonoBehaviour
     {
         [SerializeField] ToggleableGroup _activators;
         [SerializeField] ToggleableGroup _activatees;
-        [SerializeField] Toggleable _firstActivated;
 
         readonly Dictionary<IToggleable, Toggleable> _activorsToActivated = new();
 
@@ -30,10 +29,6 @@ namespace Recalled.UI
             if (activeActivator) ToggleActivatee(activeActivator);
         }
         private void OnDisable() => _activators.ActiveChanged -= ToggleActivatee;
-        private void Start()
-        {
-            if (_firstActivated) _firstActivated.RequestToggle();
-        }
 
         void ToggleActivatee(IToggleable toggleable)
         {

@@ -1,11 +1,12 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 namespace Recalled.UI
 {
     internal sealed class SelectOnAction : MonoBehaviour, ISubmitHandler, ICancelHandler
     {
-        [SerializeField] GameObject _selected;
+        [SerializeField] Selectable _selected;
         [SerializeField] bool _onCancel;
         [SerializeField] bool _onSubmit;
 
@@ -18,15 +19,6 @@ namespace Recalled.UI
             if (_onSubmit) ProceedToSelected();
         }
 
-        void ProceedToSelected()
-        {
-            var eventSystem = EventSystem.current;
-            if (eventSystem == null)
-                return;
-
-            var current = eventSystem.currentSelectedGameObject;
-            if (current != null)
-                eventSystem.SetSelectedGameObject(_selected);
-        }
+        void ProceedToSelected() => _selected.Select();
     }
 }
