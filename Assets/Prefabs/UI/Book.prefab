@@ -348,7 +348,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Recalled.UI::Recalled.UI.Inventory.InventoryCell
   _icon: {fileID: 1363230331672819359}
-  _dimColor: {r: 0.27058825, g: 0.16078432, b: 0.16470589, a: 0}
+  _dimColor: {r: 0.27058825, g: 0.16078432, b: 0.16470589, a: 0.39215687}
 --- !u!1 &197431728435339152
 GameObject:
   m_ObjectHideFlags: 0
@@ -439,7 +439,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Recalled.UI::Recalled.UI.Inventory.InventoryCell
   _icon: {fileID: 1484207638544914615}
-  _dimColor: {r: 0.27058825, g: 0.16078432, b: 0.16470589, a: 0}
+  _dimColor: {r: 0.27058825, g: 0.16078432, b: 0.16470589, a: 0.39215687}
 --- !u!1 &253548508869941981
 GameObject:
   m_ObjectHideFlags: 0
@@ -3582,7 +3582,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Recalled.UI::Recalled.UI.Inventory.InventoryCell
   _icon: {fileID: 2797633243627300978}
-  _dimColor: {r: 0.27058825, g: 0.16078432, b: 0.16470589, a: 0}
+  _dimColor: {r: 0.27058825, g: 0.16078432, b: 0.16470589, a: 0.39215687}
 --- !u!1 &2262558639566152590
 GameObject:
   m_ObjectHideFlags: 0
@@ -5317,6 +5317,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4437976923016669706}
   - component: {fileID: 2567988900883281340}
+  - component: {fileID: 3189775121741084740}
   m_Layer: 5
   m_Name: Slots
   m_TagString: Untagged
@@ -5371,6 +5372,20 @@ MonoBehaviour:
   m_Spacing: {x: 1, y: 1}
   m_Constraint: 0
   m_ConstraintCount: 1
+--- !u!114 &3189775121741084740
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3587214505926269434}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb553d5aca9468419566c38642446ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+  _populator: {fileID: 0}
+  _equipmentAnchor: {fileID: 11400000, guid: 5aecb3c1110e52a45b25e99d4a31fc64, type: 2}
 --- !u!1 &3594915609950042105
 GameObject:
   m_ObjectHideFlags: 0
@@ -10463,7 +10478,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Recalled.UI::Recalled.UI.Inventory.InventoryCell
   _icon: {fileID: 11735268874984143}
-  _dimColor: {r: 0.27058825, g: 0.16078432, b: 0.16470589, a: 0}
+  _dimColor: {r: 0.27058825, g: 0.16078432, b: 0.16470589, a: 0.39215687}
 --- !u!1 &7101642402921643167
 GameObject:
   m_ObjectHideFlags: 0

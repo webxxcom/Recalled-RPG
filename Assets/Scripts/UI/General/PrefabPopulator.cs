@@ -27,28 +27,22 @@ namespace Recalled.UI
             return _created[^1];
         }
 
-        public void RemoveAt(int i)
+        void DestroyAt(int i)
         {
             if (i < 0 || i >= _created.Count)
                 return;
 
             _created[i].SetActive(false);
             Destroy(_created[i]);
-            _created.RemoveAt(i);
+            _created[i] = null;
         }
 
-        public void RemoveAfterAt(int startingInd)
+        public void RemoveAll(int startingInd = 0)
         {
             for (int i = startingInd; i < _created.Count; i++)
-                RemoveAt(i);
-        }
+                DestroyAt(i);
 
-        public void RemoveAll()
-        {
-            for (int i = 0; i < _created.Count; i++)
-                RemoveAt(i);
-
-            _created.Clear();
+            _created.RemoveAll(e => e == null);
         }
     }
 }

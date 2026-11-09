@@ -21,7 +21,7 @@ namespace Recalled.UI.Inventory
                 var statText = _populator.Created[i].GetComponent<TMP_Text>();
                 statText.text = stats[i];
             }
-            _populator.RemoveAfterAt(i);
+            _populator.RemoveAll(i);
         }
     }
 }

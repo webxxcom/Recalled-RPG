@@ -33,7 +33,7 @@ namespace Recalled.UI.Inventory
                 var addedSlot = _populator.Created[j++].GetComponent<EquipmentSlot>();
                 addedSlot.ShowItem(itemSlot);
             }
-            _populator.RemoveAfterAt(j);
+            _populator.RemoveAll(j);
         }
     }
 }
