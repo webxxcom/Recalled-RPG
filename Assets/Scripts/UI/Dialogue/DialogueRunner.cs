@@ -99,10 +99,8 @@ namespace Recalled.UI
             _playerButtons.Populate(choices.Count);
             for (int i = 0; i < choices.Count; ++i)
             {
-                var choice = choices[i];
-
                 var butt = _playerButtons.Created[i].GetComponent<ChoiceButton>();
-                butt.Init(choice, i);
+                butt.Init(choices[i], i);
                 butt.Button.onClick.AddListener(() => pressedInd = butt.Index);
 
                 Canvas.ForceUpdateCanvases();

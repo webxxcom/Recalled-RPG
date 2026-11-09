@@ -24,9 +24,6 @@ namespace Recalled.UI.Inventory
 
         protected override void Refresh()
         {
-            if (!_equipmentAnchor.IsSet)
-                return;
-
             int j = 0;
             var equippableItems = _equipmentAnchor.Value.EquippableItems;
             foreach (var itemSlot in equippableItems.Where(ei => ei.Equippable.Slot == _displayedSlot))

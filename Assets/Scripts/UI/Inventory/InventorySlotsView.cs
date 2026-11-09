@@ -27,9 +27,6 @@ namespace Recalled.UI.Inventory
 
         protected override void Refresh()
         {
-            if (!_inventoryAnchor.IsSet)
-                return;
-
             var inventory = _inventoryAnchor.Value;
             _slotsView ??= _populator != null
                 ? _populator.Populate(inventory.Count).Select(go => go.GetComponent<InventorySlot>()).ToArray()

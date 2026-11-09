@@ -1,3 +1,4 @@
+using Recalled.Core;
 using Recalled.Gameplay;
 using Recalled.Systems.Inventory.Stats;
 using System.Collections.Generic;
@@ -7,37 +8,21 @@ using UnityEngine;
 namespace Recalled.UI.Inventory
 {
     [RequireComponent(typeof(StatsView))]
-    internal sealed class CurrentStatsView : MonoBehaviour
+    internal sealed class CurrentStatsView : UiView<StatsAggregator>
     {
         [SerializeField] StatsAggregatorAnchor _statsAggregatorAnchor;
 
         StatsView _statsView;
-
+        protected override RuntimeAnchor<StatsAggregator> Anchor => _statsAggregatorAnchor;
         private void Awake() => _statsView = GetComponent<StatsView>();
-
-        private void OnEnable()
-        {
-            _statsAggregatorAnchor.Provided += OnAggregatorProvided;
-
-            if (_statsAggregatorAnchor.IsSet) OnAggregatorProvided(_statsAggregatorAnchor.Value);
-        }
-        private void OnDisable()
-        {
-            _statsAggregatorAnchor.Provided -= OnAggregatorProvided;
-        }
-
-        void OnAggregatorProvided(StatsAggregator statsAggregator)
-        {
-            statsAggregator.Changed += Refresh;
-
-            Refresh();
-        }
 
         string OutputStatView(KeyValuePair<StatDefinition, float> keyValue)
             => $"{keyValue.Key.name}: {keyValue.Value}"; 
-        public void Refresh()
+        protected override void Refresh()
         {
-            _statsView.UpdateStats(_statsAggregatorAnchor.Value.Stats.Select(OutputStatView).ToArray());
+            var statsAggregator = _statsAggregatorAnchor.Value;
+
+            _statsView.UpdateStats(statsAggregator.Stats.Select(OutputStatView).ToArray());
         }
     }
 }

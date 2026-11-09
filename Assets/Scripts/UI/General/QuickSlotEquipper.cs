@@ -47,7 +47,7 @@ namespace Recalled.UI
             {
                 var put = _quickSlotsAnchor.Value.RequestDefinitionForSlot(itemHolder.Item.Definition, i, out var occupiedSlot);
 
-                if (!put)
+                if (!put && occupiedSlot != -1)
                     _slotShakes[occupiedSlot].Play();
             }
             else Debug.LogWarning($"The {nameof(_quickSlotsAnchor)} was not provided");

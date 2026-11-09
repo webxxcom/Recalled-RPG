@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 namespace Recalled.UI.Inventory
 {
-    sealed class QuickSlotCell : MonoBehaviour
+    internal sealed class QuickSlotCell : MonoBehaviour
     {
         [SerializeField] Image _icon;
         [SerializeField] Color _dimColor;

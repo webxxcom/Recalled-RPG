@@ -1,3 +1,4 @@
+using Recalled.Systems.Inventory;
 using Recalled.Systems.Inventory.Stats;
 using System;
 using System.Collections.Generic;
@@ -5,7 +6,7 @@ using UnityEngine;
 
 namespace Recalled.Gameplay
 {
-    public sealed class StatsAggregator : MonoBehaviour
+    public sealed class StatsAggregator : MonoBehaviour, IView
     {
         [SerializeField] Dictionary<StatDefinition, float> _baseStats;
         [SerializeField] StatsAggregatorAnchor _statsAggregatoAnchor;

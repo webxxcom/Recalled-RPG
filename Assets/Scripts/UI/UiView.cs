@@ -14,7 +14,6 @@ namespace Recalled.UI
 
         public IReadOnlyList<GameObject> Elements => _populator.Created;
         protected bool _isDirty;
-
         public event Action Changed;
 
         void OnEnable()
@@ -42,7 +41,7 @@ namespace Recalled.UI
 
         private void LateUpdate()
         {
-            if (_isDirty)
+            if (_isDirty && Anchor.IsSet)
             {
                 _isDirty = false;
 

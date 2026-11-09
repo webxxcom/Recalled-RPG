@@ -256,6 +256,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7257d7cd3eea6c941b9a3ed785736194, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
+  _populator: {fileID: 0}
   _inventoryAnchor: {fileID: 11400000, guid: 9a580f0e060b5ec428662a70a5c9ef41, type: 2}
 --- !u!1 &136589539243802865
 GameObject:
@@ -12531,7 +12532,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce67ad1c2b5cac54ab0fdfcc723e2c80, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Recalled.UI::Recalled.UI.QuickSlotsView
-  _slotsAnchor: {fileID: 11400000, guid: f245f90d432f41045899e1c973919586, type: 2}
+  _populator: {fileID: 0}
+  _quickSlotsAnchor: {fileID: 11400000, guid: f245f90d432f41045899e1c973919586, type: 2}
 --- !u!1 &8130319545939869730
 GameObject:
   m_ObjectHideFlags: 0
@@ -21391,6 +21393,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1be5839a5f38a1a40a26583b786df4f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Recalled.UI::Recalled.UI.Inventory.CurrentStatsView
+  _populator: {fileID: 0}
   _statsAggregatorAnchor: {fileID: 11400000, guid: 148c9e65282dfc0469daa53834e084de, type: 2}
 --- !u!1001 &7280282278357338378
 PrefabInstance:

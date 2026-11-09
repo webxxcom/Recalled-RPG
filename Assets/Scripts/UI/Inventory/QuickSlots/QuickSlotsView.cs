@@ -1,34 +1,22 @@
+using Recalled.Core;
 using Recalled.Gameplay.Inventory;
 using Recalled.UI.Inventory;
 using UnityEngine;
 
 namespace Recalled.UI
 {
-    sealed class QuickSlotsView : MonoBehaviour
+    internal sealed class QuickSlotsView : UiView<IQuickSlots>
     {
         [Header("Listens")]
-        [SerializeField] QuickSlotsAnchor _slotsAnchor;
+        [SerializeField] QuickSlotsAnchor _quickSlotsAnchor;
 
         QuickSlotCell[] _cells;
-
+        protected override RuntimeAnchor<IQuickSlots> Anchor => _quickSlotsAnchor;
         private void Awake() => _cells = GetComponentsInChildren<QuickSlotCell>();
-        private void OnEnable()
-        {
-            _slotsAnchor.Provided += OnAnchorProvided;
 
-            if (_slotsAnchor.IsSet) OnAnchorProvided(_slotsAnchor.Value);
-        }
-        private void OnDisable() => _slotsAnchor.Provided -= OnAnchorProvided;
-
-        void OnAnchorProvided(IQuickSlots slots)
+        protected override void Refresh()
         {
-            slots.Changed += RefreshView;
-            RefreshView();
-        }
-
-        public void RefreshView()
-        {
-            var slots = _slotsAnchor.Value.Slots;
+            var slots = _quickSlotsAnchor.Value.Slots;
             for (int i = 0; i < _cells.Length; i++)
             {
                 var slot = slots[i];

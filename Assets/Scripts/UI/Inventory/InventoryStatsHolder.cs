@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Recalled.UI
 {
-    public class InventoryStatsHolder : MonoBehaviour
+    internal sealed class InventoryStatsHolder : MonoBehaviour
     {
         [SerializeField] TMP_Text _tmpText;
         [SerializeField] ItemCategory _group;
