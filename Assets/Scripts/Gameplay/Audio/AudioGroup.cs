@@ -19,13 +19,14 @@ namespace Recalled.Gameplay
             AudioClipRequested.RemoveListener(HandleClipRequest);
         }
 
-        void PlayRequestWith(in AudioClipRequest request, AudioSource template)
+        void PlayRequestWith(AudioClipRequest request, AudioSource template)
         {
             var audioSource = Instantiate(template, request.Position, Quaternion.identity);
             audioSource.clip = request.AudioAsset.Clip;
             audioSource.Play();
 
-            Destroy(audioSource.gameObject, request.AudioAsset.Clip.length);
+            audioSource.gameObject.AddComponent<AutoDestroyAfter>()
+                .Init(true, request.AudioAsset.Clip.length + 0.1f);
         }
 
         void HandleClipRequest(AudioClipRequest request)

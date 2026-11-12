@@ -1,6 +1,7 @@
 using Recalled.Gameplay;
 using Recalled.UI.Inventory;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 
@@ -10,6 +11,7 @@ namespace Recalled.UI
     {
         [SerializeField] InputActionReference _useAction;
         [SerializeField] ItemProcessorAnchor _itemProcessorAnchor;
+        [SerializeField] UnityEvent _used;
 
         void OnEnable() => _useAction.action.performed += OnUseAction;
         void OnDisable() => _useAction.action.performed -= OnUseAction;
@@ -25,8 +27,10 @@ namespace Recalled.UI
             if (current == null || !current.TryGetComponent<IItemHolder>(out var slot))
                 return;
 
-            if (_itemProcessorAnchor.IsSet)
-                _itemProcessorAnchor.Value.TryToggleEquip(slot.Item);
+            if (_itemProcessorAnchor.IsSet && _itemProcessorAnchor.Value.TryToggleEquip(slot.Item))
+            {
+                _used.Invoke();
+            }
             else Debug.LogWarning($"The {nameof(_itemProcessorAnchor)}'s value was not provided");
         }
     }

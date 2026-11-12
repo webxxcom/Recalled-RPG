@@ -10,6 +10,7 @@ namespace Recalled.UI
     {
         [SerializeField] QuickSlotsAnchor _quickSlotsAnchor;
         [SerializeField] InputActionReference _quickSlotsAction;
+        [SerializeField] QuickSlotsView _quickSlotsView;
 
         [Tooltip("UIShake on each slot's Visual child, in slot order.")]
         [SerializeField] UIShake[] _slotShakes;

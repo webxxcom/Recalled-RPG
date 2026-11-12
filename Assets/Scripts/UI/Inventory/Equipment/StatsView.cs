@@ -1,4 +1,3 @@
-using Recalled.Systems.Inventory.Stats;
 using TMPro;
 using UnityEngine;
 
